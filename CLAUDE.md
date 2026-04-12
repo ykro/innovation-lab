@@ -2,6 +2,7 @@
 
 ## Overview
 Bilingual (ES/EN) landing page for the Innovation Lab at Universidad Galileo. Directed by Adrian Catalan.
+Live at [innovationlab-ug.vercel.app](https://innovationlab-ug.vercel.app).
 
 ## Stack
 - **Framework**: Next.js 16 (App Router)
@@ -9,14 +10,15 @@ Bilingual (ES/EN) landing page for the Innovation Lab at Universidad Galileo. Di
 - **Language**: TypeScript
 - **Content**: Static data files (`data/projects.ts`, `data/team.ts`)
 - **i18n**: Custom React context (`lib/i18n.tsx`) with JSON files (`messages/es.json`, `messages/en.json`)
-- **Deploy**: Vercel
+- **Deploy**: Vercel (auto-deploy from `main`)
 
 ## Visual Rules
 - **NEVER use dark backgrounds** — always white (#ffffff) or light gray (#f8fafc)
 - Primary color: Galileo navy blue `#0A1F44`
 - Font: Montserrat (300, 400, 500, 700)
-- Cards: white bg, `border-border-light`, rounded-2xl, subtle shadow
+- Cards: white bg, `border-border-light`, rounded-2xl
 - UI language: Spanish (Guatemala) default, English toggle
+- Logo: use `/images/logo-mobile.png` with `invert` class (logo is white-on-dark, needs CSS invert for light backgrounds)
 
 ## File Structure
 ```
@@ -27,21 +29,25 @@ components/             — Header, Hero, WhatWeDo, WhyInnovationLab, Projects, 
 lib/i18n.tsx            — i18n context + useI18n hook
 messages/es.json        — Spanish translations
 messages/en.json        — English translations
-data/projects.ts        — Project data array (9 projects)
-data/team.ts            — Team data array (11 members)
+data/projects.ts        — Project data array (9 projects, with image field)
+data/team.ts            — Team data array (11 members, with optional photo field)
 content/projects-brief.md — Template for adding new projects
 content/staff-brief.md    — Template for adding new staff
+scripts/import-brief.ts   — Script to import .md briefs into .ts data files
+public/images/            — Logos, project thumbnails, staff photos
 docs/superpowers/specs/   — Design spec
 ```
 
 ## Adding Content
-- **New project**: Follow template in `content/projects-brief.md`, add entry to `data/projects.ts`
-- **New team member**: Follow template in `content/staff-brief.md`, add entry to `data/team.ts`
+- **New project**: Create `.md` following `content/projects-brief.md`, run `npx tsx scripts/import-brief.ts <file>`
+- **New team member**: Create `.md` following `content/staff-brief.md`, run `npx tsx scripts/import-brief.ts <file>`
 - **Translations**: Update both `messages/es.json` and `messages/en.json`
+- Images go in `public/images/projects/` or `public/images/staff/`
 
 ## Commands
 ```bash
 npm run dev    # Dev server at localhost:3000
 npm run build  # Production build
 npm run lint   # ESLint
+npx tsx scripts/import-brief.ts <file.md>  # Import brief to data
 ```
