@@ -14,7 +14,7 @@ export const team: TeamMember[] = [
     role: "director",
     photo: "/images/staff/adrian.jpeg",
     bio: {
-      es: "Director del Postgrado en Desarrollo de Software y del Innovation Lab en Universidad Galileo. Es Google Developer Expert y mentor de Google for Startups. Con mas de 20 anios de experiencia, combina docencia y consultoria en inteligencia artificial, cloud computing y software. Ha impulsado comunidades y proyectos tecnologicos con impacto regional e internacional. Apasionado por la ultradistancia y el montanismo, vincula liderazgo y resiliencia con la tecnologia.",
+      es: "Director del Postgrado en Desarrollo de Software y del Innovation Lab en Universidad Galileo. Es Google Developer Expert y mentor de Google for Startups. Con más de 20 años de experiencia, combina docencia y consultoría en inteligencia artificial, cloud computing y software. Ha impulsado comunidades y proyectos tecnológicos con impacto regional e internacional. Apasionado por la ultradistancia y el montañismo, vincula liderazgo y resiliencia con la tecnología.",
       en: "Director of the Graduate Program in Software Development and the Innovation Lab at Universidad Galileo. Google Developer Expert and Google for Startups mentor. With over 20 years of experience, he combines teaching and consulting in artificial intelligence, cloud computing, and software. He has driven tech communities and projects with regional and international impact. Passionate about ultra-distance running and mountaineering, he links leadership and resilience with technology.",
     },
     linkedin: "https://www.linkedin.com/in/adriancatalan/",

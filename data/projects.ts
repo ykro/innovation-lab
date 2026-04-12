@@ -13,7 +13,7 @@ export const projects: Project[] = [
     id: "pictance",
     name: "Pictance",
     description: {
-      es: "Reconocimiento facial usando redes neuronales en una aplicacion web. Los usuarios suben fotos y el sistema identifica y marca caracteristicas faciales clave.",
+      es: "Reconocimiento facial usando redes neuronales en una aplicación web. Los usuarios suben fotos y el sistema identifica y marca características faciales clave.",
       en: "Face recognition using neural networks on a web app. Users upload photos and the system identifies and marks key facial features.",
     },
     technologies: ["Neural Networks", "Web App", "Computer Vision"],
@@ -25,7 +25,7 @@ export const projects: Project[] = [
     id: "kotlinbots-hexapod",
     name: "Kotlinbots Hexapod",
     description: {
-      es: "Robot de seis patas controlado via Android Things en Raspberry Pi. Utiliza vision por computadora y Firebase.",
+      es: "Robot de seis patas controlado vía Android Things en Raspberry Pi. Utiliza visión por computadora y Firebase.",
       en: "Six-legged robot controlled via Android Things on Raspberry Pi. Uses computer vision and Firebase.",
     },
     technologies: ["Android Things", "Raspberry Pi", "Firebase", "Computer Vision"],
@@ -49,7 +49,7 @@ export const projects: Project[] = [
     id: "tjbot",
     name: "TJBot",
     description: {
-      es: "Robot que baila, responde a emociones e interactua mediante servicios de IBM Watson. Usa Raspberry Pi, servomotor y LED RGB.",
+      es: "Robot que baila, responde a emociones e interactúa mediante servicios de IBM Watson. Usa Raspberry Pi, servomotor y LED RGB.",
       en: "Robot that dances, responds to emotions, and engages via IBM Watson services. Uses Raspberry Pi, servo motor, and RGB LED.",
     },
     technologies: ["IBM Watson", "Raspberry Pi", "IoT"],
@@ -61,7 +61,7 @@ export const projects: Project[] = [
     id: "ilstyle",
     name: "ILStyle",
     description: {
-      es: "Transferencia de estilo de pinturas famosas a fotografias usando redes neuronales.",
+      es: "Transferencia de estilo de pinturas famosas a fotografías usando redes neuronales.",
       en: "Style transfer of famous paintings to photos using neural networks.",
     },
     technologies: ["TensorFlow", "NodeJS", "Firebase", "React Native"],
@@ -97,7 +97,7 @@ export const projects: Project[] = [
     id: "obdled",
     name: "OBDled",
     description: {
-      es: "Control de tiras LED segun las RPM del auto usando Arduino. Lee datos del vehiculo via adaptador OBD-II.",
+      es: "Control de tiras LED según las RPM del auto usando Arduino. Lee datos del vehículo vía adaptador OBD-II.",
       en: "Controlling LED strips according to car RPM using Arduino. Reads vehicle data via OBD-II adapter.",
     },
     technologies: ["Arduino", "OBD-II", "IoT"],
