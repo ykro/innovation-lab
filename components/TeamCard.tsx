@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useI18n } from "@/lib/i18n";
 import type { TeamMember } from "@/data/team";
 
@@ -10,6 +11,32 @@ function getInitials(name: string): string {
     .join("")
     .toUpperCase()
     .slice(0, 2);
+}
+
+function Avatar({ member, size }: { member: TeamMember; size: "lg" | "sm" }) {
+  const dim = size === "lg" ? "h-28 w-28" : "h-14 w-14";
+  const text = size === "lg" ? "text-2xl" : "text-sm";
+  const rounded = size === "lg" ? "rounded-2xl" : "rounded-xl";
+
+  if (member.photo) {
+    return (
+      <Image
+        src={member.photo}
+        alt={member.name}
+        width={size === "lg" ? 112 : 56}
+        height={size === "lg" ? 112 : 56}
+        className={`${dim} ${rounded} object-cover`}
+      />
+    );
+  }
+
+  return (
+    <div
+      className={`${dim} ${rounded} flex flex-shrink-0 items-center justify-center bg-navy/8 ${text} font-medium text-navy/50`}
+    >
+      {getInitials(member.name)}
+    </div>
+  );
 }
 
 export default function TeamCard({
@@ -23,14 +50,12 @@ export default function TeamCard({
 
   if (featured) {
     return (
-      <div className="animate-on-scroll mx-auto mb-12 max-w-2xl rounded-2xl border border-border-light bg-white p-8 shadow-[0_4px_12px_rgba(0,0,0,0.05)]">
+      <div className="animate-on-scroll mx-auto mb-12 max-w-2xl rounded-2xl border border-border-light bg-white p-8">
         <div className="flex flex-col items-center gap-6 sm:flex-row sm:items-start">
-          <div className="flex h-24 w-24 flex-shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-navy to-navy-light text-2xl font-bold text-white">
-            {getInitials(member.name)}
-          </div>
+          <Avatar member={member} size="lg" />
           <div className="text-center sm:text-left">
             <h3 className="text-xl font-bold text-navy">{member.name}</h3>
-            <p className="mb-3 text-sm font-medium text-accent-cyan">
+            <p className="mb-3 text-sm font-medium text-slate-secondary">
               {t("team.director")}
             </p>
             {member.bio && (
@@ -58,9 +83,9 @@ export default function TeamCard({
   }
 
   return (
-    <div className="animate-on-scroll flex flex-col items-center rounded-2xl border border-border-light bg-white p-5 text-center shadow-[0_4px_12px_rgba(0,0,0,0.05)] transition-shadow hover:shadow-[0_8px_24px_rgba(0,0,0,0.08)]">
-      <div className="mb-3 flex h-16 w-16 items-center justify-center rounded-xl bg-gradient-to-br from-navy/10 to-accent-cyan/10 text-base font-bold text-navy">
-        {getInitials(member.name)}
+    <div className="animate-on-scroll flex flex-col items-center rounded-xl bg-white p-4 text-center transition-colors hover:bg-light-bg">
+      <div className="mb-2">
+        <Avatar member={member} size="sm" />
       </div>
       <h3 className="text-sm font-bold text-navy">{member.name}</h3>
       <p className="text-xs text-slate-secondary">{t("team.assistant")}</p>

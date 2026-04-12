@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { useI18n } from "@/lib/i18n";
 import LanguageToggle from "./LanguageToggle";
 
@@ -19,9 +20,13 @@ export default function Header() {
     <header className="sticky top-0 z-50 border-b border-border-light bg-white/95 backdrop-blur-sm">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6">
         <a href="#" className="flex items-center gap-2">
-          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-navy text-sm font-bold text-white">
-            IL
-          </div>
+          <Image
+            src="/images/logo-mobile.png"
+            alt="Innovation Lab"
+            width={36}
+            height={36}
+            className="h-9 w-9 object-contain invert"
+          />
           <span className="hidden text-sm font-bold text-navy sm:block">
             Innovation Lab
           </span>

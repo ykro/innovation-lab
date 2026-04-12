@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useI18n } from "@/lib/i18n";
 
 const socialLinks = [
@@ -36,10 +37,14 @@ export default function Footer() {
   return (
     <footer className="border-t border-border-light bg-white px-4 py-8 sm:px-6">
       <div className="mx-auto flex max-w-6xl flex-col items-center gap-4 text-center">
-        <div className="flex items-center gap-2">
-          <div className="flex h-7 w-7 items-center justify-center rounded-md bg-navy text-xs font-bold text-white">
-            IL
-          </div>
+        <div className="flex items-center gap-3">
+          <Image
+            src="/images/logo-mobile.png"
+            alt="Innovation Lab"
+            width={24}
+            height={24}
+            className="h-6 w-6 object-contain invert"
+          />
           <span className="text-sm font-bold text-navy">Innovation Lab</span>
           <span className="text-sm text-slate-secondary">
             — {t("footer.affiliation")}

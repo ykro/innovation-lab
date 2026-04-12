@@ -5,6 +5,7 @@ export interface Project {
   technologies: string[];
   status: "in_progress" | "finished" | "transferred";
   date: string;
+  image?: string;
 }
 
 export const projects: Project[] = [
@@ -18,6 +19,7 @@ export const projects: Project[] = [
     technologies: ["Neural Networks", "Web App", "Computer Vision"],
     status: "in_progress",
     date: "2018-08",
+    image: "/images/projects/pictance.png",
   },
   {
     id: "kotlinbots-hexapod",
@@ -29,6 +31,7 @@ export const projects: Project[] = [
     technologies: ["Android Things", "Raspberry Pi", "Firebase", "Computer Vision"],
     status: "in_progress",
     date: "2018-07",
+    image: "/images/projects/hexapod.png",
   },
   {
     id: "tango",
@@ -40,6 +43,7 @@ export const projects: Project[] = [
     technologies: ["Google Tango", "Unity", "AR/VR"],
     status: "in_progress",
     date: "2017-06",
+    image: "/images/projects/default.png",
   },
   {
     id: "tjbot",
@@ -51,6 +55,7 @@ export const projects: Project[] = [
     technologies: ["IBM Watson", "Raspberry Pi", "IoT"],
     status: "in_progress",
     date: "2017-06",
+    image: "/images/projects/default.png",
   },
   {
     id: "ilstyle",
@@ -62,6 +67,7 @@ export const projects: Project[] = [
     technologies: ["TensorFlow", "NodeJS", "Firebase", "React Native"],
     status: "finished",
     date: "2017-06",
+    image: "/images/projects/ilstyle.png",
   },
   {
     id: "ilvision",
@@ -73,6 +79,7 @@ export const projects: Project[] = [
     technologies: ["Google Cloud Vision", "NodeJS", "React Native"],
     status: "in_progress",
     date: "2017-03",
+    image: "/images/projects/default.png",
   },
   {
     id: "ildrone",
@@ -84,6 +91,7 @@ export const projects: Project[] = [
     technologies: ["Intel Edison", "ARDrone 2.0", "NodeJS", "Johnny-Five"],
     status: "finished",
     date: "2016-10",
+    image: "/images/projects/ildrone.jpg",
   },
   {
     id: "obdled",
@@ -95,6 +103,7 @@ export const projects: Project[] = [
     technologies: ["Arduino", "OBD-II", "IoT"],
     status: "finished",
     date: "2016-06",
+    image: "/images/projects/obd.jpg",
   },
   {
     id: "leonardo-greenmoov",
@@ -106,5 +115,6 @@ export const projects: Project[] = [
     technologies: ["3D Printing", "Oculus Rift", "Leap Motion"],
     status: "transferred",
     date: "2015-12",
+    image: "/images/projects/leonardo.jpg",
   },
 ];

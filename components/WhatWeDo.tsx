@@ -17,7 +17,7 @@ export default function WhatWeDo() {
   return (
     <section id="que-hacemos" className="bg-light-bg px-4 py-16 sm:px-6 sm:py-24">
       <div className="mx-auto max-w-6xl">
-        <div className="mx-auto mb-12 max-w-2xl text-center">
+        <div className="mb-12 max-w-xl">
           <h2 className="mb-4 text-3xl font-bold text-navy sm:text-4xl">
             {t("whatWeDo.title")}
           </h2>
@@ -26,16 +26,16 @@ export default function WhatWeDo() {
           </p>
         </div>
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-x-8 gap-y-6 sm:grid-cols-2 lg:grid-cols-3">
           {areas.map((area) => (
             <div
               key={area.key}
-              className="animate-on-scroll rounded-2xl border border-border-light bg-white p-6 shadow-[0_4px_12px_rgba(0,0,0,0.05)] transition-shadow hover:shadow-[0_8px_24px_rgba(0,0,0,0.08)]"
+              className="animate-on-scroll flex items-start gap-4 py-2"
             >
-              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-navy/5 to-accent-cyan/10">
+              <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-navy/5">
                 <svg
-                  width="24"
-                  height="24"
+                  width="20"
+                  height="20"
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
@@ -45,12 +45,14 @@ export default function WhatWeDo() {
                   <path d={area.icon} strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </div>
-              <h3 className="mb-2 text-lg font-bold text-navy">
-                {t(`whatWeDo.areas.${area.key}.title`)}
-              </h3>
-              <p className="text-sm leading-relaxed text-slate-secondary">
-                {t(`whatWeDo.areas.${area.key}.description`)}
-              </p>
+              <div>
+                <h3 className="mb-1 text-base font-bold text-navy">
+                  {t(`whatWeDo.areas.${area.key}.title`)}
+                </h3>
+                <p className="text-sm leading-relaxed text-slate-secondary">
+                  {t(`whatWeDo.areas.${area.key}.description`)}
+                </p>
+              </div>
             </div>
           ))}
         </div>
