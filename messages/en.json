@@ -61,7 +61,9 @@
   "team": {
     "title": "Team",
     "director": "Director",
-    "assistant": "Research Assistant"
+    "assistant": "Research Assistant",
+    "showBio": "Read more",
+    "hideBio": "Show less"
   },
   "social": {
     "title": "Connect With Us",

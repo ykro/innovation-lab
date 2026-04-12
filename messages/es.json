@@ -61,7 +61,9 @@
   "team": {
     "title": "Equipo",
     "director": "Director",
-    "assistant": "Asistente de Investigacion"
+    "assistant": "Asistente de Investigacion",
+    "showBio": "Ver mas",
+    "hideBio": "Ver menos"
   },
   "social": {
     "title": "Conecta con Nosotros",
