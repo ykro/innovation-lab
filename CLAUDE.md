@@ -37,7 +37,6 @@ content/projects-brief.md — Template for adding new projects
 content/staff-brief.md    — Template for adding new staff
 scripts/import-brief.ts   — Script to import .md briefs into .ts data files
 public/images/            — Logos, project thumbnails, staff photos
-docs/superpowers/specs/   — Design spec
 ```
 
 ## Adding Content
