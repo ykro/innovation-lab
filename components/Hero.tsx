@@ -21,7 +21,7 @@ export default function Hero() {
           {t("hero.tagline")}
         </p>
 
-        <p className="mx-auto mb-10 max-w-xl text-base leading-relaxed text-slate-secondary sm:text-lg">
+        <p className="mx-auto mb-10 max-w-2xl text-base leading-relaxed text-slate-secondary sm:text-lg">
           {t("hero.description")}
         </p>
 
@@ -39,9 +39,9 @@ export default function Hero() {
           <Image
             src="/images/logo-mobile.png"
             alt="Innovation Lab"
-            width={64}
-            height={64}
-            className="mx-auto h-16 w-16 object-contain invert opacity-20"
+            width={192}
+            height={192}
+            className="mx-auto h-48 w-48 object-contain invert opacity-15"
             priority
           />
         </div>
