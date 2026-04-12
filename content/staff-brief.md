@@ -1,31 +1,19 @@
 # Staff Brief — Innovation Lab
 
-Use this template to add new team members. Copy a block below, fill it out, and add the data to `data/team.ts`.
+Usa este template para agregar nuevos miembros del equipo. Copia un bloque, llénalo, y ejecuta:
+
+```bash
+npx tsx scripts/import-brief.ts content/nombre-apellido.md
+```
+
+El script agrega la entrada automáticamente a `data/team.ts`.
 
 ---
 
-## [Full Name]
+## [Nombre Completo]
 - **ID**: kebab-case-id
 - **Role**: director | assistant
-- **Bio (ES)**: Bio opcional de 1-2 oraciones. (Solo para director o miembros destacados)
+- **Bio (ES)**: Bio opcional de 1-2 oraciones.
 - **Bio (EN)**: Optional 1-2 sentence bio.
-- **Photo**: filename.jpg (place in public/images/staff/)
-- **LinkedIn**: https://www.linkedin.com/in/username/ (optional)
-
----
-
-### Example entry for `data/team.ts`:
-
-```typescript
-{
-  id: "nombre-apellido",
-  name: "Nombre Apellido",
-  role: "assistant",
-  // Optional fields:
-  // bio: {
-  //   es: "Bio en espanol.",
-  //   en: "Bio in English.",
-  // },
-  // linkedin: "https://www.linkedin.com/in/username/",
-},
-```
+- **Photo**: filename.jpg (colocar en public/images/staff/)
+- **LinkedIn**: https://www.linkedin.com/in/username/ (opcional)
