@@ -1,0 +1,76 @@
+{
+  "nav": {
+    "whatWeDo": "Que Hacemos",
+    "why": "Por Que un Lab",
+    "projects": "Proyectos",
+    "team": "Equipo",
+    "contact": "Contacto"
+  },
+  "hero": {
+    "title": "Innovation Lab",
+    "subtitle": "Universidad Galileo",
+    "tagline": "Donde la curiosidad se convierte en tecnologia",
+    "description": "Un espacio de creatividad y aprendizaje tecnologico donde fomentamos la experimentacion, el trabajo en equipo y la creacion de proyectos innovadores.",
+    "cta": "Conoce nuestros proyectos"
+  },
+  "whatWeDo": {
+    "title": "Que Hacemos",
+    "description": "Cultivamos la curiosidad y aprovechamos la creatividad para el desarrollo de tecnologia innovadora a traves del trabajo en equipo, la experimentacion y el permiso explicito de cometer errores.",
+    "areas": {
+      "ml": {
+        "title": "Machine Learning",
+        "description": "Aplicaciones de aprendizaje automatico en diversas industrias y contextos educativos."
+      },
+      "arvr": {
+        "title": "Realidad Aumentada y Virtual",
+        "description": "Experiencias inmersivas que combinan el mundo virtual con el real."
+      },
+      "iot": {
+        "title": "Internet de las Cosas",
+        "description": "Plataformas conectadas con Arduino, Raspberry Pi, BeagleBone y mas."
+      },
+      "printing": {
+        "title": "Impresion 3D",
+        "description": "Prototipado rapido y fabricacion de piezas para proyectos de innovacion."
+      },
+      "drones": {
+        "title": "Drones",
+        "description": "Vehiculos aereos no tripulados con control gestual y vision por computadora."
+      },
+      "cv": {
+        "title": "Vision por Computadora",
+        "description": "Reconocimiento facial, deteccion de objetos y procesamiento de imagenes."
+      }
+    }
+  },
+  "why": {
+    "title": "Por Que un Laboratorio de Innovacion",
+    "p1": "En un mundo donde la tecnologia transforma cada aspecto de nuestras vidas, las universidades necesitan espacios donde los estudiantes puedan ir mas alla de la teoria. El Innovation Lab es ese espacio: un lugar donde las ideas se convierten en prototipos funcionales y donde el aprendizaje sucede a traves de la practica.",
+    "p2": "Nuestro laboratorio opera con una metodologia de prototipado iterativo y validacion, complementando los programas de ingenieria con experiencia practica en tecnologias emergentes. Aqui, los estudiantes no solo aprenden a programar — aprenden a innovar, a trabajar en equipo y a resolver problemas reales.",
+    "p3": "Guatemala tiene un enorme potencial tecnologico. A traves de talleres, charlas introductorias y proyectos aplicados, buscamos impulsar el ecosistema de innovacion y emprendimiento tecnologico en el pais, conectando a la universidad con la industria y la comunidad."
+  },
+  "projects": {
+    "title": "Proyectos",
+    "filterAll": "Todos",
+    "status": {
+      "in_progress": "En Progreso",
+      "finished": "Finalizado",
+      "transferred": "Transferido"
+    }
+  },
+  "team": {
+    "title": "Equipo",
+    "director": "Director",
+    "assistant": "Asistente de Investigacion"
+  },
+  "social": {
+    "title": "Conecta con Nosotros",
+    "description": "Siguenos en redes sociales para estar al dia con nuestros proyectos, talleres y eventos.",
+    "cta": "Escribenos",
+    "ctaDescription": "Tienes una idea o quieres colaborar?"
+  },
+  "footer": {
+    "affiliation": "Universidad Galileo",
+    "rights": "Todos los derechos reservados."
+  }
+}

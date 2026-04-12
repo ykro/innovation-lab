@@ -1,0 +1,70 @@
+export interface TeamMember {
+  id: string;
+  name: string;
+  role: "director" | "assistant";
+  bio?: { es: string; en: string };
+  linkedin?: string;
+}
+
+export const team: TeamMember[] = [
+  {
+    id: "adrian-catalan",
+    name: "Adrian Catalan",
+    role: "director",
+    bio: {
+      es: "Director del Postgrado en Desarrollo de Software y del Innovation Lab en Universidad Galileo. Es Google Developer Expert y mentor de Google for Startups. Con mas de 20 anios de experiencia, combina docencia y consultoria en inteligencia artificial, cloud computing y software. Ha impulsado comunidades y proyectos tecnologicos con impacto regional e internacional. Apasionado por la ultradistancia y el montanismo, vincula liderazgo y resiliencia con la tecnologia.",
+      en: "Director of the Graduate Program in Software Development and the Innovation Lab at Universidad Galileo. Google Developer Expert and Google for Startups mentor. With over 20 years of experience, he combines teaching and consulting in artificial intelligence, cloud computing, and software. He has driven tech communities and projects with regional and international impact. Passionate about ultra-distance running and mountaineering, he links leadership and resilience with technology.",
+    },
+    linkedin: "https://www.linkedin.com/in/adriancatalan/",
+  },
+  {
+    id: "luis-jimenez",
+    name: "Luis Jimenez",
+    role: "assistant",
+  },
+  {
+    id: "pablo-galicia",
+    name: "Pablo Galicia",
+    role: "assistant",
+  },
+  {
+    id: "holly-milian",
+    name: "Holly Milian",
+    role: "assistant",
+  },
+  {
+    id: "catherine-batres",
+    name: "Catherine Batres",
+    role: "assistant",
+  },
+  {
+    id: "christian-martinez",
+    name: "Christian Martinez",
+    role: "assistant",
+  },
+  {
+    id: "emily-curin",
+    name: "Emily Curin",
+    role: "assistant",
+  },
+  {
+    id: "stephanie-sosa",
+    name: "Stephanie Sosa",
+    role: "assistant",
+  },
+  {
+    id: "steven-marroquin",
+    name: "Steven Marroquin",
+    role: "assistant",
+  },
+  {
+    id: "yoselin-mejia",
+    name: "Yoselin Mejia",
+    role: "assistant",
+  },
+  {
+    id: "andres-tobar",
+    name: "Andres Tobar",
+    role: "assistant",
+  },
+];

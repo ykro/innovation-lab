@@ -1,0 +1,76 @@
+{
+  "nav": {
+    "whatWeDo": "What We Do",
+    "why": "Why a Lab",
+    "projects": "Projects",
+    "team": "Team",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Innovation Lab",
+    "subtitle": "Universidad Galileo",
+    "tagline": "Where curiosity becomes technology",
+    "description": "A space for creativity and technological learning where we foster experimentation, teamwork, and the creation of innovative projects.",
+    "cta": "Explore our projects"
+  },
+  "whatWeDo": {
+    "title": "What We Do",
+    "description": "We cultivate curiosity and leverage creativity for innovative technology development through teamwork, experimentation, and the explicit permission to make mistakes.",
+    "areas": {
+      "ml": {
+        "title": "Machine Learning",
+        "description": "Machine learning applications across diverse industries and educational contexts."
+      },
+      "arvr": {
+        "title": "Augmented & Virtual Reality",
+        "description": "Immersive experiences blending the virtual and real worlds."
+      },
+      "iot": {
+        "title": "Internet of Things",
+        "description": "Connected platforms with Arduino, Raspberry Pi, BeagleBone and more."
+      },
+      "printing": {
+        "title": "3D Printing",
+        "description": "Rapid prototyping and part fabrication for innovation projects."
+      },
+      "drones": {
+        "title": "Drones",
+        "description": "Unmanned aerial vehicles with gesture control and computer vision."
+      },
+      "cv": {
+        "title": "Computer Vision",
+        "description": "Facial recognition, object detection, and image processing."
+      }
+    }
+  },
+  "why": {
+    "title": "Why an Innovation Lab",
+    "p1": "In a world where technology transforms every aspect of our lives, universities need spaces where students can go beyond theory. The Innovation Lab is that space: a place where ideas become functional prototypes and learning happens through practice.",
+    "p2": "Our lab operates with an iterative prototyping and validation methodology, complementing engineering programs with hands-on experience in emerging technologies. Here, students don't just learn to code — they learn to innovate, to work as a team, and to solve real problems.",
+    "p3": "Guatemala has enormous technological potential. Through workshops, introductory talks, and applied projects, we aim to boost the innovation and tech entrepreneurship ecosystem in the country, connecting the university with industry and the community."
+  },
+  "projects": {
+    "title": "Projects",
+    "filterAll": "All",
+    "status": {
+      "in_progress": "In Progress",
+      "finished": "Finished",
+      "transferred": "Transferred"
+    }
+  },
+  "team": {
+    "title": "Team",
+    "director": "Director",
+    "assistant": "Research Assistant"
+  },
+  "social": {
+    "title": "Connect With Us",
+    "description": "Follow us on social media to stay up to date with our projects, workshops, and events.",
+    "cta": "Write to Us",
+    "ctaDescription": "Have an idea or want to collaborate?"
+  },
+  "footer": {
+    "affiliation": "Universidad Galileo",
+    "rights": "All rights reserved."
+  }
+}
