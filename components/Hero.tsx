@@ -8,16 +8,7 @@ export default function Hero() {
 
   return (
     <section className="bg-white px-4 py-20 sm:px-6 sm:py-28 lg:py-36">
-      <div className="mx-auto max-w-3xl text-center">
-        <Image
-          src="/images/logo-mobile.png"
-          alt=""
-          width={72}
-          height={72}
-          className="mx-auto mb-8 h-16 w-16 object-contain invert sm:h-[72px] sm:w-[72px]"
-          priority
-        />
-
+      <div className="mx-auto max-w-4xl text-center">
         <p className="mb-3 text-sm font-medium uppercase tracking-widest text-slate-secondary">
           {t("hero.subtitle")}
         </p>
@@ -43,6 +34,17 @@ export default function Hero() {
             <path d="M12 5v14M5 12l7 7 7-7" />
           </svg>
         </a>
+
+        <div className="mt-12">
+          <Image
+            src="/images/logo-mobile.png"
+            alt="Innovation Lab"
+            width={40}
+            height={40}
+            className="mx-auto h-10 w-10 object-contain invert opacity-30"
+            priority
+          />
+        </div>
       </div>
     </section>
   );
