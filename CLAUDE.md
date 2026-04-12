@@ -55,9 +55,6 @@ public/images/            — Logos, project thumbnails, staff photos
 7. **Contacto** — Social media links + email CTA
 8. **Footer** — Logo, compact social icons, copyright
 
-## Available Team Photos
-Only 3 of 11 team photos exist on the original site: Adrian Catalan, Luis Jimenez, Holly Milian. Others show styled initials.
-
 ## Commands
 ```bash
 npm run dev    # Dev server at localhost:3000
