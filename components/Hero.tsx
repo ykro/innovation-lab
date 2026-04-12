@@ -7,7 +7,7 @@ export default function Hero() {
   const { t } = useI18n();
 
   return (
-    <section className="bg-white px-4 py-20 sm:px-6 sm:py-28 lg:py-36">
+    <section className="bg-white px-4 py-12 sm:px-6 sm:py-16 lg:py-20">
       <div className="mx-auto max-w-4xl text-center">
         <p className="mb-3 text-sm font-medium uppercase tracking-widest text-slate-secondary">
           {t("hero.subtitle")}
@@ -35,7 +35,7 @@ export default function Hero() {
           </svg>
         </a>
 
-        <div className="mt-14">
+        <div className="mt-10">
           <Image
             src="/images/logo-mobile.png"
             alt="Innovation Lab"
