@@ -6,7 +6,22 @@
       "WebFetch(domain:innovacion.galileo.edu)",
       "Bash(curl -sL \"https://innovacion.galileo.edu/\")",
       "Bash(curl:*)",
-      "Bash(npx create-next-app@latest:*)"
+      "Bash(npx create-next-app@latest:*)",
+      "Bash(npm run:*)",
+      "Bash(grep -i \"image\\\\|photo\\\\|avatar\" /Users/ykro/code/misc/explorations/landings/innovation-lab/components/*.tsx)",
+      "Bash(gh auth:*)",
+      "Bash(gh repo:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(vercel --version)",
+      "Bash(vercel link:*)",
+      "Bash(vercel:*)",
+      "WebFetch(domain:innovacionlab-ug.vercel.app)",
+      "Bash(ls -la public/images/logo*.png public/images/galileo-logo.png)",
+      "Bash(npx tsx:*)",
+      "Bash(git checkout:*)",
+      "mcp__claude_ai_Vercel__get_project"
     ]
   }
 }
