@@ -35,13 +35,13 @@ export default function Hero() {
           </svg>
         </a>
 
-        <div className="mt-12">
+        <div className="mt-14">
           <Image
             src="/images/logo-mobile.png"
             alt="Innovation Lab"
-            width={40}
-            height={40}
-            className="mx-auto h-10 w-10 object-contain invert opacity-30"
+            width={64}
+            height={64}
+            className="mx-auto h-16 w-16 object-contain invert opacity-20"
             priority
           />
         </div>
