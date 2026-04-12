@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:linktr.ee)",
+      "WebFetch(domain:www.galileo.edu)",
+      "WebFetch(domain:innovacion.galileo.edu)",
+      "Bash(curl -sL \"https://innovacion.galileo.edu/\")",
+      "Bash(curl:*)",
+      "Bash(npx create-next-app@latest:*)"
+    ]
+  }
+}
