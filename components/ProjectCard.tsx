@@ -13,8 +13,8 @@ export default function ProjectCard({ project }: { project: Project }) {
     transferred: "bg-amber-50 text-amber-700",
   };
 
-  return (
-    <div className="animate-on-scroll flex flex-col overflow-hidden rounded-2xl border border-border-light bg-white transition-shadow hover:shadow-[0_8px_24px_rgba(0,0,0,0.08)]">
+  const card = (
+    <div className="animate-on-scroll flex h-full flex-col overflow-hidden rounded-2xl border border-border-light bg-white transition-shadow hover:shadow-[0_8px_24px_rgba(0,0,0,0.08)]">
       {project.image && (
         <div className="relative h-40 w-full bg-light-bg">
           <Image
@@ -61,4 +61,14 @@ export default function ProjectCard({ project }: { project: Project }) {
       </div>
     </div>
   );
+
+  if (project.repo) {
+    return (
+      <a href={project.repo} target="_blank" rel="noopener noreferrer">
+        {card}
+      </a>
+    );
+  }
+
+  return card;
 }
