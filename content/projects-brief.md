@@ -19,31 +19,6 @@ El script agrega la entrada automáticamente a `data/projects.ts`.
 - **Date**: YYYY-MM (ej. 2024-03)
 - **Image**: filename.jpg (colocar en public/images/projects/)
 
-
-# Projects Brief — Innovation Lab
-
-Usa este template para agregar nuevos proyectos. Copia un bloque, llénalo, y ejecuta:
-
-```bash
-npx tsx scripts/import-brief.ts content/mi-proyecto.md
-```
-
-El script agrega la entrada automáticamente a `data/projects.ts`.
-
----
-
-## [Nombre del Proyecto]
-
-- **ID**: kebab-case-id
-- **Description (ES)**: Descripción del proyecto en español.
-- **Description (EN)**: Project description in English.
-- **Technologies**: tag1, tag2, tag3
-- **Status**: in_progress | finished | transferred
-- **Date**: YYYY-MM (ej. 2024-03)
-- **Image**: filename.jpg (colocar en public/images/projects/)
-
-#
-
 ---
 
 ## Experimentos gemini: motion manga
@@ -79,6 +54,7 @@ El script agrega la entrada automáticamente a `data/projects.ts`.
 - **Status**: in_progress
 - **Date**: 2026-01
 - **Image**:
+
 ---
 
 ## Prototipo: Auditor de código
@@ -114,6 +90,7 @@ El script agrega la entrada automáticamente a `data/projects.ts`.
 - **Status**: in_progress
 - **Date**: 2026-01
 - **Image**:
+
 ---
 
 ## Comunicación OBD2 con vehículo (MVP)
@@ -125,6 +102,7 @@ El script agrega la entrada automáticamente a `data/projects.ts`.
 - **Status**: finished
 - **Date**: 2026-01
 - **Image**:
+
 ---
 
 ## Botón IoT
@@ -160,6 +138,7 @@ El script agrega la entrada automáticamente a `data/projects.ts`.
 - **Status**: in_progress
 - **Date**: 2026-01
 - **Image**:
+
 ---
 
 ## Gearbox
@@ -315,6 +294,7 @@ El script agrega la entrada automáticamente a `data/projects.ts`.
 - **Status**: in_progress
 - **Date**: 2025-12
 - **Image**:
+
 ---
 
 ## Mano Robótica
