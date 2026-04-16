@@ -30,8 +30,9 @@ function parseFields(content: string): Record<string, string> {
   const heading = content.match(/^##\s+(.+)$/m);
   if (heading) fields.name = heading[1].trim();
 
-  // Extract **Key**: Value pairs
-  const pairs = content.matchAll(/\*\*(.+?)\*\*:\s*(.+)/g);
+  // Extract **Key**: Value pairs (match within a single line to avoid
+  // greedy \s* swallowing newlines and grabbing the next line as the value)
+  const pairs = content.matchAll(/\*\*(.+?)\*\*:[ \t]*(.+)/g);
   for (const [, key, value] of pairs) {
     fields[key.trim()] = value.trim();
   }
