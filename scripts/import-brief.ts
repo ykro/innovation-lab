@@ -39,6 +39,18 @@ function parseFields(content: string): Record<string, string> {
   return fields;
 }
 
+function splitSections(content: string): string[] {
+  // Split on ## headings, keeping each section with its heading
+  const sections: string[] = [];
+  const parts = content.split(/(?=^## )/m);
+  for (const part of parts) {
+    if (/^## .+/m.test(part)) {
+      sections.push(part.trim());
+    }
+  }
+  return sections;
+}
+
 function isProjectBrief(fields: Record<string, string>): boolean {
   return "Technologies" in fields || "Status" in fields;
 }
@@ -71,6 +83,11 @@ function buildProjectEntry(fields: Record<string, string>): string {
 
   if (image) {
     lines.push(`    image: "/images/projects/${image}",`);
+  }
+
+  const repo = fields.Repo;
+  if (repo) {
+    lines.push(`    repo: "${repo}",`);
   }
 
   lines.push(`  },`);
@@ -142,30 +159,38 @@ if (!existsSync(fullPath)) {
 }
 
 const content = readFileSync(fullPath, "utf-8");
-const fields = parseFields(content);
+const sections = splitSections(content);
 
-if (!fields.name) {
-  die("Could not find ## heading with name in the brief file.");
-}
-
-if (isProjectBrief(fields)) {
-  const entry = buildProjectEntry(fields);
-  const target = resolve(root, "data/projects.ts");
-  insertEntry(target, entry);
-  console.log(`Added project "${fields.name}" to data/projects.ts`);
-} else {
-  const entry = buildStaffEntry(fields);
-  const target = resolve(root, "data/team.ts");
-  insertEntry(target, entry);
-  console.log(`Added member "${fields.name}" to data/team.ts`);
-}
-
-console.log("\nEntry added:");
-console.log(
-  isProjectBrief(fields)
-    ? buildProjectEntry(fields)
-    : buildStaffEntry(fields)
+// Skip template sections (contain placeholder text)
+const realSections = sections.filter(
+  (s) => !s.includes("[Nombre del Proyecto]") && !s.includes("[Nombre Completo]")
 );
+
+if (realSections.length === 0) {
+  die("No valid ## sections found in the brief file.");
+}
+
+let added = 0;
+for (const section of realSections) {
+  const fields = parseFields(section);
+
+  if (!fields.name) continue;
+
+  if (isProjectBrief(fields)) {
+    const entry = buildProjectEntry(fields);
+    const target = resolve(root, "data/projects.ts");
+    insertEntry(target, entry);
+    console.log(`+ Project: "${fields.name}"`);
+  } else {
+    const entry = buildStaffEntry(fields);
+    const target = resolve(root, "data/team.ts");
+    insertEntry(target, entry);
+    console.log(`+ Member: "${fields.name}"`);
+  }
+  added++;
+}
+
+console.log(`\nDone: ${added} entries added.`);
 console.log(
-  "\nRemember to also update messages/es.json and messages/en.json if needed."
+  "Remember to also update messages/es.json and messages/en.json if needed."
 );

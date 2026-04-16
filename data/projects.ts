@@ -6,6 +6,7 @@ export interface Project {
   status: "in_progress" | "finished" | "transferred";
   date: string;
   image?: string;
+  repo?: string;
 }
 
 export const projects: Project[] = [

@@ -18,6 +18,7 @@ El script agrega la entrada automáticamente a `data/projects.ts`.
 - **Status**: in_progress | finished | transferred
 - **Date**: YYYY-MM (ej. 2024-03)
 - **Image**: filename.jpg (colocar en public/images/projects/)
+- **Repo**: https://github.com/org/repo (opcional, hace clickeable la tarjeta)
 
 ---
 
