@@ -10,6 +10,7 @@ const statuses: (Project["status"] | "all")[] = [
   "in_progress",
   "finished",
   "transferred",
+  "archived",
 ];
 
 export default function Projects() {

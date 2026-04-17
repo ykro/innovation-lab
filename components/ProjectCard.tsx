@@ -11,6 +11,7 @@ export default function ProjectCard({ project }: { project: Project }) {
     in_progress: "bg-accent-cyan/10 text-accent-cyan",
     finished: "bg-green-50 text-green-700",
     transferred: "bg-amber-50 text-amber-700",
+    archived: "bg-slate-100 text-slate-500",
   };
 
   const card = (

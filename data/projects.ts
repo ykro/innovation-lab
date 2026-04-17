@@ -3,7 +3,7 @@ export interface Project {
   name: string;
   description: { es: string; en: string };
   technologies: string[];
-  status: "in_progress" | "finished" | "transferred";
+  status: "in_progress" | "finished" | "transferred" | "archived";
   date: string;
   image?: string;
   repo?: string;
@@ -18,7 +18,7 @@ export const projects: Project[] = [
       en: "Face recognition using neural networks on a web app. Users upload photos and the system identifies and marks key facial features.",
     },
     technologies: ["Neural Networks", "Web App", "Computer Vision"],
-    status: "in_progress",
+    status: "archived",
     date: "2018-08",
     image: "/images/projects/pictance.png",
   },
@@ -42,7 +42,7 @@ export const projects: Project[] = [
       en: "Switch between the virtual world and the real world with Google Tango. Uses Tango devices with Unity to blend environments.",
     },
     technologies: ["Google Tango", "Unity", "AR/VR"],
-    status: "in_progress",
+    status: "archived",
     date: "2017-06",
     image: "/images/projects/default.png",
   },
@@ -54,7 +54,7 @@ export const projects: Project[] = [
       en: "Robot that dances, responds to emotions, and engages via IBM Watson services. Uses Raspberry Pi, servo motor, and RGB LED.",
     },
     technologies: ["IBM Watson", "Raspberry Pi", "IoT"],
-    status: "in_progress",
+    status: "archived",
     date: "2017-06",
     image: "/images/projects/default.png",
   },
@@ -66,7 +66,7 @@ export const projects: Project[] = [
       en: "Style transfer of famous paintings to photos using neural networks.",
     },
     technologies: ["TensorFlow", "NodeJS", "Firebase", "React Native"],
-    status: "finished",
+    status: "archived",
     date: "2017-06",
     image: "/images/projects/ilstyle.png",
   },
@@ -78,7 +78,7 @@ export const projects: Project[] = [
       en: "Facial recognition that draws figures on detected face elements.",
     },
     technologies: ["Google Cloud Vision", "NodeJS", "React Native"],
-    status: "in_progress",
+    status: "archived",
     date: "2017-03",
     image: "/images/projects/default.png",
   },
@@ -90,7 +90,7 @@ export const projects: Project[] = [
       en: "Drone flight controller using a gesture-based gauntlet interface.",
     },
     technologies: ["Intel Edison", "ARDrone 2.0", "NodeJS", "Johnny-Five"],
-    status: "finished",
+    status: "archived",
     date: "2016-10",
     image: "/images/projects/ildrone.jpg",
   },
@@ -102,7 +102,7 @@ export const projects: Project[] = [
       en: "Controlling LED strips according to car RPM using Arduino. Reads vehicle data via OBD-II adapter.",
     },
     technologies: ["Arduino", "OBD-II", "IoT"],
-    status: "finished",
+    status: "archived",
     date: "2016-06",
     image: "/images/projects/obd.jpg",
   },
@@ -114,7 +114,7 @@ export const projects: Project[] = [
       en: "3D printed telepresence robot based on InMoov. Controlled with Oculus Rift DK2 and Leap Motion.",
     },
     technologies: ["3D Printing", "Oculus Rift", "Leap Motion"],
-    status: "transferred",
+    status: "archived",
     date: "2015-12",
     image: "/images/projects/leonardo.jpg",
   },

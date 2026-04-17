@@ -55,7 +55,8 @@
     "status": {
       "in_progress": "En Progreso",
       "finished": "Finalizado",
-      "transferred": "Transferido"
+      "transferred": "Transferido",
+      "archived": "Anteriores"
     }
   },
   "team": {
