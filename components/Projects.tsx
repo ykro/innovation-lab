@@ -18,7 +18,9 @@ export default function Projects() {
   const [filter, setFilter] = useState<Project["status"] | "all">("all");
 
   const filtered =
-    filter === "all" ? projects : projects.filter((p) => p.status === filter);
+    filter === "all"
+      ? projects.filter((p) => p.status !== "archived")
+      : projects.filter((p) => p.status === filter);
 
   return (
     <section id="proyectos" className="bg-light-bg px-4 py-16 sm:px-6 sm:py-24">
