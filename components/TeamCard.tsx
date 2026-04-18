@@ -25,7 +25,7 @@ function Avatar({ member, featured }: { member: TeamMember; featured?: boolean }
         alt={member.name}
         width={px}
         height={px}
-        className={`${dim} flex-shrink-0 object-cover grayscale-[0.15] saturate-[0.85]`}
+        className={`${dim} flex-shrink-0 object-cover grayscale transition-[filter] duration-500 group-hover:grayscale-0 group-focus-within:grayscale-0`}
       />
     );
   }

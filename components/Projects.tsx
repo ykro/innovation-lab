@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState, type KeyboardEvent } from "react";
 import { useI18n } from "@/lib/i18n";
 import { projects, type Project } from "@/data/projects";
 import ProjectCard from "./ProjectCard";
@@ -27,6 +27,7 @@ const counts = statuses.reduce<Record<string, number>>((acc, s) => {
 export default function Projects() {
   const { t } = useI18n();
   const [filter, setFilter] = useState<Project["status"] | "all">("all");
+  const buttonsRef = useRef<Array<HTMLButtonElement | null>>([]);
 
   const filtered =
     filter === "all"
@@ -38,6 +39,18 @@ export default function Projects() {
     if (byStatus !== 0) return byStatus;
     return b.date.localeCompare(a.date);
   });
+
+  const handleKey = (e: KeyboardEvent<HTMLButtonElement>, i: number) => {
+    let next = i;
+    if (e.key === "ArrowRight" || e.key === "ArrowDown") next = (i + 1) % statuses.length;
+    else if (e.key === "ArrowLeft" || e.key === "ArrowUp") next = (i - 1 + statuses.length) % statuses.length;
+    else if (e.key === "Home") next = 0;
+    else if (e.key === "End") next = statuses.length - 1;
+    else return;
+    e.preventDefault();
+    setFilter(statuses[next]);
+    buttonsRef.current[next]?.focus();
+  };
 
   return (
     <section
@@ -59,15 +72,24 @@ export default function Projects() {
           </div>
         </header>
 
-        <div className="reveal mb-10 flex flex-wrap items-baseline gap-x-6 gap-y-2 border-b border-hairline pb-4">
-          {statuses.map((s) => {
+        <div
+          role="tablist"
+          aria-label={t("projects.title")}
+          className="reveal mb-10 flex flex-wrap items-baseline gap-x-6 gap-y-2 border-b border-hairline pb-4"
+        >
+          {statuses.map((s, i) => {
             const active = filter === s;
             const label =
               s === "all" ? t("projects.filterAll") : t(`projects.status.${s}`);
             return (
               <button
                 key={s}
+                ref={(el) => { buttonsRef.current[i] = el; }}
+                role="tab"
+                aria-selected={active}
+                tabIndex={active ? 0 : -1}
                 onClick={() => setFilter(s)}
+                onKeyDown={(e) => handleKey(e, i)}
                 className={`group flex items-baseline gap-1.5 font-mono text-[12px] uppercase tracking-[0.06em] transition-colors ${
                   active
                     ? "text-navy"
@@ -87,8 +109,13 @@ export default function Projects() {
         </div>
 
         <div className="reveal grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-          {sorted.map((project) => (
-            <ProjectCard key={project.id} project={project} />
+          {sorted.map((project, i) => (
+            <ProjectCard
+              key={project.id}
+              project={project}
+              index={i + 1}
+              total={sorted.length}
+            />
           ))}
         </div>
       </div>
