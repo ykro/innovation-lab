@@ -10,6 +10,23 @@ const statusGlyph: Record<Project["status"], string> = {
   archived: "—",
 };
 
+const MONTHS_ES = [
+  "ene", "feb", "mar", "abr", "may", "jun",
+  "jul", "ago", "sep", "oct", "nov", "dic",
+];
+const MONTHS_EN = [
+  "jan", "feb", "mar", "apr", "may", "jun",
+  "jul", "aug", "sep", "oct", "nov", "dec",
+];
+
+function formatDate(date: string, locale: "es" | "en"): string {
+  const [y, m] = date.split("-");
+  if (!m) return y;
+  const idx = Math.max(0, Math.min(11, parseInt(m, 10) - 1));
+  const months = locale === "es" ? MONTHS_ES : MONTHS_EN;
+  return `${months[idx]} ${y}`;
+}
+
 export default function ProjectCard({
   project,
   index,
@@ -22,7 +39,6 @@ export default function ProjectCard({
   const { locale, t } = useI18n();
 
   const isArchived = project.status === "archived";
-  const year = project.date.slice(0, 4);
   const indexLabel =
     index !== undefined && total !== undefined
       ? `#${String(index).padStart(2, "0")}/${String(total).padStart(2, "0")}`
@@ -66,7 +82,7 @@ export default function ProjectCard({
             <span className="text-navy/70">{statusGlyph[project.status]}</span>
             {t(`projects.status.${project.status}`)}
           </span>
-          <span className="tabular-nums">{year}</span>
+          <span className="tabular-nums">{formatDate(project.date, locale)}</span>
         </div>
 
         <h3 className="display-soft text-xl text-navy">{project.name}</h3>
