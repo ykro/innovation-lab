@@ -19,7 +19,7 @@ export default function Team() {
 
         <TeamCard member={director} featured />
 
-        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           {assistants.map((member) => (
             <TeamCard key={member.id} member={member} />
           ))}

@@ -14,27 +14,21 @@ function getInitials(name: string): string {
     .slice(0, 2);
 }
 
-function Avatar({ member, size }: { member: TeamMember; size: "lg" | "sm" }) {
-  const dim = size === "lg" ? "h-28 w-28" : "h-14 w-14";
-  const text = size === "lg" ? "text-2xl" : "text-sm";
-  const rounded = size === "lg" ? "rounded-2xl" : "rounded-xl";
-
+function Avatar({ member }: { member: TeamMember }) {
   if (member.photo) {
     return (
       <Image
         src={member.photo}
         alt={member.name}
-        width={size === "lg" ? 112 : 56}
-        height={size === "lg" ? 112 : 56}
-        className={`${dim} ${rounded} object-cover`}
+        width={112}
+        height={112}
+        className="h-28 w-28 rounded-2xl object-cover"
       />
     );
   }
 
   return (
-    <div
-      className={`${dim} ${rounded} flex flex-shrink-0 items-center justify-center bg-navy/8 ${text} font-medium text-navy/50`}
-    >
+    <div className="flex h-28 w-28 flex-shrink-0 items-center justify-center rounded-2xl bg-navy/8 text-2xl font-medium text-navy/50">
       {getInitials(member.name)}
     </div>
   );
@@ -59,87 +53,51 @@ export default function TeamCard({
   const [expanded, setExpanded] = useState(false);
   const hasBio = member.bio && member.bio[locale];
 
-  if (featured) {
-    return (
-      <div className="animate-on-scroll mx-auto mb-12 max-w-2xl rounded-2xl border border-border-light bg-white p-8">
-        <div className="flex flex-col items-center gap-6 sm:flex-row sm:items-start">
-          <Avatar member={member} size="lg" />
-          <div className="text-center sm:text-left">
-            <h3 className="text-xl font-bold text-navy">{member.name}</h3>
-            <p className="mb-2 text-sm font-medium text-slate-secondary">
-              {t("team.director")}
-            </p>
-
-            {member.linkedin && (
-              <a
-                href={member.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mb-3 inline-flex items-center gap-1.5 text-sm font-medium text-navy/60 transition-colors hover:text-navy"
-              >
-                <LinkedInIcon />
-                LinkedIn
-              </a>
-            )}
-
-            {hasBio && (
-              <>
-                <button
-                  onClick={() => setExpanded(!expanded)}
-                  className="mb-2 block text-sm font-medium text-accent-cyan transition-colors hover:text-navy"
-                >
-                  {expanded ? t("team.hideBio") : t("team.showBio")}
-                </button>
-                {expanded && (
-                  <p className="text-sm leading-relaxed text-slate-secondary">
-                    {member.bio![locale]}
-                  </p>
-                )}
-              </>
-            )}
-          </div>
-        </div>
-      </div>
-    );
-  }
+  const roleLabel = featured ? t("team.director") : t("team.assistant");
 
   return (
-    <div className="animate-on-scroll flex flex-col items-center rounded-xl bg-white p-4 text-center transition-colors hover:bg-light-bg">
-      <div className="mb-2">
-        <Avatar member={member} size="sm" />
-      </div>
-      <h3 className="text-sm font-bold text-navy">{member.name}</h3>
-      <p className="text-xs text-slate-secondary">{t("team.assistant")}</p>
+    <div
+      className={`animate-on-scroll rounded-2xl border border-border-light bg-white p-8 ${
+        featured ? "mx-auto mb-12 max-w-2xl" : ""
+      }`}
+    >
+      <div className="flex flex-col items-center gap-6 sm:flex-row sm:items-start">
+        <Avatar member={member} />
+        <div className="text-center sm:text-left">
+          <h3 className="text-xl font-bold text-navy">{member.name}</h3>
+          <p className="mb-2 text-sm font-medium text-slate-secondary">
+            {roleLabel}
+          </p>
 
-      <div className="mt-1.5 flex items-center gap-2">
-        {member.linkedin && (
-          <a
-            href={member.linkedin}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-navy/40 transition-colors hover:text-navy"
-            aria-label={`${member.name} LinkedIn`}
-          >
-            <LinkedInIcon />
-          </a>
-        )}
-      </div>
-
-      {hasBio && (
-        <>
-          <button
-            onClick={() => setExpanded(!expanded)}
-            className="mt-1.5 text-xs font-medium text-accent-cyan transition-colors hover:text-navy"
-          >
-            {expanded ? t("team.hideBio") : t("team.showBio")}
-          </button>
-          {expanded && (
-            <p className="mt-2 text-xs leading-relaxed text-slate-secondary">
-              {member.bio![locale]}
-            </p>
+          {member.linkedin && (
+            <a
+              href={member.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mb-3 inline-flex items-center gap-1.5 text-sm font-medium text-navy/60 transition-colors hover:text-navy"
+            >
+              <LinkedInIcon />
+              LinkedIn
+            </a>
           )}
-        </>
-      )}
+
+          {hasBio && (
+            <>
+              <button
+                onClick={() => setExpanded(!expanded)}
+                className="mb-2 block text-sm font-medium text-accent-cyan transition-colors hover:text-navy"
+              >
+                {expanded ? t("team.hideBio") : t("team.showBio")}
+              </button>
+              {expanded && (
+                <p className="text-sm leading-relaxed text-slate-secondary">
+                  {member.bio![locale]}
+                </p>
+              )}
+            </>
+          )}
+        </div>
+      </div>
     </div>
   );
 }
