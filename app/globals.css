@@ -1,34 +1,107 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-background: #ffffff;
-  --color-foreground: #171717;
-  --color-navy: #0A1F44;
-  --color-navy-light: #132D5E;
-  --color-navy-dark: #0B1020;
-  --color-slate-body: #334155;
-  --color-slate-secondary: #475569;
-  --color-light-bg: #f8fafc;
-  --color-border-light: #e2e8f0;
-  --color-accent-cyan: #06b6d4;
-  --color-accent-blue: #3b82f6;
-  --font-sans: "Montserrat", ui-sans-serif, system-ui, sans-serif;
+  --color-paper: #fafaf5;
+  --color-paper-deep: #f2f1ea;
+  --color-ink: #1a1d25;
+  --color-ink-muted: #5b6270;
+  --color-navy: #0a1f44;
+  --color-navy-dark: #061232;
+  --color-hairline: #e3e1d6;
+  --color-hairline-strong: #c8c5b3;
+  --color-rule: rgba(10, 31, 68, 0.08);
+
+  --font-sans:
+    var(--font-sans), ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+    sans-serif;
+  --font-display:
+    var(--font-display), ui-serif, Georgia, "Times New Roman", serif;
+  --font-mono:
+    var(--font-mono), ui-monospace, "SF Mono", "Fira Code", monospace;
 }
 
 body {
-  background: var(--color-background);
-  color: var(--color-slate-body);
-  font-family: var(--font-sans);
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-feature-settings: "ss01", "cv11";
 }
 
 html {
   scroll-behavior: smooth;
 }
 
-@keyframes fade-in-up {
+/* Blueprint / engineering paper grid. Applied on hero only. */
+.bg-grid {
+  background-image:
+    linear-gradient(to right, var(--color-rule) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--color-rule) 1px, transparent 1px);
+  background-size: 48px 48px;
+  background-position: -1px -1px;
+}
+
+.bg-grid-fine {
+  background-image:
+    linear-gradient(to right, rgba(10, 31, 68, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(10, 31, 68, 0.04) 1px, transparent 1px);
+  background-size: 12px 12px;
+}
+
+/* Tick marks on card corners, blueprint style */
+.tick-corners {
+  position: relative;
+}
+.tick-corners::before,
+.tick-corners::after {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-color: var(--color-navy);
+  pointer-events: none;
+}
+.tick-corners::before {
+  top: -1px;
+  left: -1px;
+  border-top: 1.5px solid;
+  border-left: 1.5px solid;
+}
+.tick-corners::after {
+  bottom: -1px;
+  right: -1px;
+  border-bottom: 1.5px solid;
+  border-right: 1.5px solid;
+}
+
+/* Display headings use Fraunces with dramatic optical sizing */
+.display {
+  font-family: var(--font-display);
+  font-variation-settings: "opsz" 144, "SOFT" 0;
+  letter-spacing: -0.03em;
+  line-height: 0.95;
+}
+
+.display-soft {
+  font-family: var(--font-display);
+  font-variation-settings: "opsz" 72, "SOFT" 100;
+  letter-spacing: -0.015em;
+  line-height: 1.05;
+}
+
+/* Meta label — uppercase mono tracking, used for §, dates, roles */
+.meta {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-navy);
+  opacity: 0.55;
+}
+
+/* Entrance animations — only applied where we explicitly add `.reveal` */
+@keyframes reveal-up {
   from {
     opacity: 0;
-    transform: translateY(24px);
+    transform: translateY(16px);
   }
   to {
     opacity: 1;
@@ -36,14 +109,29 @@ html {
   }
 }
 
-.animate-fade-in-up {
-  animation: fade-in-up 0.6s ease-out forwards;
-}
-
-.animate-on-scroll {
+.reveal {
   opacity: 0;
 }
+.reveal.is-visible {
+  animation: reveal-up 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
 
-.animate-on-scroll.is-visible {
-  animation: fade-in-up 0.6s ease-out forwards;
+/* Hero stagger */
+.stagger > * {
+  opacity: 0;
+  animation: reveal-up 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+.stagger > *:nth-child(1) { animation-delay: 0.05s; }
+.stagger > *:nth-child(2) { animation-delay: 0.15s; }
+.stagger > *:nth-child(3) { animation-delay: 0.25s; }
+.stagger > *:nth-child(4) { animation-delay: 0.35s; }
+.stagger > *:nth-child(5) { animation-delay: 0.45s; }
+.stagger > *:nth-child(6) { animation-delay: 0.55s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .stagger > * {
+    opacity: 1;
+    animation: none !important;
+  }
 }

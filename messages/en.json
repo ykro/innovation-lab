@@ -1,79 +1,92 @@
 {
   "nav": {
-    "whatWeDo": "What We Do",
-    "why": "Why a Lab",
+    "whatWeDo": "Areas",
+    "why": "Lab",
     "projects": "Projects",
     "team": "Team",
     "contact": "Contact"
   },
   "hero": {
     "title": "Innovation Lab",
-    "subtitle": "Universidad Galileo",
+    "subtitle": "Universidad Galileo · GT",
     "tagline": "Where curiosity becomes technology",
-    "description": "A space for creativity and technological learning where we foster experimentation, teamwork, and the creation of innovative projects.",
-    "cta": "Explore our projects"
+    "description": "A space for experimentation and technological learning where we encourage creativity, teamwork, and building functional prototypes.",
+    "cta": "See projects",
+    "ctaTeam": "Meet the team",
+    "footnote": "We operate as an open lab: curiosity is the methodology and the prototype is the deliverable.",
+    "specs": {
+      "founded": "est.",
+      "team": "team",
+      "active": "active"
+    }
   },
   "whatWeDo": {
-    "title": "What We Do",
-    "description": "We cultivate curiosity and leverage creativity for innovative technology development through teamwork, experimentation, and the explicit permission to make mistakes.",
+    "overline": "What we do",
+    "title": "Research lines of the lab.",
+    "description": "We work across six complementary areas. Each combines applied research, rapid prototyping, and collaboration with graduate students.",
     "areas": {
-      "ml": {
-        "title": "Machine Learning",
-        "description": "Machine learning applications across diverse industries and educational contexts."
+      "agentic": {
+        "title": "Agentic & autonomous AI",
+        "description": "Systems that reason, decide, and act. Code auditing, decision automation, and agents connected to real tooling."
       },
-      "arvr": {
-        "title": "Augmented & Virtual Reality",
-        "description": "Immersive experiences blending the virtual and real worlds."
+      "multimodal": {
+        "title": "Multimodal AI",
+        "description": "Gemini experiments across image, video, audio, and text. Creative generation and media transformation."
+      },
+      "robotics": {
+        "title": "Robotics & embodied AI",
+        "description": "Arms, quadruped dogs, and robotic hands that react to their surroundings. Perception, navigation, and physical control."
       },
       "iot": {
-        "title": "Internet of Things",
-        "description": "Connected platforms with Arduino, Raspberry Pi, BeagleBone and more."
+        "title": "Hardware & IoT",
+        "description": "Prototypes with ESP32, Arduino, and Raspberry Pi. Sensors, actuators, and cloud-connected devices."
       },
-      "printing": {
-        "title": "3D Printing",
-        "description": "Rapid prototyping and part fabrication for innovation projects."
+      "creative": {
+        "title": "Creative tools",
+        "description": "Physical-digital games, generative tools, and experiments that mix hardware, software, and human interaction."
       },
-      "drones": {
-        "title": "Drones",
-        "description": "Unmanned aerial vehicles with gesture control and computer vision."
-      },
-      "cv": {
-        "title": "Computer Vision",
-        "description": "Facial recognition, object detection, and image processing."
+      "vision": {
+        "title": "Computer vision",
+        "description": "Real-time detection, tracking, and image analysis. Integration with vehicles, objects, and spaces."
       }
     }
   },
   "why": {
-    "title": "Why an Innovation Lab",
+    "overline": "Why a lab",
+    "title": "Learning by doing, with permission to fail.",
     "p1": "In a world where technology transforms every aspect of our lives, universities need spaces where students can go beyond theory. The Innovation Lab is that space: a place where ideas become functional prototypes and learning happens through practice.",
-    "p2": "Our lab operates with an iterative prototyping and validation methodology, complementing engineering programs with hands-on experience in emerging technologies. Here, students don't just learn to code — they learn to innovate, to work as a team, and to solve real problems.",
-    "p3": "Guatemala has enormous technological potential. Through workshops, introductory talks, and applied projects, we aim to boost the innovation and tech entrepreneurship ecosystem in the country, connecting the university with industry and the community."
+    "p2": "We operate with an iterative prototyping and validation methodology, complementing engineering programs with hands-on experience in emerging technologies. Here students don't just learn to code — they learn to innovate, to work as a team, and to solve real problems.",
+    "p3": "Guatemala has enormous technological potential. Through workshops, talks, and applied projects, we aim to boost the innovation and tech entrepreneurship ecosystem in the country, connecting the university with industry and the community.",
+    "attribution": "— Universidad Galileo · Graduate Program in Software Development"
   },
   "projects": {
-    "title": "Projects",
+    "overline": "Portfolio",
+    "title": "Lab projects.",
     "filterAll": "All",
     "status": {
-      "in_progress": "In Progress",
+      "in_progress": "In progress",
       "finished": "Finished",
-      "transferred": "Transferred",
       "archived": "Legacy"
     }
   },
   "team": {
-    "title": "Team",
+    "overline": "Staff",
+    "title": "The team building this.",
+    "members": "members",
     "director": "Director",
-    "assistant": "Research Assistant",
-    "showBio": "Read more",
-    "hideBio": "Show less"
+    "assistant": "Research assistant",
+    "showBio": "Biography",
+    "hideBio": "Close"
   },
   "social": {
-    "title": "Connect With Us",
-    "description": "Follow us on social media to stay up to date with our projects, workshops, and events.",
-    "cta": "Write to Us",
-    "ctaDescription": "Have an idea or want to collaborate?"
+    "overline": "Contact",
+    "title": "Let's talk.",
+    "description": "Follow us for workshops, demos, and prototypes in development. If you have an idea or want to collaborate, reach out.",
+    "cta": "Write",
+    "ctaDescription": "An idea, a collab, a question?"
   },
   "footer": {
     "affiliation": "Universidad Galileo",
-    "rights": "All rights reserved."
+    "rights": "All rights reserved"
   }
 }

@@ -1,79 +1,92 @@
 {
   "nav": {
-    "whatWeDo": "Qué Hacemos",
-    "why": "Por Qué un Lab",
+    "whatWeDo": "Áreas",
+    "why": "Lab",
     "projects": "Proyectos",
     "team": "Equipo",
     "contact": "Contacto"
   },
   "hero": {
     "title": "Innovation Lab",
-    "subtitle": "Universidad Galileo",
+    "subtitle": "Universidad Galileo · GT",
     "tagline": "Donde la curiosidad se convierte en tecnología",
-    "description": "Un espacio de creatividad y aprendizaje tecnológico donde fomentamos la experimentación, el trabajo en equipo y la creación de proyectos innovadores.",
-    "cta": "Conoce nuestros proyectos"
+    "description": "Un espacio de experimentación y aprendizaje tecnológico donde fomentamos la creatividad, el trabajo en equipo y la construcción de prototipos funcionales.",
+    "cta": "Ver proyectos",
+    "ctaTeam": "Conocer al equipo",
+    "footnote": "Operamos como un laboratorio abierto: la curiosidad es la metodología y el prototipo es el entregable.",
+    "specs": {
+      "founded": "est.",
+      "team": "equipo",
+      "active": "activos"
+    }
   },
   "whatWeDo": {
-    "title": "Qué Hacemos",
-    "description": "Cultivamos la curiosidad y aprovechamos la creatividad para el desarrollo de tecnología innovadora a través del trabajo en equipo, la experimentación y el permiso explícito de cometer errores.",
+    "overline": "Qué hacemos",
+    "title": "Líneas de trabajo del laboratorio.",
+    "description": "Trabajamos en seis áreas complementarias. Cada una combina investigación aplicada, prototipado rápido y colaboración con estudiantes de postgrado.",
     "areas": {
-      "ml": {
-        "title": "Machine Learning",
-        "description": "Aplicaciones de aprendizaje automático en diversas industrias y contextos educativos."
+      "agentic": {
+        "title": "Agentes e IA autónoma",
+        "description": "Sistemas que razonan, deciden y ejecutan. Auditoría de código, automatización de decisiones y agentes conectados a herramientas reales."
       },
-      "arvr": {
-        "title": "Realidad Aumentada y Virtual",
-        "description": "Experiencias inmersivas que combinan el mundo virtual con el real."
+      "multimodal": {
+        "title": "IA multimodal",
+        "description": "Experimentos con Gemini sobre imagen, video, audio y texto. Generación creativa y transformación de medios."
+      },
+      "robotics": {
+        "title": "Robótica y embodied AI",
+        "description": "Brazos, perros cuadrúpedos y manos robóticas que reaccionan al entorno. Percepción, navegación y control en el mundo físico."
       },
       "iot": {
-        "title": "Internet de las Cosas",
-        "description": "Plataformas conectadas con Arduino, Raspberry Pi, BeagleBone y más."
+        "title": "Hardware e IoT",
+        "description": "Prototipos con ESP32, Arduino y Raspberry Pi. Sensores, actuadores y dispositivos conectados a la nube."
       },
-      "printing": {
-        "title": "Impresión 3D",
-        "description": "Prototipado rápido y fabricación de piezas para proyectos de innovación."
+      "creative": {
+        "title": "Herramientas creativas",
+        "description": "Juegos físico-digitales, herramientas generativas y experimentos que mezclan hardware, software e interacción humana."
       },
-      "drones": {
-        "title": "Drones",
-        "description": "Vehículos aéreos no tripulados con control gestual y visión por computadora."
-      },
-      "cv": {
-        "title": "Visión por Computadora",
-        "description": "Reconocimiento facial, detección de objetos y procesamiento de imágenes."
+      "vision": {
+        "title": "Visión por computadora",
+        "description": "Detección, tracking y análisis de imagen en tiempo real. Integración con vehículos, objetos y espacios."
       }
     }
   },
   "why": {
-    "title": "Por Qué un Laboratorio de Innovación",
+    "overline": "Por qué un lab",
+    "title": "Aprender haciendo, con permiso de equivocarse.",
     "p1": "En un mundo donde la tecnología transforma cada aspecto de nuestras vidas, las universidades necesitan espacios donde los estudiantes puedan ir más allá de la teoría. El Innovation Lab es ese espacio: un lugar donde las ideas se convierten en prototipos funcionales y donde el aprendizaje sucede a través de la práctica.",
-    "p2": "Nuestro laboratorio opera con una metodología de prototipado iterativo y validación, complementando los programas de ingeniería con experiencia práctica en tecnologías emergentes. Aquí, los estudiantes no solo aprenden a programar — aprenden a innovar, a trabajar en equipo y a resolver problemas reales.",
-    "p3": "Guatemala tiene un enorme potencial tecnológico. A través de talleres, charlas introductorias y proyectos aplicados, buscamos impulsar el ecosistema de innovación y emprendimiento tecnológico en el país, conectando a la universidad con la industria y la comunidad."
+    "p2": "Operamos con una metodología de prototipado iterativo y validación, complementando los programas de ingeniería con experiencia práctica en tecnologías emergentes. Aquí los estudiantes no solo aprenden a programar — aprenden a innovar, a trabajar en equipo y a resolver problemas reales.",
+    "p3": "Guatemala tiene un enorme potencial tecnológico. A través de talleres, charlas y proyectos aplicados, buscamos impulsar el ecosistema de innovación y emprendimiento tecnológico en el país, conectando a la universidad con la industria y la comunidad.",
+    "attribution": "— Universidad Galileo · Postgrado en Desarrollo de Software"
   },
   "projects": {
-    "title": "Proyectos",
+    "overline": "Portafolio",
+    "title": "Proyectos del laboratorio.",
     "filterAll": "Todos",
     "status": {
-      "in_progress": "En Progreso",
+      "in_progress": "En progreso",
       "finished": "Finalizado",
-      "transferred": "Transferido",
       "archived": "Archivados"
     }
   },
   "team": {
-    "title": "Equipo",
+    "overline": "Staff",
+    "title": "El equipo que construye esto.",
+    "members": "miembros",
     "director": "Director",
-    "assistant": "Asistente de Investigación",
-    "showBio": "Ver más",
-    "hideBio": "Ver menos"
+    "assistant": "Asistente de investigación",
+    "showBio": "Biografía",
+    "hideBio": "Cerrar"
   },
   "social": {
-    "title": "Conecta con Nosotros",
-    "description": "Síguenos en redes sociales para estar al día con nuestros proyectos, talleres y eventos.",
-    "cta": "Escríbenos",
-    "ctaDescription": "¿Tienes una idea o quieres colaborar?"
+    "overline": "Contacto",
+    "title": "Hablemos.",
+    "description": "Síguenos para ver talleres, demos y prototipos en desarrollo. Si tienes una idea o quieres colaborar, escríbenos.",
+    "cta": "Escribir",
+    "ctaDescription": "¿Una idea, una colaboración, una duda?"
   },
   "footer": {
     "affiliation": "Universidad Galileo",
-    "rights": "Todos los derechos reservados."
+    "rights": "Todos los derechos reservados"
   }
 }

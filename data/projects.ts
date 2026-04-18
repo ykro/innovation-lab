@@ -3,7 +3,7 @@ export interface Project {
   name: string;
   description: { es: string; en: string };
   technologies: string[];
-  status: "in_progress" | "finished" | "transferred" | "archived";
+  status: "in_progress" | "finished" | "archived";
   date: string;
   image?: string;
   repo?: string;

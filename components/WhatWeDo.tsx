@@ -1,61 +1,77 @@
 "use client";
 
 import { useI18n } from "@/lib/i18n";
+import { projects } from "@/data/projects";
 
 const areas = [
-  { key: "ml", icon: "M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" },
-  { key: "arvr", icon: "M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9" },
-  { key: "iot", icon: "M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.858 15.355-5.858 21.213 0" },
-  { key: "printing", icon: "M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l-2-1m2 1l-2 1m2-1v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5" },
-  { key: "drones", icon: "M12 19l9 2-9-18-9 18 9-2zm0 0v-8" },
-  { key: "cv", icon: "M15 12a3 3 0 11-6 0 3 3 0 016 0z M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" },
+  { key: "agentic", sampleIds: ["prototipo-auditor-de-codigo", "fork-it"] },
+  { key: "multimodal", sampleIds: ["experimentos-gemini-motion-manga", "experimentos-gemini-panel-one"] },
+  { key: "robotics", sampleIds: ["control-brazo-robotico-negro", "mano-robotica"] },
+  { key: "iot", sampleIds: ["boton-iot", "proyecto-camaleon"] },
+  { key: "creative", sampleIds: ["experimentos-gemini-cosmic-oracle", "totito"] },
+  { key: "vision", sampleIds: ["comunicacion-obd2-con-vehiculo-mvp", "experimentos-gemini-run-sight"] },
 ];
 
 export default function WhatWeDo() {
-  const { t } = useI18n();
+  const { t, locale } = useI18n();
+
+  const sampleFor = (ids: string[]) => {
+    const match = projects.find((p) => ids.includes(p.id));
+    return match?.name ?? null;
+  };
 
   return (
-    <section id="que-hacemos" className="bg-light-bg px-4 py-16 sm:px-6 sm:py-24">
+    <section
+      id="que-hacemos"
+      className="relative border-b border-hairline bg-paper px-6 py-20 sm:px-8 sm:py-28"
+    >
       <div className="mx-auto max-w-6xl">
-        <div className="mx-auto mb-12 max-w-3xl text-center">
-          <h2 className="mb-4 text-3xl font-bold text-navy sm:text-4xl">
+        <header className="reveal mb-14 grid gap-4 lg:grid-cols-[auto_1fr] lg:items-baseline lg:gap-14">
+          <div className="meta flex items-baseline gap-3">
+            <span>§ 02</span>
+            <span className="h-px w-8 bg-navy/30" />
+            <span>{t("whatWeDo.overline")}</span>
+          </div>
+          <h2 className="display-soft max-w-3xl text-[clamp(2.25rem,5.5vw,3.75rem)] text-navy">
             {t("whatWeDo.title")}
           </h2>
-          <p className="text-base leading-relaxed text-slate-secondary sm:text-lg">
-            {t("whatWeDo.description")}
-          </p>
-        </div>
+        </header>
 
-        <div className="grid gap-x-8 gap-y-6 sm:grid-cols-2 lg:grid-cols-3">
-          {areas.map((area) => (
-            <div
-              key={area.key}
-              className="animate-on-scroll flex items-start gap-4 py-2"
-            >
-              <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-navy/5">
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  className="text-navy"
-                >
-                  <path d={area.icon} strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </div>
-              <div>
-                <h3 className="mb-1 text-base font-bold text-navy">
-                  {t(`whatWeDo.areas.${area.key}.title`)}
-                </h3>
-                <p className="text-sm leading-relaxed text-slate-secondary">
-                  {t(`whatWeDo.areas.${area.key}.description`)}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
+        <p className="reveal mb-12 max-w-3xl text-[17px] leading-relaxed text-ink lg:ml-[calc(6ch+6rem)] sm:text-lg">
+          {t("whatWeDo.description")}
+        </p>
+
+        <ol className="reveal divide-y divide-hairline border-y border-hairline">
+          {areas.map((area, i) => {
+            const sample = sampleFor(area.sampleIds);
+            return (
+              <li
+                key={area.key}
+                className="group grid gap-2 py-5 sm:grid-cols-[auto_1fr_auto] sm:items-baseline sm:gap-8"
+              >
+                <span className="font-mono text-[11px] uppercase tracking-[0.1em] text-navy/40 tabular-nums sm:w-14">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <div>
+                  <h3 className="display-soft text-2xl text-navy sm:text-3xl">
+                    {t(`whatWeDo.areas.${area.key}.title`)}
+                  </h3>
+                  <p className="mt-1 max-w-xl text-sm leading-relaxed text-ink-muted">
+                    {t(`whatWeDo.areas.${area.key}.description`)}
+                  </p>
+                </div>
+                {sample && (
+                  <span className="font-mono text-[11px] uppercase tracking-[0.08em] text-navy/50 sm:text-right">
+                    <span className="text-navy/30">
+                      {locale === "es" ? "ej." : "e.g."}{" "}
+                    </span>
+                    {sample}
+                  </span>
+                )}
+              </li>
+            );
+          })}
+        </ol>
       </div>
     </section>
   );

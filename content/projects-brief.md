@@ -15,7 +15,7 @@ El script agrega la entrada automáticamente a `data/projects.ts`.
 - **Description (ES)**: Descripción del proyecto en español.
 - **Description (EN)**: Project description in English.
 - **Technologies**: tag1, tag2, tag3
-- **Status**: in_progress | finished | transferred | archived
+- **Status**: in_progress | finished | archived
 - **Date**: YYYY-MM (ej. 2024-03)
 - **Image**: filename.jpg (colocar en public/images/projects/)
 - **Repo**: https://github.com/org/repo (opcional, hace clickeable la tarjeta)

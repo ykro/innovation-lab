@@ -8,16 +8,16 @@ export default function LanguageToggle() {
   return (
     <button
       onClick={toggleLocale}
-      className="flex items-center gap-1 rounded-full border border-border-light px-3 py-1.5 text-xs font-bold tracking-wide text-navy transition-colors hover:bg-light-bg"
+      className="flex items-center gap-1.5 font-mono text-[11px] text-navy transition-opacity hover:opacity-70"
       aria-label={
         locale === "es" ? "Switch to English" : "Cambiar a Espanol"
       }
     >
-      <span className={locale === "es" ? "opacity-100" : "opacity-40"}>
+      <span className={locale === "es" ? "opacity-100" : "opacity-35"}>
         ES
       </span>
-      <span className="text-border-light">/</span>
-      <span className={locale === "en" ? "opacity-100" : "opacity-40"}>
+      <span className="text-navy/20">/</span>
+      <span className={locale === "en" ? "opacity-100" : "opacity-35"}>
         EN
       </span>
     </button>
