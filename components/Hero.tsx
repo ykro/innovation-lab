@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useI18n } from "@/lib/i18n";
 import { projects } from "@/data/projects";
 import { team } from "@/data/team";
@@ -66,19 +67,36 @@ export default function Hero() {
             </div>
           </div>
 
-          <dl className="grid min-w-[220px] grid-cols-1 gap-x-8 gap-y-3 border-l border-hairline-strong pl-6 font-mono text-[12px]">
-            {specs.map((s) => (
-              <div
-                key={s.label}
-                className="flex items-baseline justify-between gap-6"
-              >
-                <dt className="text-navy/45 uppercase tracking-[0.08em]">
-                  {s.label}
-                </dt>
-                <dd className="text-navy tabular-nums">{s.value}</dd>
+          <div className="flex flex-col gap-5 lg:min-w-[260px]">
+            <div className="tick-corners border border-hairline-strong bg-paper-deep px-6 py-6">
+              <div className="flex flex-col items-center gap-4">
+                <Image
+                  src="/images/logo-mobile.png"
+                  alt="Innovation Lab"
+                  width={200}
+                  height={200}
+                  className="h-40 w-40 object-contain invert sm:h-48 sm:w-48"
+                  priority
+                />
+                <p className="font-mono text-[10px] uppercase tracking-[0.12em] text-navy/50 text-center">
+                  fig. 01 — lab mark
+                </p>
               </div>
-            ))}
-          </dl>
+            </div>
+            <dl className="grid grid-cols-1 gap-x-8 gap-y-3 border-l border-hairline-strong pl-6 font-mono text-[12px]">
+              {specs.map((s) => (
+                <div
+                  key={s.label}
+                  className="flex items-baseline justify-between gap-6"
+                >
+                  <dt className="text-navy/45 uppercase tracking-[0.08em]">
+                    {s.label}
+                  </dt>
+                  <dd className="text-navy tabular-nums">{s.value}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
         </div>
 
         {/* Footnote / lab motto */}
