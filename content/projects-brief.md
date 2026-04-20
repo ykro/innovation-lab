@@ -24,288 +24,361 @@ El script agrega la entrada automáticamente a `data/projects.ts`.
 
 ## Experimentos gemini: motion manga
 
-- **ID**: experimentos-gemini-motion-manga
-- **Description (ES)**: Convierte videos cortos en páginas de cómic estilo manga mediante IA multimodal.
-- **Description (EN)**: Converts short videos into manga-style comic pages using multimodal AI.
-- **Technologies**: ai, multimodal, video, software
-- **Status**: finished
-- **Date**: 2025-12
-- **Image**:
+* **ID**: experimentos-gemini-motion-manga
+* **Description (ES)**: Convierte videos cortos en páginas de cómic estilo manga mediante IA multimodal.
+* **Description (EN)**: Converts short videos into manga-style comic pages using multimodal AI.
+* **Technologies**: ai, multimodal, video, software
+* **Status**: finished
+* **Date**: 2025-12
+* **Image**:
 
 ---
 
 ## Experimentos gemini: panel one
 
-- **ID**: experimentos-gemini-panel-one
-- **Description (ES)**: Genera historias visuales tipo cómic a partir de hasta ocho fotografías.
-- **Description (EN)**: Generates comic-style visual stories from up to eight photographs.
-- **Technologies**: ai, images, storytelling, software
-- **Status**: finished
-- **Date**: 2025-12
-- **Image**:
-
----
-
-## Fork It
-
-- **ID**: fork-it
-- **Description (ES)**: Plataforma para apoyar la toma de decisiones en situaciones sociales complejas.
-- **Description (EN)**: Platform that supports decision-making in complex social situations.
-- **Technologies**: ai, software, productivity
-- **Status**: in_progress
-- **Date**: 2026-01
-- **Image**:
-
----
-
-## Prototipo: Auditor de código
-
-- **ID**: prototipo-auditor-de-codigo
-- **Description (ES)**: Sistema con IA que revisa código, detecta vulnerabilidades y genera documentación automática.
-- **Description (EN)**: AI system that reviews code, detects vulnerabilities, and generates automatic documentation.
-- **Technologies**: ai, software, github, security
-- **Status**: in_progress
-- **Date**: 2026-01
-- **Image**:
-
----
-
-## Totito
-
-- **ID**: totito
-- **Description (ES)**: Juego híbrido físico-digital donde la IA interpreta el tablero y responde en tiempo real.
-- **Description (EN)**: Hybrid physical-digital game where AI interprets the board and responds in real time.
-- **Technologies**: ai, game, software, vision
-- **Status**: in_progress
-- **Date**: 2026-02
-- **Image**:
-
----
-
-## Proyecto camaleón
-
-- **ID**: proyecto-camaleon
-- **Description (ES)**: Prototipo IoT con sensor de color capaz de detectar y replicar tonalidades.
-- **Description (EN)**: IoT prototype with a color sensor capable of detecting and replicating tones.
-- **Technologies**: iot, sensors, hardware
-- **Status**: in_progress
-- **Date**: 2026-01
-- **Image**:
-
----
-
-## Comunicación OBD2 con vehículo (MVP)
-
-- **ID**: comunicacion-obd2-con-vehiculo-mvp
-- **Description (ES)**: Aplicación para diagnóstico vehicular mediante conexión OBD2.
-- **Description (EN)**: Application for vehicle diagnostics through OBD2 connection.
-- **Technologies**: automotive, iot, diagnostics, software
-- **Status**: finished
-- **Date**: 2026-01
-- **Image**:
-
----
-
-## Botón IoT
-
-- **ID**: boton-iot
-- **Description (ES)**: Botón inteligente que captura notas y permite generar resúmenes automáticos con IA.
-- **Description (EN)**: Smart button that captures notes and enables automatic AI summaries.
-- **Technologies**: iot, ai, productivity, hardware
-- **Status**: in_progress
-- **Date**: 2026-01
-- **Image**:
+* **ID**: experimentos-gemini-panel-one
+* **Description (ES)**: Genera historias visuales tipo cómic a partir de fotografías.
+* **Description (EN)**: Generates comic-style visual stories from photographs.
+* **Technologies**: ai, storytelling, images, software
+* **Status**: finished
+* **Date**: 2025-12
+* **Image**:
 
 ---
 
 ## Mini bots
 
-- **ID**: mini-bots
-- **Description (ES)**: Robots compactos e interactivos con movimiento autónomo e integración de sensores.
-- **Description (EN)**: Compact interactive robots with autonomous movement and sensor integration.
-- **Technologies**: robotics, sensors, mechatronics
-- **Status**: finished
-- **Date**: 2026-01
-- **Image**:
+* **ID**: mini-bots
+* **Description (ES)**: Robots compactos con movimiento autónomo e integración de sensores.
+* **Description (EN)**: Compact robots with autonomous movement and sensor integration.
+* **Technologies**: robotics, sensors, mechatronics
+* **Status**: finished
+* **Date**: 2026-01
+* **Image**:
 
 ---
 
-## Control Brazo Robótico (Negro)
+## Fork It
 
-- **ID**: control-brazo-robotico-negro
-- **Description (ES)**: Tarjeta electrónica basada en ESP32 para controlar un brazo robótico.
-- **Description (EN)**: ESP32-based electronic board to control a robotic arm.
-- **Technologies**: robotics, electronics, esp32, hardware
-- **Status**: in_progress
-- **Date**: 2026-01
-- **Image**:
+* **ID**: fork-it
+* **Description (ES)**: Plataforma para apoyar la toma de decisiones en situaciones sociales complejas.
+* **Description (EN)**: Platform that supports decision-making in complex social situations.
+* **Technologies**: ai, productivity, software
+* **Status**: in_progress
+* **Date**: 2026-01
+* **Image**:
 
 ---
 
-## Gearbox
+## Prototipo: Auditor de código
 
-- **ID**: gearbox
-- **Description (ES)**: Desarrollo de una caja de cambios mecánica para aplicaciones mecatrónicas.
-- **Description (EN)**: Development of a mechanical gearbox for mechatronic applications.
-- **Technologies**: mechanics, mechatronics, hardware
-- **Status**: in_progress
-- **Date**: 2026-01
-- **Image**:
+* **ID**: prototipo-auditor-de-codigo
+* **Description (ES)**: Sistema con IA que revisa código y detecta vulnerabilidades.
+* **Description (EN)**: AI system that reviews code and detects vulnerabilities.
+* **Technologies**: ai, software, security, github
+* **Status**: in_progress
+* **Date**: 2026-01
+* **Image**:
+
+---
+
+## Proyecto camaleón
+
+* **ID**: proyecto-camaleon
+* **Description (ES)**: Prototipo IoT con sensor de color capaz de detectar y replicar tonalidades.
+* **Description (EN)**: IoT prototype with a color sensor capable of detecting and replicating tones.
+* **Technologies**: iot, sensors, hardware
+* **Status**: in_progress
+* **Date**: 2026-01
+* **Image**:
 
 ---
 
 ## AR para colocación de muebles
 
-- **ID**: ar-para-colocacion-de-muebles
-- **Description (ES)**: Aplicación de realidad aumentada para visualizar muebles en espacios reales.
-- **Description (EN)**: Augmented reality application to visualize furniture in real spaces.
-- **Technologies**: ar, mobile, software, visualization
-- **Status**: finished
-- **Date**: 2026-02
-- **Image**:
+* **ID**: ar-para-colocacion-de-muebles
+* **Description (ES)**: Aplicación de realidad aumentada para visualizar muebles en espacios reales.
+* **Description (EN)**: Augmented reality app to visualize furniture in real spaces.
+* **Technologies**: ar, mobile, software
+* **Status**: finished
+* **Date**: 2026-02
+* **Image**:
 
 ---
 
 ## Experimentos gemini: cosmic oracle
 
-- **ID**: experimentos-gemini-cosmic-oracle
-- **Description (ES)**: Convierte un dibujo en una aplicación funcional usando IA para mockups, assets y desarrollo.
-- **Description (EN)**: Turns a sketch into a functional app using AI for mockups, assets, and development.
-- **Technologies**: ai, software, app, design
-- **Status**: finished
-- **Date**: 2025-12
-- **Image**:
+* **ID**: experimentos-gemini-cosmic-oracle
+* **Description (ES)**: Convierte un dibujo en una aplicación funcional usando IA.
+* **Description (EN)**: Turns a sketch into a functional app using AI.
+* **Technologies**: ai, software, design
+* **Status**: finished
+* **Date**: 2025-12
+* **Image**:
 
 ---
 
-## Experimentos gemini: tempo lottery
+## Comunicación OBD2 con vehículo (MVP)
 
-- **ID**: experimentos-gemini-tempo-lottery
-- **Description (ES)**: Juego de cartas rápido basado en coincidencia de símbolos.
-- **Description (EN)**: Fast-paced card game based on symbol matching.
-- **Technologies**: game, software, ai
-- **Status**: finished
-- **Date**: 2025-12
-- **Image**:
-
----
-
-## Experimentos gemini: run sight
-
-- **ID**: experimentos-gemini-run-sight
-- **Description (ES)**: Analiza archivos FIT y entrega retroalimentación deportiva avanzada.
-- **Description (EN)**: Analyzes FIT files and provides advanced athletic feedback.
-- **Technologies**: ai, sports, analytics, software
-- **Status**: finished
-- **Date**: 2025-12
-- **Image**:
+* **ID**: comunicacion-obd2-con-vehiculo-mvp
+* **Description (ES)**: Aplicación para diagnóstico vehicular mediante conexión OBD2.
+* **Description (EN)**: Vehicle diagnostics app using OBD2 connection.
+* **Technologies**: automotive, iot, software
+* **Status**: finished
+* **Date**: 2026-01
+* **Image**:
 
 ---
 
-## Experimentos gemini: run or done
+## Comunicación OBD2 con vehículo (UI/UX)
 
-- **ID**: experimentos-gemini-run-or-done
-- **Description (ES)**: Evalúa el desgaste de tenis para correr y recomienda reemplazo.
-- **Description (EN)**: Evaluates running shoe wear and recommends replacement.
-- **Technologies**: ai, vision, sports, software
-- **Status**: finished
-- **Date**: 2025-12
-- **Image**:
-
----
-
-## Educador Personal
-
-- **ID**: educador-personal
-- **Description (ES)**: Sistema de agentes de IA que adapta apoyo según estilos de aprendizaje.
-- **Description (EN)**: AI agent system that adapts support based on learning styles.
-- **Technologies**: ai, education, software
-- **Status**: finished
-- **Date**: 2025-12
-- **Image**:
+* **ID**: comunicacion-obd2-con-vehiculo-uiux
+* **Description (ES)**: Diseño de interfaz para visualización de datos OBD2.
+* **Description (EN)**: UI/UX design for OBD2 data visualization.
+* **Technologies**: ux, ui, automotive
+* **Status**: in_progress
+* **Date**: 2026-01
+* **Image**:
 
 ---
 
-## Prototipo: Scout de Mercado
+## Control Brazo Robótico (Negro)
 
-- **ID**: prototipo-scout-de-mercado
-- **Description (ES)**: Agente con RAG para encontrar productos cercanos al mejor precio.
-- **Description (EN)**: RAG-powered agent to find nearby products at the best price.
-- **Technologies**: ai, rag, ecommerce, software
-- **Status**: in_progress
-- **Date**: 2026-01
-- **Image**:
-
----
-
-## Calendar
-
-- **ID**: calendar
-- **Description (ES)**: Calendario para entrevistas de conferencistas y organización de agendas.
-- **Description (EN)**: Calendar for speaker interviews and schedule organization.
-- **Technologies**: scheduling, software
-- **Status**: in_progress
-- **Date**: 2026-02
-- **Image**:
+* **ID**: control-brazo-robotico-negro
+* **Description (ES)**: Tarjeta electrónica basada en ESP32 para control robótico.
+* **Description (EN)**: ESP32-based board for robotic control.
+* **Technologies**: robotics, electronics, esp32
+* **Status**: in_progress
+* **Date**: 2026-01
+* **Image**:
 
 ---
 
-## Monitor de Ocupación de Escritorio
+## Brazo Robótico Educativo (Naranja)
 
-- **ID**: monitor-de-ocupacion-de-escritorio
-- **Description (ES)**: Detecta si un espacio está ocupado sin usar cámaras.
-- **Description (EN)**: Detects whether a space is occupied without using cameras.
-- **Technologies**: ai, iot, sensors
-- **Status**: in_progress
-- **Date**: 2026-01
-- **Image**:
-
----
-
-## Alerta de planta seca
-
-- **ID**: alerta-de-planta-seca
-- **Description (ES)**: Notifica cuando una planta necesita agua según humedad del suelo.
-- **Description (EN)**: Sends alerts when a plant needs water based on soil moisture.
-- **Technologies**: iot, sensors, telegram
-- **Status**: in_progress
-- **Date**: 2026-01
-- **Image**:
+* **ID**: brazo-robotico-educativo-naranja
+* **Description (ES)**: Brazo robótico educativo para aprendizaje práctico.
+* **Description (EN)**: Educational robotic arm for hands-on learning.
+* **Technologies**: robotics, education
+* **Status**: in_progress
+* **Date**: 2026-01
+* **Image**:
 
 ---
 
-## Sentiment analysis y futbol
+## Caja de Control para Mano Robótica
 
-- **ID**: sentiment-analysis-y-futbol
-- **Description (ES)**: Analiza opiniones relacionadas con fútbol mediante IA.
-- **Description (EN)**: Analyzes football-related opinions using AI.
-- **Technologies**: ai, nlp, analytics
-- **Status**: in_progress
-- **Date**: 2026-01
-- **Image**:
-
----
-
-## Drone
-
-- **ID**: drone
-- **Description (ES)**: Ensamble y puesta en marcha de kit de dron.
-- **Description (EN)**: Assembly and deployment of a drone kit.
-- **Technologies**: electronics, robotics, hardware
-- **Status**: in_progress
-- **Date**: 2025-12
-- **Image**:
+* **ID**: caja-control-mano-robotica
+* **Description (ES)**: Sistema de control para operación de mano robótica.
+* **Description (EN)**: Control system for robotic hand operation.
+* **Technologies**: electronics, robotics
+* **Status**: in_progress
+* **Date**: 2026-01
+* **Image**:
 
 ---
 
 ## Mano Robótica
 
-- **ID**: mano-robotica
-- **Description (ES)**: Rediseño y reconstrucción de mano robótica funcional.
-- **Description (EN)**: Redesign and rebuild of a functional robotic hand.
-- **Technologies**: robotics, mechatronics
-- **Status**: finished
-- **Date**: 2025-09
-- **Image**:
+* **ID**: mano-robotica
+* **Description (ES)**: Desarrollo de una mano robótica funcional.
+* **Description (EN)**: Development of a functional robotic hand.
+* **Technologies**: robotics, mechatronics
+* **Status**: finished
+* **Date**: 2025-09
+* **Image**:
 
 ---
+
+## Educador Personal
+
+* **ID**: educador-personal
+* **Description (ES)**: Sistema de IA adaptado a estilos de aprendizaje.
+* **Description (EN)**: AI system tailored to learning styles.
+* **Technologies**: ai, education
+* **Status**: finished
+* **Date**: 2025-12
+* **Image**:
+
+---
+
+## Iluminación modular controlada por gestos - Maker Faire
+
+* **ID**: iluminacion-modular-gestos
+* **Description (ES)**: Sistema de iluminación interactiva controlado por gestos.
+* **Description (EN)**: Gesture-controlled modular lighting system.
+* **Technologies**: iot, sensors, lighting
+* **Status**: finished
+* **Date**: 2025-11
+* **Image**:
+
+---
+
+## Visualizador de audio
+
+* **ID**: visualizador-audio
+* **Description (ES)**: Sistema que convierte audio en visualizaciones dinámicas.
+* **Description (EN)**: System that converts audio into dynamic visualizations.
+* **Technologies**: audio, visualization, software
+* **Status**: finished
+* **Date**: 2025-11
+* **Image**:
+
+---
+
+## Flor interactiva
+
+* **ID**: flor-interactiva
+* **Description (ES)**: Dispositivo interactivo que responde a estímulos.
+* **Description (EN)**: Interactive device that responds to stimuli.
+* **Technologies**: iot, sensors
+* **Status**: finished
+* **Date**: 2025-11
+* **Image**:
+
+---
+
+## Manipulador robótico con servos
+
+* **ID**: manipulador-robotico-servos
+* **Description (ES)**: Brazo robótico controlado mediante servomotores.
+* **Description (EN)**: Robotic manipulator controlled by servos.
+* **Technologies**: robotics, servos
+* **Status**: finished
+* **Date**: 2025-11
+* **Image**:
+
+---
+
+## Hexapod
+
+* **ID**: hexapod
+* **Description (ES)**: Robot de seis patas con locomoción autónoma.
+* **Description (EN)**: Six-legged robot with autonomous locomotion.
+* **Technologies**: robotics, mechanics
+* **Status**: finished
+* **Date**: 2025-11
+* **Image**:
+
+---
+
+## Experimentos gemini: tempo lottery
+
+* **ID**: experimentos-gemini-tempo-lottery
+* **Description (ES)**: Juego basado en coincidencia de símbolos.
+* **Description (EN)**: Symbol-matching game.
+* **Technologies**: game, ai
+* **Status**: finished
+* **Date**: 2025-12
+* **Image**:
+
+---
+
+## Experimentos gemini: run sight
+
+* **ID**: experimentos-gemini-run-sight
+* **Description (ES)**: Análisis de rendimiento deportivo.
+* **Description (EN)**: Sports performance analysis.
+* **Technologies**: ai, analytics
+* **Status**: finished
+* **Date**: 2025-12
+* **Image**:
+
+---
+
+## Experimentos gemini: run or done
+
+* **ID**: experimentos-gemini-run-or-done
+* **Description (ES)**: Evaluación de desgaste de calzado deportivo.
+* **Description (EN)**: Running shoe wear evaluation.
+* **Technologies**: ai, vision
+* **Status**: finished
+* **Date**: 2025-12
+* **Image**:
+
+---
+
+## Drone
+
+* **ID**: drone
+* **Description (ES)**: Ensamble y pruebas de dron.
+* **Description (EN)**: Drone assembly and testing.
+* **Technologies**: robotics, electronics
+* **Status**: in_progress
+* **Date**: 2025-12
+* **Image**:
+
+---
+
+## Totito
+
+* **ID**: totito
+* **Description (ES)**: Juego híbrido físico-digital.
+* **Description (EN)**: Hybrid physical-digital game.
+* **Technologies**: ai, game
+* **Status**: in_progress
+* **Date**: 2026-02
+* **Image**:
+
+---
+
+## Calendar
+
+* **ID**: calendar
+* **Description (ES)**: Sistema de gestión de agenda.
+* **Description (EN)**: Scheduling system.
+* **Technologies**: software, scheduling
+* **Status**: in_progress
+* **Date**: 2026-02
+* **Image**:
+
+---
+
+## Monitor de Ocupación de Escritorio
+
+* **ID**: monitor-ocupacion-escritorio
+* **Description (ES)**: Sistema para detectar ocupación de espacios.
+* **Description (EN)**: Desk occupancy detection system.
+* **Technologies**: iot, sensors
+* **Status**: in_progress
+* **Date**: 2026-01
+* **Image**:
+
+---
+
+## Alerta de planta seca
+
+* **ID**: alerta-planta-seca
+* **Description (ES)**: Sistema de alerta de riego para plantas.
+* **Description (EN)**: Plant watering alert system.
+* **Technologies**: iot, sensors
+* **Status**: in_progress
+* **Date**: 2026-01
+* **Image**:
+
+---
+
+## Sentiment analysis y futbol
+
+* **ID**: sentiment-analysis-futbol
+* **Description (ES)**: Análisis de sentimientos aplicado al fútbol.
+* **Description (EN)**: Sentiment analysis applied to football.
+* **Technologies**: ai, nlp
+* **Status**: in_progress
+* **Date**: 2026-01
+* **Image**:
+
+---
+
+## Prototipo: Scout de Mercado
+
+* **ID**: prototipo-scout-mercado
+* **Description (ES)**: Sistema para búsqueda de productos con IA.
+* **Description (EN)**: AI-powered product search system.
+* **Technologies**: ai, ecommerce
+* **Status**: in_progress
+* **Date**: 2026-01
+* **Image**:
+
+---
+
