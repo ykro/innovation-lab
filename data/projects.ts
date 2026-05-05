@@ -212,7 +212,7 @@ export const projects: Project[] = [
     description: {
       es: "Plataforma para apoyar la toma de decisiones en situaciones sociales complejas.",
       en: "Platform that supports decision-making in complex social situations.",
-    },
+  },
     longDescription: {
       es: "Plataforma que ayuda a navegar decisiones sociales complejas donde múltiples caminos parecen válidos. Combina agentes de IA que razonan sobre consecuencias con un framework visual de bifurcaciones, permitiendo ver cómo se proyectaría cada alternativa antes de comprometerse.",
       en: "Platform that helps navigate complex social decisions where multiple paths seem valid. Combines AI agents reasoning about consequences with a visual branching framework, letting the user see how each alternative would play out before committing.",
@@ -220,6 +220,7 @@ export const projects: Project[] = [
     technologies: ["ai", "software", "productivity"],
     status: "in_progress",
     date: "2026-01",
+    image: "/images/projects/fork-it.png",
   },
   {
     id: "prototipo-auditor-de-codigo",
@@ -227,7 +228,7 @@ export const projects: Project[] = [
     description: {
       es: "Sistema con IA que revisa código, detecta vulnerabilidades y genera documentación automática.",
       en: "AI system that reviews code, detects vulnerabilities, and generates automatic documentation.",
-    },
+  },
     longDescription: {
       es: "Sistema agentic que analiza repositorios y detecta vulnerabilidades, anti-patrones y deuda técnica. Combina análisis estático con modelos de lenguaje que razonan sobre contexto, y genera documentación automática — incluyendo explicaciones para funciones críticas y sugerencias de refactor.",
       en: "Agentic system that analyzes repositories and detects vulnerabilities, anti-patterns, and technical debt. Combines static analysis with language models reasoning about context, and generates automatic documentation — including explanations for critical functions and refactor suggestions.",
@@ -235,6 +236,7 @@ export const projects: Project[] = [
     technologies: ["ai", "software", "github", "security"],
     status: "in_progress",
     date: "2026-01",
+    image: "/images/projects/prototipo-auditor-de-codigo.png",
   },
   {
     id: "totito",
@@ -242,7 +244,7 @@ export const projects: Project[] = [
     description: {
       es: "Juego híbrido físico-digital donde la IA interpreta el tablero y responde en tiempo real.",
       en: "Hybrid physical-digital game where AI interprets the board and responds in real time.",
-    },
+  },
     longDescription: {
       es: "Tablero físico de tres-en-raya equipado con cámara superior. La IA interpreta en tiempo real el estado del juego — fichas colocadas, turno actual — y responde hablando con el jugador o sugiriendo jugadas. Explora la fusión entre juegos tradicionales y superficies digitales reactivas.",
       en: "Physical tic-tac-toe board equipped with an overhead camera. The AI interprets the game state in real time — pieces placed, current turn — and responds by speaking to the player or suggesting moves. Explores the fusion of traditional games with reactive digital surfaces.",
@@ -250,6 +252,7 @@ export const projects: Project[] = [
     technologies: ["ai", "game", "software", "vision"],
     status: "in_progress",
     date: "2026-02",
+    image: "/images/projects/totito.png",
   },
   {
     id: "proyecto-camaleon",
@@ -257,7 +260,7 @@ export const projects: Project[] = [
     description: {
       es: "Prototipo IoT con sensor de color capaz de detectar y replicar tonalidades.",
       en: "IoT prototype with a color sensor capable of detecting and replicating tones.",
-    },
+  },
     longDescription: {
       es: "Prototipo IoT con sensor de color TCS34725 que captura tonalidades del entorno y las replica en tira LED adyacente. Exploración sobre cómo un objeto podría adaptar su apariencia al fondo, como un camaleón — con pasos futuros hacia pantalla e-ink o tela programable.",
       en: "IoT prototype with a TCS34725 color sensor that captures environmental tones and replicates them in an adjacent LED strip. An exploration of how an object might adapt its appearance to the background, like a chameleon — with future steps toward e-ink or programmable fabric.",
@@ -265,6 +268,7 @@ export const projects: Project[] = [
     technologies: ["iot", "sensors", "hardware"],
     status: "in_progress",
     date: "2026-01",
+    image: "/images/projects/proyecto-camaleon.png",
   },
   {
     id: "comunicacion-obd2-con-vehiculo-mvp",
@@ -272,7 +276,7 @@ export const projects: Project[] = [
     description: {
       es: "Aplicación para diagnóstico vehicular mediante conexión OBD2.",
       en: "Application for vehicle diagnostics through OBD2 connection.",
-    },
+  },
     longDescription: {
       es: "Aplicación que se conecta al puerto OBD2 del vehículo vía adaptador Bluetooth/WiFi y expone los datos del ECU — RPM, velocidad, códigos de error DTC, consumo estimado — en una interfaz legible. MVP enfocado en lectura y diagnóstico; sin funciones de reseteo aún.",
       en: "App that connects to the vehicle's OBD2 port via Bluetooth/WiFi adapter and exposes ECU data — RPM, speed, DTC error codes, estimated fuel consumption — in a readable interface. MVP focused on read and diagnostics; no reset features yet.",
@@ -280,6 +284,7 @@ export const projects: Project[] = [
     technologies: ["automotive", "iot", "diagnostics", "software"],
     status: "finished",
     date: "2026-01",
+    image: "/images/projects/comunicacion-obd2-con-vehiculo-mvp.png",
   },
   {
     id: "boton-iot",
@@ -287,7 +292,7 @@ export const projects: Project[] = [
     description: {
       es: "Botón inteligente que captura notas y permite generar resúmenes automáticos con IA.",
       en: "Smart button that captures notes and enables automatic AI summaries.",
-    },
+  },
     longDescription: {
       es: "Botón físico discreto — un solo click — que dispara un flujo de captura: inicia grabación de voz, transcribe, resume con IA y guarda la nota en el destino configurado (Notion, Drive, email). Pensado para capturar pensamientos sin fricción durante trabajo manual o conducción.",
       en: "Discreet physical button — single click — that triggers a capture flow: starts voice recording, transcribes, AI-summarizes, and saves the note to the configured destination (Notion, Drive, email). Designed to capture thoughts frictionlessly during manual work or driving.",
@@ -295,6 +300,7 @@ export const projects: Project[] = [
     technologies: ["iot", "ai", "productivity", "hardware"],
     status: "in_progress",
     date: "2026-01",
+    image: "/images/projects/boton-iot.png",
   },
   {
     id: "mini-bots",
@@ -302,7 +308,7 @@ export const projects: Project[] = [
     description: {
       es: "Robots compactos e interactivos con movimiento autónomo e integración de sensores.",
       en: "Compact interactive robots with autonomous movement and sensor integration.",
-    },
+  },
     longDescription: {
       es: "Serie de robots compactos con estrategias variadas de movimiento y sensado — algunos con evasión por ultrasonido, otros con seguimiento de línea o triangulación IR. Plataforma educativa: cada mini-bot resuelve un problema distinto, introduciendo mecatrónica y control paso a paso.",
       en: "Series of compact robots with varied movement and sensing strategies — some with ultrasonic avoidance, others with line-following or IR triangulation. Educational platform: each mini-bot solves a different problem, introducing mechatronics and control step by step.",
@@ -310,6 +316,7 @@ export const projects: Project[] = [
     technologies: ["robotics", "sensors", "mechatronics"],
     status: "finished",
     date: "2026-01",
+    image: "/images/projects/mini-bots.png",
   },
   {
     id: "control-brazo-robotico-negro",
@@ -317,7 +324,7 @@ export const projects: Project[] = [
     description: {
       es: "Tarjeta electrónica basada en ESP32 para controlar un brazo robótico.",
       en: "ESP32-based electronic board to control a robotic arm.",
-    },
+  },
     longDescription: {
       es: "Tarjeta de control diseñada en el lab — PCB propia, MCU ESP32 — para manejar un brazo robótico de seis grados de libertad. Expone API WiFi para ejecutar trayectorias, calibración automática y modo de enseñanza: el operador mueve el brazo manualmente y la tarjeta graba la secuencia.",
       en: "Lab-designed controller board — custom PCB, ESP32 MCU — for a 6-DOF robotic arm. Exposes WiFi API for executing trajectories, auto-calibration, and teach mode: the operator moves the arm by hand and the board records the sequence.",
@@ -325,6 +332,7 @@ export const projects: Project[] = [
     technologies: ["robotics", "electronics", "esp32", "hardware"],
     status: "in_progress",
     date: "2026-01",
+    image: "/images/projects/control-brazo-robotico-negro.png",
   },
   {
     id: "gearbox",
@@ -348,7 +356,7 @@ export const projects: Project[] = [
     description: {
       es: "Aplicación de realidad aumentada para visualizar muebles en espacios reales.",
       en: "Augmented reality application to visualize furniture in real spaces.",
-    },
+  },
     longDescription: {
       es: "App de AR para móvil que permite visualizar muebles en el espacio real del usuario antes de comprarlos. Detecta piso, paredes y escala usando ARCore/ARKit, luego coloca modelos 3D anclados al mundo real con oclusión correcta y sombras dinámicas.",
       en: "Mobile AR app that lets the user visualize furniture in their real space before buying. Detects floor, walls, and scale using ARCore/ARKit, then places 3D models anchored to the real world with correct occlusion and dynamic shadows.",
@@ -356,6 +364,7 @@ export const projects: Project[] = [
     technologies: ["ar", "mobile", "software", "visualization"],
     status: "finished",
     date: "2026-02",
+    image: "/images/projects/ar-para-colocacion-de-muebles.png",
   },
   {
     id: "experimentos-gemini-cosmic-oracle",
@@ -448,7 +457,7 @@ export const projects: Project[] = [
     description: {
       es: "Sistema de agentes de IA que adapta apoyo según estilos de aprendizaje.",
       en: "AI agent system that adapts support based on learning styles.",
-    },
+  },
     longDescription: {
       es: "Sistema multi-agente donde cada agente representa un estilo de aprendizaje — visual, kinestésico, verbal, analítico. El sistema detecta el perfil del estudiante a través de interacción inicial y rota entre agentes para presentar el material en el estilo más efectivo para esa persona, ajustando en tiempo real.",
       en: "Multi-agent system where each agent represents a learning style — visual, kinesthetic, verbal, analytical. The system detects the student's profile through initial interaction and rotates between agents to present material in the most effective style for that person, adjusting in real time.",
@@ -456,6 +465,7 @@ export const projects: Project[] = [
     technologies: ["ai", "education", "software"],
     status: "finished",
     date: "2025-12",
+    image: "/images/projects/educador-personal.png",
   },
   {
     id: "prototipo-scout-de-mercado",
@@ -463,7 +473,7 @@ export const projects: Project[] = [
     description: {
       es: "Agente con RAG para encontrar productos cercanos al mejor precio.",
       en: "RAG-powered agent to find nearby products at the best price.",
-    },
+  },
     longDescription: {
       es: "Agente RAG conectado a catálogos de tiendas cercanas y precios publicados. Recibe una consulta del usuario — \"necesito X bajo Y quetzales\" — recupera disponibilidad en tiempo real y devuelve tres opciones ordenadas por precio y distancia, con enlace directo al producto.",
       en: "RAG agent connected to nearby store catalogs and published prices. Receives user query — \"I need X under Y quetzales\" — retrieves real-time availability and returns three options sorted by price and distance, with direct link to the product.",
@@ -471,6 +481,7 @@ export const projects: Project[] = [
     technologies: ["ai", "rag", "ecommerce", "software"],
     status: "in_progress",
     date: "2026-01",
+    image: "/images/projects/prototipo-scout-de-mercado.png",
   },
   {
     id: "calendar",
@@ -478,7 +489,7 @@ export const projects: Project[] = [
     description: {
       es: "Calendario para entrevistas de conferencistas y organización de agendas.",
       en: "Calendar for speaker interviews and schedule organization.",
-    },
+  },
     longDescription: {
       es: "Herramienta interna del lab para agendar entrevistas con conferencistas invitados. Integra disponibilidad del director y asistentes, zonas horarias internacionales y envía recordatorios automáticos. Enfocada en el flujo específico de hablar con ponentes, más que un calendario genérico.",
       en: "Internal lab tool for scheduling guest speaker interviews. Integrates director and assistant availability, international time zones, and sends automatic reminders. Focused on the specific speaker-talk flow rather than a generic calendar.",
@@ -486,6 +497,7 @@ export const projects: Project[] = [
     technologies: ["scheduling", "software"],
     status: "in_progress",
     date: "2026-02",
+    image: "/images/projects/calendar.png",
   },
   {
     id: "monitor-de-ocupacion-de-escritorio",
@@ -493,7 +505,7 @@ export const projects: Project[] = [
     description: {
       es: "Detecta si un espacio está ocupado sin usar cámaras.",
       en: "Detects whether a space is occupied without using cameras.",
-    },
+  },
     longDescription: {
       es: "Detector de ocupación de puesto de trabajo que funciona sin cámara: combina sensor PIR (movimiento) con sensor capacitivo en el asiento y lectura de actividad de teclado. Resultado: una señal binaria \"ocupado / libre\" útil para iluminación adaptativa y estadísticas de uso, respetando la privacidad del usuario.",
       en: "Workstation occupancy detector that works without a camera: combines PIR (motion) sensor with capacitive sensor on the seat and keyboard activity readings. Output: a binary \"occupied / free\" signal useful for adaptive lighting and usage stats, preserving user privacy.",
@@ -501,6 +513,7 @@ export const projects: Project[] = [
     technologies: ["ai", "iot", "sensors"],
     status: "in_progress",
     date: "2026-01",
+    image: "/images/projects/monitor-de-ocupacion-de-escritorio.png",
   },
   {
     id: "alerta-de-planta-seca",
@@ -508,7 +521,7 @@ export const projects: Project[] = [
     description: {
       es: "Notifica cuando una planta necesita agua según humedad del suelo.",
       en: "Sends alerts when a plant needs water based on soil moisture.",
-    },
+  },
     longDescription: {
       es: "Sensor de humedad capacitivo enterrado en la maceta reporta lecturas cada hora vía ESP32 a un bot de Telegram. Cuando la humedad cae bajo un umbral configurable, envía una alerta con la identificación de la planta. Soporta múltiples macetas por ESP32 mediante multiplexor.",
       en: "Capacitive moisture sensor buried in the pot reports readings every hour via ESP32 to a Telegram bot. When moisture drops below a configurable threshold, it sends an alert with the plant's identification. Supports multiple pots per ESP32 via multiplexer.",
@@ -516,6 +529,7 @@ export const projects: Project[] = [
     technologies: ["iot", "sensors", "telegram"],
     status: "in_progress",
     date: "2026-01",
+    image: "/images/projects/alerta-de-planta-seca.png",
   },
   {
     id: "sentiment-analysis-y-futbol",
@@ -523,7 +537,7 @@ export const projects: Project[] = [
     description: {
       es: "Analiza opiniones relacionadas con fútbol mediante IA.",
       en: "Analyzes football-related opinions using AI.",
-    },
+  },
     longDescription: {
       es: "Pipeline NLP que consume tweets, comentarios en redes y transcripciones de programas deportivos sobre equipos de fútbol guatemaltecos. Clasifica sentimiento — positivo, neutro, negativo — extrae temas (entrenador, refuerzos, árbitro) y produce un dashboard semanal del estado emocional de cada afición.",
       en: "NLP pipeline that ingests tweets, social comments, and sports show transcripts about Guatemalan football teams. Classifies sentiment — positive, neutral, negative — extracts topics (coach, signings, referee), and produces a weekly dashboard of each fandom's emotional state.",
@@ -531,6 +545,7 @@ export const projects: Project[] = [
     technologies: ["ai", "nlp", "analytics"],
     status: "in_progress",
     date: "2026-01",
+    image: "/images/projects/sentiment-analysis-y-futbol.png",
   },
   {
     id: "drone",
