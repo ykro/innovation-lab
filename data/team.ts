@@ -62,15 +62,14 @@ export const team: TeamMember[] = [
     },
   },
   {
-    id: "christian-martinez",
-    name: "Christian Martinez",
+    id: "yoselin-mejia",
+    name: "Yoselin Yovana Mejía López",
     role: "assistant",
-    photo: "/images/staff/christian-martinez.png",
+    photo: "/images/staff/yoselin-mejia.jpg",
     bio: {
-      es: "Estudiante de Ingeniería en Sistemas y posgrado en Desarrollo de Software en Universidad Galileo. Interesado en el diseño de agentes de IA autónomos y Data Science.",
-      en: "Systems Engineering student and Software Development graduate student at Universidad Galileo. Interested in autonomous AI agents and data science.",
+      es: "Estudiante de Ingeniería en Sistemas en la Universidad Galileo, interesada en desarrollo web, análisis de datos y soluciones tecnológicas accesibles. Cuenta con experiencia en proyectos usando React, Firebase y modelado de datos. Actualmente colabora en el Laboratorio de Innovación, impulsando iniciativas STEM mediante prototipos y actividades prácticas. Se caracteriza por un enfoque analítico, creatividad y orientación a resolver problemas reales con tecnología.",
+      en: "Systems Engineering student at Universidad Galileo, interested in web development, data analysis, and accessible tech solutions. Experienced with React, Firebase, and data modeling, and collaborates in the Innovation Lab supporting STEM initiatives.",
     },
-    linkedin: "https://www.linkedin.com/in/christian-martinez-b9b707403/",
   },
   {
     id: "emily-curin",
@@ -104,14 +103,15 @@ export const team: TeamMember[] = [
     linkedin: "https://www.linkedin.com/in/samuel-marroquín-0b1474321/",
   },
   {
-    id: "yoselin-mejia",
-    name: "Yoselin Yovana Mejía López",
+    id: "christian-martinez",
+    name: "Christian Martinez",
     role: "assistant",
-    photo: "/images/staff/yoselin-mejia.jpg",
+    photo: "/images/staff/christian-martinez.png",
     bio: {
-      es: "Estudiante de Ingeniería en Sistemas en la Universidad Galileo, interesada en desarrollo web, análisis de datos y soluciones tecnológicas accesibles. Cuenta con experiencia en proyectos usando React, Firebase y modelado de datos. Actualmente colabora en el Laboratorio de Innovación, impulsando iniciativas STEM mediante prototipos y actividades prácticas. Se caracteriza por un enfoque analítico, creatividad y orientación a resolver problemas reales con tecnología.",
-      en: "Systems Engineering student at Universidad Galileo, interested in web development, data analysis, and accessible tech solutions. Experienced with React, Firebase, and data modeling, and collaborates in the Innovation Lab supporting STEM initiatives.",
+      es: "Estudiante de Ingeniería en Sistemas y posgrado en Desarrollo de Software en Universidad Galileo. Interesado en el diseño de agentes de IA autónomos y Data Science.",
+      en: "Systems Engineering student and Software Development graduate student at Universidad Galileo. Interested in autonomous AI agents and data science.",
     },
+    linkedin: "https://www.linkedin.com/in/christian-martinez-b9b707403/",
   },
   {
     id: "eduardo-tobar",
