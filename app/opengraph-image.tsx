@@ -119,6 +119,7 @@ export default function OpengraphImage() {
           </div>
           <div
             style={{
+              display: "flex",
               fontSize: 196,
               lineHeight: 0.9,
               letterSpacing: "-0.04em",
@@ -127,7 +128,8 @@ export default function OpengraphImage() {
               color: "#0a1f44",
             }}
           >
-            Lab<span style={{ color: "rgba(10, 31, 68, 0.3)" }}>.</span>
+            <span>Lab</span>
+            <span style={{ color: "rgba(10, 31, 68, 0.3)" }}>.</span>
           </div>
         </div>
 
