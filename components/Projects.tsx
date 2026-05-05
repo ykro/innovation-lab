@@ -37,6 +37,8 @@ export default function Projects() {
   const sorted = [...filtered].sort((a, b) => {
     const byStatus = statusPriority[a.status] - statusPriority[b.status];
     if (byStatus !== 0) return byStatus;
+    const byImage = (b.image ? 1 : 0) - (a.image ? 1 : 0);
+    if (byImage !== 0) return byImage;
     return b.date.localeCompare(a.date);
   });
 
