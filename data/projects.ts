@@ -1,614 +1,1503 @@
 export interface ProjectLink {
   label: string;
+  labelEn?: string;
   url: string;
 }
+
+export type ProjectCategory =
+  | "agents_llms"
+  | "physical_ai"
+  | "health_fintech"
+  | "iot_hardware"
+  | "vision_creative";
 
 export interface Project {
   id: string;
   name: string;
+  nameEn?: string;
+  category?: ProjectCategory;
+  featured?: boolean;
+  challengeBadge?: { es: string; en: string };
   description: { es: string; en: string };
   technologies: string[];
   status: "in_progress" | "finished" | "archived";
   date: string;
   image?: string;
   repo?: string;
-  /** Optional deep-dive narrative for the individual project page. */
   longDescription?: { es: string; en: string };
-  /** Additional images beyond the hero `image`. Paths under /public. */
-  gallery?: string[];
-  /** External links: demo, paper, article, video, slides, etc. */
+  gallery?: { src: string; caption: { es: string; en: string } }[];
+  /** External links: demo, paper, article, evaluation report, slides, etc. */
   links?: ProjectLink[];
   /** IDs of team members involved (matches `data/team.ts`). */
   team?: string[];
-  /** Live demo URL — takes precedence as primary CTA on detail page. */
   demoUrl?: string;
+  archivedDemoUrl?: string;
 }
 
+export const featuredProjectIds = [
+  "split-brain-suite",
+  "rosorin-physical-ai",
+  "preconsulta-medica-ai",
+  "brazo-mirobot",
+  "finanzas-ingresos-variables",
+  "hexacoptero-fy690s",
+  "estados-de-cuenta-gt",
+  "cartel-luz",
+  "mano-robotica",
+];
+
 export const projects: Project[] = [
+  // ============================================================================
+  // FLAGSHIP RESEARCH, COMPARATIVE CHALLENGES & AI BUILDERS (2026–2027)
+  // ============================================================================
   {
-    id: "pictance",
-    name: "Pictance",
+    id: "rosorin-physical-ai",
+    name: "ROSOrin Pro y su gemelo digital",
+    nameEn: "ROSOrin Pro and its digital twin",
+    category: "physical_ai",
+    featured: true,
+    challengeBadge: {
+      es: "Physical AI · NVIDIA GTC Poster",
+      en: "Physical AI · NVIDIA GTC Poster",
+    },
     description: {
-      es: "Reconocimiento facial usando redes neuronales en una aplicación web. Los usuarios suben fotos y el sistema identifica y marca características faciales clave.",
-      en: "Face recognition using neural networks on a web app. Users upload photos and the system identifies and marks key facial features.",
+      es: "Manipulador móvil autónomo con Jetson Orin Nano, ROS 2 Humble, puente determinista en Rust a 40 Hz y gemelo digital 3D URDF a 60 FPS controlado por voz con Gemini Live.",
+      en: "Autonomous mobile manipulator with Jetson Orin Nano, ROS 2 Humble, 40 Hz deterministic Rust bridge, and 60 FPS 3D URDF Digital Twin controlled via Gemini Live voice.",
     },
     longDescription: {
-      es: "Aplicación web que procesa fotografías subidas por el usuario y aplica redes neuronales para identificar rasgos faciales — ojos, nariz, boca, cejas — marcando su ubicación sobre la imagen. Proyecto de exploración temprana en visión por computadora, antes de que estos servicios fueran de uso común en la nube.",
-      en: "Web application that processes user-uploaded photos and applies neural networks to identify facial features — eyes, nose, mouth, brows — marking their position on the image. An early computer-vision exploration, built before these services became common cloud offerings.",
+      es: "Conecta sesiones multimodales en el navegador (Gemini Live WebSockets) y un gemelo digital 3D en Three.js a 60 FPS con un lazo de control determinista en Rust a 40 Hz corriendo sobre Jetson Orin Nano y ROS 2 Humble. Incluye brazo de 6 grados de libertad, cámara de profundidad 3D Aurora 930, LiDAR 2D y chasis Mecanum, más investigación científica en anclaje espacial Eye-in-Hand (4.62 mm RMSE) y envolventes cinemáticas de seguridad sin falsos frenados.",
+      en: "Connects browser multimodal sessions (Gemini Live WebSockets) and a 60 FPS Three.js URDF Digital Twin to a deterministic 40 Hz Rust control loop on Jetson Orin Nano and ROS 2 Humble. Features a 6-DOF arm, Aurora 930 3D depth camera, 2D LiDAR, and Mecanum chassis, backed by scientific research on Eye-in-Hand 3D spatial grounding (4.62 mm RMSE) and kinematic safety envelopes.",
+    },
+    technologies: [
+      "ROS 2 Humble",
+      "Jetson Orin Nano",
+      "Rust",
+      "Three.js URDF",
+      "Gemini Live",
+    ],
+    status: "finished",
+    date: "2026-10",
+    image: "/images/projects/rosorin-simulator.png",
+    gallery: [
+      {
+        src: "/images/projects/rosorin-hardware.png",
+        caption: {
+          es: "Manipulador móvil físico Hiwonder ROSOrin Pro con brazo de 6 ejes, cámara 3D Aurora 930 y chasis Mecanum.",
+          en: "Physical Hiwonder ROSOrin Pro mobile manipulator with 6-DOF arm, Aurora 930 3D depth camera, and Mecanum chassis.",
+        },
+      },
+      {
+        src: "/images/projects/rosorin-control.png",
+        caption: {
+          es: "Panel de control cinemático y telemetría en tiempo real conectado al puente Rust a 40 Hz.",
+          en: "Real-time kinematic control and telemetry panel connected to the 40 Hz Rust bridge.",
+        },
+      },
+    ],
+    repo: "https://github.com/ykro/rosorin-jsconf",
+    demoUrl: "https://jsconfmx26.web.app/demo",
+    links: [
+      { label: "Simulador 3D (60 FPS)", labelEn: "3D simulator (60 FPS)", url: "https://jsconfmx26.web.app/demo" },
+      { label: "Sitio & Arquitectura", labelEn: "Project site and architecture", url: "https://jsconfmx26.web.app" },
+      { label: "Slides Interactivas", labelEn: "Interactive slides", url: "https://jsconfmx26.web.app/slides" },
+    ],
+    team: ["adrian-catalan", "mario-cifuentes", "luis-galicia"],
+  },
+  {
+    id: "tzij-kiche-gemma",
+    name: "Tzij: traducción entre español y k’iche’",
+    nameEn: "Tzij: Spanish–K’iche’ translation",
+    category: "agents_llms",
+    featured: true,
+    challengeBadge: {
+      es: "Investigación NLP · +8.5 chrF++",
+      en: "NLP Research · +8.5 chrF++",
+    },
+    description: {
+      es: "Traducción neuronal de bajos recursos para idioma Maya K'iche' combinando Gemma 4 E4B, LoRA RAFT, recuperación híbrida BM25 + Vector RRF y decodificación MBR sobre GPU L4.",
+      en: "Low-resource neural translation for Mayan K'iche' combining Gemma 4 E4B, RAFT LoRA, hybrid BM25 + Vector RRF retrieval, and MBR decoding on serverless L4 GPU.",
+    },
+    longDescription: {
+      es: "Investigación científica ('David vs. Goliath') que demuestra cómo un modelo abierto de 4B parámetros (Gemma 4 E4B) especializado mediante RAFT LoRA, recuperación léxico-semántica híbrida (RRF) y Minimum Bayes Risk (MBR-4) sobre Cloud Run con GPU NVIDIA L4 supera a modelos generales de frontera por +8.5 puntos chrF++ (37.4 vs 28.9) en localización de software al K'iche', con latencia mediana de 0.81 s.",
+      en: "Scientific research ('David vs. Goliath') demonstrating how a 4B open model (Gemma 4 E4B) specialized via RAFT LoRA, hybrid lexical-semantic retrieval (RRF), and Minimum Bayes Risk (MBR-4) on serverless Cloud Run NVIDIA L4 GPU outperforms frontier general models by +8.5 chrF++ (37.4 vs 28.9) on K'iche' software localization at 0.81 s median latency.",
+    },
+    technologies: [
+      "Gemma 4 E4B",
+      "LoRA / RAFT",
+      "Hybrid RAG",
+      "Cloud Run L4 GPU",
+      "Indigenous NLP",
+    ],
+    status: "finished",
+    date: "2026-10",
+    image: "/images/projects/tzij-demo.png",
+    gallery: [
+      {
+        src: "/images/projects/tzij-results.png",
+        caption: {
+          es: "Resultados experimentales en chrF++ comparando Gemma 4 E4B especializado frente a modelos generales.",
+          en: "Experimental chrF++ benchmark comparing specialized Gemma 4 E4B against frontier general models.",
+        },
+      },
+      {
+        src: "/images/projects/tzij-architecture.png",
+        caption: {
+          es: "Arquitectura de recuperación híbrida BM25 + Vector RRF y decodificación MBR-4 sobre GPU L4.",
+          en: "Hybrid BM25 + Vector RRF retrieval and MBR-4 decoding architecture on L4 GPU.",
+        },
+      },
+    ],
+    repo: "https://github.com/ykro/tzij",
+    links: [
+      {
+        label: "Presentación David vs. Goliath", labelEn: "David vs. Goliath presentation",
+        url: "https://docs.google.com/presentation/d/1MddCAi51juUAEXbbiUyXwL6CqYzId0ELFSBwzREUW6U/edit?usp=sharing",
+      },
+    ],
+    team: ["adrian-catalan"],
+  },
+  {
+    id: "split-brain-suite",
+    name: "Reto Split-Brain: IA para negociar un salario con privacidad",
+    nameEn: "Split-Brain Challenge: private salary negotiation with AI",
+    category: "agents_llms",
+    featured: true,
+    challengeBadge: {
+      es: "Reto Comparativo · 6 Arquitecturas",
+      en: "Comparative Challenge · 6 Architectures",
+    },
+    description: {
+      es: "Suite comparativa de arquitecturas Split-Brain donde el salario actual y datos sensibles jamás salen a la nube pública, evaluando APIs externas, Ollama en GPU L4 y WebGPU en el navegador.",
+      en: "Comparative suite of Split-Brain architectures where current salary and sensitive PII never leave trusted boundaries, benchmarking external APIs, L4 GPU Ollama, and in-browser WebGPU.",
+    },
+    longDescription: {
+      es: "Reto de ingeniería del Innovation Lab alojado en la organización oficial (innovationlabug/coverletter-gen). El objetivo es generar una carta de presentación pública y una nota privada de negociación salarial garantizando por código determinista que los datos sensibles nunca viajen al LLM externo. Incluye tres implementaciones de referencia de Adrián Catalán (Carta y copia en Vercel, Rango con Ollama sobre GPU NVIDIA L4 en Cloud Run comparando Gemma 4 vs Qwen, y Sobre con Gemma 4 E2B corriendo en el navegador vía transformers.js y Firebase AI Logic) junto a las implementaciones independientes y artículos técnicos de Luis Cu, Cathy Batres y Emily Curín.",
+      en: "Comparative engineering challenge hosted at innovationlabug/coverletter-gen. Generates a tailored cover letter and a private salary negotiation strategy while deterministically guaranteeing sensitive salary/PII never reaches public cloud LLMs. Includes 3 reference architectures by Adrián Catalán (Carta y copia, Rango on Cloud Run L4 GPU, and Sobre running Gemma 4 E2B in-browser via WebGPU) alongside independent implementations and technical papers by Luis Cu, Cathy Batres, and Emily Curín.",
+    },
+    technologies: [
+      "Split-Brain AI",
+      "Gemma 4 / Qwen",
+      "Cloud Run L4 GPU",
+      "Transformers.js WebGPU",
+      "Firebase AI Logic",
+    ],
+    status: "finished",
+    date: "2026-09",
+    image: "/images/projects/split-brain-sobre.png",
+    gallery: [
+      {
+        src: "/images/projects/split-brain-carta-y-copia.png",
+        caption: {
+          es: "Carta y Copia: sanitización determinista de PII en el navegador y enriquecimiento de rangos salariales.",
+          en: "Carta y Copia: deterministic client-side PII sanitization and salary benchmark enrichment.",
+        },
+      },
+      {
+        src: "/images/projects/split-brain-rango.png",
+        caption: {
+          es: "Rango: inferencia privada en Ollama sobre GPU NVIDIA L4 en Cloud Run comparando Gemma 4 y Qwen.",
+          en: "Rango: private Ollama inference on Cloud Run NVIDIA L4 GPU comparing Gemma 4 and Qwen.",
+        },
+      },
+    ],
+    repo: "https://github.com/innovationlabug/coverletter-gen",
+    links: [
+      {
+        label: "Evaluación del equipo en GitHub",
+        labelEn: "Team evaluation on GitHub",
+        url: "https://github.com/innovationlabug/coverletter-gen#entregas-del-equipo-y-reportes-de-evaluaci%C3%B3n",
+      },
+      {
+        label: "Archivo del informe interactivo (HTML)",
+        labelEn: "Interactive report file (HTML)",
+        url: "https://github.com/innovationlabug/coverletter-gen/blob/main/evaluaciones/reporte_final_interactivo_split_brain.html",
+      },
+      {
+        label: "Demo: Carta y Copia (APIs)",
+        url: "https://carta-y-copia.vercel.app",
+      },
+      {
+        label: "Demo: Rango (Cloud Run GPU L4)",
+        url: "https://rango-611681112050.us-central1.run.app",
+      },
+      {
+        label: "Demo: Sobre (WebGPU Browser)",
+        url: "https://sobre-carta.vercel.app",
+      },
+      {
+        label: "Repo Rango (coverletter-gemma)",
+        url: "https://github.com/ykro/coverletter-gemma",
+      },
+    ],
+    team: ["adrian-catalan", "luis-cu", "catherine-batres", "emily-curin"],
+  },
+  {
+    id: "split-brain-luis-cu",
+    name: "Split-Brain Cover Letter: integración de APIs salariales",
+    nameEn: "Split-Brain Cover Letter: salary API integration",
+    category: "agents_llms",
+    challengeBadge: {
+      es: "AI Builders · @cuprumbot",
+      en: "AI Builders · @cuprumbot",
+    },
+    description: {
+      es: "Arquitectura Split-Brain en Next.js que consulta salarios de mercado en Glassdoor (Serper API) y perfiles de LinkedIn (Enrich Layer) manteniendo el salario del candidato 100% local.",
+      en: "Next.js Split-Brain architecture querying Glassdoor market salaries (Serper API) and LinkedIn profiles (Enrich Layer) while keeping candidate salary data 100% client-side.",
+    },
+    longDescription: {
+      es: "Desarrollado por Luis Cu (@cuprumbot) como parte del reto Split-Brain del laboratorio. Combina Route Handlers en Next.js con Serper API para extraer rangos salariales de Glassdoor y Enrich Layer para estructurar experiencia de LinkedIn, filtrando determinísticamente el nombre real y las expectativas salariales antes de invocar a Gemini Pro. Incluye cálculo local por expresiones regulares y artículo técnico en Substack.",
+      en: "Built by Luis Cu (@cuprumbot) for the Lab's Split-Brain challenge. Combines Next.js Route Handlers with Serper API for Glassdoor salary benchmarks and Enrich Layer for LinkedIn profile parsing, deterministically stripping candidate identity and salary expectations before calling Gemini Pro.",
+    },
+    technologies: [
+      "Next.js",
+      "TypeScript",
+      "Gemini Pro",
+      "Serper API",
+      "Privacy Regex",
+    ],
+    status: "finished",
+    date: "2026-09",
+    image: "/images/projects/split-brain-luis-cu.png",
+    gallery: [
+      {
+        src: "/images/projects/split-brain-luis-form.png",
+        caption: {
+          es: "Formulario de captura con separación explícita entre datos privados locales y contexto profesional.",
+          en: "Input form with explicit separation between local private data and professional context.",
+        },
+      },
+      {
+        src: "/images/projects/split-brain-luis-arch.png",
+        caption: {
+          es: "Diagrama de arquitectura Split-Brain entre navegador, Route Handlers en Next.js y APIs externas.",
+          en: "Split-Brain architecture diagram across browser, Next.js Route Handlers, and external APIs.",
+        },
+      },
+    ],
+    repo: "https://github.com/cuprumbot/cover-letter-local",
+    demoUrl: "https://cover-letter-six-eta.vercel.app/",
+    links: [
+      {
+        label: "Artículo en Substack (Luis Cu)", labelEn: "Substack article (Luis Cu)",
+        url: "https://cuprumbot.substack.com/p/split-brain-division-de-tareas-para",
+      },
+      {
+        label: "Archivo del informe de evaluación (HTML)",
+        labelEn: "Evaluation report file (HTML)",
+        url: "https://github.com/innovationlabug/coverletter-gen/blob/main/evaluaciones/reporte_evaluacion_luis.html",
+      },
+    ],
+    team: ["luis-cu", "adrian-catalan"],
+  },
+  {
+    id: "split-brain-cathy-batres",
+    name: "Carta Split-Brain: evaluación local de Gemma 3 y Qwen 3",
+    nameEn: "Carta Split-Brain: local evaluation of Gemma 3 and Qwen 3",
+    category: "agents_llms",
+    challengeBadge: {
+      es: "AI Builders · @CatherineBatres",
+      en: "AI Builders · @CatherineBatres",
+    },
+    description: {
+      es: "Enrutador Split-Brain fail-closed con allowlist estricta y benchmark ciego comparando modelos locales en Ollama (Gemma 3 vs Qwen 3) para estrategia de negociación salarial.",
+      en: "Fail-closed Split-Brain router with strict allowlist and blind benchmark comparing local Ollama models (Gemma 3 vs Qwen 3) for private salary negotiation.",
+    },
+    longDescription: {
+      es: "Desarrollado por Cathy Batres (@CatherineBatres). Implementa un guardián de privacidad determinista (CAMPOS_SOLO_LOCAL) con panel de inspección JSON en vivo para auditar qué payload viaja a la nube y qué se procesa en local con Ollama. Incluye un estudio comparativo a ciegas entre Gemma 3 y Qwen 3 midiendo calidad de extracción de requisitos y generación de notas de negociación salarial.",
+      en: "Built by Cathy Batres (@CatherineBatres). Implements a deterministic fail-closed privacy guardian (CAMPOS_SOLO_LOCAL) with a live JSON inspection panel auditing cloud vs. local payloads, paired with a blind evaluation comparing Gemma 3 and Qwen 3 on local Ollama.",
+    },
+    technologies: [
+      "Python",
+      "Ollama",
+      "Gemma 3 vs Qwen 3",
+      "Gemini API",
+      "Deterministic Router",
+    ],
+    status: "finished",
+    date: "2026-09",
+    image: "/images/projects/split-brain-cathy-arch.png",
+    gallery: [
+      {
+        src: "/images/projects/split-brain-cathy-batres.png",
+        caption: {
+          es: "Ejecución en modo local con Gemma y auditoría en vivo del payload sanitizado.",
+          en: "Local execution with Gemma and live inspection of the sanitized payload.",
+        },
+      },
+      {
+        src: "/images/projects/split-brain-cathy-calidad.png",
+        caption: {
+          es: "Evaluación comparativa de calidad y latencia entre Gemma 3 y Qwen 3 corriendo en Ollama.",
+          en: "Comparative quality and latency evaluation between Gemma 3 and Qwen 3 running on Ollama.",
+        },
+      },
+    ],
+    repo: "https://github.com/CatherineBatres/carta-split-brain",
+    links: [
+      {
+        label: "Artículo Técnico en GitHub", labelEn: "Technical article on GitHub",
+        url: "https://github.com/CatherineBatres/carta-split-brain/blob/main/docs/articulo.md",
+      },
+      {
+        label: "Archivo del informe de evaluación (HTML)",
+        labelEn: "Evaluation report file (HTML)",
+        url: "https://github.com/innovationlabug/coverletter-gen/blob/main/evaluaciones/reporte_evaluacion_cathy.html",
+      },
+    ],
+    team: ["catherine-batres", "adrian-catalan"],
+  },
+  {
+    id: "split-brain-emily-curin",
+    name: "CoverLetter Privacy Gate: pruebas de privacidad",
+    nameEn: "CoverLetter Privacy Gate: privacy tests",
+    category: "agents_llms",
+    challengeBadge: {
+      es: "AI Builders · @EmilyCurin",
+      en: "AI Builders · @EmilyCurin",
+    },
+    description: {
+      es: "Compuerta determinista de privacidad con redacción automática de PII, degradación elegante en 3 niveles (Nube → Ollama Local → Plantilla) y más de 15 casos de prueba automatizados.",
+      en: "Deterministic privacy gate with automatic PII redaction, 3-tier graceful fallback (Cloud → Local Ollama → Template), and 15+ automated validation test cases.",
+    },
+    longDescription: {
+      es: "Desarrollado por Emily Curín (@EmilyCurin). Diseña una arquitectura auditable que somete cada solicitud a una compuerta de validación antes de tocar cualquier API externa, garantizando cero fugas de datos salariales o personales incluso ante prompts adversariales, con respaldo automático a modelos locales en Ollama y plantillas deterministas.",
+      en: "Built by Emily Curín (@EmilyCurin). Designs an auditable privacy gate that inspects and sanitizes every payload prior to external API calls, guaranteeing zero leakage of salary or personal identifiers across 15+ automated validation scenarios.",
+    },
+    technologies: [
+      "Python",
+      "Privacy Gate",
+      "Ollama / Qwen",
+      "Automated Evals",
+      "Streamlit",
+    ],
+    status: "finished",
+    date: "2026-09",
+    image: "/images/projects/split-brain-emily-curin.png",
+    repo: "https://github.com/EmilyCurin/CoverLetter",
+    links: [
+      {
+        label: "Artículo Técnico (ARTICLE.md)", labelEn: "Technical article (ARTICLE.md)",
+        url: "https://github.com/EmilyCurin/CoverLetter/blob/main/ARTICLE.md",
+      },
+      {
+        label: "Archivo del informe de evaluación (HTML)",
+        labelEn: "Evaluation report file (HTML)",
+        url: "https://github.com/innovationlabug/coverletter-gen/blob/main/evaluaciones/reporte_evaluacion_emily.html",
+      },
+    ],
+    team: ["emily-curin", "adrian-catalan"],
+  },
+  {
+    id: "preconsulta-medica-ai",
+    name: "PreConsulta Médica por Voz",
+    nameEn: "Voice-based medical intake",
+    category: "health_fintech",
+    featured: true,
+    challengeBadge: {
+      es: "Salud Digital · Cathy Batres & Adrián Catalán",
+      en: "Digital Health · Cathy Batres & Adrián Catalán",
+    },
+    description: {
+      es: "Transforma el relato hablado de un paciente de 2 minutos en una ficha clínica estructurada (SOAP/OPQRST) mediante preguntas adaptativas de seguimiento y detección de banderas rojas.",
+      en: "Transforms a 2-minute spoken patient narrative into a structured clinical record (SOAP/OPQRST) via adaptive follow-up questions and red-flag symptom detection.",
+    },
+    longDescription: {
+      es: "Parte del catálogo AI Builders First Round (innovationlabug/aibuilders-first-round). Incluye la implementación web móvil de Cathy Batres (PreConsulta, con grabación de audio nativa, extracción de 13 campos clínicos sin almacenar PII en servidor y exportación PDF/WhatsApp) y el sistema dual de Adrián Catalán (Telemed Pre-Consult AI en Web y app nativa Android en Jetpack Compose ejecutando Gemma 4 E2B 100% offline en GPU/NPU vía MediaPipe).",
+      en: "Part of the AI Builders First Round catalog (innovationlabug/aibuilders-first-round). Combines Cathy Batres's mobile-first PreConsulta web app (turning patient voice audio into a 13-field clinical sheet with red-flag detection and zero server PII storage) and Adrián Catalán's dual-client Telemed Pre-Consult AI (Web + native Android running Gemma 4 E2B 100% offline via MediaPipe).",
+    },
+    technologies: [
+      "Next.js",
+      "Gemini Flash",
+      "Android Jetpack Compose",
+      "Gemma 4 On-Device",
+      "Clinical NLP",
+    ],
+    status: "finished",
+    date: "2026-10",
+    image: "/images/projects/preconsulta-showcase.png",
+    gallery: [
+      {
+        src: "/images/projects/preconsulta-ficha-lista.png",
+        caption: {
+          es: "Ficha médica estructurada generada automáticamente a partir del relato de voz (Cathy Batres).",
+          en: "Structured medical intake sheet automatically generated from the patient's voice narrative (Cathy Batres).",
+        },
+      },
+      {
+        src: "/images/projects/preconsulta-inicio-nuevo.png",
+        caption: {
+          es: "Pantalla de captura por voz y mapa corporal interactivo de PreConsulta (Cathy Batres).",
+          en: "Voice capture screen and interactive body map in PreConsulta (Cathy Batres).",
+        },
+      },
+      {
+        src: "/images/projects/telemed-android.png",
+        caption: {
+          es: "App nativa Android ejecutando Gemma 4 E2B 100% offline en el teléfono (Adrián Catalán).",
+          en: "Native Android app running Gemma 4 E2B 100% offline on-device (Adrián Catalán).",
+        },
+      },
+    ],
+    repo: "https://github.com/CatherineBatres/preconsulta",
+    demoUrl: "https://preconsulta-iota.vercel.app/",
+    links: [
+      {
+        label: "Demo PreConsulta (Cathy Batres)",
+        url: "https://preconsulta-iota.vercel.app/",
+      },
+      {
+        label: "Artículo en Substack (Cathy Batres)", labelEn: "Substack article (Cathy Batres)",
+        url: "https://catherinebatres.substack.com/p/de-un-audio-a-una-ficha-medica-lo",
+      },
+      {
+        label: "Demo Telemed AI (Adrián Catalán)",
+        url: "https://telemed-preconsult-ai.vercel.app",
+      },
+      {
+        label: "Repo Web (ykro/telemed-preconsult-ai)", labelEn: "Web repository (ykro/telemed-preconsult-ai)",
+        url: "https://github.com/ykro/telemed-preconsult-ai",
+      },
+      {
+        label: "Repo Android Offline (ykro)", labelEn: "Offline Android repository (ykro)",
+        url: "https://github.com/ykro/telemed-preconsult-android",
+      },
+      {
+        label: "Índice AI Builders First Round", labelEn: "AI Builders First Round index",
+        url: "https://github.com/innovationlabug/aibuilders-first-round",
+      },
+    ],
+    team: ["catherine-batres", "adrian-catalan"],
+  },
+  {
+    id: "finanzas-ingresos-variables",
+    name: "Integral y Cashflow Smoother: gestión de ingresos variables",
+    nameEn: "Integral and Cashflow Smoother: managing variable income",
+    category: "health_fintech",
+    featured: true,
+    challengeBadge: {
+      es: "FinTech IA · Emily Curín & Adrián Catalán",
+      en: "AI FinTech · Emily Curín & Adrián Catalán",
+    },
+    description: {
+      es: "Motores financieros para profesionales independientes que combinan bóvedas SQLite cifradas, OCR multimodal de recibos, detección de regímenes estacionales y cálculo de retención óptima.",
+      en: "Financial engines for independent professionals combining encrypted SQLite vaults, multimodal receipt OCR, seasonal regime detection, and optimal retention modeling.",
+    },
+    longDescription: {
+      es: "Dos enfoques complementarios dentro de innovationlabug/aibuilders-first-round: (1) Integral · Ingresos Variables por Emily Curín (@EmilyCurin), con ingesta multi-formato (PDF, XLSX, CSV y fotografías de recibos vía OCR), bóveda SQLite cifrada por usuario con Fernet+scrypt y proyección de escenarios conservador/esperado/optimista (±1σ); y (2) Freelance Cashflow Smoother por Adrián Catalán (@ykro), motor determinista en GTQ/USD que detecta meses pico/valle y calcula semanas de autonomía (runway) y reglas de ahorro acotadas (5%–45%).",
+      en: "Two complementary systems from innovationlabug/aibuilders-first-round: (1) Integral by Emily Curín (@EmilyCurin), featuring multi-format document ingestion (PDF, XLSX, CSV, receipt OCR), per-user Fernet+scrypt encrypted SQLite vaults, and ±1σ scenario modeling; and (2) Freelance Cashflow Smoother by Adrián Catalán (@ykro), a deterministic GTQ/USD cashflow stabilizer with interactive what-if simulations.",
+    },
+    technologies: [
+      "FastAPI & React",
+      "Encrypted SQLite (Fernet)",
+      "OCR & PyMuPDF",
+      "Recharts",
+      "Statistical Modeling",
+    ],
+    status: "finished",
+    date: "2026-10",
+    image: "/images/projects/freelance-cashflow-plan.png",
+    gallery: [
+      {
+        src: "/images/projects/freelance-cashflow-smoother.png",
+        caption: {
+          es: "Ingreso bimonetario en Quetzales (GTQ) y Dólares (USD) con clasificación automática de temporadas.",
+          en: "Bi-monetary GTQ/USD income input with automatic seasonal regime classification.",
+        },
+      },
+      {
+        src: "/images/projects/integral-ingresos-variables.png",
+        caption: {
+          es: "Integral · Ingresos Variables (Emily Curín): bóveda privada por usuario desplegada en Vercel.",
+          en: "Integral · Variable Income (Emily Curín): per-user private financial vault deployed on Vercel.",
+        },
+      },
+    ],
+    repo: "https://github.com/EmilyCurin/Integral-ingresos-variables",
+    demoUrl: "https://integral-ingresos-variables.vercel.app",
+    links: [
+      {
+        label: "Demo Integral (Emily Curín)",
+        url: "https://integral-ingresos-variables.vercel.app",
+      },
+      {
+        label: "Demo Cashflow Smoother (Adrián Catalán)",
+        url: "https://freelance-cashflow-smoother.vercel.app",
+      },
+      {
+        label: "Repo Integral (EmilyCurin)",
+        url: "https://github.com/EmilyCurin/Integral-ingresos-variables",
+      },
+      {
+        label: "Repo Cashflow Smoother (ykro)",
+        url: "https://github.com/ykro/freelance-cashflow-smoother",
+      },
+    ],
+    team: ["emily-curin", "adrian-catalan"],
+  },
+  {
+    id: "estados-de-cuenta-gt",
+    name: "Expense Tracker y Card Statement Insights: análisis de estados de cuenta",
+    nameEn: "Expense Tracker and Card Statement Insights: bank statement analysis",
+    category: "health_fintech",
+    featured: true,
+    challengeBadge: {
+      es: "FinTech GT · Luis Cu & Adrián Catalán",
+      en: "FinTech GT · Luis Cu & Adrián Catalán",
+    },
+    description: {
+      es: "Análisis automatizado de estados de cuenta bancarios de Guatemala (BI, G&T, Banrural) con anonimización local de PII, conversión USD→GTQ, separación de extrafinanciamientos y parser binario en 6 ms.",
+      en: "Automated bank statement intelligence for Guatemalan banks (BI, G&T, Banrural) featuring local PII anonymization, USD→GTQ conversion, installment separation, and a 6 ms binary PDF parser.",
+    },
+    longDescription: {
+      es: "Desarrollado dentro del reto AI Builders First Round: (1) Expense Tracker por Luis Cu (@cuprumbot) procesa lotes PDF/CSV de Banco Industrial, G&T Continental y Banrural, deduplica transacciones, convierte USD a GTQ, detecta suscripciones recurrentes y anonimiza PII en el cliente con vista previa antes de clasificar comercios desconocidos con Gemini; y (2) Card Statement Insights por Adrián Catalán (@ykro) implementa un parser binario de flujos PDF (zlib + coordenadas BT..ET en ~6 ms sin LLM) que separa compras regulares en GTQ, USD y cuotas/extrafinanciamientos (FIN/CT, FIN/IN).",
+      en: "Built for the AI Builders First Round challenge: (1) Expense Tracker by Luis Cu (@cuprumbot) parses multi-bank PDF/CSV statements (Banco Industrial, G&T Continental, Banrural), deduplicates batches, converts USD→GTQ, and anonymizes PII locally with visual confirmation; (2) Card Statement Insights by Adrián Catalán (@ykro) implements a 6 ms zero-LLM binary PDF stream parser separating GTQ, USD, and installment ledgers.",
+    },
+    technologies: [
+      "Next.js",
+      "TypeScript",
+      "Binary PDF Parser",
+      "PII Anonymizer",
+      "Gemini Pro",
+    ],
+    status: "finished",
+    date: "2026-10",
+    image: "/images/projects/expense-tracker-dashboard.png",
+    gallery: [
+      {
+        src: "/images/projects/card-statement-insights.png",
+        caption: {
+          es: "Card Statement Insights: desglose bimonetario GTQ/USD y separación de extrafinanciamientos en 6 ms.",
+          en: "Card Statement Insights: 6 ms bi-monetary GTQ/USD breakdown and installment separation.",
+        },
+      },
+      {
+        src: "/images/projects/expense-tracker-budget.png",
+        caption: {
+          es: "Herramienta de presupuesto y alertas por categoría en Expense Tracker (Luis Cu).",
+          en: "Category budget planner and threshold alerts in Expense Tracker (Luis Cu).",
+        },
+      },
+    ],
+    repo: "https://github.com/cuprumbot/expense-tracker",
+    demoUrl: "https://expense-tracker-blue-sigma-85.vercel.app",
+    links: [
+      {
+        label: "Demo Expense Tracker (Luis Cu)",
+        url: "https://expense-tracker-blue-sigma-85.vercel.app",
+      },
+      {
+        label: "Demo Card Statement Insights (Adrián)",
+        url: "https://card-statement-insights.vercel.app",
+      },
+      {
+        label: "Repo Expense Tracker (cuprumbot)",
+        url: "https://github.com/cuprumbot/expense-tracker",
+      },
+      {
+        label: "Repo Card Statement Insights (ykro)",
+        url: "https://github.com/ykro/card-statement-insights",
+      },
+    ],
+    team: ["luis-cu", "adrian-catalan"],
+  },
+  {
+    id: "hexacoptero-fy690s",
+    name: "Hexacóptero autónomo FY690S: navegación sin GPS",
+    nameEn: "FY690S autonomous hexacopter: navigation without GPS",
+    category: "physical_ai",
+    challengeBadge: {
+      es: "Robótica Aérea · Sin GPS",
+      en: "Aerial Robotics · GPS-Denied",
+    },
+    description: {
+      es: "Aeronave multirrotor de 6 motores (~4 kg) con controlador Pixhawk 6X, Raspberry Pi 5, LiDAR 360° RPLIDAR C1 y cámaras de flujo óptico para vuelo autónomo en entornos sin señal GPS.",
+      en: "6-motor hexacopter (~4 kg) engineered with Pixhawk 6X, Raspberry Pi 5, 360° RPLIDAR C1, and optical flow cameras for autonomous flight in GPS-denied environments.",
+    },
+    longDescription: {
+      es: "Plataforma aérea de investigación construida en el laboratorio sobre chasis plegable de fibra de carbono Tarot FY690S. Integra controlador de vuelo redundante Holybro Pixhawk 6X corriendo ArduCopter, computador de misión Raspberry Pi 5 enlazado vía MAVLink, LiDAR 360° más 5 sonares SRF02 para evasión omnidireccional de obstáculos, posicionamiento por flujo óptico sin GPS y sistema de paracaídas de emergencia.",
+      en: "Research aerial platform engineered in the Lab on a Tarot FY690S carbon-fiber frame. Integrates a redundant Holybro Pixhawk 6X flight controller running ArduCopter, a Raspberry Pi 5 companion computer via MAVLink, 360° LiDAR plus 5 SRF02 sonars for omnidirectional obstacle avoidance, optical-flow GPS-denied positioning, and an emergency parachute system.",
+    },
+    technologies: [
+      "Pixhawk 6X",
+      "Raspberry Pi 5",
+      "LiDAR 360°",
+      "Optical Flow",
+      "ArduCopter",
+    ],
+    status: "in_progress",
+    date: "2026-08",
+    image: "/images/projects/drone.jpeg",
+    repo: "https://github.com/innovationlabug/drone-fy690s",
+    team: ["mario-cifuentes", "luis-galicia", "gerardo-vazquez", "ivan-rojas", "adrian-catalan"],
+  },
+  {
+    id: "mini-pupper-gemini-live",
+    name: "Mini Pupper 2: robot cuadrúpedo con Gemini Live",
+    nameEn: "Mini Pupper 2: quadruped robot with Gemini Live",
+    category: "physical_ai",
+    description: {
+      es: "Perro robótico cuadrúpedo de 12 grados de libertad sobre ROS 2 Humble y Raspberry Pi que conversa, navega con LiDAR SLAM y expresa emociones en tiempo real mediante Gemini Live API.",
+      en: "12-DOF quadruped robot dog on ROS 2 Humble and Raspberry Pi that converses, navigates via LiDAR SLAM, and expresses real-time emotions powered by Gemini Live API.",
+    },
+    longDescription: {
+      es: "Integra un puente HTTP a ROS 2 Humble en FastAPI con sesiones de voz bidireccional de baja latencia en Gemini Live. El cuadrúpedo ejecuta 7 modos interactivos para demostraciones universitarias y visitas a colegios: guía de recorrido con SLAM, respuestas emocionales según proximidad LiDAR, modo radio Bumblebee, rutina de comedia en vivo y teleoperación.",
+      en: "Bridges FastAPI and ROS 2 Humble with low-latency bidirectional voice sessions in Gemini Live. The 12-DOF quadruped runs 7 interactive modes for university demos and school outreach: SLAM tour guide, LiDAR proximity emotional states, Bumblebee radio mode, stand-up comedy routine, and voice teleoperation.",
+    },
+    technologies: [
+      "ROS 2 Humble",
+      "Gemini Live API",
+      "Raspberry Pi",
+      "LiDAR SLAM",
+      "12-DOF Servos",
+    ],
+    status: "finished",
+    date: "2026-07",
+    image: "/images/projects/mini-pupper-2.jpg",
+    gallery: [
+      {
+        src: "/images/projects/mini-pupper-rviz.png",
+        caption: {
+          es: "Visualización de articulaciones URDF y seguimiento en RViz sobre ROS 2.",
+          en: "URDF joint visualization and tracking in RViz on ROS 2.",
+        },
+      },
+    ],
+    repo: "https://github.com/ykro/pupper-talk",
+    links: [
+      { label: "Repo Pupper Talk", url: "https://github.com/ykro/pupper-talk" },
+      {
+        label: "Repo ROS 2 Bridge (pupper-bridge)",
+        url: "https://github.com/ykro/pupper-bridge",
+      },
+    ],
+    team: ["adrian-catalan", "mario-cifuentes", "luis-galicia"],
+  },
+  {
+    id: "escudo-encargo-agentic-web",
+    name: "Escudo y Encargo: agentes para la web",
+    nameEn: "Escudo and Encargo: agents for the web",
+    category: "agents_llms",
+    description: {
+      es: "Implementaciones de referencia de protocolos agénticos abiertos (MCP, A2A, AppFunctions, WebMCP, UCP y AP2 con Passkeys) donde el próximo cliente de una aplicación web es un agente de IA.",
+      en: "Reference implementations of open agentic protocols (MCP, A2A, AppFunctions, WebMCP, UCP, and AP2 with Passkeys) designed for a web where the next customer is an AI agent.",
+    },
+    longDescription: {
+      es: "Dos sistemas completos desarrollados por Adrián Catalán para demostrar cómo construir software 'Built for Agents': Escudo (aseguradora vehicular en Guatemala que expone cotización, reclamos y despacho de grúa simultáneamente vía MCP, A2A, AppFunctions y WebMCP) y Encargo (comercio electrónico agéntico con descubrimiento UCP y pagos autorizados con mandato criptográfico AP2 y WebAuthn Passkeys).",
+      en: "Two complete reference systems built by Adrián Catalán demonstrating 'Built for Agents' software architecture: Escudo (an auto insurance platform exposing quotes, claims, and tow dispatch across MCP, A2A, AppFunctions, and WebMCP) and Encargo (agentic e-commerce with UCP discovery and cryptographic AP2 payment mandates via WebAuthn Passkeys).",
+    },
+    technologies: ["MCP", "A2A", "WebMCP", "UCP & AP2", "WebAuthn Passkeys"],
+    status: "finished",
+    date: "2026-08",
+    image: "/images/projects/escudo-firmado.png",
+    gallery: [
+      {
+        src: "/images/projects/encargo-confirmado.png",
+        caption: {
+          es: "Encargo: comparativa entre navegador humano y compra agéntica con perfil UCP y mandato AP2.",
+          en: "Encargo: side-by-side comparison between human browsing and agentic UCP discovery + AP2 mandate.",
+        },
+      },
+      {
+        src: "/images/projects/escudo-poliza.png",
+        caption: {
+          es: "Escudo: vista móvil de póliza vehicular y flujo de reclamo asistido por agentes.",
+          en: "Escudo: mobile auto insurance policy view and agent-assisted claim workflow.",
+        },
+      },
+    ],
+    repo: "https://github.com/ykro/escudo",
+    links: [
+      { label: "Repo Escudo (Multi-Protocol)", url: "https://github.com/ykro/escudo" },
+      { label: "Repo Encargo (Agentic Commerce)", url: "https://github.com/ykro/encargo" },
+      { label: "Repo Agentic SDLC Demo", url: "https://github.com/ykro/agentic-sdlc-demo" },
+    ],
+    team: ["adrian-catalan"],
+  },
+  {
+    id: "trail-aid-recovery-pal",
+    name: "Trail Aid y Recovery Pal: agentes para Android",
+    nameEn: "Trail Aid and Recovery Pal: agents for Android",
+    category: "agents_llms",
+    description: {
+      es: "Aplicaciones nativas Android con ADK for Kotlin y LiteRT-LM que ejecutan Gemma 4 E2B 100% offline en el teléfono para emergencias en montaña y acompañamiento post-operatorio.",
+      en: "Native Android apps using ADK for Kotlin and LiteRT-LM running Gemma 4 E2B 100% offline on-device for mountain trail emergencies and post-operative recovery.",
+    },
+    longDescription: {
+      es: "Explora arquitecturas de agentes híbridos en dispositivos móviles donde la conectividad no está garantizada. Utilizando Agent Development Kit (ADK) para Kotlin, LiteRT-LM con Gemma 4 E2B en GPU/NPU local y Firebase AI Logic cuando hay señal, permite triaje de primeros auxilios en senderismo de ultradistancia (Trail Aid) y seguimiento clínico en casa (Recovery Pal).",
+      en: "Explores hybrid mobile agent architectures for zero-connectivity scenarios. Built with Agent Development Kit (ADK) for Kotlin, LiteRT-LM running Gemma 4 E2B on local mobile GPU/NPU, and Firebase AI Logic when online, powering ultra-trail first-aid triage (Trail Aid) and home recovery monitoring (Recovery Pal).",
+    },
+    technologies: [
+      "Kotlin",
+      "Jetpack Compose",
+      "ADK for Kotlin",
+      "LiteRT-LM (Gemma 4)",
+      "Firebase AI Logic",
+    ],
+    status: "finished",
+    date: "2026-08",
+    image: "/images/projects/trail-aid-showcase.png",
+    gallery: [
+      {
+        src: "/images/projects/trail-aid-prepare.png",
+        caption: {
+          es: "Trail Aid: preparación antes de salir a montaña con modelo Gemma 4 E2B descargado en el teléfono.",
+          en: "Trail Aid: pre-hike preparation with Gemma 4 E2B downloaded on-device.",
+        },
+      },
+      {
+        src: "/images/projects/trail-aid-emergency.png",
+        caption: {
+          es: "Trail Aid: triaje de emergencia en montaña corriendo Gemma 4 E2B en modo avión.",
+          en: "Trail Aid: mountain emergency triage running Gemma 4 E2B in airplane mode.",
+        },
+      },
+      {
+        src: "/images/projects/recovery-pal-today.png",
+        caption: {
+          es: "Recovery Pal: seguimiento post-operatorio diario con protocolos clínicos locales.",
+          en: "Recovery Pal: daily post-operative check-in backed by local clinical protocols.",
+        },
+      },
+      {
+        src: "/images/projects/recovery-pal-wound.png",
+        caption: {
+          es: "Evaluación estructurada de signos de alerta y evolución de herida quirúrgica.",
+          en: "Structured evaluation of warning signs and surgical wound progression.",
+        },
+      },
+    ],
+    repo: "https://github.com/ykro/trail-aid-demo",
+    links: [
+      { label: "Repo Trail Aid", url: "https://github.com/ykro/trail-aid-demo" },
+      { label: "Repo Recovery Pal", url: "https://github.com/ykro/recovery-pal-demo" },
+    ],
+    team: ["adrian-catalan"],
+  },
+  {
+    id: "pm-innovation-lab-ai",
+    name: "Lab Tasks y PM Innovation Lab: gestión del laboratorio con IA",
+    nameEn: "Lab Tasks and PM Innovation Lab: AI-assisted lab management",
+    category: "agents_llms",
+    description: {
+      es: "Plataforma interna que convierte audios y mensajes de WhatsApp/Telegram en tareas con criterios de aceptación usando Gemini Flash, verificando entregas automáticamente contra commits de GitHub y Google Drive.",
+      en: "Internal AI-First operations platform turning WhatsApp/Telegram voice notes into structured tasks with acceptance criteria via Gemini Flash, auto-verifying against GitHub commits and Google Drive.",
+    },
+    longDescription: {
+      es: "El propio laboratorio opera sobre herramientas construidas en casa: un agente multimodal conectado a WhatsApp y Telegram (@innovationlab_tracker_bot) transcribe notas de voz de dirección, extrae tareas, asigna responsables y monitorea automáticamente los repositorios de GitHub y las carpetas de diseño en Google Drive para actualizar el tablero operativo en tiempo real.",
+      en: "The Innovation Lab runs on its own homegrown AI infrastructure: a multimodal agent connected to WhatsApp and Telegram (@innovationlab_tracker_bot) transcribes voice notes, extracts tasks with acceptance criteria, assigns owners, and automatically audits GitHub repositories and Google Drive design folders.",
+    },
+    technologies: [
+      "Next.js 16",
+      "Vertex AI Gemini",
+      "WhatsApp & Telegram API",
+      "GitHub API",
+      "Firestore",
+    ],
+    status: "finished",
+    date: "2026-06",
+    image: "/images/projects/pm-innovation-lab.png",
+    demoUrl: "https://lab-web-768634351594.us-central1.run.app/portal",
+    links: [
+      { label: "Portal de Tareas (Lab Tasks)", labelEn: "Lab Tasks Portal", url: "https://lab-web-768634351594.us-central1.run.app/portal" },
+      { label: "Tablero PM Innovation Lab", labelEn: "Innovation Lab project board", url: "https://pm-innovationlab.vercel.app" },
+    ],
+    team: ["adrian-catalan"],
+  },
+
+  // ============================================================================
+  // GEMINI MULTIMODAL SPRINT & CLOUD RUN DEMOS (DEC 2025)
+  // ============================================================================
+  {
+    id: "experimentos-gemini-cosmic-oracle",
+    name: "Cosmic Oracle: de una servilleta a una aplicación",
+    nameEn: "Cosmic Oracle: from a napkin sketch to an app",
+    category: "vision_creative",
+    featured: true,
+    challengeBadge: {
+      es: "Multimodal AI · Cloud Run Demo",
+      en: "Multimodal AI · Cloud Run Demo",
+    },
+    description: {
+      es: "Convierte un dibujo a mano alzada en una aplicación funcional usando IA multimodal para generar mockups, ilustraciones, cartas y código ejecutable.",
+      en: "Turns a hand-drawn napkin sketch into a functional application using multimodal AI for mockups, illustrations, cards, and runnable code.",
+    },
+    longDescription: {
+      es: "Pipeline completo de servilleta a aplicación: el usuario sube un boceto a mano alzada de una interfaz y Gemini produce el mockup digital, genera los activos visuales consistentes — iconos, ilustraciones, cartas frente/reverso — y ensambla la experiencia interactiva desplegada en Google Cloud Run.",
+      en: "End-to-end napkin-to-app pipeline: upload a hand-drawn interface sketch and Gemini generates the digital mockup, produces consistent visual assets — icons, illustrations, front/back cards — and assembles the runnable web app on Google Cloud Run.",
+    },
+    technologies: ["Gemini Multimodal", "Cloud Run", "Generative UI", "TypeScript"],
+    status: "finished",
+    date: "2025-12",
+    image: "/images/projects/cosmic-oracle-card.png",
+    gallery: [
+      { src: "/images/projects/cosmic-oracle-napkin.jpg", caption: { es: "Boceto original en una servilleta", en: "Original sketch on a napkin" } },
+      { src: "/images/projects/cosmic-oracle-altar.png", caption: { es: "Pantalla del altar", en: "Altar screen" } },
+      { src: "/images/projects/cosmic-oracle-prophecy.png", caption: { es: "Pantalla de la profecía", en: "Prophecy screen" } },
+      { src: "/images/projects/cosmic-oracle-card-front.png", caption: { es: "Anverso de la carta", en: "Card front" } },
+      { src: "/images/projects/cosmic-oracle-card-back.png", caption: { es: "Reverso de la carta", en: "Card back" } },
+    ],
+    repo: "https://github.com/ykro/cosmic-oracle",
+    archivedDemoUrl: "https://cosmic-oracle-frontend-622959071640.us-central1.run.app/",
+    team: ["adrian-catalan"],
+  },
+  {
+    id: "experimentos-gemini-panel-one",
+    name: "Panel One: cómics a partir de fotografías",
+    nameEn: "Panel One: comics from photographs",
+    category: "vision_creative",
+    description: {
+      es: "Genera historias visuales maquetadas como panel de cómic a partir de secuencias de hasta ocho fotografías reales.",
+      en: "Generates laid-out comic panel stories from sequences of up to eight real photographs.",
+    },
+    longDescription: {
+      es: "Herramienta de narrativa visual que toma hasta ocho fotografías y las transforma en un panel de cómic coherente. Gemini analiza la continuidad visual entre imágenes, redacta los diálogos y produce el panel maquetado con globos de texto y tipografía de cómic.",
+      en: "Visual storytelling tool that takes up to eight photos and turns them into a cohesive comic panel. Gemini analyzes visual continuity across frames, writes dialogue, and produces a laid-out comic page.",
+    },
+    technologies: ["Gemini Multimodal", "Cloud Run", "Visual Storytelling", "React"],
+    status: "finished",
+    date: "2025-12",
+    image: "/images/projects/panel-one-comic.jpg",
+    gallery: [
+      { src: "/images/projects/panel-one-result.png", caption: { es: "Cómic generado a partir de fotografías", en: "Comic generated from photographs" } },
+    ],
+    repo: "https://github.com/ykro/panel-one",
+    archivedDemoUrl: "https://panel-one-frontend-622959071640.us-central1.run.app/",
+    team: ["adrian-catalan"],
+  },
+  {
+    id: "experimentos-gemini-run-sight",
+    name: "RunSight: telemetría para corredores",
+    nameEn: "RunSight: telemetry for runners",
+    category: "health_fintech",
+    description: {
+      es: "Analiza archivos FIT de relojes deportivos (potencia, cadencia, ritmo, frecuencia cardíaca) y entrega diagnóstico biomecánico y táctico con IA.",
+      en: "Analyzes sports watch FIT files (power, cadence, pace, heart rate) to deliver AI-powered biomechanical and pacing diagnostics.",
+    },
+    longDescription: {
+      es: "Aplicación de análisis estratégico para corredores de fondo y ultradistancia. El atleta sube el archivo binario FIT de su entrenamiento y el sistema correlaciona deriva cardíaca, cadencia, potencia y desnivel para generar recomendaciones específicas de pacing y recuperación.",
+      en: "Strategic analytics app for distance and ultra-trail runners. Athletes upload binary FIT workout files and receive correlation analysis across cardiac drift, cadence, power, and elevation.",
+    },
+    technologies: ["FIT Telemetry", "Gemini", "Sports Analytics", "Cloud Run"],
+    status: "finished",
+    date: "2025-12",
+    image: "/images/projects/runsight-dashboard.png",
+    gallery: [
+      { src: "/images/projects/runsight-demo.png", caption: { es: "Vista de la demostración de RunSight", en: "RunSight demo screen" } },
+    ],
+    repo: "https://github.com/ykro/run-sight",
+    archivedDemoUrl: "https://runsight-web-622959071640.us-central1.run.app/",
+    team: ["adrian-catalan"],
+  },
+  {
+    id: "experimentos-gemini-run-or-done",
+    name: "Run or Done: análisis del desgaste en calzado deportivo",
+    nameEn: "Run or Done: analyzing wear on running shoes",
+    category: "vision_creative",
+    description: {
+      es: "Evalúa por visión artificial fotografías de suela, media suela y upper de tenis para correr y emite un dictamen de vida útil o reemplazo.",
+      en: "Evaluates photos of running shoe soles, midsoles, and uppers using computer vision to issue a structured wear and replacement verdict.",
+    },
+    longDescription: {
+      es: "Evaluador visual para prevención de lesiones en corredores. A partir de fotografías de la suela, media suela y capellada, detecta patrones de desgaste asimétrico, compresión de espuma y pérdida de soporte estructural, explicando el razonamiento por componente.",
+      en: "Visual evaluator for runner injury prevention. From photos of the outsole, midsole, and upper, it detects asymmetric wear patterns, foam compression, and structural support loss with per-component reasoning.",
+    },
+    technologies: ["Computer Vision", "Gemini Multimodal", "Sports Biomechanics", "Cloud Run"],
+    status: "finished",
+    date: "2025-12",
+    image: "/images/projects/run-or-done-report.png",
+    gallery: [
+      { src: "/images/projects/run-or-done-result.png", caption: { es: "Resultado del análisis de desgaste", en: "Wear analysis results" } },
+    ],
+    repo: "https://github.com/ykro/run-or-done",
+    archivedDemoUrl: "https://run-or-done-622959071640.us-central1.run.app/",
+    team: ["adrian-catalan"],
+  },
+  {
+    id: "experimentos-gemini-tempo-lottery",
+    name: "Tempo Lottery: juego de cartas de coincidencia rápida",
+    nameEn: "Tempo Lottery: a fast-matching card game",
+    category: "vision_creative",
+    description: {
+      es: "Juego web interactivo de cartas basado en coincidencia rápida de símbolos y generación dinámica de partidas desplegado en Cloud Run.",
+      en: "Fast-paced interactive card game based on symbol matching and dynamic round generation deployed on Cloud Run.",
+    },
+    longDescription: {
+      es: "Juego de velocidad visual donde los jugadores emparejan símbolos bajo presión de tiempo para avanzar en el tablero. Combina generación de mazos e ilustraciones con lógica reactiva en el navegador.",
+      en: "Visual speed game where players match symbols under time pressure to advance across the board, combining AI-generated card decks with reactive browser gameplay.",
+    },
+    technologies: ["Interactive Game", "Gemini", "Cloud Run", "Web Audio/UI"],
+    status: "finished",
+    date: "2025-12",
+    image: "/images/projects/tempo-lottery.jpg",
+    gallery: [
+      { src: "/images/projects/tempo-lottery-screenshot.jpg", caption: { es: "Captura del tablero de juego", en: "Game board screenshot" } },
+      { src: "/images/projects/tempo-lottery-gameplay.webp", caption: { es: "Partida de Tempo Lottery", en: "Tempo Lottery gameplay" } },
+    ],
+    repo: "https://github.com/ykro/tempo-lottery",
+    archivedDemoUrl: "https://tempo-lottery-622959071640.us-central1.run.app/",
+    team: ["adrian-catalan"],
+  },
+  {
+    id: "experimentos-gemini-motion-manga",
+    name: "Motion Manga: de un video a una secuencia de manga",
+    nameEn: "Motion Manga: from a video to a manga sequence",
+    category: "vision_creative",
+    description: {
+      es: "Descompone videos cortos en keyframes, construye un guion narrativo y estiliza cada viñeta como una página de manga.",
+      en: "Decomposes short videos into keyframes, builds a connecting narrative script, and stylizes each panel as a manga page.",
+    },
+    longDescription: {
+      es: "Herramienta que toma un clip de video, selecciona automáticamente los fotogramas de mayor carga expresiva, genera la narrativa que los conecta y transforma la secuencia en una página maquetada de manga en blanco, negro y tramas.",
+      en: "Pipeline that ingests a short video clip, selects expressive keyframes, generates connecting narrative dialogue, and renders a stylized Japanese manga page.",
+    },
+    technologies: ["Multimodal Video", "Gemini", "Image Generation", "TypeScript"],
+    status: "finished",
+    date: "2025-12",
+    image: "/images/projects/motion-manga-comic.jpg",
+    gallery: [
+      { src: "/images/projects/motion-manga-example.png", caption: { es: "Secuencia de manga generada", en: "Generated manga sequence" } },
+    ],
+    repo: "https://github.com/ykro/motion-manga",
+    team: ["adrian-catalan"],
+  },
+
+  // ============================================================================
+  // HARDWARE, IOT, ROBOTICS & APPLIED PROTOTYPES (2025–2026)
+  // ============================================================================
+  {
+    id: "comunicacion-obd2-con-vehiculo-mvp",
+    name: "OBD-Connect y ELM327 Emulator: diagnóstico vehicular",
+    nameEn: "OBD-Connect and ELM327 Emulator: vehicle diagnostics",
+    category: "iot_hardware",
+    description: {
+      es: "Aplicación móvil en Kotlin para lectura de sensores ECU y códigos de falla DTC vía OBD-II, acompañada de un emulador ELM327 multi-ECU para pruebas.",
+      en: "Kotlin mobile app for reading ECU sensors and DTC fault codes via OBD-II, paired with a multi-ECU ELM327 emulator for automated testing.",
+    },
+    longDescription: {
+      es: "Desarrollado por Luis Cu (@cuprumbot) en el laboratorio. Se conecta al puerto OBD-II del vehículo mediante Bluetooth/WiFi para monitorear RPM, velocidad, temperatura y códigos de diagnóstico (DTC), e incluye un emulador de protocolo ELM327 en Python para simular distintos estados del motor sin requerir un vehículo físico.",
+      en: "Built by Luis Cu (@cuprumbot) at the Lab. Connects to the vehicle's OBD-II port via Bluetooth/WiFi to monitor RPM, speed, coolant temperature, and DTC fault codes, backed by a Python ELM327 protocol emulator for multi-ECU simulation.",
+    },
+    technologies: ["Kotlin", "Android", "OBD-II / ELM327", "Python Emulator"],
+    status: "finished",
+    date: "2026-03",
+    image: "/images/projects/comunicacion-obd2-con-vehiculo-mvp.png",
+    repo: "https://github.com/cuprumbot/OBD-Connect",
+    links: [
+      { label: "Repo App Android (OBD-Connect)", labelEn: "Android repository (OBD-Connect)", url: "https://github.com/cuprumbot/OBD-Connect" },
+      { label: "Repo Emulador ELM327", labelEn: "ELM327 emulator repository", url: "https://github.com/cuprumbot/ELM327-emulator" },
+    ],
+    team: ["luis-cu"],
+  },
+  {
+    id: "brazo-mirobot",
+    name: "Brazo robótico Mirobot: control desde el navegador",
+    nameEn: "Mirobot arm: browser-based control",
+    category: "physical_ai",
+    description: {
+      es: "Interfaz web en Flask y API de control cinemático para operar el brazo robótico industrial de 6 ejes Wlkata Mirobot en prácticas de mecatrónica.",
+      en: "Flask web interface and kinematic control API for operating the 6-axis Wlkata Mirobot industrial robotic arm in mechatronics labs.",
+    },
+    longDescription: {
+      es: "Plataforma educativa de robótica industrial que permite controlar desde el navegador las trayectorias, rutinas pick-and-place y cinemática inversa del brazo Wlkata Mirobot, facilitando prácticas de automatización para estudiantes e invitados.",
+      en: "Educational industrial robotics platform enabling browser-based control of trajectories, pick-and-place routines, and inverse kinematics on the Wlkata Mirobot arm.",
+    },
+    technologies: ["Python", "Flask", "Robotics", "Mirobot 6-DOF", "Serial Control"],
+    status: "finished",
+    date: "2026-02",
+    image: "/images/projects/brazo-recogedor.jpeg",
+    gallery: [
+      {
+        src: "/images/projects/flask-arm-completo.png",
+        caption: {
+          es: "Esquema cinemático de los 6 ejes articulados del brazo Wlkata Mirobot en la interfaz Flask.",
+          en: "Kinematic diagram of the 6 articulated joints on the Wlkata Mirobot arm in the Flask interface.",
+        },
+      },
+    ],
+    repo: "https://github.com/cuprumbot/flask-arm",
+    team: ["luis-cu", "mario-cifuentes"],
+  },
+  {
+    id: "chess-detection-cv",
+    name: "Reconocimiento de partidas de ajedrez",
+    nameEn: "Computer vision for chess games",
+    category: "vision_creative",
+    description: {
+      es: "Reconocimiento automático de piezas y estado de partidas de ajedrez mediante visión artificial.",
+      en: "Automated chess piece and board-state recognition via computer vision.",
+    },
+    longDescription: {
+      es: "Sistema en Python que procesa video e imágenes del tablero físico para identificar la posición de cada pieza y registrar jugadas automáticamente.",
+      en: "Python computer vision system that processes physical chessboard images to identify piece positions and log moves automatically.",
+    },
+    technologies: ["Python", "OpenCV", "Computer Vision", "Chess"],
+    status: "finished",
+    date: "2025-08",
+    image: "/images/projects/chess-detection-roboflow.jpg",
+    repo: "https://github.com/cuprumbot/chess-detection",
+    team: ["luis-cu", "emily-curin"],
+  },
+  {
+    id: "hidroponia-iot",
+    name: "Sistema embebido para hidroponía automatizada",
+    nameEn: "Embedded system for automated hydroponics",
+    category: "iot_hardware",
+    description: {
+      es: "Controlador electrónico en C++ con sensores de nivel de agua, humedad y caudal para automatizar cargas de 12V DC en cultivos hidropónicos.",
+      en: "C++ embedded controller with water level, humidity, and flow sensors to automate 12V DC loads in hydroponic systems.",
+    },
+    longDescription: {
+      es: "Desarrollado por Cathy Batres (@CatherineBatres). Integra un shield de potencia en PCB con certificación OSHWA (GT000011) para conmutar bombas y válvulas de 12V DC en función de lecturas continuas de nivel de agua, humedad y flujo, protegiendo el sistema contra trabajo en seco.",
+      en: "Developed by Cathy Batres (@CatherineBatres). Integrates an OSHWA-certified (GT000011) power shield PCB to switch 12V DC pumps and valves based on continuous water level, humidity, and flow sensor readings.",
+    },
+    technologies: ["C++", "ESP32", "Custom PCB (Altium)", "OSHWA GT000011"],
+    status: "finished",
+    date: "2025-06",
+    image: "/images/projects/hidroponia-iot.png",
+    repo: "https://github.com/CatherineBatres/HIDROPONIA",
+    links: [
+      {
+        label: "Certificación Open Source Hardware (GT000011)",
+        labelEn: "Open Source Hardware Certification (GT000011)",
+        url: "https://certification.oshwa.org/gt000011.html",
+      },
+    ],
+    team: ["catherine-batres"],
+  },
+  {
+    id: "mano-robotica",
+    name: "Mano robótica articulada impresa en 3D",
+    nameEn: "3D-printed articulated robotic hand",
+    category: "physical_ai",
+    description: {
+      es: "Rediseño y reconstrucción de prótesis y mano robótica funcional de cinco dedos accionados por servomotores y tendones de nylon.",
+      en: "Redesign and rebuild of a functional five-fingered robotic hand actuated by servomotors and nylon tendons.",
+    },
+    longDescription: {
+      es: "Rediseño mecánico y electrónico de una mano robótica impresa en 3D en el laboratorio. Cinco dedos articulados traccionados por servomotores permiten ejecutar agarres de precisión para demostraciones de biónica y mecatrónica.",
+      en: "Mechanical and electronic redesign of a 3D-printed robotic hand at the Lab, featuring five articulated fingers driven by servomotors for bionic and mechatronic demonstrations.",
+    },
+    technologies: ["Robotics", "3D Printing", "Mechatronics", "Servomotors"],
+    status: "finished",
+    date: "2025-09",
+    image: "/images/projects/mano-robotica.jpeg",
+    team: ["mario-cifuentes", "gerardo-vazquez", "ivan-rojas"],
+  },
+  {
+    id: "cartel-luz",
+    name: "Cartel Luz: matriz de luces interactiva para colegios",
+    nameEn: "Cartel Luz: interactive light matrix for schools",
+    category: "iot_hardware",
+    description: {
+      es: "Dispositivo interactivo con ESP8266, matriz de LEDs NeoPixel y mini-juego integrado para activaciones STEM en visitas a colegios.",
+      en: "Interactive gadget with ESP8266, NeoPixel LED matrix, and built-in mini-game for STEM school outreach activations.",
+    },
+    longDescription: {
+      es: "Cartel luminoso interactivo diseñado por la célula Maker como herramienta de acercamiento en visitas a colegios. Un ESP8266 controla una matriz de LEDs NeoPixel que ejecuta animaciones y un mini-juego físico para introducir electrónica y programación.",
+      en: "Interactive light sign built by the Maker cell for high school outreach visits. An ESP8266 drives a NeoPixel LED matrix displaying animations and a playable mini-game.",
+    },
+    technologies: ["ESP8266", "NeoPixel", "IoT", "STEM Outreach"],
+    status: "finished",
+    date: "2026-01",
+    image: "/images/projects/cartel-luz.jpeg",
+    team: ["luis-galicia", "mario-cifuentes", "raul-jolon"],
+  },
+  {
+    id: "control-brazo-robotico-negro",
+    name: "Tarjeta ESP32 para un brazo robótico de seis ejes",
+    nameEn: "ESP32 board for a six-axis robotic arm",
+    category: "physical_ai",
+    description: {
+      es: "Tarjeta electrónica diseñada en el laboratorio (PCB propia con MCU ESP32) para control WiFi, calibración y modo enseñanza de un brazo robótico.",
+      en: "Lab-designed custom ESP32 PCB controller board providing WiFi trajectory control, auto-calibration, and teach-mode recording for a 6-DOF robotic arm.",
+    },
+    longDescription: {
+      es: "Diseño electrónico propio en PCB con microcontrolador ESP32 para comandar un brazo robótico de seis grados de libertad. Expone interfaz WiFi para ejecutar trayectorias y modo de enseñanza donde el operador guía el brazo manualmente y la tarjeta graba la secuencia.",
+      en: "Custom-designed ESP32 PCB controller board for a 6-DOF robotic arm, exposing a WiFi API for trajectory execution and manual teach-and-replay recording.",
+    },
+    technologies: ["Custom PCB", "ESP32", "Robotics", "Embedded C++"],
+    status: "in_progress",
+    date: "2026-01",
+    image: "/images/projects/control-brazo-robotico-negro.png",
+    team: ["mario-cifuentes", "gerardo-vazquez"],
+  },
+  {
+    id: "gearbox",
+    name: "Gearbox: caja de cambios impresa en 3D",
+    nameEn: "Gearbox: 3D-printed transmission",
+    category: "iot_hardware",
+    description: {
+      es: "Diseño CAD y manufactura aditiva de una caja de transmisión mecánica para aplicaciones didácticas y de robótica ligera.",
+      en: "CAD design and additive manufacturing of a mechanical gearbox for robotics and engineering instruction.",
+    },
+    longDescription: {
+      es: "Modelado CAD y fabricación de una caja de cambios funcional combinando piezas impresas en 3D y rodamientos estándar para demostrar principios de reducción mecánica, torque y transmisión en mecatrónica.",
+      en: "CAD modeling and 3D fabrication of a functional mechanical gearbox combining printed gears and standard bearings to demonstrate torque reduction and transmission principles.",
+    },
+    technologies: ["CAD", "3D Printing", "Mechanics", "Mechatronics"],
+    status: "in_progress",
+    date: "2026-01",
+    image: "/images/projects/palanca-cambios.jpeg",
+    team: ["ivan-rojas", "gerardo-vazquez"],
+  },
+  {
+    id: "mini-bots",
+    name: "Mini Bots: robots compactos autónomos",
+    nameEn: "Mini Bots: compact autonomous robots",
+    category: "physical_ai",
+    description: {
+      es: "Serie de robots compactos e interactivos con navegación autónoma por ultrasonido, seguimiento de línea y sensores infrarrojos.",
+      en: "Series of compact interactive robots featuring ultrasonic obstacle avoidance, line following, and IR sensing.",
+    },
+    longDescription: {
+      es: "Plataforma educativa compuesta por múltiples robots compactos donde cada unidad resuelve un reto clásico de locomoción y sensado: evasión por ultrasonido, seguimiento de línea o triangulación infrarroja.",
+      en: "Educational fleet of compact robots where each unit tackles a distinct locomotion and sensing challenge: ultrasonic avoidance, line-following, or IR triangulation.",
+    },
+    technologies: ["Robotics", "Sensors", "Mechatronics", "Microcontrollers"],
+    status: "finished",
+    date: "2026-01",
+    image: "/images/projects/mini-bots.png",
+    team: ["luis-galicia", "mario-cifuentes", "ivan-rojas"],
+  },
+  {
+    id: "ar-para-colocacion-de-muebles",
+    name: "Colocación de muebles en realidad aumentada",
+    nameEn: "Furniture placement in augmented reality",
+    category: "vision_creative",
+    description: {
+      es: "Aplicación móvil de realidad aumentada (ARCore/ARKit) para proyectar modelos 3D a escala real con detección de planos y sombras dinámicas.",
+      en: "Mobile augmented reality application (ARCore/ARKit) projecting true-scale 3D furniture models with plane detection and dynamic shadows.",
+    },
+    longDescription: {
+      es: "Permite visualizar objetos tridimensionales en espacios físicos reales antes de fabricarlos o adquirirlos, detectando piso, paredes e iluminación ambiental para anclar los modelos con escala precisa.",
+      en: "Visualizes 3D objects in physical spaces prior to fabrication or purchase, detecting floors, walls, and ambient lighting for accurate spatial anchoring.",
+    },
+    technologies: ["ARCore / ARKit", "3D Visualization", "Mobile", "Spatial Computing"],
+    status: "finished",
+    date: "2026-02",
+    image: "/images/projects/ar-para-colocacion-de-muebles.png",
+    team: ["steven-marroquin"],
+  },
+  {
+    id: "educador-personal",
+    name: "Educador Personal: tutor adaptativo con IA",
+    nameEn: "Educador Personal: adaptive AI tutor",
+    category: "agents_llms",
+    description: {
+      es: "Orquestación de agentes de IA que diagnostica el estilo de aprendizaje del estudiante y adapta las explicaciones y ejercicios en tiempo real.",
+      en: "Multi-agent AI system that identifies a student's learning style and adapts explanations and exercises in real time.",
+    },
+    longDescription: {
+      es: "Sistema multi-agente donde cada agente especializado representa una estrategia pedagógica (visual, analítica, verbal, práctica) y ajusta dinámicamente la presentación de conceptos complejos de ingeniería.",
+      en: "Multi-agent educational platform where specialized pedagogical agents dynamically adapt engineering concepts to visual, analytical, or hands-on learners.",
+    },
+    technologies: ["Multi-Agent AI", "EdTech", "LLMs", "Software"],
+    status: "finished",
+    date: "2025-12",
+    image: "/images/projects/educador-personal.png",
+    team: ["eduardo-tobar", "christian-martinez"],
+  },
+  {
+    id: "totito",
+    name: "Totito con visión por computadora",
+    nameEn: "Tic-tac-toe with computer vision",
+    category: "vision_creative",
+    description: {
+      es: "Tablero físico de tres en raya con cámara cenital donde un agente de IA interpreta las jugadas físicas y responde en tiempo real.",
+      en: "Physical tic-tac-toe board with overhead camera where an AI agent interprets physical moves and responds in real time.",
+    },
+    longDescription: {
+      es: "Explora interfaces tangibles: una cámara superior observa el tablero físico, reconoce por visión artificial las piezas colocadas por el jugador humano y el agente de IA responde conversando y anunciando su contrajugada.",
+      en: "Explores tangible interfaces: an overhead camera observes the physical board, recognizes human moves via computer vision, and the AI agent responds in real time.",
+    },
+    technologies: ["Computer Vision", "Tangible UI", "AI Agent", "Hardware"],
+    status: "in_progress",
+    date: "2026-02",
+    image: "/images/projects/totito.png",
+    team: ["raul-jolon", "luis-galicia"],
+  },
+  {
+    id: "boton-iot",
+    name: "Botón IoT para registrar y resumir ideas con IA",
+    nameEn: "IoT button for capturing and summarizing ideas with AI",
+    category: "iot_hardware",
+    description: {
+      es: "Dispositivo físico de un solo clic que graba notas de voz, transcribe y estructura resúmenes automáticos con IA hacia el flujo de trabajo del usuario.",
+      en: "Single-click physical hardware button that records voice notes, transcribes, and dispatches structured AI summaries.",
+    },
+    longDescription: {
+      es: "Hardware discreto pensado para capturar ideas sin fricción durante trabajo de laboratorio: un clic inicia la captura de audio, transcribe el contenido y un modelo de lenguaje extrae tareas y puntos clave.",
+      en: "Frictionless physical capture device for lab work: a single press records voice, transcribes speech, and extracts structured action items via LLM.",
+    },
+    technologies: ["ESP32", "IoT", "Speech-to-Text", "AI Summarization"],
+    status: "in_progress",
+    date: "2026-01",
+    image: "/images/projects/boton-iot.png",
+    team: ["raul-jolon", "mario-cifuentes"],
+  },
+  {
+    id: "monitor-de-ocupacion-de-escritorio",
+    name: "Monitor de ocupación sin cámaras",
+    nameEn: "Camera-free occupancy monitor",
+    category: "iot_hardware",
+    description: {
+      es: "Detecta si una estación de trabajo está ocupada combinando sensores PIR y capacitivos, preservando el 100% de la privacidad visual.",
+      en: "Detects workstation occupancy by fusing PIR and capacitive sensors while preserving 100% visual privacy.",
+    },
+    longDescription: {
+      es: "Fusión de sensores no intrusivos (movimiento PIR, presencia capacitiva y actividad) para generar telemetría de ocupación de espacios de laboratorio sin utilizar cámaras ni micrófonos.",
+      en: "Non-intrusive sensor fusion (PIR motion and capacitive sensing) generating lab space occupancy telemetry without cameras or microphones.",
+    },
+    technologies: ["IoT Sensors", "Privacy-By-Design", "ESP32", "Telemetry"],
+    status: "in_progress",
+    date: "2026-01",
+    image: "/images/projects/monitor-de-ocupacion-de-escritorio.png",
+    team: ["emily-curin", "raul-jolon"],
+  },
+  {
+    id: "proyecto-camaleon",
+    name: "Proyecto Camaleón: detección y reproducción de colores",
+    nameEn: "Chameleon Project: color detection and reproduction",
+    category: "iot_hardware",
+    description: {
+      es: "Prototipo IoT con sensor espectral TCS34725 capaz de muestrear el color de superficies físicas y replicarlo en matrices LED.",
+      en: "IoT prototype with a TCS34725 spectral sensor that samples physical surface colors and replicates them on LED arrays.",
+    },
+    longDescription: {
+      es: "Explora superficies adaptativas: un sensor óptico TCS34725 mide las componentes RGB e iluminación de cualquier objeto cercano y calibra en tiempo real la respuesta lumínica del dispositivo.",
+      en: "Explores adaptive surfaces: a TCS34725 optical sensor measures RGB and illuminance values from nearby objects and calibrates LED output in real time.",
+    },
+    technologies: ["TCS34725 Sensor", "IoT", "Hardware", "Optoelectronics"],
+    status: "in_progress",
+    date: "2026-01",
+    image: "/images/projects/proyecto-camaleon.png",
+    team: ["raul-jolon"],
+  },
+  {
+    id: "alerta-de-planta-seca",
+    name: "Monitor de humedad para plantas",
+    nameEn: "Plant moisture monitor",
+    category: "iot_hardware",
+    description: {
+      es: "Monitoreo multicanal de humedad de suelo vía ESP32 que notifica por Telegram cuando una planta requiere riego.",
+      en: "Multi-channel soil moisture telemetry via ESP32 that dispatches Telegram alerts when plants need watering.",
+    },
+    longDescription: {
+      es: "Sensores capacitivos conectados a un ESP32 con multiplexor reportan curvas de humedad cada hora a un bot de Telegram, enviando alertas preventivas personalizadas por especie.",
+      en: "Capacitive moisture sensors multiplexed into an ESP32 report hourly soil telemetry to a Telegram bot with per-plant thresholds.",
+    },
+    technologies: ["ESP32", "Capacitive Sensors", "Telegram Bot API", "IoT"],
+    status: "in_progress",
+    date: "2026-01",
+    image: "/images/projects/alerta-de-planta-seca.png",
+    team: ["emily-curin"],
+  },
+  {
+    id: "prototipo-auditor-de-codigo",
+    name: "Agente para auditar código y escribir documentación",
+    nameEn: "Agent for auditing code and writing documentation",
+    category: "agents_llms",
+    description: {
+      es: "Sistema agéntico que inspecciona repositorios, detecta vulnerabilidades o deuda técnica y genera documentación explicativa.",
+      en: "Agentic system that inspects repositories, detects vulnerabilities and technical debt, and generates explanatory documentation.",
+    },
+    technologies: ["AI Agents", "Static Analysis", "GitHub", "Security"],
+    status: "in_progress",
+    date: "2026-01",
+    image: "/images/projects/prototipo-auditor-de-codigo.png",
+    team: ["eduardo-tobar", "christian-martinez"],
+  },
+  {
+    id: "prototipo-scout-de-mercado",
+    name: "Agente para comparar precios",
+    nameEn: "Price comparison agent",
+    category: "agents_llms",
+    description: {
+      es: "Agente con generación aumentada por recuperación (RAG) para localizar productos locales optimizando presupuesto y cercanía.",
+      en: "Retrieval-Augmented Generation (RAG) agent for finding local products optimized by budget and proximity.",
+    },
+    technologies: ["RAG", "AI Agents", "E-Commerce", "Search"],
+    status: "in_progress",
+    date: "2026-01",
+    image: "/images/projects/prototipo-scout-de-mercado.png",
+    team: ["christian-martinez"],
+  },
+  {
+    id: "fork-it",
+    name: "Fork It: simulador de decisiones con IA",
+    nameEn: "Fork It: AI decision simulator",
+    category: "agents_llms",
+    description: {
+      es: "Plataforma interactiva de árboles de decisión donde agentes de IA proyectan consecuencias de corto y mediano plazo para cada alternativa.",
+      en: "Interactive decision-tree platform where AI agents project short- and medium-term consequences across branching choices.",
+    },
+    technologies: ["Decision Trees", "AI Agents", "Reasoning", "Web App"],
+    status: "in_progress",
+    date: "2026-01",
+    image: "/images/projects/fork-it.png",
+    team: ["daniel-salguero"],
+  },
+  {
+    id: "sentiment-analysis-y-futbol",
+    name: "Análisis de sentimiento en el fútbol guatemalteco",
+    nameEn: "Sentiment analysis in Guatemalan football",
+    category: "agents_llms",
+    description: {
+      es: "Pipeline NLP que clasifica polaridad emocional y extrae temas dominantes en conversaciones digitales sobre fútbol guatemalteco.",
+      en: "NLP pipeline classifying emotional polarity and extracting dominant topics across digital conversations on Guatemalan football.",
+    },
+    technologies: ["NLP", "Sentiment Analysis", "Data Analytics", "Python"],
+    status: "in_progress",
+    date: "2026-01",
+    image: "/images/projects/sentiment-analysis-y-futbol.png",
+    team: ["yoselin-mejia"],
+  },
+
+  // ============================================================================
+  // HISTORICAL ARCHIVE (2012–2018 PIONEERING PROJECTS)
+  // ============================================================================
+  {
+    id: "pictance",
+    name: "Pictance: reconocimiento de puntos faciales",
+    nameEn: "Pictance: facial landmark detection",
+    category: "vision_creative",
+    description: {
+      es: "Exploración pionera (2018) de detección de rasgos faciales en la web mediante redes neuronales profundas.",
+      en: "Early 2018 exploration of web-based facial landmark detection powered by deep neural networks.",
+    },
+    longDescription: {
+      es: "Aplicación web desarrollada en 2018 que procesaba fotografías del usuario mediante redes neuronales para localizar rasgos faciales clave antes de la masificación de las APIs modernas de visión.",
+      en: "Web application built in 2018 that processed user photographs with neural networks to locate facial landmarks prior to mainstream cloud vision APIs.",
     },
     technologies: ["Neural Networks", "Web App", "Computer Vision"],
     status: "archived",
     date: "2018-08",
     image: "/images/projects/pictance.png",
+    team: ["adrian-catalan"],
   },
   {
     id: "kotlinbots-hexapod",
-    name: "Kotlinbots Hexapod",
+    name: "Kotlinbots Hexapod: robot de seis patas",
+    nameEn: "Kotlinbots Hexapod: six-legged robot",
+    category: "physical_ai",
     description: {
-      es: "Robot de seis patas controlado vía Android Things en Raspberry Pi. Utiliza visión por computadora y Firebase.",
-      en: "Six-legged robot controlled via Android Things on Raspberry Pi. Uses computer vision and Firebase.",
+      es: "Robot hexápodo articulado sobre Raspberry Pi ejecutando Android Things en Kotlin, con visión por computadora y control vía Firebase.",
+      en: "Six-legged articulated hexapod robot on Raspberry Pi running Android Things in Kotlin, with computer vision and Firebase control.",
     },
     longDescription: {
-      es: "Hexápodo ensamblado sobre Raspberry Pi corriendo Android Things. Cada pata se controla con servomotores coordinados; una cámara embarcada más Firebase habilitan reconocimiento de objetos y comando remoto desde un dispositivo Android. Combina locomoción inspirada en insectos con un stack Android completo.",
-      en: "Hexapod assembled on a Raspberry Pi running Android Things. Each leg is driven by coordinated servos; an onboard camera plus Firebase enable object recognition and remote command from an Android device. Combines insect-inspired locomotion with a full Android stack.",
+      es: "Hexápodo ensamblado sobre Raspberry Pi corriendo Android Things. Cada pata era coordinada por servomotores mientras una cámara integrada y Firebase Realtime Database permitían reconocimiento de objetos y mando remoto desde Android.",
+      en: "Hexapod assembled on a Raspberry Pi running Android Things, coordinating 6 servo-driven legs with onboard vision and Firebase remote command.",
     },
-    technologies: ["Android Things", "Raspberry Pi", "Firebase", "Computer Vision"],
-    status: "in_progress",
+    technologies: ["Android Things", "Kotlin", "Raspberry Pi", "Firebase"],
+    status: "archived",
     date: "2018-07",
-    image: "/images/projects/hexapod.png",
+    image: "/images/projects/hexapod1.jpg",
+    team: ["adrian-catalan"],
   },
   {
     id: "tango",
-    name: "Tango",
+    name: "Proyecto Google Tango: realidad mixta y detección de profundidad",
+    nameEn: "Google Tango Project: mixed reality and depth sensing",
+    category: "vision_creative",
     description: {
-      es: "Alterna entre el mundo virtual y el real gracias a Google Tango. Usa dispositivos Tango con Unity para combinar entornos.",
-      en: "Switch between the virtual world and the real world with Google Tango. Uses Tango devices with Unity to blend environments.",
+      es: "Prototipo de mapeo espacial 3D y realidad aumentada/virtual combinando hardware Google Tango con Unity.",
+      en: "3D spatial mapping and mixed-reality prototype combining Google Tango depth-sensing hardware with Unity.",
     },
-    longDescription: {
-      es: "Prototipo AR/VR sobre la plataforma Google Tango, aprovechando su tracking inercial y percepción de profundidad. El usuario alterna entre el mundo físico y una escena virtual en Unity, con objetos virtuales anclados a superficies reales detectadas por el dispositivo.",
-      en: "AR/VR prototype on the Google Tango platform, leveraging its inertial tracking and depth perception. The user switches between the physical world and a Unity-built virtual scene, with virtual objects anchored to real surfaces detected by the device.",
-    },
-    technologies: ["Google Tango", "Unity", "AR/VR"],
+    technologies: ["Google Tango", "Unity", "AR/VR", "Depth Sensing"],
     status: "archived",
     date: "2017-06",
-    image: "/images/projects/default.png",
+    image: "/images/projects/tango-ar.png",
+    team: ["adrian-catalan"],
   },
   {
     id: "tjbot",
-    name: "TJBot",
+    name: "TJBot: robot social impreso en 3D",
+    nameEn: "TJBot: 3D-printed social robot",
+    category: "physical_ai",
     description: {
-      es: "Robot que baila, responde a emociones e interactúa mediante servicios de IBM Watson. Usa Raspberry Pi, servomotor y LED RGB.",
-      en: "Robot that dances, responds to emotions, and engages via IBM Watson services. Uses Raspberry Pi, servo motor, and RGB LED.",
+      es: "Robot de escritorio impreso en 3D sobre Raspberry Pi que conversaba, analizaba tono emocional y accionaba servomotores e iluminación RGB.",
+      en: "3D-printed desktop robot on Raspberry Pi that conversed, analyzed emotional tone, and actuated servos and RGB lighting.",
     },
-    longDescription: {
-      es: "Robot de escritorio basado en el kit TJBot de IBM, impreso en 3D y conectado a Raspberry Pi. Combina servomotor para movimiento de brazo, LED RGB para comunicación de estado, micrófono y altavoz. Los servicios cognitivos de IBM Watson interpretan voz, traducen, analizan tono y generan respuestas.",
-      en: "Desktop robot based on IBM's TJBot kit, 3D-printed and connected to a Raspberry Pi. Combines a servo motor for arm motion, RGB LED for state signaling, microphone, and speaker. IBM Watson cognitive services interpret voice, translate, analyze tone, and generate responses.",
-    },
-    technologies: ["IBM Watson", "Raspberry Pi", "IoT"],
+    technologies: ["Raspberry Pi", "3D Printing", "Voice AI", "IoT"],
     status: "archived",
     date: "2017-06",
-    image: "/images/projects/default.png",
+    image: "/images/projects/tjbot.jpg",
+    team: ["adrian-catalan"],
   },
   {
     id: "ilstyle",
-    name: "ILStyle",
+    name: "ILStyle: transferencia de estilo neural en móvil",
+    nameEn: "ILStyle: neural style transfer on mobile",
+    category: "vision_creative",
     description: {
-      es: "Transferencia de estilo de pinturas famosas a fotografías usando redes neuronales.",
-      en: "Style transfer of famous paintings to photos using neural networks.",
+      es: "Aplicación en React Native y TensorFlow que transfería el trazo pictórico de obras de arte clásicas a fotografías tomadas desde el teléfono.",
+      en: "React Native and TensorFlow mobile app applying artistic neural style transfer to smartphone photos.",
     },
-    longDescription: {
-      es: "Aplicación móvil en React Native que envía fotos del usuario a un servicio TensorFlow para aplicar transferencia de estilo neural. El usuario elige una pintura famosa como referencia y obtiene su foto reinterpretada en ese estilo. NodeJS como backend, Firebase para autenticación y storage.",
-      en: "React Native mobile app that uploads user photos to a TensorFlow service for neural style transfer. The user picks a famous painting as reference and gets their photo reinterpreted in that style. NodeJS backend, Firebase for auth and storage.",
-    },
-    technologies: ["TensorFlow", "NodeJS", "Firebase", "React Native"],
+    technologies: ["TensorFlow", "React Native", "NodeJS", "Firebase"],
     status: "archived",
     date: "2017-06",
     image: "/images/projects/ilstyle.png",
+    team: ["adrian-catalan"],
   },
   {
     id: "ilvision",
-    name: "ILVision",
+    name: "ILVision: anotación facial con Cloud Vision",
+    nameEn: "ILVision: facial annotation with Cloud Vision",
+    category: "vision_creative",
     description: {
-      es: "Reconocimiento facial que dibuja figuras sobre los elementos detectados del rostro.",
-      en: "Facial recognition that draws figures on detected face elements.",
-    },
-    longDescription: {
-      es: "Aplicación que utiliza Google Cloud Vision para detectar elementos faciales — ojos, boca, nariz — y dibuja figuras o anotaciones sobre cada uno. Pensada como demostración interactiva de los servicios de Vision API sobre la cámara del dispositivo.",
-      en: "Application that uses Google Cloud Vision to detect facial elements — eyes, mouth, nose — and draws figures or annotations on each. Designed as an interactive demo of Vision API services over the device camera.",
+      es: "Demostración interactiva de reconocimiento de geometría facial en tiempo real con React Native y Google Cloud Vision.",
+      en: "Interactive real-time facial geometry detection demo built with React Native and Google Cloud Vision.",
     },
     technologies: ["Google Cloud Vision", "NodeJS", "React Native"],
     status: "archived",
     date: "2017-03",
-    image: "/images/projects/default.png",
+    image: "/images/projects/ilvision-pose.png",
+    team: ["adrian-catalan"],
   },
   {
     id: "ildrone",
-    name: "ILDrone",
+    name: "ILDrone: dron controlado por gestos",
+    nameEn: "ILDrone: gesture-controlled drone",
+    category: "physical_ai",
     description: {
-      es: "Controlador de vuelo de dron usando una interfaz de guante basada en gestos.",
-      en: "Drone flight controller using a gesture-based gauntlet interface.",
+      es: "Guante instrumentado con Intel Edison y sensores inerciales para pilotar un Parrot AR.Drone 2.0 mediante gestos de la mano.",
+      en: "Intel Edison instrumented gauntlet with inertial sensors for piloting a Parrot AR.Drone 2.0 via hand gestures.",
     },
-    longDescription: {
-      es: "Controlador de vuelo para un Parrot AR.Drone 2.0 construido sobre un guante instrumentado con Intel Edison. Los gestos — inclinar, elevar, cerrar la mano — se traducen a comandos de vuelo mediante Johnny-Five. NodeJS mantiene la sesión entre el guante y el dron.",
-      en: "Flight controller for a Parrot AR.Drone 2.0 built on an Intel Edison instrumented gauntlet. Gestures — tilt, raise, clench — are translated to flight commands via Johnny-Five. NodeJS maintains the session between glove and drone.",
-    },
-    technologies: ["Intel Edison", "ARDrone 2.0", "NodeJS", "Johnny-Five"],
+    technologies: ["Intel Edison", "AR.Drone 2.0", "NodeJS", "Johnny-Five"],
     status: "archived",
     date: "2016-10",
-    image: "/images/projects/ildrone.jpg",
+    image: "/images/projects/ildrone1.jpg",
+    team: ["adrian-catalan"],
   },
   {
     id: "obdled",
-    name: "OBDled",
+    name: "OBDled: indicador de revoluciones por OBD-II",
+    nameEn: "OBDled: OBD-II engine speed display",
+    category: "iot_hardware",
     description: {
-      es: "Control de tiras LED según las RPM del auto usando Arduino. Lee datos del vehículo vía adaptador OBD-II.",
-      en: "Controlling LED strips according to car RPM using Arduino. Reads vehicle data via OBD-II adapter.",
+      es: "Sistema con Arduino conectado al puerto OBD-II del automóvil que modulaba tiras y matrices LED según las revoluciones por minuto (RPM) en tiempo real.",
+      en: "Arduino system connected to a car's OBD-II port modulating LED strips and matrices according to real-time engine RPM.",
     },
-    longDescription: {
-      es: "Arduino conectado al puerto OBD-II del vehículo lee RPM y velocidad en tiempo real. Tiras LED instaladas en el interior cambian color y frecuencia según el régimen del motor, produciendo feedback visual del estado mecánico sin necesidad de mirar el tablero.",
-      en: "Arduino connected to the car's OBD-II port reads RPM and speed in real time. LED strips installed inside the cabin change color and frequency according to engine revs, producing visual feedback on the mechanical state without looking at the dashboard.",
-    },
-    technologies: ["Arduino", "OBD-II", "IoT"],
+    technologies: ["Arduino", "OBD-II", "Automotive IoT", "C++"],
     status: "archived",
     date: "2016-06",
-    image: "/images/projects/obd.jpg",
+    image: "/images/projects/obd1.jpg",
+    repo: "https://github.com/cuprumbot/OBDled",
+    team: ["adrian-catalan", "luis-cu"],
   },
   {
     id: "leonardo-greenmoov",
-    name: "Leonardo GreenMoov",
+    name: "Leonardo GreenMoov: robot humanoide de telepresencia",
+    nameEn: "Leonardo GreenMoov: humanoid telepresence robot",
+    category: "physical_ai",
     description: {
-      es: "Robot de telepresencia impreso en 3D basado en InMoov. Control con Oculus Rift DK2 y Leap Motion.",
-      en: "3D printed telepresence robot based on InMoov. Controlled with Oculus Rift DK2 and Leap Motion.",
+      es: "Robot humanoide tamaño real basado en InMoov, impreso en 3D en el laboratorio y teleoperado con realidad virtual (Oculus Rift DK2) y seguimiento de manos Leap Motion.",
+      en: "Life-size 3D-printed humanoid telepresence robot based on InMoov, controlled via Oculus Rift DK2 virtual reality and Leap Motion hand tracking.",
     },
-    longDescription: {
-      es: "Robot humanoide basado en el proyecto open source InMoov, completamente impreso en 3D. El sistema de telepresencia usa Oculus Rift DK2 para reproducir visión estéreo y Leap Motion para capturar movimientos de manos del operador, permitiendo que el robot replique gestos a distancia.",
-      en: "Humanoid robot based on the open-source InMoov project, fully 3D-printed. The telepresence system uses Oculus Rift DK2 for stereo vision and Leap Motion to capture the operator's hand movements, letting the robot mirror gestures remotely.",
-    },
-    technologies: ["3D Printing", "Oculus Rift", "Leap Motion"],
+    technologies: ["InMoov 3D Printing", "Oculus Rift DK2", "Leap Motion", "Humanoid Robotics"],
     status: "archived",
     date: "2015-12",
-    image: "/images/projects/leonardo.jpg",
-  },
-  {
-    id: "experimentos-gemini-motion-manga",
-    name: "Experimentos gemini: motion manga",
-    description: {
-      es: "Convierte videos cortos en páginas de cómic estilo manga mediante IA multimodal.",
-      en: "Converts short videos into manga-style comic pages using multimodal AI.",
-    },
-    longDescription: {
-      es: "Herramienta CLI que toma un video corto y genera una secuencia de paneles estilo manga usando los modelos multimodales de Gemini 3. El video se descompone en keyframes, se genera una narrativa que los conecta y cada panel se estiliza como cómic japonés. Parte del #AISprint con créditos de Google Cloud.",
-      en: "CLI tool that takes a short video and generates a sequence of manga-style panels using Gemini 3 multimodal models. The video is decomposed into keyframes, a narrative connecting them is generated, and each panel is stylized as Japanese comic. Part of #AISprint with Google Cloud credits.",
-    },
-    technologies: ["ai", "multimodal", "video", "software"],
-    status: "finished",
-    date: "2025-12",
-    image: "/images/projects/motion-manga-comic.jpg",
-    gallery: ["/images/projects/motion-manga-example.png"],
-    repo: "https://github.com/ykro/motion-manga",
-  },
-  {
-    id: "experimentos-gemini-panel-one",
-    name: "Experimentos gemini: panel one",
-    description: {
-      es: "Genera historias visuales tipo cómic a partir de hasta ocho fotografías.",
-      en: "Generates comic-style visual stories from up to eight photographs.",
-    },
-    longDescription: {
-      es: "Herramienta de narrativa visual que toma hasta ocho fotografías y las convierte en un panel de cómic. El usuario sube su secuencia; Gemini 3 genera la historia conectando las imágenes, agrega diálogos y produce el panel maquetado con tipografía de cómic. Demo corriendo en Cloud Run.",
-      en: "Visual storytelling tool that takes up to eight photos and turns them into a comic panel. The user uploads a sequence; Gemini 3 generates the narrative connecting the images, adds dialogue, and produces a laid-out panel with comic typography. Demo running on Cloud Run.",
-    },
-    technologies: ["ai", "images", "storytelling", "software"],
-    status: "finished",
-    date: "2025-12",
-    image: "/images/projects/panel-one-comic.jpg",
-    gallery: ["/images/projects/panel-one-result.png"],
-    repo: "https://github.com/ykro/panel-one",
-    demoUrl: "https://panel-one-frontend-622959071640.us-central1.run.app/",
-  },
-  {
-    id: "fork-it",
-    name: "Fork It",
-    description: {
-      es: "Plataforma para apoyar la toma de decisiones en situaciones sociales complejas.",
-      en: "Platform that supports decision-making in complex social situations.",
-  },
-    longDescription: {
-      es: "Plataforma que ayuda a navegar decisiones sociales complejas donde múltiples caminos parecen válidos. Combina agentes de IA que razonan sobre consecuencias con un framework visual de bifurcaciones, permitiendo ver cómo se proyectaría cada alternativa antes de comprometerse.",
-      en: "Platform that helps navigate complex social decisions where multiple paths seem valid. Combines AI agents reasoning about consequences with a visual branching framework, letting the user see how each alternative would play out before committing.",
-    },
-    technologies: ["ai", "software", "productivity"],
-    status: "in_progress",
-    date: "2026-01",
-    image: "/images/projects/fork-it.png",
-  },
-  {
-    id: "prototipo-auditor-de-codigo",
-    name: "Prototipo: Auditor de código",
-    description: {
-      es: "Sistema con IA que revisa código, detecta vulnerabilidades y genera documentación automática.",
-      en: "AI system that reviews code, detects vulnerabilities, and generates automatic documentation.",
-  },
-    longDescription: {
-      es: "Sistema agentic que analiza repositorios y detecta vulnerabilidades, anti-patrones y deuda técnica. Combina análisis estático con modelos de lenguaje que razonan sobre contexto, y genera documentación automática — incluyendo explicaciones para funciones críticas y sugerencias de refactor.",
-      en: "Agentic system that analyzes repositories and detects vulnerabilities, anti-patterns, and technical debt. Combines static analysis with language models reasoning about context, and generates automatic documentation — including explanations for critical functions and refactor suggestions.",
-    },
-    technologies: ["ai", "software", "github", "security"],
-    status: "in_progress",
-    date: "2026-01",
-    image: "/images/projects/prototipo-auditor-de-codigo.png",
-  },
-  {
-    id: "totito",
-    name: "Totito",
-    description: {
-      es: "Juego híbrido físico-digital donde la IA interpreta el tablero y responde en tiempo real.",
-      en: "Hybrid physical-digital game where AI interprets the board and responds in real time.",
-  },
-    longDescription: {
-      es: "Tablero físico de tres-en-raya equipado con cámara superior. La IA interpreta en tiempo real el estado del juego — fichas colocadas, turno actual — y responde hablando con el jugador o sugiriendo jugadas. Explora la fusión entre juegos tradicionales y superficies digitales reactivas.",
-      en: "Physical tic-tac-toe board equipped with an overhead camera. The AI interprets the game state in real time — pieces placed, current turn — and responds by speaking to the player or suggesting moves. Explores the fusion of traditional games with reactive digital surfaces.",
-    },
-    technologies: ["ai", "game", "software", "vision"],
-    status: "in_progress",
-    date: "2026-02",
-    image: "/images/projects/totito.png",
-  },
-  {
-    id: "proyecto-camaleon",
-    name: "Proyecto camaleón",
-    description: {
-      es: "Prototipo IoT con sensor de color capaz de detectar y replicar tonalidades.",
-      en: "IoT prototype with a color sensor capable of detecting and replicating tones.",
-  },
-    longDescription: {
-      es: "Prototipo IoT con sensor de color TCS34725 que captura tonalidades del entorno y las replica en tira LED adyacente. Exploración sobre cómo un objeto podría adaptar su apariencia al fondo, como un camaleón — con pasos futuros hacia pantalla e-ink o tela programable.",
-      en: "IoT prototype with a TCS34725 color sensor that captures environmental tones and replicates them in an adjacent LED strip. An exploration of how an object might adapt its appearance to the background, like a chameleon — with future steps toward e-ink or programmable fabric.",
-    },
-    technologies: ["iot", "sensors", "hardware"],
-    status: "in_progress",
-    date: "2026-01",
-    image: "/images/projects/proyecto-camaleon.png",
-  },
-  {
-    id: "comunicacion-obd2-con-vehiculo-mvp",
-    name: "Comunicación OBD2 con vehículo (MVP)",
-    description: {
-      es: "Aplicación para diagnóstico vehicular mediante conexión OBD2.",
-      en: "Application for vehicle diagnostics through OBD2 connection.",
-  },
-    longDescription: {
-      es: "Aplicación que se conecta al puerto OBD2 del vehículo vía adaptador Bluetooth/WiFi y expone los datos del ECU — RPM, velocidad, códigos de error DTC, consumo estimado — en una interfaz legible. MVP enfocado en lectura y diagnóstico; sin funciones de reseteo aún.",
-      en: "App that connects to the vehicle's OBD2 port via Bluetooth/WiFi adapter and exposes ECU data — RPM, speed, DTC error codes, estimated fuel consumption — in a readable interface. MVP focused on read and diagnostics; no reset features yet.",
-    },
-    technologies: ["automotive", "iot", "diagnostics", "software"],
-    status: "finished",
-    date: "2026-01",
-    image: "/images/projects/comunicacion-obd2-con-vehiculo-mvp.png",
-  },
-  {
-    id: "boton-iot",
-    name: "Botón IoT",
-    description: {
-      es: "Botón inteligente que captura notas y permite generar resúmenes automáticos con IA.",
-      en: "Smart button that captures notes and enables automatic AI summaries.",
-  },
-    longDescription: {
-      es: "Botón físico discreto — un solo click — que dispara un flujo de captura: inicia grabación de voz, transcribe, resume con IA y guarda la nota en el destino configurado (Notion, Drive, email). Pensado para capturar pensamientos sin fricción durante trabajo manual o conducción.",
-      en: "Discreet physical button — single click — that triggers a capture flow: starts voice recording, transcribes, AI-summarizes, and saves the note to the configured destination (Notion, Drive, email). Designed to capture thoughts frictionlessly during manual work or driving.",
-    },
-    technologies: ["iot", "ai", "productivity", "hardware"],
-    status: "in_progress",
-    date: "2026-01",
-    image: "/images/projects/boton-iot.png",
-  },
-  {
-    id: "mini-bots",
-    name: "Mini bots",
-    description: {
-      es: "Robots compactos e interactivos con movimiento autónomo e integración de sensores.",
-      en: "Compact interactive robots with autonomous movement and sensor integration.",
-  },
-    longDescription: {
-      es: "Serie de robots compactos con estrategias variadas de movimiento y sensado — algunos con evasión por ultrasonido, otros con seguimiento de línea o triangulación IR. Plataforma educativa: cada mini-bot resuelve un problema distinto, introduciendo mecatrónica y control paso a paso.",
-      en: "Series of compact robots with varied movement and sensing strategies — some with ultrasonic avoidance, others with line-following or IR triangulation. Educational platform: each mini-bot solves a different problem, introducing mechatronics and control step by step.",
-    },
-    technologies: ["robotics", "sensors", "mechatronics"],
-    status: "finished",
-    date: "2026-01",
-    image: "/images/projects/mini-bots.png",
-  },
-  {
-    id: "control-brazo-robotico-negro",
-    name: "Control Brazo Robótico (Negro)",
-    description: {
-      es: "Tarjeta electrónica basada en ESP32 para controlar un brazo robótico.",
-      en: "ESP32-based electronic board to control a robotic arm.",
-  },
-    longDescription: {
-      es: "Tarjeta de control diseñada en el lab — PCB propia, MCU ESP32 — para manejar un brazo robótico de seis grados de libertad. Expone API WiFi para ejecutar trayectorias, calibración automática y modo de enseñanza: el operador mueve el brazo manualmente y la tarjeta graba la secuencia.",
-      en: "Lab-designed controller board — custom PCB, ESP32 MCU — for a 6-DOF robotic arm. Exposes WiFi API for executing trajectories, auto-calibration, and teach mode: the operator moves the arm by hand and the board records the sequence.",
-    },
-    technologies: ["robotics", "electronics", "esp32", "hardware"],
-    status: "in_progress",
-    date: "2026-01",
-    image: "/images/projects/control-brazo-robotico-negro.png",
-  },
-  {
-    id: "gearbox",
-    name: "Gearbox",
-    description: {
-      es: "Desarrollo de una caja de cambios mecánica para aplicaciones mecatrónicas.",
-      en: "Development of a mechanical gearbox for mechatronic applications.",
-    },
-    longDescription: {
-      es: "Diseño y fabricación de una caja de cambios para robótica ligera: modelado CAD, piezas impresas en 3D y mecanizadas, ensamblaje con rodamientos estándar. Busca reemplazar soluciones comerciales costosas en prototipos donde el torque necesario es moderado.",
-      en: "Design and fabrication of a gearbox for light robotics: CAD modeling, 3D-printed and machined parts, assembly with standard bearings. Aims to replace expensive commercial solutions in prototypes where needed torque is moderate.",
-    },
-    technologies: ["mechanics", "mechatronics", "hardware"],
-    status: "in_progress",
-    date: "2026-01",
-    image: "/images/projects/palanca-cambios.jpeg",
-  },
-  {
-    id: "ar-para-colocacion-de-muebles",
-    name: "AR para colocación de muebles",
-    description: {
-      es: "Aplicación de realidad aumentada para visualizar muebles en espacios reales.",
-      en: "Augmented reality application to visualize furniture in real spaces.",
-  },
-    longDescription: {
-      es: "App de AR para móvil que permite visualizar muebles en el espacio real del usuario antes de comprarlos. Detecta piso, paredes y escala usando ARCore/ARKit, luego coloca modelos 3D anclados al mundo real con oclusión correcta y sombras dinámicas.",
-      en: "Mobile AR app that lets the user visualize furniture in their real space before buying. Detects floor, walls, and scale using ARCore/ARKit, then places 3D models anchored to the real world with correct occlusion and dynamic shadows.",
-    },
-    technologies: ["ar", "mobile", "software", "visualization"],
-    status: "finished",
-    date: "2026-02",
-    image: "/images/projects/ar-para-colocacion-de-muebles.png",
-  },
-  {
-    id: "experimentos-gemini-cosmic-oracle",
-    name: "Experimentos gemini: cosmic oracle",
-    description: {
-      es: "Convierte un dibujo en una aplicación funcional usando IA para mockups, assets y desarrollo.",
-      en: "Turns a sketch into a functional app using AI for mockups, assets, and development.",
-    },
-    longDescription: {
-      es: "Pipeline de napkin-a-app: el usuario sube un boceto a mano alzada de una interfaz y Gemini 3 produce el mockup digital, genera los assets necesarios — iconos, ilustraciones, tipografía — y finalmente ensambla el código funcional. Demuestra la trayectoria completa de una idea hasta una app ejecutable usando IA multimodal.",
-      en: "Napkin-to-app pipeline: user uploads a hand-drawn sketch of an interface and Gemini 3 produces the digital mockup, generates the needed assets — icons, illustrations, typography — and finally assembles the working code. Demonstrates the full journey from idea to runnable app using multimodal AI.",
-    },
-    technologies: ["ai", "software", "app", "design"],
-    status: "finished",
-    date: "2025-12",
-    image: "/images/projects/cosmic-oracle-card.png",
-    gallery: [
-      "/images/projects/cosmic-oracle-napkin.jpg",
-      "/images/projects/cosmic-oracle-altar.png",
-      "/images/projects/cosmic-oracle-prophecy.png",
-      "/images/projects/cosmic-oracle-card-front.png",
-      "/images/projects/cosmic-oracle-card-back.png",
-    ],
-    repo: "https://github.com/ykro/cosmic-oracle",
-    demoUrl: "https://cosmic-oracle-frontend-622959071640.us-central1.run.app/",
-  },
-  {
-    id: "experimentos-gemini-tempo-lottery",
-    name: "Experimentos gemini: tempo lottery",
-    description: {
-      es: "Juego de cartas rápido basado en coincidencia de símbolos.",
-      en: "Fast-paced card game based on symbol matching.",
-    },
-    longDescription: {
-      es: "Juego de cartas rápido donde los jugadores deben emparejar símbolos para avanzar en el tablero. La lógica de generación de cartas y la evaluación de coincidencias se apoyan en Gemini 3 para mantener ritmo y variedad. Demo web corriendo en Cloud Run.",
-      en: "Fast-paced card game where players must match symbols to advance on the board. Card generation and match evaluation rely on Gemini 3 to maintain tempo and variety. Web demo running on Cloud Run.",
-    },
-    technologies: ["game", "software", "ai"],
-    status: "finished",
-    date: "2025-12",
-    image: "/images/projects/tempo-lottery.jpg",
-    gallery: [
-      "/images/projects/tempo-lottery-screenshot.jpg",
-      "/images/projects/tempo-lottery-gameplay.webp",
-    ],
-    repo: "https://github.com/ykro/tempo-lottery",
-    demoUrl: "https://tempo-lottery-622959071640.us-central1.run.app/",
-  },
-  {
-    id: "experimentos-gemini-run-sight",
-    name: "Experimentos gemini: run sight",
-    description: {
-      es: "Analiza archivos FIT y entrega retroalimentación deportiva avanzada.",
-      en: "Analyzes FIT files and provides advanced athletic feedback.",
-    },
-    longDescription: {
-      es: "Aplicación de análisis estratégico para corredores. El usuario sube un archivo FIT de su sesión de entrenamiento — potencia, ritmo, cadencia, frecuencia cardíaca — y Gemini 3 genera retroalimentación específica sobre pacing, técnica, áreas de mejora y recomendaciones para la próxima sesión.",
-      en: "Strategic analysis app for runners. The user uploads a FIT file from their training session — power, pace, cadence, heart rate — and Gemini 3 generates specific feedback on pacing, technique, improvement areas, and recommendations for the next session.",
-    },
-    technologies: ["ai", "sports", "analytics", "software"],
-    status: "finished",
-    date: "2025-12",
-    image: "/images/projects/runsight-dashboard.png",
-    gallery: ["/images/projects/runsight-demo.png"],
-    repo: "https://github.com/ykro/run-sight",
-    demoUrl: "https://runsight-web-622959071640.us-central1.run.app/",
-  },
-  {
-    id: "experimentos-gemini-run-or-done",
-    name: "Experimentos gemini: run or done",
-    description: {
-      es: "Evalúa el desgaste de tenis para correr y recomienda reemplazo.",
-      en: "Evaluates running shoe wear and recommends replacement.",
-    },
-    longDescription: {
-      es: "Evaluador visual de tenis para correr. El usuario sube fotografías de suela, media suela y upper, y Gemini 3 detecta desgaste, deformación y pérdida de soporte, entregando un veredicto — seguir corriendo o reemplazar — con razonamiento por componente.",
-      en: "Visual evaluator for running shoes. The user uploads photos of sole, midsole, and upper; Gemini 3 detects wear, deformation, and support loss, delivering a verdict — keep running or replace — with per-component reasoning.",
-    },
-    technologies: ["ai", "vision", "sports", "software"],
-    status: "finished",
-    date: "2025-12",
-    image: "/images/projects/run-or-done-report.png",
-    gallery: ["/images/projects/run-or-done-result.png"],
-    repo: "https://github.com/ykro/run-or-done",
-    demoUrl: "https://run-or-done-622959071640.us-central1.run.app/",
-  },
-  {
-    id: "educador-personal",
-    name: "Educador Personal",
-    description: {
-      es: "Sistema de agentes de IA que adapta apoyo según estilos de aprendizaje.",
-      en: "AI agent system that adapts support based on learning styles.",
-  },
-    longDescription: {
-      es: "Sistema multi-agente donde cada agente representa un estilo de aprendizaje — visual, kinestésico, verbal, analítico. El sistema detecta el perfil del estudiante a través de interacción inicial y rota entre agentes para presentar el material en el estilo más efectivo para esa persona, ajustando en tiempo real.",
-      en: "Multi-agent system where each agent represents a learning style — visual, kinesthetic, verbal, analytical. The system detects the student's profile through initial interaction and rotates between agents to present material in the most effective style for that person, adjusting in real time.",
-    },
-    technologies: ["ai", "education", "software"],
-    status: "finished",
-    date: "2025-12",
-    image: "/images/projects/educador-personal.png",
-  },
-  {
-    id: "prototipo-scout-de-mercado",
-    name: "Prototipo: Scout de Mercado",
-    description: {
-      es: "Agente con RAG para encontrar productos cercanos al mejor precio.",
-      en: "RAG-powered agent to find nearby products at the best price.",
-  },
-    longDescription: {
-      es: "Agente RAG conectado a catálogos de tiendas cercanas y precios publicados. Recibe una consulta del usuario — \"necesito X bajo Y quetzales\" — recupera disponibilidad en tiempo real y devuelve tres opciones ordenadas por precio y distancia, con enlace directo al producto.",
-      en: "RAG agent connected to nearby store catalogs and published prices. Receives user query — \"I need X under Y quetzales\" — retrieves real-time availability and returns three options sorted by price and distance, with direct link to the product.",
-    },
-    technologies: ["ai", "rag", "ecommerce", "software"],
-    status: "in_progress",
-    date: "2026-01",
-    image: "/images/projects/prototipo-scout-de-mercado.png",
-  },
-  {
-    id: "calendar",
-    name: "Calendar",
-    description: {
-      es: "Calendario para entrevistas de conferencistas y organización de agendas.",
-      en: "Calendar for speaker interviews and schedule organization.",
-  },
-    longDescription: {
-      es: "Herramienta interna del lab para agendar entrevistas con conferencistas invitados. Integra disponibilidad del director y asistentes, zonas horarias internacionales y envía recordatorios automáticos. Enfocada en el flujo específico de hablar con ponentes, más que un calendario genérico.",
-      en: "Internal lab tool for scheduling guest speaker interviews. Integrates director and assistant availability, international time zones, and sends automatic reminders. Focused on the specific speaker-talk flow rather than a generic calendar.",
-    },
-    technologies: ["scheduling", "software"],
-    status: "in_progress",
-    date: "2026-02",
-    image: "/images/projects/calendar.png",
-  },
-  {
-    id: "monitor-de-ocupacion-de-escritorio",
-    name: "Monitor de Ocupación de Escritorio",
-    description: {
-      es: "Detecta si un espacio está ocupado sin usar cámaras.",
-      en: "Detects whether a space is occupied without using cameras.",
-  },
-    longDescription: {
-      es: "Detector de ocupación de puesto de trabajo que funciona sin cámara: combina sensor PIR (movimiento) con sensor capacitivo en el asiento y lectura de actividad de teclado. Resultado: una señal binaria \"ocupado / libre\" útil para iluminación adaptativa y estadísticas de uso, respetando la privacidad del usuario.",
-      en: "Workstation occupancy detector that works without a camera: combines PIR (motion) sensor with capacitive sensor on the seat and keyboard activity readings. Output: a binary \"occupied / free\" signal useful for adaptive lighting and usage stats, preserving user privacy.",
-    },
-    technologies: ["ai", "iot", "sensors"],
-    status: "in_progress",
-    date: "2026-01",
-    image: "/images/projects/monitor-de-ocupacion-de-escritorio.png",
-  },
-  {
-    id: "alerta-de-planta-seca",
-    name: "Alerta de planta seca",
-    description: {
-      es: "Notifica cuando una planta necesita agua según humedad del suelo.",
-      en: "Sends alerts when a plant needs water based on soil moisture.",
-  },
-    longDescription: {
-      es: "Sensor de humedad capacitivo enterrado en la maceta reporta lecturas cada hora vía ESP32 a un bot de Telegram. Cuando la humedad cae bajo un umbral configurable, envía una alerta con la identificación de la planta. Soporta múltiples macetas por ESP32 mediante multiplexor.",
-      en: "Capacitive moisture sensor buried in the pot reports readings every hour via ESP32 to a Telegram bot. When moisture drops below a configurable threshold, it sends an alert with the plant's identification. Supports multiple pots per ESP32 via multiplexer.",
-    },
-    technologies: ["iot", "sensors", "telegram"],
-    status: "in_progress",
-    date: "2026-01",
-    image: "/images/projects/alerta-de-planta-seca.png",
-  },
-  {
-    id: "sentiment-analysis-y-futbol",
-    name: "Sentiment analysis y futbol",
-    description: {
-      es: "Analiza opiniones relacionadas con fútbol mediante IA.",
-      en: "Analyzes football-related opinions using AI.",
-  },
-    longDescription: {
-      es: "Pipeline NLP que consume tweets, comentarios en redes y transcripciones de programas deportivos sobre equipos de fútbol guatemaltecos. Clasifica sentimiento — positivo, neutro, negativo — extrae temas (entrenador, refuerzos, árbitro) y produce un dashboard semanal del estado emocional de cada afición.",
-      en: "NLP pipeline that ingests tweets, social comments, and sports show transcripts about Guatemalan football teams. Classifies sentiment — positive, neutral, negative — extracts topics (coach, signings, referee), and produces a weekly dashboard of each fandom's emotional state.",
-    },
-    technologies: ["ai", "nlp", "analytics"],
-    status: "in_progress",
-    date: "2026-01",
-    image: "/images/projects/sentiment-analysis-y-futbol.png",
-  },
-  {
-    id: "drone",
-    name: "Drone",
-    description: {
-      es: "Ensamble y puesta en marcha de kit de dron.",
-      en: "Assembly and deployment of a drone kit.",
-    },
-    longDescription: {
-      es: "Ensamble desde cero de un dron: motores brushless, ESC, frame de fibra de carbono, controlador de vuelo F4 corriendo Betaflight, receptor y telemetría. Proceso enfocado en que los estudiantes entiendan cada componente del stack antes de pasar a autonomía y sensado.",
-      en: "From-scratch drone build: brushless motors, ESCs, carbon fiber frame, F4 flight controller running Betaflight, receiver, and telemetry. Process focused on students understanding each component of the stack before moving to autonomy and sensing.",
-    },
-    technologies: ["electronics", "robotics", "hardware"],
-    status: "in_progress",
-    date: "2025-12",
-    image: "/images/projects/drone.jpeg",
-  },
-  {
-    id: "mano-robotica",
-    name: "Mano Robótica",
-    description: {
-      es: "Rediseño y reconstrucción de mano robótica funcional.",
-      en: "Redesign and rebuild of a functional robotic hand.",
-    },
-    longDescription: {
-      es: "Rediseño de prótesis/mano robótica basada en proyecto open source. Cinco dedos articulados movidos por servomotores y tendones de nylon, control por EMG superficial o por control remoto. Reducción de costo respecto a soluciones comerciales manteniendo destreza útil para agarres básicos.",
-      en: "Redesign of open-source prosthetic/robotic hand. Five articulated fingers actuated by servomotors and nylon tendons, controlled via surface EMG or remote. Cost reduction vs. commercial solutions while maintaining useful dexterity for basic grips.",
-    },
-    technologies: ["robotics", "mechatronics"],
-    status: "finished",
-    date: "2025-09",
-    image: "/images/projects/mano-robotica.jpeg",
-  },
-  {
-    id: "cartel-luz",
-    name: "Cartel Luz",
-    description: {
-      es: "Gadget promocional con ESP8266, LEDs NeoPixel y un mini-juego para activaciones en colegios.",
-      en: "Promotional gadget with ESP8266, NeoPixel LEDs, and a mini-game for school outreach activities.",
-    },
-    longDescription: {
-      es: "Cartel luminoso interactivo pensado como herramienta de promoción del lab en visitas a colegios. Un ESP8266 controla una matriz de LEDs NeoPixel que muestra animaciones y un mini-juego con el que los estudiantes interactúan al acercarse. Funciona como anzuelo visual para iniciar conversación sobre los proyectos del laboratorio.",
-      en: "Interactive light sign designed as a lab outreach tool for school visits. An ESP8266 drives a NeoPixel LED matrix that displays animations and a mini-game students can play. It works as a visual hook to start conversations about lab projects.",
-    },
-    technologies: ["esp8266", "neopixel", "iot", "outreach"],
-    status: "finished",
-    date: "2026-01",
-    image: "/images/projects/cartel-luz.jpeg",
-  },
-  {
-    id: "brazo-mirobot",
-    name: "Brazo Recogedor (Mirobot)",
-    description: {
-      es: "Kit Mirobot de brazo robótico industrial adaptado para prácticas educativas en mecatrónica.",
-      en: "Mirobot industrial robotic arm kit adapted for educational mechatronics practice.",
-    },
-    longDescription: {
-      es: "Kit Mirobot — brazo robótico industrial de bajo costo — usado como plataforma educativa en el lab. Permite explorar cinemática inversa, programación de trayectorias y operaciones tipo pick-and-place. Los estudiantes lo programan para tareas de recogida y clasificación de objetos como introducción accesible a robótica industrial.",
-      en: "Mirobot kit — low-cost industrial robotic arm — used as an educational platform at the lab. It enables exploring inverse kinematics, trajectory programming, and pick-and-place operations. Students program it for object retrieval and sorting tasks as an accessible introduction to industrial robotics.",
-    },
-    technologies: ["robotics", "mirobot", "mechatronics", "education"],
-    status: "in_progress",
-    date: "2026-01",
-    image: "/images/projects/brazo-recogedor.jpeg",
+    image: "/images/projects/leonardo1.jpg",
+    team: ["adrian-catalan"],
   },
 ];

@@ -1,90 +1,104 @@
 "use client";
 
-import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { useI18n } from "@/lib/i18n";
 import LanguageToggle from "./LanguageToggle";
 
 const navItems = [
-  { key: "nav.whatWeDo", href: "#que-hacemos", num: "02" },
-  { key: "nav.projects", href: "#proyectos", num: "04" },
-  { key: "nav.team", href: "#equipo", num: "05" },
-  { key: "nav.contact", href: "#contacto", num: "06" },
+  { key: "projects", href: "/proyectos" },
+  { key: "about", href: "/#sobre-el-lab" },
+  { key: "team", href: "/#equipo" },
+  { key: "volunteers", href: "/#voluntariado" },
+  { key: "contact", href: "/#contacto" },
 ];
 
 export default function Header() {
   const { t } = useI18n();
-  const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-hairline bg-paper">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 sm:px-8">
-        <a href="#" className="flex items-center gap-2.5">
-          <Image
-            src="/images/logo-mobile.png"
-            alt="Innovation Lab"
-            width={28}
-            height={28}
-            className="h-7 w-7 object-contain invert"
-          />
-          <span className="font-mono text-[11px] font-medium uppercase tracking-[0.12em] text-navy">
-            Innovation Lab
-          </span>
-        </a>
-
-        <nav className="hidden items-center gap-7 md:flex">
-          {navItems.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className="group flex items-baseline gap-1.5 text-[13px] font-medium text-ink-muted transition-colors hover:text-navy"
-            >
-              <span className="font-mono text-[10px] text-navy/40">
-                {item.num}
-              </span>
-              {t(item.key)}
-            </a>
-          ))}
-          <LanguageToggle />
-        </nav>
-
-        <div className="flex items-center gap-3 md:hidden">
-          <LanguageToggle />
-          <button
-            onClick={() => setOpen(!open)}
-            className="flex h-9 w-9 items-center justify-center text-navy"
-            aria-label="Menu"
+    <>
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:bg-surface focus:px-4 focus:py-3"
+      >
+        {t("nav.skip")}
+      </a>
+      <header className="sticky top-0 z-30 border-b border-line bg-paper">
+        <div className="shell flex min-h-[4.5rem] items-center justify-between gap-3">
+          <Link
+            href="/"
+            className="flex min-h-11 min-w-0 items-center gap-2.5 text-navy"
           >
-            {open ? (
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                <path d="M18 6L6 18M6 6l12 12" />
-              </svg>
-            ) : (
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                <path d="M3 12h18M3 6h18M3 18h18" />
-              </svg>
-            )}
-          </button>
-        </div>
-      </div>
-
-      {open && (
-        <nav className="border-t border-hairline bg-paper px-6 py-4 md:hidden">
-          {navItems.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              onClick={() => setOpen(false)}
-              className="flex items-baseline gap-2 py-2 text-sm font-medium text-ink-muted transition-colors hover:text-navy"
-            >
-              <span className="font-mono text-[10px] text-navy/40">
-                {item.num}
+            <Image
+              src="/images/logo-mobile.png"
+              alt=""
+              width={34}
+              height={34}
+              className="size-8 shrink-0 object-contain invert"
+            />
+            <span className="leading-tight">
+              <strong className="block text-[15px]">Innovation Lab</strong>
+              <span className="block text-xs text-muted">
+                Universidad Galileo · Est. Dic 2012
               </span>
-              {t(item.key)}
-            </a>
-          ))}
-        </nav>
-      )}
-    </header>
+            </span>
+          </Link>
+          <nav
+            aria-label={t("nav.primary")}
+            className="ml-auto hidden items-center gap-5 lg:flex"
+          >
+            {navItems.map(({ key, href }) => (
+              <Link
+                className={`flex min-h-11 items-center whitespace-nowrap text-sm font-semibold hover:underline hover:underline-offset-4 ${
+                  key === "volunteers" ? "text-accent-dark" : "text-navy"
+                }`}
+                href={href}
+                key={key}
+              >
+                {t(`nav.${key}`)}
+              </Link>
+            ))}
+          </nav>
+          <div className="flex shrink-0 items-center gap-2 lg:ml-4">
+            <LanguageToggle />
+            <details
+              className="lg:hidden"
+              onKeyDown={(event) => {
+                if (event.key === "Escape" && event.currentTarget.open) {
+                  event.currentTarget.open = false;
+                  event.currentTarget.querySelector("summary")?.focus();
+                }
+              }}
+            >
+              <summary className="flex min-h-11 list-none items-center px-2 text-sm font-semibold text-navy [&::-webkit-details-marker]:hidden">
+                {t("nav.menu")}
+              </summary>
+              <nav
+                aria-label={t("nav.primary")}
+                className="absolute inset-x-0 top-full max-h-[calc(100dvh-4.5rem)] overflow-y-auto border-b border-line bg-surface"
+              >
+                <ul className="shell divide-y divide-line py-2">
+                  {navItems.map(({ key, href }) => (
+                    <li key={key}>
+                      <Link
+                        className="flex min-h-11 items-center py-2 font-semibold text-navy hover:underline"
+                        href={href}
+                        onClick={(event) => {
+                          const menu = event.currentTarget.closest("details");
+                          if (menu) menu.open = false;
+                        }}
+                      >
+                        {t(`nav.${key}`)}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+            </details>
+          </div>
+        </div>
+      </header>
+    </>
   );
 }

@@ -1,51 +1,38 @@
 import type { Metadata } from "next";
-import { Fraunces, Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import { Instrument_Sans } from "next/font/google";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 import { I18nProvider } from "@/lib/i18n";
+import "./globals.css";
 
-const fraunces = Fraunces({
-  variable: "--font-display",
-  subsets: ["latin"],
-  display: "swap",
-  axes: ["SOFT", "opsz"],
-});
-
-const geist = Geist({
-  variable: "--font-sans",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-mono",
+const instrumentSans = Instrument_Sans({
+  variable: "--instrument-sans",
   subsets: ["latin"],
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Innovation Lab — Universidad Galileo",
-  description:
-    "Laboratorio de Innovacion de Universidad Galileo. Donde la curiosidad se convierte en tecnologia.",
+  metadataBase: new URL("https://innovationlab-ug.vercel.app"),
+  title: {
+    default: "Innovation Lab · Universidad Galileo",
+    template: "%s · Innovation Lab",
+  },
+  description: "El laboratorio de innovación de Universidad Galileo. Explora proyectos de inteligencia artificial, robótica y software, conoce al equipo y propón una colaboración.",
   openGraph: {
-    title: "Innovation Lab — Universidad Galileo",
-    description:
-      "Laboratorio de Innovacion de Universidad Galileo. Donde la curiosidad se convierte en tecnologia.",
+    siteName: "Innovation Lab · Universidad Galileo",
     type: "website",
   },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html
-      lang="es"
-      className={`${fraunces.variable} ${geist.variable} ${geistMono.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col bg-paper font-sans text-ink">
-        <I18nProvider>{children}</I18nProvider>
+    <html lang="es" className={instrumentSans.variable}>
+      <body className="flex min-h-dvh flex-col antialiased">
+        <I18nProvider>
+          <Header />
+          {children}
+          <Footer />
+        </I18nProvider>
       </body>
     </html>
   );

@@ -3,9 +3,9 @@
 import {
   createContext,
   useContext,
-  useState,
-  useEffect,
+  useSyncExternalStore,
   useCallback,
+  useEffect,
   type ReactNode,
 } from "react";
 import es from "@/messages/es.json";
@@ -24,23 +24,43 @@ interface I18nContextType {
 
 const I18nContext = createContext<I18nContextType | null>(null);
 
+const LOCALE_EVENT = "innovation-lab-locale-change";
+
+function subscribeLocale(callback: () => void) {
+  window.addEventListener("storage", callback);
+  window.addEventListener(LOCALE_EVENT, callback);
+  return () => {
+    window.removeEventListener("storage", callback);
+    window.removeEventListener(LOCALE_EVENT, callback);
+  };
+}
+
+function getLocaleSnapshot(): Locale {
+  if (typeof window === "undefined") return "es";
+  const saved = window.localStorage.getItem("locale");
+  return saved === "en" ? "en" : "es";
+}
+
+function getServerLocaleSnapshot(): Locale {
+  return "es";
+}
+
 export function I18nProvider({ children }: { children: ReactNode }) {
-  const [locale, setLocale] = useState<Locale>("es");
+  const locale = useSyncExternalStore(
+    subscribeLocale,
+    getLocaleSnapshot,
+    getServerLocaleSnapshot
+  );
 
   useEffect(() => {
-    const saved = localStorage.getItem("locale") as Locale | null;
-    if (saved && (saved === "es" || saved === "en")) {
-      setLocale(saved);
-    }
-  }, []);
+    document.documentElement.lang = locale;
+  }, [locale]);
 
   const toggleLocale = useCallback(() => {
-    setLocale((prev) => {
-      const next = prev === "es" ? "en" : "es";
-      localStorage.setItem("locale", next);
-      document.documentElement.lang = next;
-      return next;
-    });
+    const next: Locale = getLocaleSnapshot() === "es" ? "en" : "es";
+    window.localStorage.setItem("locale", next);
+    document.documentElement.lang = next;
+    window.dispatchEvent(new Event(LOCALE_EVENT));
   }, []);
 
   const t = useCallback(

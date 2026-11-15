@@ -1,92 +1,104 @@
 {
   "nav": {
-    "whatWeDo": "Areas",
-    "why": "Lab",
+    "skip": "Skip to main content",
+    "primary": "Main navigation",
+    "menu": "Menu",
     "projects": "Projects",
+    "about": "The Lab",
     "team": "Team",
-    "contact": "Contact"
+    "volunteers": "Volunteering",
+    "contact": "Collaborate"
   },
-  "hero": {
-    "title": "Innovation Lab",
-    "subtitle": "Universidad Galileo · GT",
-    "tagline": "Where curiosity becomes technology",
-    "description": "A space for experimentation and technological learning where we encourage creativity, teamwork, and building functional prototypes.",
-    "cta": "See projects",
-    "ctaTeam": "Meet the team",
-    "footnote": "We operate as an open lab: curiosity is the methodology and the prototype is the deliverable.",
-    "specs": {
-      "founded": "est.",
-      "team": "team",
-      "active": "active"
-    }
+  "projects": {
+    "overline": "Research & Prototyping Showcase · Universidad Galileo",
+    "title": "Lab Projects",
+    "subtitle": "Artificial intelligence, robotics, digital health, finance, and hardware prototypes built across the Innovation Lab's team of researchers, makers, and student volunteers.",
+    "catalogCta": "Explore all projects",
+    "viewProject": "View project & team",
+    "area": "Area",
+    "state": "Status",
+    "statusAll": "All statuses",
+    "categoryAll": "All areas",
+    "empty": "No projects match this search and these filters.",
+    "clear": "Clear filters",
+    "back": "Back to projects",
+    "categories": {
+      "agents_llms": "Agents and language models",
+      "physical_ai": "Robotics and physical AI",
+      "health_fintech": "Health and finance",
+      "iot_hardware": "Hardware and IoT",
+      "vision_creative": "Vision and creative media"
+    },
+    "status": {
+      "in_progress": "In progress",
+      "finished": "Completed",
+      "archived": "Archived"
+    },
+    "actions": {
+      "liveDemo": "Open demo",
+      "demoUnavailable": "The demo is no longer available.",
+      "viewRepo": "View code on GitHub",
+      "detail": "How it works",
+      "builtBy": "Team",
+      "technologies": "Technologies",
+      "gallery": "Project gallery",
+      "resources": "Project resources"
+    },
+    "search": "Search projects",
+    "searchPlaceholder": "Name, team member, topic, or technology",
+    "filtered": "Results updated."
   },
-  "whatWeDo": {
-    "overline": "What we do",
-    "title": "Research lines of the lab.",
-    "description": "We work across six complementary areas. Each combines applied research, rapid prototyping, and collaboration with graduate students.",
+  "about": {
+    "overline": "History & Research Areas · Est. December 2012",
+    "title": "The Lab",
+    "intro": "We are the innovation lab at Universidad Galileo. We build prototypes in artificial intelligence, robotics, electronics, and software, sharing our code, demos, and technical reports.",
+    "historyIntro": "Founded in December 2012 under the direction of Ing. Adrián Catalán, the Lab began as an open experimentation space where researchers and students learn by building working systems.",
+    "historyTitle": "Trajectory and evolution (Dec 2012 – Present)",
+    "research": "Six active work areas",
+    "clubsTitle": "Lab student clubs",
     "areas": {
       "agentic": {
-        "title": "Agentic & autonomous AI",
-        "description": "Systems that reason, decide, and act. Code auditing, decision automation, and agents connected to real tooling."
+        "title": "AI agents and privacy"
       },
       "multimodal": {
-        "title": "Multimodal AI",
-        "description": "Gemini experiments across image, video, audio, and text. Creative generation and media transformation."
+        "title": "AI models and translation"
       },
       "robotics": {
-        "title": "Robotics & embodied AI",
-        "description": "Arms, quadruped dogs, and robotic hands that react to their surroundings. Perception, navigation, and physical control."
+        "title": "Robotics and digital twins"
       },
       "iot": {
-        "title": "Hardware & IoT",
-        "description": "Prototypes with ESP32, Arduino, and Raspberry Pi. Sensors, actuators, and cloud-connected devices."
+        "title": "Electronics and IoT"
       },
       "creative": {
-        "title": "Creative tools",
-        "description": "Physical-digital games, generative tools, and experiments that mix hardware, software, and human interaction."
+        "title": "Digital health and finance"
       },
       "vision": {
-        "title": "Computer vision",
-        "description": "Real-time detection, tracking, and image analysis. Integration with vehicles, objects, and spaces."
+        "title": "Computer vision and mixed reality"
       }
     }
   },
-  "why": {
-    "overline": "Why a lab",
-    "title": "Learning by doing, with permission to fail.",
-    "p1": "Most university programs teach technology as theory. The Innovation Lab practices it: ideas become functional prototypes and learning happens by building.",
-    "p2": "We operate with an iterative prototyping and validation methodology, complementing engineering programs with hands-on experience in emerging technologies. Here students don't just learn to code — they learn to innovate, to work as a team, and to solve real problems.",
-    "p3": "Guatemala has enormous technological potential. Through workshops, talks, and applied projects, we aim to boost the innovation and tech entrepreneurship ecosystem in the country, connecting the university with industry and the community.",
-    "attribution": "— Universidad Galileo · Graduate Program in Software Development"
-  },
-  "projects": {
-    "overline": "Portfolio",
-    "title": "Lab projects.",
-    "filterAll": "All",
-    "status": {
-      "in_progress": "In progress",
-      "finished": "Finished",
-      "archived": "Legacy"
-    }
-  },
   "team": {
-    "overline": "Staff",
-    "title": "The team building this.",
-    "members": "members",
-    "director": "Director",
-    "assistant": "Research assistant",
-    "showBio": "Biography",
-    "hideBio": "Close"
+    "title": "Team",
+    "profile": "View profile & projects",
+    "projects": "Lab projects"
+  },
+  "volunteers": {
+    "overline": "Request for Volunteers · Open Call",
+    "title": "Open areas for volunteers",
+    "intro": "We look for self-driven students to join the Lab and build working prototypes alongside our team. These are the 8 areas where we are welcoming volunteers:",
+    "cta": "Apply via email",
+    "deliverablesLabel": "Hands-on focus"
   },
   "social": {
-    "overline": "Contact",
-    "title": "Let's talk.",
-    "description": "Follow us for workshops, demos, and prototypes in development. If you have an idea or want to collaborate, reach out.",
-    "cta": "Write",
-    "ctaDescription": "An idea, a collab, a question?"
+    "title": "Collaborate with the Lab",
+    "description": "If you have a research question, a technical problem, or an idea for a prototype, email us to explore how we can work together.",
+    "links": "Social media and repositories",
+    "githubLab": "Lab GitHub",
+    "action": "Propose a collaboration",
+    "volunteer": "View open volunteer areas (Request for Volunteers)",
+    "volunteerSubject": "Volunteering at the Innovation Lab"
   },
   "footer": {
-    "affiliation": "Universidad Galileo",
-    "rights": "All rights reserved"
+    "affiliation": "Faculty of Systems Engineering, Informatics, and Computer Science (FISICC) · Founded in December 2012"
   }
 }

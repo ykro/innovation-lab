@@ -1,77 +1,128 @@
 "use client";
 
-import { useI18n } from "@/lib/i18n";
+import Link from "next/link";
+import { labClubs, labTimeline } from "@/data/ecosystem";
 import { projects } from "@/data/projects";
+import { useI18n } from "@/lib/i18n";
 
 const areas = [
-  { key: "agentic", sampleIds: ["prototipo-auditor-de-codigo", "fork-it"] },
-  { key: "multimodal", sampleIds: ["experimentos-gemini-motion-manga", "experimentos-gemini-panel-one"] },
-  { key: "robotics", sampleIds: ["control-brazo-robotico-negro", "mano-robotica"] },
-  { key: "iot", sampleIds: ["boton-iot", "proyecto-camaleon"] },
-  { key: "creative", sampleIds: ["experimentos-gemini-cosmic-oracle", "totito"] },
-  { key: "vision", sampleIds: ["comunicacion-obd2-con-vehiculo-mvp", "experimentos-gemini-run-sight"] },
+  { key: "agentic", projectId: "split-brain-suite" },
+  { key: "multimodal", projectId: "tzij-kiche-gemma" },
+  { key: "robotics", projectId: "rosorin-physical-ai" },
+  { key: "iot", projectId: "comunicacion-obd2-con-vehiculo-mvp" },
+  { key: "creative", projectId: "preconsulta-medica-ai" },
+  { key: "vision", projectId: "chess-detection-cv" },
 ];
 
 export default function WhatWeDo() {
   const { t, locale } = useI18n();
 
-  const sampleFor = (ids: string[]) => {
-    const match = projects.find((p) => ids.includes(p.id));
-    return match?.name ?? null;
-  };
-
   return (
     <section
-      id="que-hacemos"
-      className="relative border-b border-hairline bg-paper px-6 py-20 sm:px-8 sm:py-28"
+      id="sobre-el-lab"
+      aria-labelledby="about-title"
+      className="border-b border-line bg-sand"
     >
-      <div className="mx-auto max-w-6xl">
-        <header className="reveal mb-14 grid gap-4 lg:grid-cols-[auto_1fr] lg:items-baseline lg:gap-14">
-          <div className="meta flex items-baseline gap-3">
-            <span>§ 02</span>
-            <span className="h-px w-8 bg-navy/30" />
-            <span>{t("whatWeDo.overline")}</span>
+      <div className="shell section-space">
+        <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.6fr)] lg:gap-12">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.12em] text-accent-dark">
+              {t("about.overline")}
+            </p>
+            <h2 id="about-title" className="section-title mt-1.5">
+              {t("about.title")}
+            </h2>
           </div>
-          <h2 className="display-soft max-w-3xl text-[clamp(2.25rem,5.5vw,3.75rem)] text-navy">
-            {t("whatWeDo.title")}
-          </h2>
-        </header>
+          <div>
+            <p className="intro text-ink">{t("about.intro")}</p>
+            <p className="mt-3 max-w-[65ch] text-base leading-relaxed text-muted">
+              {t("about.historyIntro")}
+            </p>
+          </div>
+        </div>
 
-        <p className="reveal mb-12 max-w-3xl text-[17px] leading-relaxed text-ink lg:ml-[calc(6ch+6rem)] sm:text-lg">
-          {t("whatWeDo.description")}
-        </p>
-
-        <ol className="reveal divide-y divide-hairline border-y border-hairline">
-          {areas.map((area, i) => {
-            const sample = sampleFor(area.sampleIds);
-            return (
+        {/* Trajectory / History since December 2012 */}
+        <div className="mt-10 border-t border-line pt-8">
+          <h3 className="text-sm font-semibold uppercase tracking-[0.08em] text-navy">
+            {t("about.historyTitle")}
+          </h3>
+          <ol className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {labTimeline.map((item) => (
               <li
-                key={area.key}
-                className="group grid gap-2 py-5 sm:grid-cols-[auto_1fr_auto] sm:items-baseline sm:gap-8"
+                key={item.year}
+                className="rounded-xl border border-line bg-surface p-5"
               >
-                <span className="font-mono text-[11px] uppercase tracking-[0.1em] text-navy/40 tabular-nums sm:w-14">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <div>
-                  <h3 className="display-soft text-2xl text-navy sm:text-3xl">
-                    {t(`whatWeDo.areas.${area.key}.title`)}
-                  </h3>
-                  <p className="mt-1 max-w-xl text-sm leading-relaxed text-ink-muted">
-                    {t(`whatWeDo.areas.${area.key}.description`)}
-                  </p>
+                <div className="flex items-center justify-between gap-2 text-xs font-semibold">
+                  <span className="font-mono text-accent-dark">{item.year}</span>
+                  <span className="text-muted">{item.era[locale]}</span>
                 </div>
-                {sample && (
-                  <span className="font-mono text-[11px] uppercase tracking-[0.08em] text-navy/50 sm:text-right">
-                    <span className="text-navy/30">
-                      {locale === "es" ? "ej." : "e.g."}{" "}
-                    </span>
-                    {sample}
-                  </span>
-                )}
+                <h4 className="mt-2.5 text-base font-semibold leading-snug text-navy">
+                  {item.title[locale]}
+                </h4>
+                <p className="mt-2 text-sm leading-relaxed text-ink">
+                  {item.detail[locale]}
+                </p>
               </li>
-            );
-          })}
-        </ol>
+            ))}
+          </ol>
+        </div>
+
+        {/* 6 Active Areas + Student Clubs */}
+        <div className="mt-10 grid gap-8 border-t border-line pt-8 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)]">
+          <div>
+            <h3 className="text-sm font-semibold uppercase tracking-[0.08em] text-navy">
+              {t("about.research")}
+            </h3>
+            <ul className="mt-4 grid gap-3 sm:grid-cols-2">
+              {areas.map(({ key, projectId }) => {
+                const project = projects.find(
+                  (entry) => entry.id === projectId
+                )!;
+                return (
+                  <li
+                    key={key}
+                    className="rounded-lg border border-line bg-surface p-4"
+                  >
+                    <h4 className="font-semibold text-navy">
+                      {t(`about.areas.${key}.title`)}
+                    </h4>
+                    <Link
+                      className="text-link mt-1.5 inline-block text-sm"
+                      href={`/proyectos/${projectId}`}
+                    >
+                      {locale === "en"
+                        ? (project.nameEn ?? project.name)
+                        : project.name}
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="text-sm font-semibold uppercase tracking-[0.08em] text-navy">
+              {t("about.clubsTitle")}
+            </h3>
+            <ul className="mt-4 divide-y divide-line rounded-lg border border-line bg-surface px-4">
+              {labClubs.map((club) => (
+                <li key={club.id} className="py-3.5">
+                  <div className="flex items-center justify-between gap-2">
+                    <h4 className="font-semibold text-navy">
+                      {club.name[locale]}
+                    </h4>
+                    <span className="text-xs font-medium text-muted">
+                      {club.coordinator}
+                    </span>
+                  </div>
+                  <p className="mt-1 text-sm leading-relaxed text-ink">
+                    {club.description[locale]}
+                  </p>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
       </div>
     </section>
   );

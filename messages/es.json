@@ -1,92 +1,104 @@
 {
   "nav": {
-    "whatWeDo": "Áreas",
-    "why": "Lab",
+    "skip": "Saltar al contenido principal",
+    "primary": "Navegación principal",
+    "menu": "Menú",
     "projects": "Proyectos",
+    "about": "Laboratorio",
     "team": "Equipo",
-    "contact": "Contacto"
+    "volunteers": "Voluntariado",
+    "contact": "Colaborar"
   },
-  "hero": {
-    "title": "Innovation Lab",
-    "subtitle": "Universidad Galileo · GT",
-    "tagline": "Donde la curiosidad se convierte en tecnología",
-    "description": "Un espacio de experimentación y aprendizaje tecnológico donde fomentamos la creatividad, el trabajo en equipo y la construcción de prototipos funcionales.",
-    "cta": "Ver proyectos",
-    "ctaTeam": "Conocer al equipo",
-    "footnote": "Operamos como un laboratorio abierto: la curiosidad es la metodología y el prototipo es el entregable.",
-    "specs": {
-      "founded": "est.",
-      "team": "equipo",
-      "active": "activos"
-    }
+  "projects": {
+    "overline": "Vitrina de Investigación y Prototipos · Universidad Galileo",
+    "title": "Proyectos del Laboratorio",
+    "subtitle": "Prototipos de inteligencia artificial, robótica, salud digital, finanzas y hardware construidos por el equipo de investigadores, makers y voluntarios del Innovation Lab.",
+    "catalogCta": "Explorar todos los proyectos",
+    "viewProject": "Ver proyecto y equipo",
+    "area": "Área",
+    "state": "Estado",
+    "statusAll": "Todos los estados",
+    "categoryAll": "Todas las áreas",
+    "empty": "No encontramos proyectos con esa búsqueda y esos filtros.",
+    "clear": "Borrar filtros",
+    "back": "Volver a proyectos",
+    "categories": {
+      "agents_llms": "Agentes y modelos de lenguaje",
+      "physical_ai": "Robótica e IA física",
+      "health_fintech": "Salud y finanzas",
+      "iot_hardware": "Hardware e IoT",
+      "vision_creative": "Visión y medios creativos"
+    },
+    "status": {
+      "in_progress": "En desarrollo",
+      "finished": "Finalizado",
+      "archived": "Archivo histórico"
+    },
+    "actions": {
+      "liveDemo": "Abrir demo",
+      "demoUnavailable": "La demo ya no está disponible.",
+      "viewRepo": "Ver código en GitHub",
+      "detail": "Cómo funciona",
+      "builtBy": "Equipo",
+      "technologies": "Tecnologías",
+      "gallery": "Galería del proyecto",
+      "resources": "Recursos del proyecto"
+    },
+    "search": "Buscar proyectos",
+    "searchPlaceholder": "Nombre, integrante, tema o tecnología",
+    "filtered": "Se actualizaron los resultados."
   },
-  "whatWeDo": {
-    "overline": "Qué hacemos",
-    "title": "Líneas de trabajo del laboratorio.",
-    "description": "Trabajamos en seis áreas complementarias. Cada una combina investigación aplicada, prototipado rápido y colaboración con estudiantes de postgrado.",
+  "about": {
+    "overline": "Historia y Áreas de Trabajo · Est. Diciembre 2012",
+    "title": "El laboratorio",
+    "intro": "Somos el laboratorio de innovación de Universidad Galileo. Construimos prototipos de inteligencia artificial, robótica, electrónica y software, y compartimos código, demostraciones e informes técnicos de lo que hacemos.",
+    "historyIntro": "Fundado en diciembre de 2012 bajo la dirección del Ing. Adrián Catalán, el laboratorio nació como un espacio abierto de experimentación donde investigadores y estudiantes aprenden construyendo sistemas reales.",
+    "historyTitle": "Trayectoria y evolución (Dic 2012 – Presente)",
+    "research": "Seis líneas de trabajo activas",
+    "clubsTitle": "Clubes estudiantiles del Laboratorio",
     "areas": {
       "agentic": {
-        "title": "Agentes e IA autónoma",
-        "description": "Sistemas que razonan, deciden y ejecutan. Auditoría de código, automatización de decisiones y agentes conectados a herramientas reales."
+        "title": "Agentes de IA y privacidad"
       },
       "multimodal": {
-        "title": "IA multimodal",
-        "description": "Experimentos con Gemini sobre imagen, video, audio y texto. Generación creativa y transformación de medios."
+        "title": "Modelos de IA y traducción"
       },
       "robotics": {
-        "title": "Robótica y embodied AI",
-        "description": "Brazos, perros cuadrúpedos y manos robóticas que reaccionan al entorno. Percepción, navegación y control en el mundo físico."
+        "title": "Robótica y gemelos digitales"
       },
       "iot": {
-        "title": "Hardware e IoT",
-        "description": "Prototipos con ESP32, Arduino y Raspberry Pi. Sensores, actuadores y dispositivos conectados a la nube."
+        "title": "Electrónica e IoT"
       },
       "creative": {
-        "title": "Herramientas creativas",
-        "description": "Juegos físico-digitales, herramientas generativas y experimentos que mezclan hardware, software e interacción humana."
+        "title": "Salud digital y finanzas"
       },
       "vision": {
-        "title": "Visión por computadora",
-        "description": "Detección, tracking y análisis de imagen en tiempo real. Integración con vehículos, objetos y espacios."
+        "title": "Visión por computadora y realidad mixta"
       }
     }
   },
-  "why": {
-    "overline": "Por qué un lab",
-    "title": "Aprender haciendo, con permiso de equivocarse.",
-    "p1": "La mayoría de programas universitarios enseñan tecnología como teoría. El Innovation Lab la practica: aquí las ideas se convierten en prototipos funcionales y el aprendizaje sucede construyendo.",
-    "p2": "Operamos con una metodología de prototipado iterativo y validación, complementando los programas de ingeniería con experiencia práctica en tecnologías emergentes. Aquí los estudiantes no solo aprenden a programar — aprenden a innovar, a trabajar en equipo y a resolver problemas reales.",
-    "p3": "Guatemala tiene un enorme potencial tecnológico. A través de talleres, charlas y proyectos aplicados, buscamos impulsar el ecosistema de innovación y emprendimiento tecnológico en el país, conectando a la universidad con la industria y la comunidad.",
-    "attribution": "— Universidad Galileo · Postgrado en Desarrollo de Software"
-  },
-  "projects": {
-    "overline": "Portafolio",
-    "title": "Proyectos del laboratorio.",
-    "filterAll": "Todos",
-    "status": {
-      "in_progress": "En progreso",
-      "finished": "Finalizado",
-      "archived": "Archivados"
-    }
-  },
   "team": {
-    "overline": "Staff",
-    "title": "El equipo que construye esto.",
-    "members": "miembros",
-    "director": "Director",
-    "assistant": "Asistente de investigación",
-    "showBio": "Biografía",
-    "hideBio": "Cerrar"
+    "title": "Equipo",
+    "profile": "Ver perfil y proyectos",
+    "projects": "Proyectos en el Lab"
+  },
+  "volunteers": {
+    "overline": "Request for Volunteers · Convocatoria Abierta",
+    "title": "Áreas abiertas para voluntarios",
+    "intro": "Buscamos estudiantes con iniciativa para integrarse al laboratorio y construir prototipos reales junto al equipo. Estas son las 8 áreas en las que estamos incorporando voluntarios:",
+    "cta": "Postular por correo",
+    "deliverablesLabel": "Enfoque práctico"
   },
   "social": {
-    "overline": "Contacto",
-    "title": "Hablemos.",
-    "description": "Síguenos para ver talleres, demos y prototipos en desarrollo. Si tienes una idea o quieres colaborar, escríbenos.",
-    "cta": "Escribir",
-    "ctaDescription": "¿Una idea, una colaboración, una duda?"
+    "title": "Colabora con el Lab",
+    "description": "Si tienes una pregunta de investigación, un problema técnico o una idea de prototipo, escríbenos para explorar cómo trabajar juntos.",
+    "links": "Redes y repositorios",
+    "githubLab": "GitHub del Lab",
+    "action": "Proponer una colaboración",
+    "volunteer": "Ver áreas abiertas para voluntariado (Request for Volunteers)",
+    "volunteerSubject": "Voluntariado en el Innovation Lab"
   },
   "footer": {
-    "affiliation": "Universidad Galileo",
-    "rights": "Todos los derechos reservados"
+    "affiliation": "Facultad de Ingeniería de Sistemas, Informática y Ciencias de la Computación (FISICC) · Fundado en diciembre de 2012"
   }
 }

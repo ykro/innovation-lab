@@ -1,33 +1,18 @@
 "use client";
 
+import Link from "next/link";
 import { useI18n } from "@/lib/i18n";
 
 const socialLinks = [
-  {
-    name: "Facebook",
-    handle: "@InnovationLabUG",
-    url: "https://www.facebook.com/InnovationLabUG",
-  },
-  {
-    name: "Instagram",
-    handle: "@innovationlabug",
-    url: "https://www.instagram.com/innovationlabug/",
-  },
-  {
-    name: "X",
-    handle: "@InnovationLabUG",
-    url: "https://twitter.com/InnovationLabUG",
-  },
+  { name: "githubLab", url: "https://github.com/innovationlabug" },
+  { name: "Instagram", url: "https://www.instagram.com/innovationlabug/" },
+  { name: "Facebook", url: "https://www.facebook.com/InnovationLabUG" },
+  { name: "X", url: "https://x.com/InnovationLabUG" },
   {
     name: "YouTube",
-    handle: "Innovation Lab UG",
     url: "https://www.youtube.com/channel/UC1_c36qbHQRF7TCLaMkGD_A",
   },
-  {
-    name: "Linktree",
-    handle: "innovationlabug",
-    url: "https://linktr.ee/innovationlabug",
-  },
+  { name: "Linktree", url: "https://linktr.ee/innovationlabug" },
 ];
 
 export default function Social() {
@@ -36,58 +21,49 @@ export default function Social() {
   return (
     <section
       id="contacto"
-      className="relative border-b border-hairline bg-paper px-6 py-20 sm:px-8 sm:py-28"
+      aria-labelledby="contact-title"
+      className="border-b border-line bg-sand"
     >
-      <div className="mx-auto max-w-6xl">
-        <header className="reveal mb-12 grid gap-4 lg:grid-cols-[auto_1fr] lg:items-baseline lg:gap-14">
-          <div className="meta flex items-baseline gap-3">
-            <span>§ 06</span>
-            <span className="h-px w-8 bg-navy/30" />
-            <span>{t("social.overline")}</span>
-          </div>
-          <h2 className="display-soft text-[clamp(2.25rem,5.5vw,3.75rem)] text-navy">
+      <div className="shell py-10 sm:py-14">
+        <div>
+          <h2 id="contact-title" className="section-title">
             {t("social.title")}
           </h2>
-        </header>
-
-        <div className="reveal grid gap-12 lg:grid-cols-[1fr_auto] lg:gap-20">
-          <div>
-            <p className="mb-8 max-w-lg text-[17px] leading-relaxed text-ink">
-              {t("social.description")}
-            </p>
-
+          <p className="intro mt-4">{t("social.description")}</p>
+          <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2">
             <a
               href="mailto:innovationlab@galileo.edu"
-              className="group inline-flex items-baseline gap-3 border-b-2 border-navy pb-1 font-mono text-[13px] uppercase tracking-[0.08em] text-navy transition-opacity hover:opacity-70"
+              className="action action-primary"
             >
-              <span className="text-navy/40">→</span>
-              innovationlab@galileo.edu
+              {t("social.action")}
             </a>
-            <p className="mt-3 font-mono text-[11px] uppercase tracking-[0.08em] text-navy/50">
-              {t("social.ctaDescription")}
-            </p>
+            <Link
+              href="/#voluntariado"
+              className="text-link inline-flex min-h-11 items-center text-sm"
+            >
+              {t("social.volunteer")}
+            </Link>
           </div>
-
-          <ul className="min-w-[260px] divide-y divide-hairline border-y border-hairline">
-            {socialLinks.map((link) => (
-              <li key={link.name}>
+        </div>
+        <nav
+          aria-label={t("social.links")}
+          className="mt-4 border-t border-line pt-2 text-sm"
+        >
+          <ul className="flex flex-wrap gap-x-5">
+            {socialLinks.map(({ name, url }) => (
+              <li key={name}>
                 <a
-                  href={link.url}
+                  href={url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex items-baseline justify-between gap-8 py-3 font-mono text-[12px] uppercase tracking-[0.06em] transition-colors hover:text-navy"
+                  className="text-link inline-flex min-h-11 items-center"
                 >
-                  <span className="text-navy/60 group-hover:text-navy">
-                    {link.name}
-                  </span>
-                  <span className="text-navy/40 group-hover:text-navy/70">
-                    {link.handle} <span className="text-navy/30">↗</span>
-                  </span>
+                  {name === "githubLab" ? t(`social.${name}`) : name}
                 </a>
               </li>
             ))}
           </ul>
-        </div>
+        </nav>
       </div>
     </section>
   );
