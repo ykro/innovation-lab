@@ -1,127 +1,132 @@
 "use client";
 
+import type { ReactNode } from "react";
 import Link from "next/link";
-import { labClubs, labTimeline } from "@/data/ecosystem";
-import { projects } from "@/data/projects";
+import { labClubs, workLines } from "@/data/ecosystem";
+import { projects, type ProjectCategory } from "@/data/projects";
 import { useI18n } from "@/lib/i18n";
 
-const areas = [
-  { key: "agentic", projectId: "split-brain-suite" },
-  { key: "multimodal", projectId: "tzij-kiche-gemma" },
-  { key: "robotics", projectId: "rosorin-physical-ai" },
-  { key: "iot", projectId: "comunicacion-obd2-con-vehiculo-mvp" },
-  { key: "creative", projectId: "preconsulta-medica-ai" },
-  { key: "vision", projectId: "chess-detection-cv" },
-];
+const lineIcons: Record<ProjectCategory, ReactNode> = {
+  physical_ai: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" className="size-6">
+      <rect x="5" y="8" width="14" height="10" rx="2" />
+      <path d="M12 4v4M9 13h.01M15 13h.01M9 16h6M3 11v4M21 11v4" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  ),
+  iot_hardware: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" className="size-6">
+      <rect x="7" y="7" width="10" height="10" rx="1.5" />
+      <path d="M9 3v4M15 3v4M9 17v4M15 17v4M3 9h4M3 15h4M17 9h4M17 15h4" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  ),
+  agents_llms: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" className="size-6">
+      <path d="M12 3l7 4v5c0 4.5-3 8-7 9-4-1-7-4.5-7-9V7l7-4z" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M9.5 12l2 2 3.5-3.5" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  ),
+  health_fintech: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" className="size-6">
+      <path d="M3 12h4l2.5-6 4 12 2.5-6H21" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  ),
+  vision_spatial: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" className="size-6">
+      <path d="M2.5 12S6 6 12 6s9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6z" strokeLinecap="round" strokeLinejoin="round" />
+      <circle cx="12" cy="12" r="3" />
+    </svg>
+  ),
+  nlp_generative: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" className="size-6">
+      <path d="M4 6h16M4 12h10M4 18h7" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M17 14l1.5 3 3 1.5-3 1.5-1.5 3-1.5-3-3-1.5 3-1.5 1.5-3z" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  ),
+};
 
 export default function WhatWeDo() {
   const { t, locale } = useI18n();
 
   return (
     <section
-      id="sobre-el-lab"
-      aria-labelledby="about-title"
+      id="lineas"
+      aria-labelledby="work-lines-title"
       className="border-b border-line bg-sand"
     >
       <div className="shell section-space">
-        <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.6fr)] lg:gap-12">
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.12em] text-accent-dark">
-              {t("about.overline")}
-            </p>
-            <h2 id="about-title" className="section-title mt-1.5">
-              {t("about.title")}
-            </h2>
-          </div>
-          <div>
-            <p className="intro text-ink">{t("about.intro")}</p>
-            <p className="mt-3 max-w-[65ch] text-base leading-relaxed text-muted">
-              {t("about.historyIntro")}
-            </p>
-          </div>
-        </div>
+        <h2 id="work-lines-title" className="section-title">
+          {t("workLines.title")}
+        </h2>
 
-        {/* Trajectory / History since December 2012 */}
-        <div className="mt-10 border-t border-line pt-8">
-          <h3 className="text-sm font-semibold uppercase tracking-[0.08em] text-navy">
-            {t("about.historyTitle")}
+        <ul className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {workLines.map((line) => {
+            const count = projects.filter((p) => p.category === line.id).length;
+
+            return (
+              <li key={line.id} className="flex">
+                <Link
+                  href={`/lineas/${line.slug}`}
+                  className="group flex w-full flex-col justify-between rounded-xl border border-line bg-surface p-6 transition-colors hover:border-navy"
+                >
+                  <div>
+                    <div className="flex items-center justify-between gap-3">
+                      <span
+                        aria-hidden="true"
+                        className="inline-flex size-11 items-center justify-center rounded-lg border border-line bg-sand text-navy transition-colors group-hover:bg-navy group-hover:text-white"
+                      >
+                        {lineIcons[line.id]}
+                      </span>
+                      <span className="rounded-full bg-sand px-3 py-1 text-xs font-semibold text-navy">
+                        {count} {t("projects.projectsCount")}
+                      </span>
+                    </div>
+                    <h3 className="mt-4 text-xl font-semibold leading-snug text-navy group-hover:underline group-hover:underline-offset-4">
+                      {line.title[locale]}
+                    </h3>
+                    <p className="mt-2.5 text-sm leading-relaxed text-ink">
+                      {line.description[locale]}
+                    </p>
+                  </div>
+
+                  <div className="mt-5 flex items-center justify-between border-t border-line pt-3.5 text-xs font-semibold text-navy">
+                    <span>{t("workLines.exploreLine")}</span>
+                    <span className="text-accent-dark" aria-hidden="true">
+                      →
+                    </span>
+                  </div>
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+
+        <div className="mt-12 border-t border-line pt-10">
+          <h3 className="text-2xl font-semibold text-navy">
+            {t("workLines.clubsTitle")}
           </h3>
-          <ol className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {labTimeline.map((item) => (
+          <ul className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {labClubs.map((club) => (
               <li
-                key={item.year}
-                className="rounded-xl border border-line bg-surface p-5"
+                key={club.id}
+                className="flex flex-col justify-between rounded-xl border border-line bg-surface p-5"
               >
-                <div className="flex items-center justify-between gap-2 text-xs font-semibold">
-                  <span className="font-mono text-accent-dark">{item.year}</span>
-                  <span className="text-muted">{item.era[locale]}</span>
+                <div>
+                  <h4 className="text-base font-semibold leading-snug text-navy">
+                    {club.name[locale]}
+                  </h4>
+                  <p className="mt-2 text-sm leading-relaxed text-ink">
+                    {club.description[locale]}
+                  </p>
                 </div>
-                <h4 className="mt-2.5 text-base font-semibold leading-snug text-navy">
-                  {item.title[locale]}
-                </h4>
-                <p className="mt-2 text-sm leading-relaxed text-ink">
-                  {item.detail[locale]}
+                <p className="mt-4 border-t border-line pt-3 text-xs text-muted">
+                  <strong className="font-semibold text-navy">
+                    {t("workLines.coordinator")}:
+                  </strong>{" "}
+                  {club.coordinator}
                 </p>
               </li>
             ))}
-          </ol>
-        </div>
-
-        {/* 6 Active Areas + Student Clubs */}
-        <div className="mt-10 grid gap-8 border-t border-line pt-8 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)]">
-          <div>
-            <h3 className="text-sm font-semibold uppercase tracking-[0.08em] text-navy">
-              {t("about.research")}
-            </h3>
-            <ul className="mt-4 grid gap-3 sm:grid-cols-2">
-              {areas.map(({ key, projectId }) => {
-                const project = projects.find(
-                  (entry) => entry.id === projectId
-                )!;
-                return (
-                  <li
-                    key={key}
-                    className="rounded-lg border border-line bg-surface p-4"
-                  >
-                    <h4 className="font-semibold text-navy">
-                      {t(`about.areas.${key}.title`)}
-                    </h4>
-                    <Link
-                      className="text-link mt-1.5 inline-block text-sm"
-                      href={`/proyectos/${projectId}`}
-                    >
-                      {locale === "en"
-                        ? (project.nameEn ?? project.name)
-                        : project.name}
-                    </Link>
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="text-sm font-semibold uppercase tracking-[0.08em] text-navy">
-              {t("about.clubsTitle")}
-            </h3>
-            <ul className="mt-4 divide-y divide-line rounded-lg border border-line bg-surface px-4">
-              {labClubs.map((club) => (
-                <li key={club.id} className="py-3.5">
-                  <div className="flex items-center justify-between gap-2">
-                    <h4 className="font-semibold text-navy">
-                      {club.name[locale]}
-                    </h4>
-                    <span className="text-xs font-medium text-muted">
-                      {club.coordinator}
-                    </span>
-                  </div>
-                  <p className="mt-1 text-sm leading-relaxed text-ink">
-                    {club.description[locale]}
-                  </p>
-                </li>
-              ))}
-            </ul>
-          </div>
+          </ul>
         </div>
       </div>
     </section>

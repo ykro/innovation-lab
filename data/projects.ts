@@ -5,11 +5,12 @@ export interface ProjectLink {
 }
 
 export type ProjectCategory =
-  | "agents_llms"
   | "physical_ai"
-  | "health_fintech"
   | "iot_hardware"
-  | "vision_creative";
+  | "agents_llms"
+  | "health_fintech"
+  | "vision_spatial"
+  | "nlp_generative";
 
 export interface Project {
   id: string;
@@ -17,7 +18,6 @@ export interface Project {
   nameEn?: string;
   category?: ProjectCategory;
   featured?: boolean;
-  challengeBadge?: { es: string; en: string };
   description: { es: string; en: string };
   technologies: string[];
   status: "in_progress" | "finished" | "archived";
@@ -35,15 +35,15 @@ export interface Project {
 }
 
 export const featuredProjectIds = [
-  "split-brain-suite",
-  "rosorin-physical-ai",
-  "preconsulta-medica-ai",
-  "brazo-mirobot",
-  "finanzas-ingresos-variables",
   "hexacoptero-fy690s",
-  "estados-de-cuenta-gt",
-  "cartel-luz",
+  "rosorin-physical-ai",
+  "brazo-mirobot",
   "mano-robotica",
+  "preconsulta-medica-ai",
+  "split-brain-suite",
+  "cartel-luz",
+  "finanzas-ingresos-variables",
+  "estados-de-cuenta-gt",
 ];
 
 export const projects: Project[] = [
@@ -56,10 +56,6 @@ export const projects: Project[] = [
     nameEn: "ROSOrin Pro and its digital twin",
     category: "physical_ai",
     featured: true,
-    challengeBadge: {
-      es: "Physical AI · NVIDIA GTC Poster",
-      en: "Physical AI · NVIDIA GTC Poster",
-    },
     description: {
       es: "Manipulador móvil autónomo con Jetson Orin Nano, ROS 2 Humble, puente determinista en Rust a 40 Hz y gemelo digital 3D URDF a 60 FPS controlado por voz con Gemini Live.",
       en: "Autonomous mobile manipulator with Jetson Orin Nano, ROS 2 Humble, 40 Hz deterministic Rust bridge, and 60 FPS 3D URDF Digital Twin controlled via Gemini Live voice.",
@@ -77,13 +73,13 @@ export const projects: Project[] = [
     ],
     status: "finished",
     date: "2026-10",
-    image: "/images/projects/rosorin-simulator.png",
+    image: "/images/projects/rosorin-hardware.png",
     gallery: [
       {
-        src: "/images/projects/rosorin-hardware.png",
+        src: "/images/projects/rosorin-simulator.png",
         caption: {
-          es: "Manipulador móvil físico Hiwonder ROSOrin Pro con brazo de 6 ejes, cámara 3D Aurora 930 y chasis Mecanum.",
-          en: "Physical Hiwonder ROSOrin Pro mobile manipulator with 6-DOF arm, Aurora 930 3D depth camera, and Mecanum chassis.",
+          es: "Gemelo digital 3D URDF en Three.js a 60 FPS sincronizado con el robot físico.",
+          en: "60 FPS Three.js 3D URDF digital twin synchronized with the physical robot.",
         },
       },
       {
@@ -107,12 +103,8 @@ export const projects: Project[] = [
     id: "tzij-kiche-gemma",
     name: "Tzij: traducción entre español y k’iche’",
     nameEn: "Tzij: Spanish–K’iche’ translation",
-    category: "agents_llms",
+    category: "nlp_generative",
     featured: true,
-    challengeBadge: {
-      es: "Investigación NLP · +8.5 chrF++",
-      en: "NLP Research · +8.5 chrF++",
-    },
     description: {
       es: "Traducción neuronal de bajos recursos para idioma Maya K'iche' combinando Gemma 4 E4B, LoRA RAFT, recuperación híbrida BM25 + Vector RRF y decodificación MBR sobre GPU L4.",
       en: "Low-resource neural translation for Mayan K'iche' combining Gemma 4 E4B, RAFT LoRA, hybrid BM25 + Vector RRF retrieval, and MBR decoding on serverless L4 GPU.",
@@ -162,10 +154,6 @@ export const projects: Project[] = [
     nameEn: "Split-Brain Challenge: private salary negotiation with AI",
     category: "agents_llms",
     featured: true,
-    challengeBadge: {
-      es: "Reto Comparativo · 6 Arquitecturas",
-      en: "Comparative Challenge · 6 Architectures",
-    },
     description: {
       es: "Suite comparativa de arquitecturas Split-Brain donde el salario actual y datos sensibles jamás salen a la nube pública, evaluando APIs externas, Ollama en GPU L4 y WebGPU en el navegador.",
       en: "Comparative suite of Split-Brain architectures where current salary and sensitive PII never leave trusted boundaries, benchmarking external APIs, L4 GPU Ollama, and in-browser WebGPU.",
@@ -236,10 +224,6 @@ export const projects: Project[] = [
     name: "Split-Brain Cover Letter: integración de APIs salariales",
     nameEn: "Split-Brain Cover Letter: salary API integration",
     category: "agents_llms",
-    challengeBadge: {
-      es: "AI Builders · @cuprumbot",
-      en: "AI Builders · @cuprumbot",
-    },
     description: {
       es: "Arquitectura Split-Brain en Next.js que consulta salarios de mercado en Glassdoor (Serper API) y perfiles de LinkedIn (Enrich Layer) manteniendo el salario del candidato 100% local.",
       en: "Next.js Split-Brain architecture querying Glassdoor market salaries (Serper API) and LinkedIn profiles (Enrich Layer) while keeping candidate salary data 100% client-side.",
@@ -294,10 +278,6 @@ export const projects: Project[] = [
     name: "Carta Split-Brain: evaluación local de Gemma 3 y Qwen 3",
     nameEn: "Carta Split-Brain: local evaluation of Gemma 3 and Qwen 3",
     category: "agents_llms",
-    challengeBadge: {
-      es: "AI Builders · @CatherineBatres",
-      en: "AI Builders · @CatherineBatres",
-    },
     description: {
       es: "Enrutador Split-Brain fail-closed con allowlist estricta y benchmark ciego comparando modelos locales en Ollama (Gemma 3 vs Qwen 3) para estrategia de negociación salarial.",
       en: "Fail-closed Split-Brain router with strict allowlist and blind benchmark comparing local Ollama models (Gemma 3 vs Qwen 3) for private salary negotiation.",
@@ -351,10 +331,6 @@ export const projects: Project[] = [
     name: "CoverLetter Privacy Gate: pruebas de privacidad",
     nameEn: "CoverLetter Privacy Gate: privacy tests",
     category: "agents_llms",
-    challengeBadge: {
-      es: "AI Builders · @EmilyCurin",
-      en: "AI Builders · @EmilyCurin",
-    },
     description: {
       es: "Compuerta determinista de privacidad con redacción automática de PII, degradación elegante en 3 niveles (Nube → Ollama Local → Plantilla) y más de 15 casos de prueba automatizados.",
       en: "Deterministic privacy gate with automatic PII redaction, 3-tier graceful fallback (Cloud → Local Ollama → Template), and 15+ automated validation test cases.",
@@ -393,10 +369,6 @@ export const projects: Project[] = [
     nameEn: "Voice-based medical intake",
     category: "health_fintech",
     featured: true,
-    challengeBadge: {
-      es: "Salud Digital · Cathy Batres & Adrián Catalán",
-      en: "Digital Health · Cathy Batres & Adrián Catalán",
-    },
     description: {
       es: "Transforma el relato hablado de un paciente de 2 minutos en una ficha clínica estructurada (SOAP/OPQRST) mediante preguntas adaptativas de seguimiento y detección de banderas rojas.",
       en: "Transforms a 2-minute spoken patient narrative into a structured clinical record (SOAP/OPQRST) via adaptive follow-up questions and red-flag symptom detection.",
@@ -474,10 +446,6 @@ export const projects: Project[] = [
     nameEn: "Integral and Cashflow Smoother: managing variable income",
     category: "health_fintech",
     featured: true,
-    challengeBadge: {
-      es: "FinTech IA · Emily Curín & Adrián Catalán",
-      en: "AI FinTech · Emily Curín & Adrián Catalán",
-    },
     description: {
       es: "Motores financieros para profesionales independientes que combinan bóvedas SQLite cifradas, OCR multimodal de recibos, detección de regímenes estacionales y cálculo de retención óptima.",
       en: "Financial engines for independent professionals combining encrypted SQLite vaults, multimodal receipt OCR, seasonal regime detection, and optimal retention modeling.",
@@ -540,10 +508,6 @@ export const projects: Project[] = [
     nameEn: "Expense Tracker and Card Statement Insights: bank statement analysis",
     category: "health_fintech",
     featured: true,
-    challengeBadge: {
-      es: "FinTech GT · Luis Cu & Adrián Catalán",
-      en: "FinTech GT · Luis Cu & Adrián Catalán",
-    },
     description: {
       es: "Análisis automatizado de estados de cuenta bancarios de Guatemala (BI, G&T, Banrural) con anonimización local de PII, conversión USD→GTQ, separación de extrafinanciamientos y parser binario en 6 ms.",
       en: "Automated bank statement intelligence for Guatemalan banks (BI, G&T, Banrural) featuring local PII anonymization, USD→GTQ conversion, installment separation, and a 6 ms binary PDF parser.",
@@ -605,10 +569,6 @@ export const projects: Project[] = [
     name: "Hexacóptero autónomo FY690S: navegación sin GPS",
     nameEn: "FY690S autonomous hexacopter: navigation without GPS",
     category: "physical_ai",
-    challengeBadge: {
-      es: "Robótica Aérea · Sin GPS",
-      en: "Aerial Robotics · GPS-Denied",
-    },
     description: {
       es: "Aeronave multirrotor de 6 motores (~4 kg) con controlador Pixhawk 6X, Raspberry Pi 5, LiDAR 360° RPLIDAR C1 y cámaras de flujo óptico para vuelo autónomo en entornos sin señal GPS.",
       en: "6-motor hexacopter (~4 kg) engineered with Pixhawk 6X, Raspberry Pi 5, 360° RPLIDAR C1, and optical flow cameras for autonomous flight in GPS-denied environments.",
@@ -717,7 +677,7 @@ export const projects: Project[] = [
     id: "trail-aid-recovery-pal",
     name: "Trail Aid y Recovery Pal: agentes para Android",
     nameEn: "Trail Aid and Recovery Pal: agents for Android",
-    category: "agents_llms",
+    category: "health_fintech",
     description: {
       es: "Aplicaciones nativas Android con ADK for Kotlin y LiteRT-LM que ejecutan Gemma 4 E2B 100% offline en el teléfono para emergencias en montaña y acompañamiento post-operatorio.",
       en: "Native Android apps using ADK for Kotlin and LiteRT-LM running Gemma 4 E2B 100% offline on-device for mountain trail emergencies and post-operative recovery.",
@@ -811,12 +771,8 @@ export const projects: Project[] = [
     id: "experimentos-gemini-cosmic-oracle",
     name: "Cosmic Oracle: de una servilleta a una aplicación",
     nameEn: "Cosmic Oracle: from a napkin sketch to an app",
-    category: "vision_creative",
+    category: "nlp_generative",
     featured: true,
-    challengeBadge: {
-      es: "Multimodal AI · Cloud Run Demo",
-      en: "Multimodal AI · Cloud Run Demo",
-    },
     description: {
       es: "Convierte un dibujo a mano alzada en una aplicación funcional usando IA multimodal para generar mockups, ilustraciones, cartas y código ejecutable.",
       en: "Turns a hand-drawn napkin sketch into a functional application using multimodal AI for mockups, illustrations, cards, and runnable code.",
@@ -844,7 +800,7 @@ export const projects: Project[] = [
     id: "experimentos-gemini-panel-one",
     name: "Panel One: cómics a partir de fotografías",
     nameEn: "Panel One: comics from photographs",
-    category: "vision_creative",
+    category: "nlp_generative",
     description: {
       es: "Genera historias visuales maquetadas como panel de cómic a partir de secuencias de hasta ocho fotografías reales.",
       en: "Generates laid-out comic panel stories from sequences of up to eight real photographs.",
@@ -892,7 +848,7 @@ export const projects: Project[] = [
     id: "experimentos-gemini-run-or-done",
     name: "Run or Done: análisis del desgaste en calzado deportivo",
     nameEn: "Run or Done: analyzing wear on running shoes",
-    category: "vision_creative",
+    category: "vision_spatial",
     description: {
       es: "Evalúa por visión artificial fotografías de suela, media suela y upper de tenis para correr y emite un dictamen de vida útil o reemplazo.",
       en: "Evaluates photos of running shoe soles, midsoles, and uppers using computer vision to issue a structured wear and replacement verdict.",
@@ -916,7 +872,7 @@ export const projects: Project[] = [
     id: "experimentos-gemini-tempo-lottery",
     name: "Tempo Lottery: juego de cartas de coincidencia rápida",
     nameEn: "Tempo Lottery: a fast-matching card game",
-    category: "vision_creative",
+    category: "nlp_generative",
     description: {
       es: "Juego web interactivo de cartas basado en coincidencia rápida de símbolos y generación dinámica de partidas desplegado en Cloud Run.",
       en: "Fast-paced interactive card game based on symbol matching and dynamic round generation deployed on Cloud Run.",
@@ -941,7 +897,7 @@ export const projects: Project[] = [
     id: "experimentos-gemini-motion-manga",
     name: "Motion Manga: de un video a una secuencia de manga",
     nameEn: "Motion Manga: from a video to a manga sequence",
-    category: "vision_creative",
+    category: "nlp_generative",
     description: {
       es: "Descompone videos cortos en keyframes, construye un guion narrativo y estiliza cada viñeta como una página de manga.",
       en: "Decomposes short videos into keyframes, builds a connecting narrative script, and stylizes each panel as a manga page.",
@@ -1021,7 +977,7 @@ export const projects: Project[] = [
     id: "chess-detection-cv",
     name: "Reconocimiento de partidas de ajedrez",
     nameEn: "Computer vision for chess games",
-    category: "vision_creative",
+    category: "vision_spatial",
     description: {
       es: "Reconocimiento automático de piezas y estado de partidas de ajedrez mediante visión artificial.",
       en: "Automated chess piece and board-state recognition via computer vision.",
@@ -1163,7 +1119,7 @@ export const projects: Project[] = [
     id: "ar-para-colocacion-de-muebles",
     name: "Colocación de muebles en realidad aumentada",
     nameEn: "Furniture placement in augmented reality",
-    category: "vision_creative",
+    category: "vision_spatial",
     description: {
       es: "Aplicación móvil de realidad aumentada (ARCore/ARKit) para proyectar modelos 3D a escala real con detección de planos y sombras dinámicas.",
       en: "Mobile augmented reality application (ARCore/ARKit) projecting true-scale 3D furniture models with plane detection and dynamic shadows.",
@@ -1201,7 +1157,7 @@ export const projects: Project[] = [
     id: "totito",
     name: "Totito con visión por computadora",
     nameEn: "Tic-tac-toe with computer vision",
-    category: "vision_creative",
+    category: "vision_spatial",
     description: {
       es: "Tablero físico de tres en raya con cámara cenital donde un agente de IA interpreta las jugadas físicas y responde en tiempo real.",
       en: "Physical tic-tac-toe board with overhead camera where an AI agent interprets physical moves and responds in real time.",
@@ -1341,7 +1297,7 @@ export const projects: Project[] = [
     id: "sentiment-analysis-y-futbol",
     name: "Análisis de sentimiento en el fútbol guatemalteco",
     nameEn: "Sentiment analysis in Guatemalan football",
-    category: "agents_llms",
+    category: "nlp_generative",
     description: {
       es: "Pipeline NLP que clasifica polaridad emocional y extrae temas dominantes en conversaciones digitales sobre fútbol guatemalteco.",
       en: "NLP pipeline classifying emotional polarity and extracting dominant topics across digital conversations on Guatemalan football.",
@@ -1360,7 +1316,7 @@ export const projects: Project[] = [
     id: "pictance",
     name: "Pictance: reconocimiento de puntos faciales",
     nameEn: "Pictance: facial landmark detection",
-    category: "vision_creative",
+    category: "vision_spatial",
     description: {
       es: "Exploración pionera (2018) de detección de rasgos faciales en la web mediante redes neuronales profundas.",
       en: "Early 2018 exploration of web-based facial landmark detection powered by deep neural networks.",
@@ -1398,7 +1354,7 @@ export const projects: Project[] = [
     id: "tango",
     name: "Proyecto Google Tango: realidad mixta y detección de profundidad",
     nameEn: "Google Tango Project: mixed reality and depth sensing",
-    category: "vision_creative",
+    category: "vision_spatial",
     description: {
       es: "Prototipo de mapeo espacial 3D y realidad aumentada/virtual combinando hardware Google Tango con Unity.",
       en: "3D spatial mapping and mixed-reality prototype combining Google Tango depth-sensing hardware with Unity.",
@@ -1428,7 +1384,7 @@ export const projects: Project[] = [
     id: "ilstyle",
     name: "ILStyle: transferencia de estilo neural en móvil",
     nameEn: "ILStyle: neural style transfer on mobile",
-    category: "vision_creative",
+    category: "nlp_generative",
     description: {
       es: "Aplicación en React Native y TensorFlow que transfería el trazo pictórico de obras de arte clásicas a fotografías tomadas desde el teléfono.",
       en: "React Native and TensorFlow mobile app applying artistic neural style transfer to smartphone photos.",
@@ -1443,7 +1399,7 @@ export const projects: Project[] = [
     id: "ilvision",
     name: "ILVision: anotación facial con Cloud Vision",
     nameEn: "ILVision: facial annotation with Cloud Vision",
-    category: "vision_creative",
+    category: "vision_spatial",
     description: {
       es: "Demostración interactiva de reconocimiento de geometría facial en tiempo real con React Native y Google Cloud Vision.",
       en: "Interactive real-time facial geometry detection demo built with React Native and Google Cloud Vision.",

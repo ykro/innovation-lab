@@ -7,10 +7,11 @@ import LanguageToggle from "./LanguageToggle";
 
 const navItems = [
   { key: "projects", href: "/proyectos" },
-  { key: "about", href: "/#sobre-el-lab" },
+  { key: "workLines", href: "/#lineas" },
   { key: "team", href: "/#equipo" },
+  { key: "events", href: "/#eventos" },
   { key: "volunteers", href: "/#voluntariado" },
-  { key: "contact", href: "/#contacto" },
+  { key: "history", href: "/#historia" },
 ];
 
 export default function Header() {
@@ -40,7 +41,7 @@ export default function Header() {
             <span className="leading-tight">
               <strong className="block text-[15px]">Innovation Lab</strong>
               <span className="block text-xs text-muted">
-                Universidad Galileo · Est. Dic 2012
+                Universidad Galileo
               </span>
             </span>
           </Link>

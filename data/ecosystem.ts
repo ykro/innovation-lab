@@ -1,81 +1,154 @@
+import type { ProjectCategory } from "./projects";
+
+export interface WorkLine {
+  id: ProjectCategory;
+  slug: string;
+  title: { es: string; en: string };
+  description: { es: string; en: string };
+}
+
 export interface TimelineMilestone {
   year: string;
-  era: { es: string; en: string };
-  title: { es: string; en: string };
-  detail: { es: string; en: string };
+  text: { es: string; en: string };
 }
 
 export interface VolunteerTrack {
   id: string;
-  code: string;
   title: { es: string; en: string };
-  tag: { es: string; en: string };
   description: { es: string; en: string };
-  deliverables: { es: string; en: string };
 }
 
 export interface LabClub {
   id: string;
   name: { es: string; en: string };
-  status: "active" | "upcoming";
   coordinator: string;
   description: { es: string; en: string };
 }
 
 export interface LabEvent {
-  id: string;
+  id: "iwd" | "ai-dev" | "google-io" | "devfest";
   name: { es: string; en: string };
-  lead: string;
-  scope: { es: string; en: string };
+  description: { es: string; en: string };
 }
 
-export const labTimeline: TimelineMilestone[] = [
+export const workLines: WorkLine[] = [
   {
-    year: "DIC 2012",
-    era: { es: "Fundación", en: "Foundation" },
+    id: "physical_ai",
+    slug: "robotica-ia-fisica",
     title: {
-      es: "Apertura del Innovation Lab en Universidad Galileo",
-      en: "Opening of the Innovation Lab at Universidad Galileo",
+      es: "Robótica Autónoma e IA Física",
+      en: "Autonomous Robotics & Physical AI",
     },
-    detail: {
-      es: "Nace en diciembre de 2012 bajo la dirección del Ing. Adrián Catalán como un espacio de experimentación abierta para construir prototipos de software móvil, electrónica e impresión 3D.",
-      en: "Founded in December 2012 under Ing. Adrián Catalán as Universidad Galileo's open experimentation lab for mobile software, electronics, and 3D printing prototypes.",
+    description: {
+      es: "Manipuladores móviles con ROS 2, hexacóptero autónomo sin GPS, brazos robóticos de seis ejes, prótesis impresas en 3D y gemelos digitales.",
+      en: "ROS 2 mobile manipulators, GPS-denied autonomous hexacopters, six-axis robotic arms, 3D-printed prosthetics, and digital twins.",
     },
   },
   {
-    year: "2015–2018",
-    era: { es: "Robótica, AR/VR y Visión", en: "Robotics, AR/VR & Vision" },
+    id: "iot_hardware",
+    slug: "electronica-iot-manufactura",
     title: {
-      es: "Humanoides impresos en 3D, realidad mixta y visión neuronal",
-      en: "3D-printed humanoids, mixed reality, and neural vision",
+      es: "Electrónica, IoT y Manufactura 3D",
+      en: "Electronics, IoT & 3D Manufacturing",
     },
-    detail: {
-      es: "Construcción del robot humanoide Leonardo GreenMoov (Oculus Rift + Leap Motion), ILDrone controlado por gestos con Intel Edison, diagnóstico automotriz OBD-II, hexápodos en Android Things y transferencia de estilo con TensorFlow.",
-      en: "Built the Leonardo GreenMoov humanoid robot (Oculus Rift + Leap Motion), Intel Edison gesture drones, OBD-II vehicle telemetry, Android Things hexapods, and early TensorFlow style transfer.",
+    description: {
+      es: "Diseño de tarjetas PCB propias, diagnóstico vehicular OBD-II, hidroponía automatizada certificada OSHWA, sensores ambientales y transmisión mecánica.",
+      en: "Custom PCB design, OBD-II vehicle diagnostics, OSHWA-certified automated hydroponics, environmental sensors, and mechanical transmissions.",
     },
   },
   {
-    year: "2024–2025",
-    era: { es: "IA Multimodal y Mecatrónica", en: "Multimodal AI & Mechatronics" },
+    id: "agents_llms",
+    slug: "agentes-ia-privacidad",
     title: {
-      es: "Prototipos multimodales, tarjetas PCB propias y robótica educativa",
-      en: "Multimodal prototypes, custom PCBs, and educational robotics",
+      es: "Agentes de IA y Privacidad Local",
+      en: "AI Agents & Local Privacy",
     },
-    detail: {
-      es: "Sistemas que convierten bocetos en aplicaciones (Cosmic Oracle), telemetría biomecánica (RunSight), hidroponía automatizada, detección de ajedrez por visión artificial y nuevas plataformas mecatrónicas.",
-      en: "Systems turning napkin sketches into apps (Cosmic Oracle), biomechanical runner telemetry (RunSight), automated hydroponics, computer-vision chess detection, and mechatronic platforms.",
+    description: {
+      es: "Arquitecturas Split-Brain, evaluación de modelos abiertos en GPU y navegador (Gemma, Qwen, WebGPU), protocolos agénticos y tutores adaptativos.",
+      en: "Split-Brain architectures, open-model evaluation on local GPUs and browsers (Gemma, Qwen, WebGPU), agentic protocols, and adaptive tutors.",
     },
   },
   {
-    year: "2026",
-    era: { es: "Agentes, Modelos Locales y Physical AI", en: "Agents, Local Models & Physical AI" },
+    id: "health_fintech",
+    slug: "salud-digital-fintech",
     title: {
-      es: "Arquitecturas Split-Brain, salud y finanzas con IA, ROS 2 y navegación sin GPS",
-      en: "Split-Brain architectures, AI health and finance, ROS 2, and GPS-denied robotics",
+      es: "Salud Digital y Tecnología Financiera",
+      en: "Digital Health & Financial Technology",
     },
-    detail: {
-      es: "Retos comparativos del equipo (Luis Cu, Cathy Batres, Emily Curín y Adrián Catalán), traducción español–k'iche' (Tzij), hexacóptero autónomo FY690S, manipulador móvil ROSOrin Pro con gemelo digital 3D y proyectos de la célula de voluntarios.",
-      en: "Team comparative engineering challenges (Luis Cu, Cathy Batres, Emily Curín, and Adrián Catalán), Spanish–K'iche' translation (Tzij), FY690S autonomous hexacopter, ROSOrin Pro 3D digital twin, and student volunteer prototypes.",
+    description: {
+      es: "Preconsulta médica por voz, triaje clínico offline en dispositivos móviles, bóvedas cifradas para ingresos variables y análisis de estados de cuenta.",
+      en: "Voice medical intake, offline mobile clinical triage, encrypted vaults for variable income, and bank statement analytics.",
+    },
+  },
+  {
+    id: "vision_spatial",
+    slug: "vision-computadora-realidad-espacial",
+    title: {
+      es: "Visión por Computadora y Realidad Espacial",
+      en: "Computer Vision & Spatial Computing",
+    },
+    description: {
+      es: "Reconocimiento de partidas de ajedrez y tableros físicos con cámaras cenitales, colocación de mobiliario en realidad aumentada e inspección visual.",
+      en: "Chess and physical board recognition via overhead cameras, augmented reality furniture placement, and visual inspection.",
+    },
+  },
+  {
+    id: "nlp_generative",
+    slug: "lenguaje-natural-medios-generativos",
+    title: {
+      es: "Lenguaje Natural y Medios Generativos",
+      en: "Natural Language & Generative Media",
+    },
+    description: {
+      es: "Traducción neuronal español–k'iche', análisis de sentimiento en conversaciones deportivas y generación multimodal de interfaces y narrativa visual.",
+      en: "Spanish–K'iche' neural translation, sports sentiment analysis, and multimodal generation of interfaces and visual storytelling.",
+    },
+  },
+];
+
+export const majorEvents: LabEvent[] = [
+  {
+    id: "iwd",
+    name: {
+      es: "IWD (International Women's Day)",
+      en: "IWD (International Women's Day)",
+    },
+    description: {
+      es: "Encuentro anual en alianza con Women Techmakers que reúne a ingenieras, investigadoras y estudiantes en torno a charlas técnicas, talleres prácticos y mentoría.",
+      en: "Annual conference with Women Techmakers bringing together women engineers, researchers, and students for technical talks, hands-on workshops, and mentorship.",
+    },
+  },
+  {
+    id: "ai-dev",
+    name: {
+      es: "AI Dev",
+      en: "AI Dev",
+    },
+    description: {
+      es: "Jornada especializada en ingeniería de software con inteligencia artificial, agentes autónomos, modelos abiertos y despliegue de sistemas en producción.",
+      en: "Specialized conference focused on AI-native software engineering, autonomous agents, open models, and production deployment.",
+    },
+  },
+  {
+    id: "google-io",
+    name: {
+      es: "Google I/O Extended",
+      en: "Google I/O Extended",
+    },
+    description: {
+      es: "Evento abierto a la comunidad de desarrolladores para explorar en vivo las novedades de IA, Android, Cloud y Web con demostraciones construidas en el laboratorio.",
+      en: "Community developer event exploring the latest in AI, Android, Cloud, and Web with live hardware and software demos built in the Lab.",
+    },
+  },
+  {
+    id: "devfest",
+    name: {
+      es: "DevFest",
+      en: "DevFest",
+    },
+    description: {
+      es: "Festival anual de tecnología y desarrollo de software que conecta a estudiantes y profesionales mediante sesiones prácticas de código, robótica e infraestructura en la nube.",
+      en: "Annual technology and software festival connecting students and practitioners through hands-on coding, robotics, and cloud sessions.",
     },
   },
 ];
@@ -83,162 +156,90 @@ export const labTimeline: TimelineMilestone[] = [
 export const volunteerTracks: VolunteerTrack[] = [
   {
     id: "research-ed",
-    code: "RFV-01",
     title: {
       es: "Research para Educación",
       en: "Research for Education",
     },
-    tag: {
-      es: "Investigación Aplicada",
-      en: "Applied Research",
-    },
     description: {
-      es: "Investigación empírica en tecnología educativa, tutores adaptativos y aprendizaje de ingeniería asistido por IA con validación experimental.",
-      en: "Empirical research in educational technology, adaptive tutors, and AI-assisted engineering education with experimental validation.",
-    },
-    deliverables: {
-      es: "Estudios comparativos, instrumentos de validación (SUS/NASA-TLX) y artículos científicos.",
-      en: "Comparative studies, validation instruments (SUS/NASA-TLX), and scientific papers.",
+      es: "Investigación aplicada en tecnología educativa, tutores adaptativos y aprendizaje asistido por IA con validación experimental.",
+      en: "Applied research in educational technology, adaptive tutors, and AI-assisted learning with experimental validation.",
     },
   },
   {
     id: "software-dev",
-    code: "RFV-02",
     title: {
       es: "Desarrollo de Software",
       en: "Software Development",
     },
-    tag: {
-      es: "Web · Móvil · Agentes",
-      en: "Web · Mobile · Agents",
-    },
     description: {
-      es: "Construcción acelerada de prototipos funcionales de extremo a extremo en web (Next.js/React), móvil (Android/Kotlin) y sistemas agénticos conectados a herramientas reales.",
-      en: "Rapid end-to-end construction of functional web (Next.js/React), mobile (Android/Kotlin), and tool-connected agentic prototypes.",
-    },
-    deliverables: {
-      es: "Aplicaciones desplegadas en la nube con código abierto y suites de pruebas deterministas.",
-      en: "Live cloud-deployed apps with open-source repos and deterministic test suites.",
+      es: "Construcción de prototipos funcionales en web, dispositivos móviles y sistemas agénticos conectados a herramientas reales.",
+      en: "Building functional web, mobile, and tool-connected agentic software prototypes.",
     },
   },
   {
     id: "llms-slms",
-    code: "RFV-03",
     title: {
       es: "LLMs y SLMs",
       en: "LLMs and SLMs",
     },
-    tag: {
-      es: "Modelos de Lenguaje",
-      en: "Language Models",
-    },
     description: {
-      es: "Experimentación, fine-tuning (LoRA/RAFT), evaluación reproducible y despliegue de modelos de lenguaje grandes y pequeños (Gemma, Qwen, arquitecturas Split-Brain).",
-      en: "Experimentation, fine-tuning (LoRA/RAFT), reproducible evaluation, and deployment of large and small language models (Gemma, Qwen, Split-Brain).",
-    },
-    deliverables: {
-      es: "Benchmarks reproducibles, adaptadores especializados y pipelines RAG híbridos.",
-      en: "Reproducible benchmarks, specialized adapters, and hybrid RAG pipelines.",
+      es: "Experimentación, fine-tuning, evaluación y despliegue de modelos de lenguaje grandes y pequeños como Gemma, Qwen y arquitecturas Split-Brain.",
+      en: "Experimentation, fine-tuning, evaluation, and deployment of large and small language models such as Gemma, Qwen, and Split-Brain setups.",
     },
   },
   {
     id: "iax",
-    code: "RFV-04",
     title: {
       es: "IAX (Interacción Humano-IA)",
       en: "IAX (Human–AI Interaction)",
     },
-    tag: {
-      es: "Nuevas Interfaces",
-      en: "Next-Gen Interfaces",
-    },
     description: {
-      es: "Diseño de experiencias nativas de IA más allá del chat tradicional: voz bidireccional en tiempo real, lienzos generativos, privacidad visible y flujos multimodales.",
-      en: "Designing native AI experiences beyond chat boxes: real-time bidirectional voice, generative canvases, visible privacy, and multimodal workflows.",
-    },
-    deliverables: {
-      es: "Patrones de interacción humano-agente y prototipos interactivos de baja fricción.",
-      en: "Human-agent interaction patterns and low-friction interactive prototypes.",
+      es: "Diseño de experiencias nativas de IA más allá del chat tradicional: voz en tiempo real, lienzos generativos y flujos multimodales.",
+      en: "Designing native AI experiences beyond chat boxes: real-time voice, generative canvases, and multimodal workflows.",
     },
   },
   {
     id: "low-level-ai",
-    code: "RFV-05",
     title: {
       es: "Low-Level AI Models",
       en: "Low-Level AI Models",
     },
-    tag: {
-      es: "Edge · GPU · Inferencia Local",
-      en: "Edge · GPU · Local Inference",
-    },
     description: {
-      es: "Optimización de modelos a bajo nivel, cuantización, inferencia en dispositivos y ejecución local sobre CUDA, MPS, LiteRT, WebGPU, Jetson Orin y NPUs embebidas.",
-      en: "Low-level model optimization, quantization, edge inference, and local execution on CUDA, MPS, LiteRT, WebGPU, Jetson Orin, and embedded NPUs.",
-    },
-    deliverables: {
-      es: "Motores de inferencia en dispositivo y telemetría de latencia y memoria en hardware real.",
-      en: "On-device inference engines and latency/memory telemetry on physical hardware.",
+      es: "Optimización de modelos a bajo nivel, cuantización e inferencia local sobre CUDA, MPS, LiteRT, WebGPU y tarjetas embebidas.",
+      en: "Low-level model optimization, quantization, and local inference across CUDA, MPS, LiteRT, WebGPU, and embedded boards.",
     },
   },
   {
     id: "marketing-events",
-    code: "RFV-06",
     title: {
-      es: "Marketing y Comunicación para Eventos",
-      en: "Marketing and Event Communications",
-    },
-    tag: {
-      es: "Comunidad & Difusión",
-      en: "Community & Outreach",
+      es: "Marketing para Eventos y Posgrados",
+      en: "Marketing for Events & Graduate Programs",
     },
     description: {
-      es: "Estrategia de difusión, narrativa audiovisual y crecimiento de comunidad para los congresos, clubes y demostraciones abiertas del laboratorio (Google I/O Extended, DevFest, IWD, AI Dev y visitas a colegios).",
-      en: "Outreach strategy, audiovisual storytelling, and community growth for the Lab's conferences, student clubs, and school demonstrations (Google I/O Extended, DevFest, IWD, AI Dev).",
-    },
-    deliverables: {
-      es: "Campañas de difusión, cobertura en vivo y piezas de comunicación de proyectos.",
-      en: "Outreach campaigns, live event coverage, and project communication assets.",
+      es: "Difusión, creación de contenido y crecimiento de audiencia para los eventos del laboratorio (IWD, AI Dev, Google I/O, DevFest) y los programas de posgrado.",
+      en: "Outreach, content creation, and audience growth for the Lab's flagship events (IWD, AI Dev, Google I/O, DevFest) and graduate programs.",
     },
   },
   {
     id: "ui-ux",
-    code: "RFV-07",
     title: {
       es: "UI / UX",
       en: "UI / UX",
     },
-    tag: {
-      es: "Diseño de Interfaces & Producto",
-      en: "Interface & Product Design",
-    },
     description: {
-      es: "Diseño de interfaces, sistemas visuales, visualización de datos y pruebas de usabilidad para los prototipos web, móviles y físicos del laboratorio.",
-      en: "Interface design, visual systems, data visualization, and usability testing across the Lab's web, mobile, and physical prototypes.",
-    },
-    deliverables: {
-      es: "Sistemas de componentes, prototipos interactivos y pruebas con usuarios reales.",
-      en: "Component systems, interactive prototypes, and user testing studies.",
+      es: "Diseño de interfaces y experiencia de usuario para los prototipos, landings y actividades del laboratorio.",
+      en: "Interface and user experience design for the Lab's prototypes, web platforms, and activities.",
     },
   },
   {
     id: "makers",
-    code: "RFV-08",
     title: {
-      es: "Más Makers (Robótica, Electrónica e Impresión 3D)",
-      en: "More Makers (Robotics, Electronics & 3D Printing)",
-    },
-    tag: {
-      es: "Hardware · ROS 2 · PCB",
-      en: "Hardware · ROS 2 · PCB",
+      es: "Más Makers",
+      en: "More Makers",
     },
     description: {
-      es: "Diseño electrónico (ESP32, STM32, PCB propias), mecatrónica, robótica móvil con ROS 2, drones autónomos e impresión 3D para demostraciones físicas.",
-      en: "Electronic design (ESP32, STM32, custom PCBs), mechatronics, ROS 2 mobile robotics, autonomous drones, and 3D printing for physical demos.",
-    },
-    deliverables: {
-      es: "Robots funcionales, tarjetas electrónicas propias y prototipos físico-digitales.",
-      en: "Functional robots, custom controller boards, and physical-digital prototypes.",
+      es: "Electrónica, mecatrónica, robótica móvil con ROS 2, diseño de PCB e impresión 3D para demostraciones físicas.",
+      en: "Electronics, mechatronics, ROS 2 mobile robotics, custom PCBs, and 3D printing for physical demonstrations.",
     },
   },
 ];
@@ -247,41 +248,71 @@ export const labClubs: LabClub[] = [
   {
     id: "chess",
     name: { es: "Club de Ajedrez", en: "Chess Club" },
-    status: "active",
     coordinator: "Emily Curín",
     description: {
-      es: "Entrenamiento táctico, torneos internos y proyectos de visión por computadora aplicada al tablero.",
-      en: "Tactical training, internal tournaments, and computer vision projects applied to over-the-board play.",
+      es: "Entrenamiento táctico, torneos internos y visión por computadora aplicada al tablero.",
+      en: "Tactical training, internal tournaments, and computer vision applied to over-the-board play.",
     },
   },
   {
     id: "board-games",
     name: { es: "Club de Juegos de Mesa", en: "Board Games Club" },
-    status: "active",
     coordinator: "Emily Curín",
     description: {
-      es: "Estrategia, teoría de juegos, diseño de mecánicas y sesiones abiertas para la comunidad estudiantil.",
-      en: "Strategy, game theory, mechanics design, and open sessions for the university community.",
+      es: "Estrategia, teoría de juegos, análisis de mecánicas y sesiones abiertas para estudiantes.",
+      en: "Strategy, game theory, mechanics analysis, and open student sessions.",
     },
   },
   {
     id: "competitive-programming",
-    name: { es: "Club de Programación Competitiva", en: "Competitive Programming Club" },
-    status: "active",
+    name: {
+      es: "Club de Programación Competitiva",
+      en: "Competitive Programming Club",
+    },
     coordinator: "Emily Curín & Luis Cu",
     description: {
-      es: "Resolución de estructuras de datos, grafos y algoritmos complejos con preparación para competencias ICPC.",
-      en: "Algorithmic problem-solving, graphs, and data structures training for ICPC competitions.",
+      es: "Resolución de estructuras de datos, grafos y algoritmos con preparación para competencias ICPC.",
+      en: "Data structures, graphs, and algorithmic problem-solving for ICPC competitions.",
     },
   },
   {
     id: "cloud-ai",
     name: { es: "Club de Cloud AI", en: "Cloud AI Club" },
-    status: "upcoming",
-    coordinator: "Emily Curín & Eduardo Tobar",
+    coordinator: "Emily Curín & Andrés Tobar",
     description: {
-      es: "Comunidad práctica enfocada en despliegue de agentes, arquitecturas serverless y modelos en la nube.",
-      en: "Hands-on community focused on agent deployment, serverless architectures, and cloud AI models.",
+      es: "Práctica en despliegue de agentes, arquitecturas serverless y modelos de IA en la nube.",
+      en: "Hands-on practice deploying agents, serverless architectures, and cloud AI models.",
+    },
+  },
+];
+
+export const labTimeline: TimelineMilestone[] = [
+  {
+    year: "2012",
+    text: {
+      es: "Inicia actividades en diciembre bajo la dirección del Ing. Adrián Catalán como un espacio abierto para construir prototipos de software móvil, electrónica e impresión 3D.",
+      en: "Opened in December under the direction of Ing. Adrián Catalán as an open space for building mobile software, electronics, and 3D-printed prototypes.",
+    },
+  },
+  {
+    year: "2015–2018",
+    text: {
+      es: "Construcción del humanoide impreso en 3D Leonardo GreenMoov, drones controlados por gestos, diagnóstico automotriz OBD-II, hexápodos y redes neuronales de visión.",
+      en: "Built the 3D-printed Leonardo GreenMoov humanoid, gesture-controlled drones, OBD-II vehicle diagnostics, hexapods, and early neural vision apps.",
+    },
+  },
+  {
+    year: "2024–2025",
+    text: {
+      es: "Desarrollo de tarjetas PCB propias, hidroponía certificada como hardware abierto, brazos robóticos, visión artificial en tableros físicos y aplicaciones multimodales.",
+      en: "Engineered custom PCBs, OSHWA-certified automated hydroponics, robotic arms, board-game computer vision, and multimodal applications.",
+    },
+  },
+  {
+    year: "2026",
+    text: {
+      es: "Arquitecturas de privacidad Split-Brain, sistemas de salud por voz y finanzas con IA, traducción español–k'iche', navegación aérea sin GPS y robótica con ROS 2.",
+      en: "Split-Brain privacy architectures, voice medical intake and AI fintech tools, Spanish–K'iche' translation, GPS-denied flight, and ROS 2 robotics.",
     },
   },
 ];

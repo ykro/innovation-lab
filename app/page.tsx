@@ -1,5 +1,7 @@
 import FeaturedProjects from "@/components/FeaturedProjects";
+import History from "@/components/History";
 import LegacyProjectLinks from "@/components/LegacyProjectLinks";
+import MajorEvents from "@/components/MajorEvents";
 import Social from "@/components/Social";
 import Team from "@/components/Team";
 import VolunteerRequest from "@/components/VolunteerRequest";
@@ -12,7 +14,9 @@ export default function Home() {
       <FeaturedProjects />
       <WhatWeDo />
       <Team />
+      <MajorEvents />
       <VolunteerRequest />
+      <History />
       <Social />
     </main>
   );

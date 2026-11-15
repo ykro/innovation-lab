@@ -9,7 +9,7 @@ export default function Footer() {
     <footer className="bg-surface">
       <div className="shell flex flex-wrap items-start justify-between gap-x-10 gap-y-4 py-6 text-sm text-muted">
         <div className="max-w-xl">
-          <p className="font-semibold text-navy">Innovation Lab · Universidad Galileo</p>
+          <p className="font-semibold text-navy">Innovation Lab</p>
           <p className="mt-1">{t("footer.affiliation")}</p>
         </div>
         <p>© 2012–{new Date().getUTCFullYear()} Innovation Lab</p>

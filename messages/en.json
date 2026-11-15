@@ -4,30 +4,35 @@
     "primary": "Main navigation",
     "menu": "Menu",
     "projects": "Projects",
-    "about": "The Lab",
+    "workLines": "Work areas",
     "team": "Team",
+    "events": "Events",
     "volunteers": "Volunteering",
+    "history": "History",
     "contact": "Collaborate"
   },
   "projects": {
-    "overline": "Research & Prototyping Showcase · Universidad Galileo",
-    "title": "Lab Projects",
-    "subtitle": "Artificial intelligence, robotics, digital health, finance, and hardware prototypes built across the Innovation Lab's team of researchers, makers, and student volunteers.",
+    "title": "Innovation Lab",
+    "catalogTitle": "Projects",
+    "subtitle": "Applied research and prototypes in robotics, electronics, software, and artificial intelligence built by our team of researchers, makers, and student volunteers.",
     "catalogCta": "Explore all projects",
-    "viewProject": "View project & team",
-    "area": "Area",
+    "viewProject": "View project",
+    "area": "Work area",
     "state": "Status",
     "statusAll": "All statuses",
-    "categoryAll": "All areas",
+    "categoryAll": "All work areas",
     "empty": "No projects match this search and these filters.",
     "clear": "Clear filters",
     "back": "Back to projects",
+    "backHome": "Back to home",
+    "projectsCount": "projects",
     "categories": {
-      "agents_llms": "Agents and language models",
-      "physical_ai": "Robotics and physical AI",
-      "health_fintech": "Health and finance",
-      "iot_hardware": "Hardware and IoT",
-      "vision_creative": "Vision and creative media"
+      "physical_ai": "Autonomous Robotics & Physical AI",
+      "iot_hardware": "Electronics, IoT & 3D Manufacturing",
+      "agents_llms": "AI Agents & Local Privacy",
+      "health_fintech": "Digital Health & Financial Technology",
+      "vision_spatial": "Computer Vision & Spatial Computing",
+      "nlp_generative": "Natural Language & Generative Media"
     },
     "status": {
       "in_progress": "In progress",
@@ -48,46 +53,41 @@
     "searchPlaceholder": "Name, team member, topic, or technology",
     "filtered": "Results updated."
   },
-  "about": {
-    "overline": "History & Research Areas · Est. December 2012",
-    "title": "The Lab",
-    "intro": "We are the innovation lab at Universidad Galileo. We build prototypes in artificial intelligence, robotics, electronics, and software, sharing our code, demos, and technical reports.",
-    "historyIntro": "Founded in December 2012 under the direction of Ing. Adrián Catalán, the Lab began as an open experimentation space where researchers and students learn by building working systems.",
-    "historyTitle": "Trajectory and evolution (Dec 2012 – Present)",
-    "research": "Six active work areas",
-    "clubsTitle": "Lab student clubs",
-    "areas": {
-      "agentic": {
-        "title": "AI agents and privacy"
-      },
-      "multimodal": {
-        "title": "AI models and translation"
-      },
-      "robotics": {
-        "title": "Robotics and digital twins"
-      },
-      "iot": {
-        "title": "Electronics and IoT"
-      },
-      "creative": {
-        "title": "Digital health and finance"
-      },
-      "vision": {
-        "title": "Computer vision and mixed reality"
-      }
-    }
+  "workLines": {
+    "title": "Active work areas",
+    "exploreLine": "View projects in this area",
+    "clubsTitle": "Student clubs",
+    "coordinator": "Coordinator"
   },
   "team": {
     "title": "Team",
     "profile": "View profile & projects",
     "projects": "Lab projects"
   },
+  "events": {
+    "title": "Flagship events"
+  },
   "volunteers": {
-    "overline": "Request for Volunteers · Open Call",
     "title": "Open areas for volunteers",
-    "intro": "We look for self-driven students to join the Lab and build working prototypes alongside our team. These are the 8 areas where we are welcoming volunteers:",
-    "cta": "Apply via email",
-    "deliverablesLabel": "Hands-on focus"
+    "selectHint": "Click one or more areas to apply right on this page:",
+    "selectedBadge": "Selected",
+    "selectCard": "Select area",
+    "formTitle": "Apply online",
+    "nameLabel": "Full name",
+    "namePlaceholder": "Your full name",
+    "emailLabel": "University or personal email",
+    "emailPlaceholder": "name@galileo.edu",
+    "careerLabel": "Program / year or profile",
+    "careerPlaceholder": "e.g. Systems Engineering · 4th year",
+    "areasLabel": "Selected areas",
+    "noAreasSelected": "Select at least one area from the cards above",
+    "messageLabel": "What would you like to build or research at the Lab?",
+    "messagePlaceholder": "Briefly share your experience or a project you have built...",
+    "submit": "Submit application",
+    "submittedNotice": "Your email client has opened with your application details ready to send to innovationlab@galileo.edu."
+  },
+  "history": {
+    "title": "History"
   },
   "social": {
     "title": "Collaborate with the Lab",
@@ -95,10 +95,10 @@
     "links": "Social media and repositories",
     "githubLab": "Lab GitHub",
     "action": "Propose a collaboration",
-    "volunteer": "View open volunteer areas (Request for Volunteers)",
-    "volunteerSubject": "Volunteering at the Innovation Lab"
+    "volunteer": "Apply for volunteering",
+    "volunteerSubject": "Volunteer Application — Innovation Lab"
   },
   "footer": {
-    "affiliation": "Faculty of Systems Engineering, Informatics, and Computer Science (FISICC) · Founded in December 2012"
+    "affiliation": "Faculty of Systems Engineering, Informatics, and Computer Science (FISICC)"
   }
 }

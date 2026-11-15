@@ -14,11 +14,12 @@ import { useI18n } from "@/lib/i18n";
 
 const statuses = ["finished", "in_progress", "archived"] as const;
 const categories: ProjectCategory[] = [
-  "agents_llms",
   "physical_ai",
-  "health_fintech",
   "iot_hardware",
-  "vision_creative",
+  "agents_llms",
+  "health_fintech",
+  "vision_spatial",
+  "nlp_generative",
 ];
 
 function searchText(value: string) {
@@ -34,13 +35,19 @@ function projectImage(project: Project) {
     : project.image;
 }
 
-const orderedProjects = [...projects].sort(
-  (left, right) =>
-    Number(featuredProjectIds.includes(right.id)) -
-      Number(featuredProjectIds.includes(left.id)) ||
+const orderedProjects = [...projects].sort((left, right) => {
+  const leftFeaturedIdx = featuredProjectIds.indexOf(left.id);
+  const rightFeaturedIdx = featuredProjectIds.indexOf(right.id);
+  if (leftFeaturedIdx !== -1 && rightFeaturedIdx !== -1) {
+    return leftFeaturedIdx - rightFeaturedIdx;
+  }
+  if (leftFeaturedIdx !== -1) return -1;
+  if (rightFeaturedIdx !== -1) return 1;
+  return (
     Number(Boolean(right.featured)) - Number(Boolean(left.featured)) ||
     right.date.localeCompare(left.date)
-);
+  );
+});
 
 export default function Projects() {
   const { t, locale } = useI18n();
@@ -90,12 +97,7 @@ export default function Projects() {
       tabIndex={-1}
     >
       <div className="flex flex-wrap items-end justify-between gap-4">
-        <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.12em] text-accent-dark">
-            {t("projects.overline")}
-          </p>
-          <h1 className="page-title mt-1">{t("projects.title")}</h1>
-        </div>
+        <h1 className="page-title">{t("projects.catalogTitle")}</h1>
         <a
           href="https://github.com/innovationlabug"
           target="_blank"
@@ -212,12 +214,11 @@ export default function Projects() {
                       </div>
                     )}
                     <div className="p-4 sm:p-5">
-                      <p className="text-xs font-semibold text-accent-dark">
-                        {project.challengeBadge?.[locale] ??
-                          (project.category
-                            ? t(`projects.categories.${project.category}`)
-                            : t(`projects.status.${project.status}`))}
-                      </p>
+                      {project.category && (
+                        <p className="text-xs font-semibold text-accent-dark">
+                          {t(`projects.categories.${project.category}`)}
+                        </p>
+                      )}
                       <h2
                         id={headingId}
                         className="mt-1.5 text-lg font-semibold leading-snug text-navy group-hover:underline group-hover:underline-offset-4"
@@ -226,13 +227,7 @@ export default function Projects() {
                           ? (project.nameEn ?? project.name)
                           : project.name}
                       </h2>
-                      <p className="mt-1 text-xs leading-relaxed text-muted">
-                        {t(`projects.status.${project.status}`)}
-                        {project.category && (
-                          <> · {t(`projects.categories.${project.category}`)}</>
-                        )}
-                      </p>
-                      <p className="mt-2.5 line-clamp-3 text-sm leading-relaxed text-ink">
+                      <p className="mt-2 line-clamp-3 text-sm leading-relaxed text-ink">
                         {project.description[locale]}
                       </p>
                     </div>

@@ -39,10 +39,7 @@ export default function FeaturedProjects() {
       <div className="shell pt-9 pb-12 sm:pt-12 sm:pb-16">
         <div className="flex flex-wrap items-end justify-between gap-x-6 gap-y-4">
           <div className="max-w-3xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.12em] text-accent-dark">
-              {t("projects.overline")}
-            </p>
-            <h1 id="featured-title" className="page-title mt-1.5">
+            <h1 id="featured-title" className="page-title">
               {t("projects.title")}
             </h1>
             <p className="intro mt-3 text-ink">
@@ -85,37 +82,24 @@ export default function FeaturedProjects() {
                 >
                   <div>
                     {project.image &&
-                    project.image !== "/images/projects/default.png" ? (
-                      <div className="relative aspect-[16/10] overflow-hidden border-b border-line bg-sand">
-                        <Image
-                          src={project.image}
-                          alt=""
-                          fill
-                          sizes="(min-width: 1024px) 380px, (min-width: 640px) 48vw, 100vw"
-                          className="object-cover object-top transition-transform duration-300 group-hover:scale-[1.02]"
-                        />
-                      </div>
-                    ) : (
-                      <div className="border-b border-line bg-sand px-4 py-3">
-                        <span className="text-xs font-semibold text-accent-dark">
-                          {project.challengeBadge?.[locale] ??
-                            (project.category
-                              ? t(`projects.categories.${project.category}`)
-                              : "")}
-                        </span>
-                      </div>
-                    )}
+                      project.image !== "/images/projects/default.png" && (
+                        <div className="relative aspect-[16/10] overflow-hidden border-b border-line bg-sand">
+                          <Image
+                            src={project.image}
+                            alt=""
+                            fill
+                            sizes="(min-width: 1024px) 380px, (min-width: 640px) 48vw, 100vw"
+                            className="object-cover object-top transition-transform duration-300 group-hover:scale-[1.02]"
+                          />
+                        </div>
+                      )}
 
                     <div className="p-4 sm:p-5">
-                      {project.image &&
-                        project.image !== "/images/projects/default.png" && (
-                          <p className="mb-1.5 text-xs font-semibold text-accent-dark">
-                            {project.challengeBadge?.[locale] ??
-                              (project.category
-                                ? t(`projects.categories.${project.category}`)
-                                : "")}
-                          </p>
-                        )}
+                      {project.category && (
+                        <p className="mb-1.5 text-xs font-semibold text-accent-dark">
+                          {t(`projects.categories.${project.category}`)}
+                        </p>
+                      )}
                       <h2
                         id={titleId}
                         className="text-lg font-semibold leading-snug text-navy group-hover:underline group-hover:underline-offset-4"

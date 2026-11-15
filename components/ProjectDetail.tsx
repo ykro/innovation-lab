@@ -15,27 +15,25 @@ export default function ProjectDetail({ project }: { project: Project }) {
     ...(project.repo ? [{ url: project.repo, label: t("projects.actions.viewRepo") }] : []),
     ...(project.links ?? []).map(({ url, label, labelEn }) => ({ url, label: locale === "en" ? labelEn ?? label : label })),
   ];
-  // Prefer a specific link label when it shares the demo or repository URL.
   const links = [...new Map(sourceLinks.map((link) => [link.url, link])).values()];
-  const date = new Intl.DateTimeFormat(locale, { month: "long", year: "numeric", timeZone: "UTC" }).format(new Date(`${project.date}-01T00:00:00Z`));
 
   return (
     <main id="main-content" tabIndex={-1} className="shell section-space flex-1">
       <Link href="/proyectos" className="text-link mb-6 inline-flex min-h-11 items-center">
         {t("projects.back")}
       </Link>
+      {project.category && (
+        <p className="mb-2 text-xs font-semibold text-accent-dark">
+          {t(`projects.categories.${project.category}`)}
+        </p>
+      )}
       <h1 className="section-title max-w-4xl">{name}</h1>
-      <p className="mt-4 text-sm font-semibold text-muted">
-        {t(`projects.status.${project.status}`)} · <time dateTime={project.date}>{date}</time>
-        {project.category && <> · {t(`projects.categories.${project.category}`)}</>}
-      </p>
-      {project.challengeBadge && <p className="mt-2 text-sm font-semibold text-muted">{project.challengeBadge[locale]}</p>}
-      <p className="intro mt-5">{project.description[locale]}</p>
+      <p className="intro mt-4">{project.description[locale]}</p>
       {links.length > 0 && (
         <ul aria-label={t("projects.actions.resources")} className="mt-6 flex flex-wrap gap-x-5 gap-y-1">
           {links.map(({ url, label }, index) => (
             <li key={url}>
-              <a className={index === 0 ? "action action-primary" : "text-link inline-flex min-h-11 items-center"} href={url}>{label}</a>
+              <a className={index === 0 ? "action action-primary" : "text-link inline-flex min-h-11 items-center"} href={url} target="_blank" rel="noopener noreferrer">{label}</a>
             </li>
           ))}
         </ul>

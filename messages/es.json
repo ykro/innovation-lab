@@ -4,30 +4,35 @@
     "primary": "Navegación principal",
     "menu": "Menú",
     "projects": "Proyectos",
-    "about": "Laboratorio",
+    "workLines": "Líneas de trabajo",
     "team": "Equipo",
+    "events": "Eventos",
     "volunteers": "Voluntariado",
+    "history": "Historia",
     "contact": "Colaborar"
   },
   "projects": {
-    "overline": "Vitrina de Investigación y Prototipos · Universidad Galileo",
-    "title": "Proyectos del Laboratorio",
-    "subtitle": "Prototipos de inteligencia artificial, robótica, salud digital, finanzas y hardware construidos por el equipo de investigadores, makers y voluntarios del Innovation Lab.",
+    "title": "Laboratorio de Innovación",
+    "catalogTitle": "Proyectos",
+    "subtitle": "Investigación aplicada y prototipos de robótica, electrónica, software e inteligencia artificial construidos por nuestro equipo de investigadores, makers y voluntarios.",
     "catalogCta": "Explorar todos los proyectos",
-    "viewProject": "Ver proyecto y equipo",
-    "area": "Área",
+    "viewProject": "Ver proyecto",
+    "area": "Línea de trabajo",
     "state": "Estado",
     "statusAll": "Todos los estados",
-    "categoryAll": "Todas las áreas",
+    "categoryAll": "Todas las líneas",
     "empty": "No encontramos proyectos con esa búsqueda y esos filtros.",
     "clear": "Borrar filtros",
     "back": "Volver a proyectos",
+    "backHome": "Volver al inicio",
+    "projectsCount": "proyectos",
     "categories": {
-      "agents_llms": "Agentes y modelos de lenguaje",
-      "physical_ai": "Robótica e IA física",
-      "health_fintech": "Salud y finanzas",
-      "iot_hardware": "Hardware e IoT",
-      "vision_creative": "Visión y medios creativos"
+      "physical_ai": "Robótica Autónoma e IA Física",
+      "iot_hardware": "Electrónica, IoT y Manufactura 3D",
+      "agents_llms": "Agentes de IA y Privacidad Local",
+      "health_fintech": "Salud Digital y Tecnología Financiera",
+      "vision_spatial": "Visión por Computadora y Realidad Espacial",
+      "nlp_generative": "Lenguaje Natural y Medios Generativos"
     },
     "status": {
       "in_progress": "En desarrollo",
@@ -48,46 +53,41 @@
     "searchPlaceholder": "Nombre, integrante, tema o tecnología",
     "filtered": "Se actualizaron los resultados."
   },
-  "about": {
-    "overline": "Historia y Áreas de Trabajo · Est. Diciembre 2012",
-    "title": "El laboratorio",
-    "intro": "Somos el laboratorio de innovación de Universidad Galileo. Construimos prototipos de inteligencia artificial, robótica, electrónica y software, y compartimos código, demostraciones e informes técnicos de lo que hacemos.",
-    "historyIntro": "Fundado en diciembre de 2012 bajo la dirección del Ing. Adrián Catalán, el laboratorio nació como un espacio abierto de experimentación donde investigadores y estudiantes aprenden construyendo sistemas reales.",
-    "historyTitle": "Trayectoria y evolución (Dic 2012 – Presente)",
-    "research": "Seis líneas de trabajo activas",
-    "clubsTitle": "Clubes estudiantiles del Laboratorio",
-    "areas": {
-      "agentic": {
-        "title": "Agentes de IA y privacidad"
-      },
-      "multimodal": {
-        "title": "Modelos de IA y traducción"
-      },
-      "robotics": {
-        "title": "Robótica y gemelos digitales"
-      },
-      "iot": {
-        "title": "Electrónica e IoT"
-      },
-      "creative": {
-        "title": "Salud digital y finanzas"
-      },
-      "vision": {
-        "title": "Visión por computadora y realidad mixta"
-      }
-    }
+  "workLines": {
+    "title": "Líneas de trabajo activas",
+    "exploreLine": "Ver proyectos de esta línea",
+    "clubsTitle": "Clubes estudiantiles",
+    "coordinator": "Coordina"
   },
   "team": {
     "title": "Equipo",
     "profile": "Ver perfil y proyectos",
     "projects": "Proyectos en el Lab"
   },
+  "events": {
+    "title": "Eventos principales"
+  },
   "volunteers": {
-    "overline": "Request for Volunteers · Convocatoria Abierta",
     "title": "Áreas abiertas para voluntarios",
-    "intro": "Buscamos estudiantes con iniciativa para integrarse al laboratorio y construir prototipos reales junto al equipo. Estas son las 8 áreas en las que estamos incorporando voluntarios:",
-    "cta": "Postular por correo",
-    "deliverablesLabel": "Enfoque práctico"
+    "selectHint": "Haz clic en una o varias áreas para postularte aquí mismo:",
+    "selectedBadge": "Seleccionada",
+    "selectCard": "Seleccionar área",
+    "formTitle": "Postulación en línea",
+    "nameLabel": "Nombre completo",
+    "namePlaceholder": "Tu nombre y apellido",
+    "emailLabel": "Correo institucional o personal",
+    "emailPlaceholder": "nombre@galileo.edu",
+    "careerLabel": "Carrera / semestre o perfil",
+    "careerPlaceholder": "Ej. Ingeniería de Sistemas · 4.º año",
+    "areasLabel": "Áreas seleccionadas",
+    "noAreasSelected": "Selecciona al menos un área en las tarjetas de arriba",
+    "messageLabel": "¿Qué te interesa construir o investigar en el laboratorio?",
+    "messagePlaceholder": "Cuéntanos brevemente tu experiencia o algún proyecto que hayas hecho...",
+    "submit": "Enviar postulación",
+    "submittedNotice": "Se abrió tu cliente de correo con los datos de tu postulación listos para enviar a innovationlab@galileo.edu."
+  },
+  "history": {
+    "title": "Historia"
   },
   "social": {
     "title": "Colabora con el Lab",
@@ -95,10 +95,10 @@
     "links": "Redes y repositorios",
     "githubLab": "GitHub del Lab",
     "action": "Proponer una colaboración",
-    "volunteer": "Ver áreas abiertas para voluntariado (Request for Volunteers)",
-    "volunteerSubject": "Voluntariado en el Innovation Lab"
+    "volunteer": "Postular al voluntariado",
+    "volunteerSubject": "Postulación de voluntariado — Laboratorio de Innovación"
   },
   "footer": {
-    "affiliation": "Facultad de Ingeniería de Sistemas, Informática y Ciencias de la Computación (FISICC) · Fundado en diciembre de 2012"
+    "affiliation": "Facultad de Ingeniería de Sistemas, Informática y Ciencias de la Computación (FISICC)"
   }
 }
