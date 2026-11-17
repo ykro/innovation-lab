@@ -57,7 +57,7 @@ const trackIcons: Record<string, ReactNode> = {
 
 export default function VolunteerRequest() {
   const { t, locale } = useI18n();
-  const [selectedIds, setSelectedIds] = useState<string[]>(["software-dev"]);
+  const [selectedIds, setSelectedIds] = useState<string[]>([]);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [career, setCareer] = useState("");
@@ -72,6 +72,8 @@ export default function VolunteerRequest() {
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    if (selectedIds.length === 0) return;
+
     const chosenTitles = volunteerTracks
       .filter((track) => selectedIds.includes(track.id))
       .map((track) => track.title[locale])
@@ -252,7 +254,11 @@ export default function VolunteerRequest() {
                     .join(" · ")
                 : t("volunteers.noAreasSelected")}
             </p>
-            <button type="submit" className="action action-primary cursor-pointer">
+            <button
+              type="submit"
+              disabled={selectedIds.length === 0}
+              className={selectedIds.length > 0 ? "action action-primary cursor-pointer" : "action cursor-not-allowed opacity-60"}
+            >
               {t("volunteers.submit")}
             </button>
           </div>

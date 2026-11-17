@@ -29,6 +29,11 @@ export interface LabEvent {
   id: "iwd" | "ai-dev" | "google-io" | "devfest";
   name: { es: string; en: string };
   description: { es: string; en: string };
+  photo?: {
+    src: string;
+    source: string;
+    caption: { es: string; en: string };
+  };
 }
 
 export const workLines: WorkLine[] = [
@@ -36,8 +41,8 @@ export const workLines: WorkLine[] = [
     id: "physical_ai",
     slug: "robotica-ia-fisica",
     title: {
-      es: "Robótica Autónoma e IA Física",
-      en: "Autonomous Robotics & Physical AI",
+      es: "Robots y sistemas autónomos",
+      en: "Robots and Autonomous Systems",
     },
     description: {
       es: "Manipuladores móviles con ROS 2, hexacóptero autónomo sin GPS, brazos robóticos de seis ejes, prótesis impresas en 3D y gemelos digitales.",
@@ -48,8 +53,8 @@ export const workLines: WorkLine[] = [
     id: "iot_hardware",
     slug: "electronica-iot-manufactura",
     title: {
-      es: "Electrónica, IoT y Manufactura 3D",
-      en: "Electronics, IoT & 3D Manufacturing",
+      es: "Electrónica y fabricación digital",
+      en: "Electronics and Digital Fabrication",
     },
     description: {
       es: "Diseño de tarjetas PCB propias, diagnóstico vehicular OBD-II, hidroponía automatizada certificada OSHWA, sensores ambientales y transmisión mecánica.",
@@ -60,8 +65,8 @@ export const workLines: WorkLine[] = [
     id: "agents_llms",
     slug: "agentes-ia-privacidad",
     title: {
-      es: "Agentes de IA y Privacidad Local",
-      en: "AI Agents & Local Privacy",
+      es: "Agentes de IA y privacidad",
+      en: "AI Agents and Privacy",
     },
     description: {
       es: "Arquitecturas Split-Brain, evaluación de modelos abiertos en GPU y navegador (Gemma, Qwen, WebGPU), protocolos agénticos y tutores adaptativos.",
@@ -72,8 +77,8 @@ export const workLines: WorkLine[] = [
     id: "health_fintech",
     slug: "salud-digital-fintech",
     title: {
-      es: "Salud Digital y Tecnología Financiera",
-      en: "Digital Health & Financial Technology",
+      es: "Tecnología para la salud y las finanzas",
+      en: "Technology for Health and Finance",
     },
     description: {
       es: "Preconsulta médica por voz, triaje clínico offline en dispositivos móviles, bóvedas cifradas para ingresos variables y análisis de estados de cuenta.",
@@ -84,8 +89,8 @@ export const workLines: WorkLine[] = [
     id: "vision_spatial",
     slug: "vision-computadora-realidad-espacial",
     title: {
-      es: "Visión por Computadora y Realidad Espacial",
-      en: "Computer Vision & Spatial Computing",
+      es: "Visión artificial y realidad aumentada",
+      en: "Computer Vision and Augmented Reality",
     },
     description: {
       es: "Reconocimiento de partidas de ajedrez y tableros físicos con cámaras cenitales, colocación de mobiliario en realidad aumentada e inspección visual.",
@@ -96,8 +101,8 @@ export const workLines: WorkLine[] = [
     id: "nlp_generative",
     slug: "lenguaje-natural-medios-generativos",
     title: {
-      es: "Lenguaje Natural y Medios Generativos",
-      en: "Natural Language & Generative Media",
+      es: "Traducción y creatividad con IA",
+      en: "Translation and Creativity with AI",
     },
     description: {
       es: "Traducción neuronal español–k'iche', análisis de sentimiento en conversaciones deportivas y generación multimodal de interfaces y narrativa visual.",
@@ -116,6 +121,14 @@ export const majorEvents: LabEvent[] = [
     description: {
       es: "Encuentro anual en alianza con Women Techmakers que reúne a ingenieras, investigadoras y estudiantes en torno a charlas técnicas, talleres prácticos y mentoría.",
       en: "Annual conference with Women Techmakers bringing together women engineers, researchers, and students for technical talks, hands-on workshops, and mentorship.",
+    },
+    photo: {
+      src: "/images/eventos/iwd-2026.png",
+      source: "https://www.galileo.edu/noticias/iwd2026-guatemala-innovacion-y-liderazgo-femenino-en-universidad-galileo/",
+      caption: {
+        es: "IWD Guatemala 2026 en Universidad Galileo.",
+        en: "IWD Guatemala 2026 at Universidad Galileo.",
+      },
     },
   },
   {
@@ -139,6 +152,14 @@ export const majorEvents: LabEvent[] = [
       es: "Evento abierto a la comunidad de desarrolladores para explorar en vivo las novedades de IA, Android, Cloud y Web con demostraciones construidas en el laboratorio.",
       en: "Community developer event exploring the latest in AI, Android, Cloud, and Web with live hardware and software demos built in the Lab.",
     },
+    photo: {
+      src: "/images/eventos/google-io-2025.png",
+      source: "https://www.galileo.edu/fisicc/noticias/asi-se-vivio-el-google-i-o-extended-guatemala-2025-en-universidad-galileo/",
+      caption: {
+        es: "Google I/O Extended Guatemala 2025 en Universidad Galileo.",
+        en: "Google I/O Extended Guatemala 2025 at Universidad Galileo.",
+      },
+    },
   },
   {
     id: "devfest",
@@ -149,6 +170,14 @@ export const majorEvents: LabEvent[] = [
     description: {
       es: "Festival anual de tecnología y desarrollo de software que conecta a estudiantes y profesionales mediante sesiones prácticas de código, robótica e infraestructura en la nube.",
       en: "Annual technology and software festival connecting students and practitioners through hands-on coding, robotics, and cloud sessions.",
+    },
+    photo: {
+      src: "/images/eventos/devfest-2025.jpg",
+      source: "https://www.galileo.edu/fisicc/historias-de-exito/universidad-galileo-fue-sede-del-devfest-guatemala-city-2025-la-comunidad-tecnologica-se-reunio-para-innovar-y-compartir-conocimiento/",
+      caption: {
+        es: "Una charla de DevFest Guatemala City 2025.",
+        en: "A talk at DevFest Guatemala City 2025.",
+      },
     },
   },
 ];

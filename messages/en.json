@@ -27,12 +27,12 @@
     "backHome": "Back to home",
     "projectsCount": "projects",
     "categories": {
-      "physical_ai": "Autonomous Robotics & Physical AI",
-      "iot_hardware": "Electronics, IoT & 3D Manufacturing",
-      "agents_llms": "AI Agents & Local Privacy",
-      "health_fintech": "Digital Health & Financial Technology",
-      "vision_spatial": "Computer Vision & Spatial Computing",
-      "nlp_generative": "Natural Language & Generative Media"
+      "physical_ai": "Robots and Autonomous Systems",
+      "iot_hardware": "Electronics and Digital Fabrication",
+      "agents_llms": "AI Agents and Privacy",
+      "health_fintech": "Technology for Health and Finance",
+      "vision_spatial": "Computer Vision and Augmented Reality",
+      "nlp_generative": "Translation and Creativity with AI"
     },
     "status": {
       "in_progress": "In progress",
@@ -65,7 +65,11 @@
     "projects": "Lab projects"
   },
   "events": {
-    "title": "Flagship events"
+    "title": "Flagship events",
+    "details": "View event",
+    "editions": "Editions",
+    "editionLink": "return to Main Events on the home page",
+    "photoCredit": "Photo by Universidad Galileo"
   },
   "volunteers": {
     "title": "Open areas for volunteers",

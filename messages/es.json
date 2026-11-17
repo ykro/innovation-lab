@@ -27,12 +27,12 @@
     "backHome": "Volver al inicio",
     "projectsCount": "proyectos",
     "categories": {
-      "physical_ai": "Robótica Autónoma e IA Física",
-      "iot_hardware": "Electrónica, IoT y Manufactura 3D",
-      "agents_llms": "Agentes de IA y Privacidad Local",
-      "health_fintech": "Salud Digital y Tecnología Financiera",
-      "vision_spatial": "Visión por Computadora y Realidad Espacial",
-      "nlp_generative": "Lenguaje Natural y Medios Generativos"
+      "physical_ai": "Robots y sistemas autónomos",
+      "iot_hardware": "Electrónica y fabricación digital",
+      "agents_llms": "Agentes de IA y privacidad",
+      "health_fintech": "Tecnología para la salud y las finanzas",
+      "vision_spatial": "Visión artificial y realidad aumentada",
+      "nlp_generative": "Traducción y creatividad con IA"
     },
     "status": {
       "in_progress": "En desarrollo",
@@ -65,7 +65,11 @@
     "projects": "Proyectos en el Lab"
   },
   "events": {
-    "title": "Eventos principales"
+    "title": "Eventos principales",
+    "details": "Ver evento",
+    "editions": "Ediciones",
+    "editionLink": "volver a Eventos principales en la portada",
+    "photoCredit": "Foto de Universidad Galileo"
   },
   "volunteers": {
     "title": "Áreas abiertas para voluntarios",
