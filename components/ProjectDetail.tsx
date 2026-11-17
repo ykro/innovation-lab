@@ -5,9 +5,12 @@ import Link from "next/link";
 import type { Project } from "@/data/projects";
 import { team } from "@/data/team";
 import { useI18n } from "@/lib/i18n";
+import { useProjectFilters } from "@/lib/project-filters";
 
 export default function ProjectDetail({ project }: { project: Project }) {
   const { locale, t } = useI18n();
+  const filters = useProjectFilters();
+  const catalogHref = filters.size ? `/proyectos?${filters}` : "/proyectos";
   const name = locale === "en" ? project.nameEn ?? project.name : project.name;
   const members = team.filter((member) => project.team?.includes(member.id));
   const sourceLinks = [
@@ -19,7 +22,7 @@ export default function ProjectDetail({ project }: { project: Project }) {
 
   return (
     <main id="main-content" tabIndex={-1} className="shell section-space flex-1">
-      <Link href="/proyectos" className="text-link mb-6 inline-flex min-h-11 items-center">
+      <Link href={catalogHref} className="text-link mb-6 inline-flex min-h-11 items-center">
         {t("projects.back")}
       </Link>
       {project.category && (

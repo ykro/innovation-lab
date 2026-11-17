@@ -1,16 +1,14 @@
 "use client";
 
-import { useState } from "react";
-import Image from "next/image";
-import Link from "next/link";
+import ProjectTile from "@/components/ProjectTile";
 import {
   featuredProjectIds,
   projects,
-  type Project,
   type ProjectCategory,
 } from "@/data/projects";
 import { team } from "@/data/team";
 import { useI18n } from "@/lib/i18n";
+import { setProjectFilters, useProjectFilters } from "@/lib/project-filters";
 
 const statuses = ["finished", "in_progress", "archived"] as const;
 const categories: ProjectCategory[] = [
@@ -29,12 +27,6 @@ function searchText(value: string) {
     .toLowerCase();
 }
 
-function projectImage(project: Project) {
-  return project.image === "/images/projects/default.png"
-    ? undefined
-    : project.image;
-}
-
 const orderedProjects = [...projects].sort((left, right) => {
   const leftFeaturedIdx = featuredProjectIds.indexOf(left.id);
   const rightFeaturedIdx = featuredProjectIds.indexOf(right.id);
@@ -51,9 +43,15 @@ const orderedProjects = [...projects].sort((left, right) => {
 
 export default function Projects() {
   const { t, locale } = useI18n();
-  const [query, setQuery] = useState("");
-  const [status, setStatus] = useState<Project["status"] | "all">("all");
-  const [category, setCategory] = useState<ProjectCategory | "all">("all");
+  const filters = useProjectFilters();
+  const query = filters.get("q") ?? "";
+  const category = categories.find((entry) => entry === filters.get("linea")) ?? "all";
+  const status = statuses.find((entry) => entry === filters.get("estado")) ?? "all";
+  const detailSearch = new URLSearchParams();
+  if (query.trim()) detailSearch.set("q", query);
+  if (category !== "all") detailSearch.set("linea", category);
+  if (status !== "all") detailSearch.set("estado", status);
+  const detailSuffix = detailSearch.size ? `?${detailSearch}` : "";
   const terms = searchText(query).trim().split(/\s+/).filter(Boolean);
   const hasFilters = terms.length > 0 || status !== "all" || category !== "all";
 
@@ -84,9 +82,7 @@ export default function Projects() {
   });
 
   function reset() {
-    setQuery("");
-    setStatus("all");
-    setCategory("all");
+    setProjectFilters({ q: "", linea: "", estado: "" });
     document.getElementById("project-search")?.focus();
   }
 
@@ -108,7 +104,7 @@ export default function Projects() {
         </a>
       </div>
 
-      <div className="mt-6 grid gap-3 border-y border-line py-4 min-[380px]:grid-cols-2 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)_minmax(0,1fr)_auto] lg:items-end lg:gap-4">
+      <div className="mt-6 grid gap-3 rounded-xl border border-line bg-surface p-3 sm:p-4 min-[380px]:grid-cols-2 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)_minmax(0,1fr)_auto] lg:items-end lg:gap-4">
         <div className="min-w-0 min-[380px]:col-span-2 lg:col-span-1">
           <label
             htmlFor="project-search"
@@ -120,7 +116,7 @@ export default function Projects() {
             id="project-search"
             type="search"
             value={query}
-            onChange={(event) => setQuery(event.target.value)}
+            onChange={(event) => setProjectFilters({ q: event.target.value })}
             placeholder={t("projects.searchPlaceholder")}
             className="min-h-11 w-full rounded-md border border-control bg-surface px-3 text-base placeholder:text-muted"
           />
@@ -135,9 +131,7 @@ export default function Projects() {
           <select
             id="project-area"
             value={category}
-            onChange={(event) =>
-              setCategory(event.target.value as typeof category)
-            }
+            onChange={(event) => setProjectFilters({ linea: event.target.value })}
             className="min-h-11 w-full rounded-md border border-control bg-surface px-3"
           >
             <option value="all">{t("projects.categoryAll")}</option>
@@ -158,7 +152,7 @@ export default function Projects() {
           <select
             id="project-status"
             value={status}
-            onChange={(event) => setStatus(event.target.value as typeof status)}
+            onChange={(event) => setProjectFilters({ estado: event.target.value })}
             className="min-h-11 w-full rounded-md border border-control bg-surface px-3"
           >
             <option value="all">{t("projects.statusAll")}</option>
@@ -183,79 +177,18 @@ export default function Projects() {
           t(visible.length ? "projects.filtered" : "projects.empty")}
       </p>
       {visible.length === 0 ? (
-        <p className="py-8 text-ink">{t("projects.empty")}</p>
+        <p className="mt-5 rounded-xl border border-line bg-surface px-4 py-6 text-ink sm:px-5">{t("projects.empty")}</p>
       ) : (
-        <ul className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {visible.map((project) => {
-            const src = projectImage(project);
-            const headingId = `catalog-${project.id}`;
-            const members = (project.team ?? [])
-              .map((id) => team.find((m) => m.id === id))
-              .filter((m): m is NonNullable<typeof m> => Boolean(m));
-
-            return (
-              <li key={project.id} className="flex min-w-0">
-                <Link
-                  href={`/proyectos/${project.id}`}
-                  aria-labelledby={headingId}
-                  className="group flex w-full min-w-0 flex-col justify-between overflow-hidden rounded-xl border border-line bg-surface transition-colors hover:border-navy"
-                  prefetch={false}
-                >
-                  <div>
-                    {src && (
-                      <div className="relative aspect-[16/10] w-full overflow-hidden border-b border-line bg-sand">
-                        <Image
-                          src={src}
-                          alt=""
-                          fill
-                          sizes="(min-width: 1024px) 380px, (min-width: 640px) 48vw, 100vw"
-                          className="object-cover object-top transition-transform duration-300 group-hover:scale-[1.02]"
-                        />
-                      </div>
-                    )}
-                    <div className="p-4 sm:p-5">
-                      {project.category && (
-                        <p className="text-xs font-semibold text-accent-dark">
-                          {t(`projects.categories.${project.category}`)}
-                        </p>
-                      )}
-                      <h2
-                        id={headingId}
-                        className="mt-1.5 text-lg font-semibold leading-snug text-navy group-hover:underline group-hover:underline-offset-4"
-                      >
-                        {locale === "en"
-                          ? (project.nameEn ?? project.name)
-                          : project.name}
-                      </h2>
-                      <p className="mt-2 line-clamp-3 text-sm leading-relaxed text-ink">
-                        {project.description[locale]}
-                      </p>
-                    </div>
-                  </div>
-                  <div className="border-t border-line px-4 py-3 sm:px-5">
-                    {members.length > 0 && (
-                      <p className="text-xs leading-relaxed text-muted">
-                        <strong className="font-semibold text-navy">
-                          {t("projects.actions.builtBy")}:
-                        </strong>{" "}
-                        {members
-                          .map(
-                            (m) =>
-                              m.shortName ??
-                              m.name.split(/\s+/).slice(0, 2).join(" ")
-                          )
-                          .join(" · ")}
-                      </p>
-                    )}
-                    <div className="mt-2 flex items-center justify-between text-xs font-semibold text-navy">
-                      <span>{t("projects.viewProject")}</span>
-                      <span className="text-accent-dark">→</span>
-                    </div>
-                  </div>
-                </Link>
-              </li>
-            );
-          })}
+        <ul className="mt-5 grid gap-5 sm:mt-7 sm:grid-cols-2 lg:grid-cols-3">
+          {visible.map((project) => (
+            <ProjectTile
+              key={project.id}
+              project={project}
+              href={`/proyectos/${project.id}${detailSuffix}`}
+              showStatus
+              prefetch={false}
+            />
+          ))}
         </ul>
       )}
     </main>

@@ -1,10 +1,9 @@
 "use client";
 
-import Image from "next/image";
+import ProjectTile from "@/components/ProjectTile";
 import Link from "next/link";
 import { workLines, type WorkLine } from "@/data/ecosystem";
 import { projects } from "@/data/projects";
-import { team } from "@/data/team";
 import { useI18n } from "@/lib/i18n";
 
 export default function WorkLineDetail({ line }: { line: WorkLine }) {
@@ -43,7 +42,7 @@ export default function WorkLineDetail({ line }: { line: WorkLine }) {
           <p className="intro mt-3 text-ink">{line.description[locale]}</p>
         </div>
         <Link href="/proyectos" className="action bg-surface">
-          {t("projects.catalogCta")} ({projects.length})
+          {t("projects.catalogCta")}
         </Link>
       </div>
 
@@ -68,76 +67,8 @@ export default function WorkLineDetail({ line }: { line: WorkLine }) {
         })}
       </nav>
 
-      <ul className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {lineProjects.map((project) => {
-          const headingId = `line-project-${project.id}`;
-          const members = (project.team ?? [])
-            .map((id) => team.find((m) => m.id === id))
-            .filter((m): m is NonNullable<typeof m> => Boolean(m));
-
-          return (
-            <li key={project.id} className="flex min-w-0">
-              <Link
-                href={`/proyectos/${project.id}`}
-                aria-labelledby={headingId}
-                className="group flex w-full min-w-0 flex-col justify-between overflow-hidden rounded-xl border border-line bg-surface transition-colors hover:border-navy"
-              >
-                <div>
-                  {project.image &&
-                    project.image !== "/images/projects/default.png" && (
-                      <div className="relative aspect-[16/10] w-full overflow-hidden border-b border-line bg-sand">
-                        <Image
-                          src={project.image}
-                          alt=""
-                          fill
-                          sizes="(min-width: 1024px) 380px, (min-width: 640px) 48vw, 100vw"
-                          className="object-cover object-top transition-transform duration-300 group-hover:scale-[1.02]"
-                        />
-                      </div>
-                    )}
-                  <div className="p-4 sm:p-5">
-                    {project.category && (
-                      <p className="text-xs font-semibold text-accent-dark">
-                        {t(`projects.categories.${project.category}`)}
-                      </p>
-                    )}
-                    <h2
-                      id={headingId}
-                      className="mt-1.5 text-lg font-semibold leading-snug text-navy group-hover:underline group-hover:underline-offset-4"
-                    >
-                      {locale === "en"
-                        ? (project.nameEn ?? project.name)
-                        : project.name}
-                    </h2>
-                    <p className="mt-2 line-clamp-3 text-sm leading-relaxed text-ink">
-                      {project.description[locale]}
-                    </p>
-                  </div>
-                </div>
-                <div className="border-t border-line px-4 py-3 sm:px-5">
-                  {members.length > 0 && (
-                    <p className="text-xs leading-relaxed text-muted">
-                      <strong className="font-semibold text-navy">
-                        {t("projects.actions.builtBy")}:
-                      </strong>{" "}
-                      {members
-                        .map(
-                          (m) =>
-                            m.shortName ??
-                            m.name.split(/\s+/).slice(0, 2).join(" ")
-                        )
-                        .join(" · ")}
-                    </p>
-                  )}
-                  <div className="mt-2 flex items-center justify-between text-xs font-semibold text-navy">
-                    <span>{t("projects.viewProject")}</span>
-                    <span className="text-accent-dark">→</span>
-                  </div>
-                </div>
-              </Link>
-            </li>
-          );
-        })}
+      <ul className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {lineProjects.map((project) => <ProjectTile key={project.id} project={project} />)}
       </ul>
     </main>
   );
