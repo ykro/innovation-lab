@@ -29,6 +29,7 @@ export default function ProjectDetail({ project }: { project: Project }) {
       {project.category && (
         <p className="mb-2 text-xs font-semibold text-accent-dark">
           {t(`projects.categories.${project.category}`)}
+          {project.experimental && <>{" · "}{t("projects.experiment")}</>}
         </p>
       )}
       <h1 className="section-title max-w-4xl">{name}</h1>

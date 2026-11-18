@@ -32,6 +32,7 @@ export interface Project {
   team?: string[];
   demoUrl?: string;
   archivedDemoUrl?: string;
+  experimental?: boolean;
 }
 
 export const featuredProjectIds = [
@@ -634,30 +635,23 @@ export const projects: Project[] = [
     team: ["adrian-catalan", "mario-cifuentes", "luis-galicia"],
   },
   {
-    id: "escudo-encargo-agentic-web",
-    name: "Escudo y Encargo: agentes para la web",
-    nameEn: "Escudo and Encargo: agents for the web",
+    id: "escudo-agentic-web",
+    name: "Escudo: una aseguradora lista para agentes",
+    nameEn: "Escudo: an agent-ready insurance demo",
     category: "agents_llms",
     description: {
-      es: "Implementaciones de referencia de protocolos agénticos abiertos (MCP, A2A, AppFunctions, WebMCP, UCP y AP2 con Passkeys) donde el próximo cliente de una aplicación web es un agente de IA.",
-      en: "Reference implementations of open agentic protocols (MCP, A2A, AppFunctions, WebMCP, UCP, and AP2 with Passkeys) designed for a web where the next customer is an AI agent.",
+      es: "Demo de una aseguradora de autos ficticia que permite cotizar, gestionar reclamos y coordinar grúa y taller mediante agentes de IA, con aprobaciones humanas en los pasos sensibles.",
+      en: "A fictional auto insurance demo where AI agents handle quotes, claims, and tow and repair coordination, with human approval for sensitive steps.",
     },
     longDescription: {
-      es: "Dos sistemas completos desarrollados por Adrián Catalán para demostrar cómo construir software 'Built for Agents': Escudo (aseguradora vehicular en Guatemala que expone cotización, reclamos y despacho de grúa simultáneamente vía MCP, A2A, AppFunctions y WebMCP) y Encargo (comercio electrónico agéntico con descubrimiento UCP y pagos autorizados con mandato criptográfico AP2 y WebAuthn Passkeys).",
-      en: "Two complete reference systems built by Adrián Catalán demonstrating 'Built for Agents' software architecture: Escudo (an auto insurance platform exposing quotes, claims, and tow dispatch across MCP, A2A, AppFunctions, and WebMCP) and Encargo (agentic e-commerce with UCP discovery and cryptographic AP2 payment mandates via WebAuthn Passkeys).",
+      es: "Escudo expone las mismas capacidades desde una app Android con AppFunctions, un portal web con WebMCP, un servidor MCP y un chat. El agente coordina servicios de grúa y taller con A2A. El flujo de demostración utiliza datos ficticios y requiere tres aprobaciones con huella antes de completar el reclamo.",
+      en: "Escudo exposes the same capabilities through an Android app with AppFunctions, a WebMCP portal, an MCP server, and chat. The agent coordinates tow and repair services through A2A. The demonstration uses fictional data and requires three fingerprint approvals before completing a claim.",
     },
-    technologies: ["MCP", "A2A", "WebMCP", "UCP & AP2", "WebAuthn Passkeys"],
+    technologies: ["MCP", "A2A", "AppFunctions", "WebMCP", "Gemini Live"],
     status: "finished",
     date: "2026-08",
     image: "/images/projects/escudo-firmado.png",
     gallery: [
-      {
-        src: "/images/projects/encargo-confirmado.png",
-        caption: {
-          es: "Encargo: comparativa entre navegador humano y compra agéntica con perfil UCP y mandato AP2.",
-          en: "Encargo: side-by-side comparison between human browsing and agentic UCP discovery + AP2 mandate.",
-        },
-      },
       {
         src: "/images/projects/escudo-poliza.png",
         caption: {
@@ -667,11 +661,135 @@ export const projects: Project[] = [
       },
     ],
     repo: "https://github.com/ykro/escudo",
+    demoUrl: "https://escudo-web-611681112050.us-central1.run.app/",
     links: [
-      { label: "Repo Escudo (Multi-Protocol)", url: "https://github.com/ykro/escudo" },
-      { label: "Repo Encargo (Agentic Commerce)", url: "https://github.com/ykro/encargo" },
       { label: "Repo Agentic SDLC Demo", url: "https://github.com/ykro/agentic-sdlc-demo" },
     ],
+    team: ["adrian-catalan"],
+  },
+  {
+    id: "encargo-agentic-commerce",
+    name: "Encargo: compras con agentes de IA",
+    nameEn: "Encargo: shopping with AI agents",
+    category: "agents_llms",
+    description: {
+      es: "Un agente compara dos tiendas ficticias y prepara una compra según talla, presupuesto y fecha de entrega. La persona autoriza el pago con una passkey.",
+      en: "An agent compares two fictional stores and prepares a purchase based on size, budget, and delivery date. A person authorizes payment with a passkey.",
+    },
+    longDescription: {
+      es: "La demo compara una tienda que presenta información solo en imágenes con otra que publica datos legibles para agentes mediante schema.org y UCP. Un modo de control permite publicar los mismos datos en ambas y observar cómo cambia la decisión de compra. El pago requiere un mandato AP2 firmado por la persona.",
+      en: "The demo compares a store that presents information only in images with another publishing agent-readable data through schema.org and UCP. A control mode exposes the same data in both stores to show how the purchase decision changes. Payment requires an AP2 mandate signed by the person.",
+    },
+    technologies: ["Agentes de IA", "schema.org", "UCP", "AP2", "WebAuthn Passkeys"],
+    status: "finished",
+    date: "2026-10",
+    image: "/images/projects/encargo-confirmado.png",
+    repo: "https://github.com/ykro/encargo",
+    demoUrl: "https://encargo-app-611681112050.us-central1.run.app/",
+    team: ["adrian-catalan"],
+  },
+  {
+    id: "github-comic-heroes",
+    name: "GitHub Comic Heroes",
+    nameEn: "GitHub Comic Heroes",
+    category: "nlp_generative",
+    description: {
+      es: "Convierte un perfil de GitHub en una carta de superhéroe. La IA genera el retrato, el alias y los superpoderes a partir del avatar y los repositorios públicos.",
+      en: "Turns a GitHub profile into a superhero card. AI generates the portrait, alias, and superpowers from the avatar and public repositories.",
+    },
+    longDescription: {
+      es: "La aplicación consulta el perfil y los repositorios principales de un usuario de GitHub. Vertex AI genera una ilustración de cómic y redacta los elementos de la carta en paralelo. El proyecto incluye una aplicación pública y un codelab para construirla con Google Antigravity.",
+      en: "The app reads a GitHub user's profile and main repositories. Vertex AI generates a comic illustration and writes the card elements in parallel. The project includes a public application and a codelab for building it with Google Antigravity.",
+    },
+    technologies: ["Vertex AI", "Gemini", "GitHub API", "Google Antigravity", "Cloud Run"],
+    status: "finished",
+    date: "2026-10",
+    image: "/images/projects/github-comic-heroes.png",
+    repo: "https://github.com/ykro/agy-comic-heroes",
+    demoUrl: "https://github-comic-cards-z63pqhhmxq-uc.a.run.app/",
+    links: [
+      { label: "Codelab interactivo", labelEn: "Interactive codelab", url: "https://agy-comic-heroes.web.app/" },
+    ],
+    team: ["adrian-catalan"],
+  },
+  {
+    id: "cuotas",
+    name: "Cuotas: comparación de ofertas de pago",
+    nameEn: "Cuotas: comparing payment offers",
+    category: "health_fintech",
+    experimental: true,
+    description: {
+      es: "Experimento que lee una oferta comercial en foto o recibe montos manuales para comparar pagos, recargos y condiciones en Guatemala, Colombia y Panamá.",
+      en: "An experiment that reads a commercial offer from a photo or accepts manual amounts to compare payments, additional charges, and terms in Guatemala, Colombia, and Panama.",
+    },
+    longDescription: {
+      es: "La IA extrae los datos de una oferta y un motor determinista calcula el compromiso de pago. La aplicación muestra una referencia mensual con supuestos editables e identifica las condiciones que requieren confirmación. Incluye ejemplos para probar el flujo de lectura y comparación.",
+      en: "AI extracts offer details and a deterministic engine calculates the payment commitment. The app shows a monthly reference with editable assumptions and identifies terms requiring confirmation. Examples let visitors try the reading and comparison workflow.",
+    },
+    technologies: ["Gemini", "TypeScript", "Análisis de ofertas", "Cálculo determinista"],
+    status: "in_progress",
+    date: "2026-11",
+    repo: "https://github.com/ykro/cuotas-auditor",
+    demoUrl: "https://cuotas-auditor-gt.web.app/",
+    team: ["adrian-catalan"],
+  },
+  {
+    id: "gemelo-running",
+    name: "Gemelo Running: ritmo por kilómetro",
+    nameEn: "Gemelo Running: a pace plan for every kilometer",
+    category: "health_fintech",
+    description: {
+      es: "Planifica el ritmo de una carrera según la altimetría del recorrido, la altitud y el paso actual del corredor. Permite elegir una ruta o subir un archivo GPX.",
+      en: "Plans race pace based on the route's elevation profile, altitude, and the runner's current pace. Visitors can choose a route or upload a GPX file.",
+    },
+    longDescription: {
+      es: "El prototipo combina el recorrido de la carrera con el ritmo sostenible y la altitud habitual de entrenamiento para preparar un plan por kilómetro e hidratación. Ofrece rutas precargadas, carga de GPX e importación opcional del ritmo desde Strava.",
+      en: "The prototype combines a race route with sustainable pace and usual training altitude to prepare a kilometer-by-kilometer pace and hydration plan. It offers preset routes, GPX uploads, and optional pace import from Strava.",
+    },
+    technologies: ["GPX", "Strava", "Análisis de altimetría", "Web"],
+    status: "in_progress",
+    date: "2026-11",
+    demoUrl: "https://gemelo-running-gt.web.app/",
+    team: ["adrian-catalan"],
+  },
+  {
+    id: "donde-esta-mi-medicina",
+    name: "Dónde está mi medicina",
+    nameEn: "Where is my medicine",
+    category: "health_fintech",
+    description: {
+      es: "Busca medicamentos y compara la disponibilidad y los precios reportados por farmacias y supermercados en Guatemala.",
+      en: "Searches for medicines and compares availability and prices reported by pharmacies and supermarkets in Guatemala.",
+    },
+    longDescription: {
+      es: "El prototipo reúne opciones de distintas cadenas y permite orientar la búsqueda por zona. La demo pública incluye búsquedas de ejemplo para explorar cómo se presentan la disponibilidad y los precios.",
+      en: "The prototype brings together options from different chains and lets visitors narrow a search by area. The public demo includes example searches to explore how availability and prices are presented.",
+    },
+    technologies: ["Búsqueda", "Comparación de precios", "Web"],
+    status: "in_progress",
+    date: "2026-11",
+    image: "/images/projects/donde-esta-mi-medicina.jpg",
+    demoUrl: "https://medicina-gt.web.app/",
+    team: ["adrian-catalan"],
+  },
+  {
+    id: "fisiomarcha",
+    name: "FisioMarcha: análisis visual de caminata",
+    nameEn: "FisioMarcha: visual gait analysis",
+    category: "vision_spatial",
+    description: {
+      es: "Prototipo para observar una caminata desde una foto o un video y explorar mediciones de rodilla, pelvis y tronco como apoyo durante una consulta.",
+      en: "A prototype for observing gait from a photo or video and exploring knee, pelvis, and trunk measurements to support a consultation.",
+    },
+    longDescription: {
+      es: "La aplicación revisa el encuadre antes de presentar las mediciones que puede obtener del material cargado. Incluye ejemplos ilustrativos para conocer el flujo y comparar las observaciones de movimiento.",
+      en: "The app checks framing before presenting the measurements it can obtain from the uploaded material. Illustrative examples let visitors explore the workflow and compare movement observations.",
+    },
+    technologies: ["Visión por computadora", "Análisis de movimiento", "Web"],
+    status: "in_progress",
+    date: "2026-11",
+    image: "/images/projects/fisiomarcha.jpg",
+    demoUrl: "https://fisio-gait-gt.web.app/",
     team: ["adrian-catalan"],
   },
   {

@@ -59,9 +59,10 @@ export default function ProjectTile({
           <h2 id={headingId} className={`font-semibold leading-tight text-navy group-hover:underline group-hover:underline-offset-4 ${prominent ? "text-2xl text-balance lg:text-3xl" : "text-xl"}`}>
             {title}
           </h2>
-          {(project.category || showStatus) && (
+          {(project.category || project.experimental || showStatus) && (
             <p className="mt-1.5 flex flex-wrap items-baseline gap-x-2 text-sm leading-snug text-muted">
               {project.category && <span>{t(`projects.categories.${project.category}`)}</span>}
+              {project.experimental && <span className="font-semibold text-accent-dark">{t("projects.experiment")}</span>}
               {showStatus && (
                 <span className="font-semibold text-accent-dark">
                   {project.category && <span aria-hidden="true" className="mr-2 font-normal">·</span>}

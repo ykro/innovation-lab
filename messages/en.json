@@ -12,6 +12,7 @@
     "contact": "Collaborate"
   },
   "projects": {
+    "experiment": "Experiment",
     "title": "Innovation Lab",
     "catalogTitle": "Projects",
     "subtitle": "Applied research and prototypes in robotics, electronics, software, and artificial intelligence built by our team of researchers, makers, and student volunteers.",
