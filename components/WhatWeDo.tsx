@@ -1,6 +1,7 @@
 "use client";
 
 import type { ReactNode } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { labClubs, workLines } from "@/data/ecosystem";
 import { projects, type ProjectCategory } from "@/data/projects";
@@ -21,8 +22,10 @@ const lineIcons: Record<ProjectCategory, ReactNode> = {
   ),
   agents_llms: (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" className="size-6">
-      <path d="M12 3l7 4v5c0 4.5-3 8-7 9-4-1-7-4.5-7-9V7l7-4z" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M9.5 12l2 2 3.5-3.5" strokeLinecap="round" strokeLinejoin="round" />
+      <circle cx="12" cy="5" r="2.5" />
+      <circle cx="5" cy="18" r="2.5" />
+      <circle cx="19" cy="18" r="2.5" />
+      <path d="M10.8 7.2L6.2 15.8M13.2 7.2l4.6 8.6M7.5 18h9" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   ),
   health_fintech: (
@@ -100,30 +103,43 @@ export default function WhatWeDo() {
           })}
         </ul>
 
-        <div className="mt-12 border-t border-line pt-10">
+        <div id="clubes" className="mt-12 border-t border-line pt-10">
           <h3 className="text-2xl font-semibold text-navy">
             {t("workLines.clubsTitle")}
           </h3>
           <ul className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {labClubs.map((club) => (
-              <li
-                key={club.id}
-                className="flex flex-col justify-between rounded-xl border border-line bg-surface p-5"
-              >
-                <div>
-                  <h4 className="text-base font-semibold leading-snug text-navy">
-                    {club.name[locale]}
-                  </h4>
-                  <p className="mt-2 text-sm leading-relaxed text-ink">
-                    {club.description[locale]}
-                  </p>
-                </div>
-                <p className="mt-4 border-t border-line pt-3 text-xs text-muted">
-                  <strong className="font-semibold text-navy">
-                    {t("workLines.coordinator")}:
-                  </strong>{" "}
-                  {club.coordinator}
-                </p>
+              <li key={club.id} className="flex min-w-0">
+                <Link
+                  href={`/clubes/${club.slug}`}
+                  aria-labelledby={`club-title-${club.id}`}
+                  className="group flex w-full flex-col overflow-hidden rounded-xl border border-line bg-surface hover:border-control"
+                >
+                  {club.photo && (
+                    <div className="relative aspect-[16/10] border-b border-line bg-surface">
+                      <Image
+                        src={club.photo.src}
+                        alt=""
+                        fill
+                        sizes="(min-width: 1200px) 270px, (min-width: 1024px) 24vw, (min-width: 640px) 48vw, 100vw"
+                        className="object-cover"
+                      />
+                    </div>
+                  )}
+                  <div className="flex flex-1 flex-col p-5">
+                    <h4 id={`club-title-${club.id}`} className="text-base font-semibold leading-snug text-navy group-hover:underline group-hover:underline-offset-4">
+                      {club.name[locale]}
+                    </h4>
+                    {club.planned && <p className="mt-2 text-sm font-semibold text-accent-dark">{t("clubs.planned")}</p>}
+                    <p className="mt-2 mb-4 text-sm leading-relaxed text-ink">
+                      {club.description[locale]}
+                    </p>
+                    <p className="mt-auto border-t border-line pt-3 text-xs text-muted">
+                      <strong className="font-semibold text-navy">{t("workLines.coordinator")}</strong>{" · "}{club.coordinator}
+                    </p>
+                    <p className="mt-3 text-sm font-semibold text-accent-dark">{t("clubs.details")}</p>
+                  </div>
+                </Link>
               </li>
             ))}
           </ul>

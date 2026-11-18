@@ -35,15 +35,16 @@ export interface Project {
 }
 
 export const featuredProjectIds = [
-  "hexacoptero-fy690s",
   "rosorin-physical-ai",
+  "hexacoptero-fy690s",
   "brazo-mirobot",
   "mano-robotica",
+  "tzij-kiche-gemma",
   "preconsulta-medica-ai",
-  "split-brain-suite",
   "cartel-luz",
-  "finanzas-ingresos-variables",
   "estados-de-cuenta-gt",
+  "finanzas-ingresos-variables",
+  "split-brain-suite",
 ];
 
 export const projects: Project[] = [

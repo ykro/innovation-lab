@@ -4,21 +4,14 @@ import ProjectTile from "@/components/ProjectTile";
 import {
   featuredProjectIds,
   projects,
-  type ProjectCategory,
 } from "@/data/projects";
+import { workLines } from "@/data/ecosystem";
 import { team } from "@/data/team";
 import { useI18n } from "@/lib/i18n";
 import { setProjectFilters, useProjectFilters } from "@/lib/project-filters";
 
 const statuses = ["finished", "in_progress", "archived"] as const;
-const categories: ProjectCategory[] = [
-  "physical_ai",
-  "iot_hardware",
-  "agents_llms",
-  "health_fintech",
-  "vision_spatial",
-  "nlp_generative",
-];
+const categories = workLines.map(({ id }) => id);
 
 function searchText(value: string) {
   return value

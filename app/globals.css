@@ -3,14 +3,14 @@
 @theme inline {
   --font-sans: var(--instrument-sans), ui-sans-serif, system-ui, sans-serif;
   --color-paper: #eff8ff;
-  --color-surface: #fdfcf9;
+  --color-surface: #ffffff;
   --color-sand: #dff7f9;
   --color-navy: #231f20;
   --color-ink: #283a49;
   --color-muted: #4f5b64;
   --color-accent: #00aeef;
   --color-accent-dark: #00678e;
-  --color-line: #d7d5cc;
+  --color-line: #008fcd;
   --color-control: #827f73;
 }
 
@@ -32,12 +32,6 @@ body {
 
 html {
   scroll-padding-top: 6rem;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  html {
-    scroll-behavior: smooth;
-  }
 }
 
 summary {

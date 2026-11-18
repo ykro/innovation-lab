@@ -29,10 +29,10 @@
     "categories": {
       "physical_ai": "Robots and Autonomous Systems",
       "iot_hardware": "Electronics and Digital Fabrication",
-      "agents_llms": "AI Agents and Privacy",
+      "agents_llms": "AI Agents",
       "health_fintech": "Technology for Health and Finance",
       "vision_spatial": "Computer Vision and Augmented Reality",
-      "nlp_generative": "Translation and Creativity with AI"
+      "nlp_generative": "Creativity with AI"
     },
     "status": {
       "in_progress": "In progress",
@@ -71,7 +71,15 @@
     "details": "View event",
     "editions": "Editions",
     "editionLink": "return to Main Events on the home page",
-    "photoCredit": "Photo by Universidad Galileo"
+    "photoCredit": "Photo by Universidad Galileo",
+    "back": "Back to events",
+    "about": "About the gathering",
+    "audience": "Who it is for",
+    "topics": "Topics we explore",
+    "coverage": "Past editions in focus",
+    "readCoverage": "Read the Universidad Galileo report",
+    "contact": "Ask about the event",
+    "contactSubject": "Question about"
   },
   "volunteers": {
     "title": "Open areas for volunteers",
@@ -106,5 +114,18 @@
   },
   "footer": {
     "affiliation": "Faculty of Systems Engineering, Informatics, and Computer Science (FISICC)"
+  },
+  "clubs": {
+    "back": "Back to clubs",
+    "details": "Explore the club",
+    "planned": "In preparation",
+    "contact": "Ask how to participate",
+    "contactSubject": "Participating in",
+    "activities": "What you can do",
+    "coverage": "Club activities",
+    "projects": "Related projects"
+  },
+  "media": {
+    "credit": "Image from Universidad Galileo"
   }
 }

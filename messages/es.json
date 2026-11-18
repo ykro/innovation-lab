@@ -29,10 +29,10 @@
     "categories": {
       "physical_ai": "Robots y sistemas autónomos",
       "iot_hardware": "Electrónica y fabricación digital",
-      "agents_llms": "Agentes de IA y privacidad",
+      "agents_llms": "Agentes de IA",
       "health_fintech": "Tecnología para la salud y las finanzas",
       "vision_spatial": "Visión artificial y realidad aumentada",
-      "nlp_generative": "Traducción y creatividad con IA"
+      "nlp_generative": "Creatividad con IA"
     },
     "status": {
       "in_progress": "En desarrollo",
@@ -71,7 +71,15 @@
     "details": "Ver evento",
     "editions": "Ediciones",
     "editionLink": "volver a Eventos principales en la portada",
-    "photoCredit": "Foto de Universidad Galileo"
+    "photoCredit": "Foto de Universidad Galileo",
+    "back": "Volver a eventos",
+    "about": "Sobre el encuentro",
+    "audience": "Para quién es",
+    "topics": "Temas que se comparten",
+    "coverage": "Así se vivió",
+    "readCoverage": "Leer la cobertura de Universidad Galileo",
+    "contact": "Consultar sobre el evento",
+    "contactSubject": "Consulta sobre"
   },
   "volunteers": {
     "title": "Áreas abiertas para voluntarios",
@@ -106,5 +114,18 @@
   },
   "footer": {
     "affiliation": "Facultad de Ingeniería de Sistemas, Informática y Ciencias de la Computación (FISICC)"
+  },
+  "clubs": {
+    "back": "Volver a clubes",
+    "details": "Conocer el club",
+    "planned": "En preparación",
+    "contact": "Consultar cómo participar",
+    "contactSubject": "Participar en",
+    "activities": "Qué puedes hacer",
+    "coverage": "Actividades del club",
+    "projects": "Proyectos relacionados"
+  },
+  "media": {
+    "credit": "Imagen de Universidad Galileo"
   }
 }
