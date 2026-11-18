@@ -40,7 +40,14 @@ export default function FeaturedProjects() {
         </div>
 
         <ul className="mt-5 grid gap-5 sm:mt-7 sm:grid-cols-2 lg:grid-cols-3">
-          {featured.map((project, index) => <ProjectTile key={project.id} project={project} preload={index === 0} />)}
+          {featured.map((project, index) => (
+            <ProjectTile
+              key={project.id}
+              project={project}
+              prominent={index === 0}
+              preload={index === 0}
+            />
+          ))}
         </ul>
       </div>
     </section>

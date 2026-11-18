@@ -47,7 +47,9 @@
       "builtBy": "Equipo",
       "technologies": "Tecnologías",
       "gallery": "Galería del proyecto",
-      "resources": "Recursos del proyecto"
+      "resources": "Recursos del proyecto",
+      "collaborate": "Proponer una colaboración",
+      "collaborationSubject": "Colaboración en"
     },
     "search": "Buscar proyectos",
     "searchPlaceholder": "Nombre, integrante, tema o tecnología",

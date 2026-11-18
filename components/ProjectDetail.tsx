@@ -12,6 +12,7 @@ export default function ProjectDetail({ project }: { project: Project }) {
   const filters = useProjectFilters();
   const catalogHref = filters.size ? `/proyectos?${filters}` : "/proyectos";
   const name = locale === "en" ? project.nameEn ?? project.name : project.name;
+  const collaborationHref = `mailto:innovationlab@galileo.edu?subject=${encodeURIComponent(`${t("projects.actions.collaborationSubject")} ${name}`)}`;
   const members = team.filter((member) => project.team?.includes(member.id));
   const sourceLinks = [
     ...(project.demoUrl ? [{ url: project.demoUrl, label: t("projects.actions.liveDemo") }] : []),
@@ -32,15 +33,18 @@ export default function ProjectDetail({ project }: { project: Project }) {
       )}
       <h1 className="section-title max-w-4xl">{name}</h1>
       <p className="intro mt-4">{project.description[locale]}</p>
-      {links.length > 0 && (
-        <ul aria-label={t("projects.actions.resources")} className="mt-6 flex flex-wrap gap-x-5 gap-y-1">
-          {links.map(({ url, label }, index) => (
-            <li key={url}>
-              <a className={index === 0 ? "action action-primary" : "text-link inline-flex min-h-11 items-center"} href={url} target="_blank" rel="noopener noreferrer">{label}</a>
-            </li>
-          ))}
-        </ul>
-      )}
+      <ul aria-label={t("projects.actions.resources")} className="mt-6 flex flex-wrap gap-x-5 gap-y-1">
+        {links.map(({ url, label }, index) => (
+          <li key={url}>
+            <a className={index === 0 ? "action action-primary" : "text-link inline-flex min-h-11 items-center"} href={url} target="_blank" rel="noopener noreferrer">{label}</a>
+          </li>
+        ))}
+        <li>
+          <a href={collaborationHref} className="text-link inline-flex min-h-11 items-center">
+            {t("projects.actions.collaborate")}
+          </a>
+        </li>
+      </ul>
       {project.archivedDemoUrl && <p className="mt-3 text-sm text-muted">{t("projects.actions.demoUnavailable")}</p>}
       <div className="mt-9 grid gap-8 border-t border-line pt-8 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)] lg:gap-16">
         <div>

@@ -47,7 +47,9 @@
       "builtBy": "Team",
       "technologies": "Technologies",
       "gallery": "Project gallery",
-      "resources": "Project resources"
+      "resources": "Project resources",
+      "collaborate": "Propose a collaboration",
+      "collaborationSubject": "Collaboration on"
     },
     "search": "Search projects",
     "searchPlaceholder": "Name, team member, topic, or technology",

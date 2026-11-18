@@ -2,14 +2,14 @@
 
 @theme inline {
   --font-sans: var(--instrument-sans), ui-sans-serif, system-ui, sans-serif;
-  --color-paper: #f8f7f3;
+  --color-paper: #eff8ff;
   --color-surface: #fdfcf9;
-  --color-sand: #efede5;
-  --color-navy: #14283b;
+  --color-sand: #dff7f9;
+  --color-navy: #231f20;
   --color-ink: #283a49;
   --color-muted: #4f5b64;
-  --color-accent: #a13926;
-  --color-accent-dark: #802c1d;
+  --color-accent: #00aeef;
+  --color-accent-dark: #00678e;
   --color-line: #d7d5cc;
   --color-control: #827f73;
 }
@@ -112,12 +112,13 @@ summary {
 .action-primary {
   background: var(--color-accent);
   border-color: var(--color-accent);
-  color: var(--color-surface);
+  color: var(--color-navy);
 }
 
 .action-primary:hover {
   background: var(--color-accent-dark);
   border-color: var(--color-accent-dark);
+  color: var(--color-surface);
 }
 
 @media (min-width: 40rem) {
