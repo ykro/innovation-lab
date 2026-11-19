@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useI18n } from "@/lib/i18n";
 
 export default function Footer() {
@@ -12,7 +13,12 @@ export default function Footer() {
           <p className="font-semibold text-navy">Innovation Lab</p>
           <p className="mt-1">{t("footer.affiliation")}</p>
         </div>
-        <p>© 2012–{new Date().getUTCFullYear()} Innovation Lab</p>
+        <div className="flex flex-wrap items-center gap-6">
+          <Link href="/politica-ia" className="text-link text-sm">
+            {t("nav.aiPolicy")}
+          </Link>
+          <p>© 2012–{new Date().getUTCFullYear()} Innovation Lab</p>
+        </div>
       </div>
     </footer>
   );

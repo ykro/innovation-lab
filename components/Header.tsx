@@ -8,6 +8,7 @@ import LanguageToggle from "./LanguageToggle";
 const navItems = [
   { key: "projects", href: "/proyectos" },
   { key: "workLines", href: "/#lineas" },
+  { key: "aiPolicy", href: "/politica-ia" },
   { key: "team", href: "/#equipo" },
   { key: "events", href: "/#eventos" },
   { key: "volunteers", href: "/#voluntariado" },

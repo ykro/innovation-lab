@@ -1,3 +1,4 @@
+import AiPolicySection from "@/components/AiPolicySection";
 import FeaturedProjects from "@/components/FeaturedProjects";
 import History from "@/components/History";
 import LegacyProjectLinks from "@/components/LegacyProjectLinks";
@@ -13,6 +14,7 @@ export default function Home() {
       <LegacyProjectLinks />
       <FeaturedProjects />
       <WhatWeDo />
+      <AiPolicySection />
       <Team />
       <MajorEvents />
       <VolunteerRequest />
