@@ -122,7 +122,7 @@ export default function AiPolicyPage() {
 
             <div className="mt-4 overflow-hidden rounded-xl border border-navy bg-navy text-surface">
               <div className="flex items-center justify-between border-b border-white/15 px-4 py-2.5 text-xs">
-                <span className="font-mono font-semibold text-accent">
+                <span className="font-mono font-semibold text-surface">
                   README.md
                 </span>
                 <button
