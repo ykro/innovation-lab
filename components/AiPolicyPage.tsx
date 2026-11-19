@@ -11,13 +11,6 @@ import {
 } from "@/data/ai-policy";
 import { useI18n } from "@/lib/i18n";
 
-const levelBorder: Record<string, string> = {
-  l1: "border-l-[#0f766e]",
-  l2: "border-l-[#b45309]",
-  l3: "border-l-[#6d28d9]",
-  l4: "border-l-[#be185d]",
-};
-
 const levelTagColor: Record<string, string> = {
   l1: "text-[#0f766e]",
   l2: "text-[#b45309]",
@@ -63,7 +56,7 @@ export default function AiPolicyPage() {
             </button>
           </div>
 
-          <div className="mt-6 rounded-2xl border border-line border-t-8 border-t-accent bg-surface p-6 sm:p-10">
+          <div className="mt-6 rounded-2xl border border-line bg-surface p-6 sm:p-10">
             <p className="font-mono text-xs font-bold uppercase tracking-wider text-accent-dark">
               {aiPolicyCopy.eyebrow[locale]}
             </p>
@@ -156,7 +149,7 @@ export default function AiPolicyPage() {
               {aiPolicyLevels.map((lvl) => (
                 <div
                   key={lvl.id}
-                  className={`flex flex-col gap-2 rounded-xl border border-line border-l-8 bg-paper p-5 ${levelBorder[lvl.id]}`}
+                  className="flex flex-col gap-2 rounded-xl border border-line bg-paper p-5"
                 >
                   <span
                     className={`font-mono text-xs font-bold uppercase tracking-wide ${levelTagColor[lvl.id]}`}
@@ -225,7 +218,7 @@ export default function AiPolicyPage() {
               </table>
             </div>
 
-            <div className="mt-8 rounded-xl border-l-4 border-l-accent-dark bg-sand p-5">
+            <div className="mt-8 rounded-xl bg-sand p-5">
               <h3 className="text-base font-semibold text-navy">
                 {aiPolicyCopy.reciprocityTitle[locale]}
               </h3>
