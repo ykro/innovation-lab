@@ -2,16 +2,16 @@
 
 @theme inline {
   --font-sans: var(--instrument-sans), ui-sans-serif, system-ui, sans-serif;
-  --color-paper: #f6f8fa;
+  --color-paper: #ffffff;
   --color-surface: #ffffff;
-  --color-sand: #edf3f7;
-  --color-navy: #231f20;
-  --color-ink: #283a49;
-  --color-muted: #4f5b64;
-  --color-accent: #0077a8;
-  --color-accent-dark: #005f85;
-  --color-line: #d7e0e7;
-  --color-control: #7c8b96;
+  --color-sand: #eeebda;
+  --color-navy: #282b4a;
+  --color-ink: #34364b;
+  --color-muted: #60616f;
+  --color-accent: #282b4a;
+  --color-accent-dark: #1c1e35;
+  --color-line: #deddd2;
+  --color-control: #7a7b70;
 }
 
 body {
