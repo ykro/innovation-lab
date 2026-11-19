@@ -2,16 +2,16 @@
 
 @theme inline {
   --font-sans: var(--instrument-sans), ui-sans-serif, system-ui, sans-serif;
-  --color-paper: #eff8ff;
+  --color-paper: #f6f8fa;
   --color-surface: #ffffff;
-  --color-sand: #dff7f9;
+  --color-sand: #edf3f7;
   --color-navy: #231f20;
   --color-ink: #283a49;
   --color-muted: #4f5b64;
-  --color-accent: #00aeef;
-  --color-accent-dark: #00678e;
-  --color-line: #008fcd;
-  --color-control: #827f73;
+  --color-accent: #0077a8;
+  --color-accent-dark: #005f85;
+  --color-line: #d7e0e7;
+  --color-control: #7c8b96;
 }
 
 body {
@@ -106,7 +106,7 @@ summary {
 .action-primary {
   background: var(--color-accent);
   border-color: var(--color-accent);
-  color: var(--color-navy);
+  color: var(--color-surface);
 }
 
 .action-primary:hover {
