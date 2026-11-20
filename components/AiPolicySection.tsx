@@ -3,17 +3,10 @@
 import Link from "next/link";
 import {
   aiPolicyCopy,
-  aiPolicyLevels,
   aiPolicyPillars,
+  policyTracks,
 } from "@/data/ai-policy";
 import { useI18n } from "@/lib/i18n";
-
-const levelAccent: Record<string, string> = {
-  l1: "border-l-[#0f766e]",
-  l2: "border-l-[#b45309]",
-  l3: "border-l-[#6d28d9]",
-  l4: "border-l-[#be185d]",
-};
 
 export default function AiPolicySection() {
   const { locale } = useI18n();
@@ -27,10 +20,7 @@ export default function AiPolicySection() {
       <div className="shell section-space">
         <div className="flex flex-wrap items-end justify-between gap-6">
           <div className="max-w-3xl">
-            <p className="text-xs font-semibold uppercase tracking-wider text-accent-dark">
-              {aiPolicyCopy.eyebrow[locale]}
-            </p>
-            <h2 id="ai-policy-home-title" className="section-title mt-2">
+            <h2 id="ai-policy-home-title" className="section-title">
               {aiPolicyCopy.homeTitle[locale]}
             </h2>
             <p className="intro mt-4 text-ink">
@@ -62,29 +52,21 @@ export default function AiPolicySection() {
           ))}
         </ol>
 
-        <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-          {aiPolicyLevels.map((lvl) => (
-            <div
-              key={lvl.id}
-              className={`rounded-lg border border-line border-l-4 bg-sand/50 px-4 py-3 ${levelAccent[lvl.id]}`}
-            >
-              <p className="font-mono text-[11px] font-bold uppercase tracking-wide text-navy">
-                {lvl.tag[locale]}
-              </p>
-              <p className="mt-1 text-sm font-semibold text-navy">
-                {lvl.title[locale]}
-              </p>
-            </div>
-          ))}
-        </div>
-
         <div className="mt-6 flex flex-wrap items-center justify-between gap-4 rounded-xl border border-line bg-sand px-5 py-4">
-          <p className="max-w-3xl text-sm leading-relaxed text-ink">
-            {aiPolicyCopy.homeHardwareNote[locale]}
+          <p className="max-w-xl text-sm leading-relaxed text-ink">
+            {aiPolicyCopy.homeBottomNote[locale]}
           </p>
-          <Link href="/politica-ia" className="text-link shrink-0 text-sm">
-            {aiPolicyCopy.homeCta[locale]} →
-          </Link>
+          <div className="flex flex-wrap gap-2">
+            {policyTracks.map((track) => (
+              <Link
+                key={track.id}
+                href={`/politica-ia?tab=${track.id}`}
+                className="rounded-lg border border-line bg-surface px-3.5 py-2 text-sm font-semibold text-navy transition-colors hover:border-navy hover:bg-paper"
+              >
+                {track.tabLabel[locale]} →
+              </Link>
+            ))}
+          </div>
         </div>
       </div>
     </section>
